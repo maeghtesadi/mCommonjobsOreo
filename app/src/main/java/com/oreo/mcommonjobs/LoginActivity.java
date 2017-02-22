@@ -20,8 +20,6 @@ import java.net.URLEncoder;
  * Created by Rameen on 2/18/2017.
  */
 
-
-
 public class LoginActivity extends AsyncTask<String,Void,String> {
         Context context;
         AlertDialog alert;
@@ -35,10 +33,7 @@ public class LoginActivity extends AsyncTask<String,Void,String> {
             alert = new AlertDialog.Builder(context).create();
             alert.setTitle("Login Status");
 
-
         }
-
-
 
 
         protected String doInBackground(String... params){
