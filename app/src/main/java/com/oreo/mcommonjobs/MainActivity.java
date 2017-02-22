@@ -23,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
         String password = passwordInput.getText().toString();
         String type = "login";
 
+        /*
         LoginActivity loginActivity = new LoginActivity(this);
         loginActivity.execute(type,username,password);
-
+        */
     }
 }
