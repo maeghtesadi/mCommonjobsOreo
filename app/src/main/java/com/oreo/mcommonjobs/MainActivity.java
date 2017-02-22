@@ -1,5 +1,6 @@
 package com.oreo.mcommonjobs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
         usernameInput = (EditText) findViewById(R.id.username);
         passwordInput = (EditText) findViewById(R.id.password);
+
+        startActivity(new Intent(this, SignInActivity.class));
     }
 
     public void OnLogin(View view){
