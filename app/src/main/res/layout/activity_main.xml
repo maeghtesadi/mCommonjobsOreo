@@ -46,7 +46,7 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="60">
+                android:layout_weight="40">
 
             </LinearLayout>
 
@@ -61,12 +61,12 @@
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="20"></LinearLayout>
+                    android:layout_weight="30"></LinearLayout>
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_weight="60"
+                    android:layout_weight="40"
                     android:layout_height="wrap_content">
 
                     <com.google.android.gms.common.SignInButton
@@ -84,7 +84,7 @@
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="20"></LinearLayout>
+                    android:layout_weight="30"></LinearLayout>
 
             </LinearLayout>
 
