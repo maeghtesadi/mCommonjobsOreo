@@ -10,16 +10,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Activtity.MainActivity"
+        <activity
+            android:name=".Activtity.MainActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".Activtity.SignInActivity" />
-        <activity android:name=".Activtity.ProfileSetUpActivity">
-        </activity>
+        <activity android:name=".Activtity.ProfileSetUpActivity"></activity>
+        <activity android:name=".Activtity.SelectUserTypeActivity"></activity>
     </application>
 
 </manifest>
