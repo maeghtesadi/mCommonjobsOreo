@@ -1,6 +1,5 @@
 package com.oreo.mcommonjobs.Activtity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,7 +23,6 @@ import com.oreo.mcommonjobs.R;
 public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     private GoogleApiClient mGoogleApiClient;
-    Context context;
     static final int RC_SIGN_IN = 45798;
     private TextView mStatusTextView;
 

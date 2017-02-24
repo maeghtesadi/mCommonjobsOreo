@@ -7,6 +7,10 @@ import android.widget.TextView;
 
 import com.oreo.mcommonjobs.R;
 
+/**
+ * Created by kimcodes on 2017-02-22.
+ */
+
 public class ProfileSetUpActivity extends AppCompatActivity {
 
     @Override
