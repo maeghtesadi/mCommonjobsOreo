@@ -10,6 +10,7 @@ import com.oreo.mcommonjobs.R;
 public class MainActivity extends AppCompatActivity {
     EditText usernameInput;
     EditText passwordInput;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

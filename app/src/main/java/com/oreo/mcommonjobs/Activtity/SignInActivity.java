@@ -34,16 +34,12 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         mStatusTextView = (TextView) findViewById(R.id.status);
 
         // [START configure_signin]
-        // Configure sign-in to request the user's ID, email address, and basic
-        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
         // [END configure_signin]
 
         // [START build_client]
-        // Build a GoogleApiClient with access to the Google Sign-In API and the
-        // options specified by gso.
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this , this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
@@ -51,13 +47,10 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         // [END build_client]
 
         // Set the dimensions of the sign-in button.
-
-        // Set the dimensions of the sign-in button.
         SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
-
     }
 
     @Override
@@ -78,7 +71,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        // Result returned from launching the Intent from GoogleSignInApi
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
@@ -87,13 +80,34 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
     // [START handleSignInResult]
     private void handleSignInResult(GoogleSignInResult result) {
-        //Log.d(TAG, "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
 
             mStatusTextView.setText(acct.getDisplayName());
-            updateUI(true);
+            // grab information
+            String user_email = acct.getEmail();
+            String user_first_name = acct.getGivenName();
+            String user_last_name = acct.getFamilyName();
+            // Uri user_photo_url = acct.getPhotoUrl(); -- can give NULL
+
+            // PUT THIS INTO A CONTROLLER
+            // create intent for next activity
+            Intent i = new Intent(this, ProfileSetUpActivity.class);
+            // create bundle
+            Bundle bundle = new Bundle();
+            // add data to bundle
+            bundle.putString("user_email", user_email);
+            bundle.putString("user_first_name ", user_first_name);
+            bundle.putString("user_last_name", user_last_name);
+            // add bundle to intent
+            i.putExtras(bundle);
+            // start next activity
+            startActivity(i);
+            finish();
+
+            // pass content to the next activity
+            // updateUI(true);
         } else {
             // Signed out, show unauthenticated UI.
             updateUI(false);
@@ -104,12 +118,12 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     private void updateUI(boolean signedIn) {
         if (signedIn) {
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-          //  findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+            // findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {
             mStatusTextView.setText("signed_Out");
 
-            //findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-           // findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
+            // findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+            // findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
         }
     }
 

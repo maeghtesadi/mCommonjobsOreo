@@ -26,6 +26,20 @@ public class ProfileSetUpActivity extends AppCompatActivity {
         Typeface montserratTypeface = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Bold.ttf");
         profileSetupHeader.setTypeface(montserratTypeface);
         continueText.setTypeface(montserratTypeface);
+
+        Bundle bundle = getIntent().getExtras();
+        String user_email = bundle.getString(("user_email"));
+        String user_first_name = bundle.getString(("user_first_name"));
+        String user_last_name = bundle.getString(("user_last_name"));
+
+        TextView emailTextView = (TextView) findViewById(R.id.email_textview);
+        emailTextView.setText(user_email);
+
+        TextView firstNameTextView = (TextView) findViewById(R.id.firstname_textview);
+        firstNameTextView.setText(user_first_name);
+
+        TextView lastNameTextView = (TextView) findViewById(R.id.lastname_textview);
+        lastNameTextView.setText(user_last_name);
     }
 
 }
