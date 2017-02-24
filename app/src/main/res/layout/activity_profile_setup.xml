@@ -79,7 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/user_icon_layout"
-                    android:layout_weight="25">
+                    android:layout_weight="30">
 
                 </LinearLayout>
 
@@ -153,7 +153,7 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="15"
+                    android:layout_weight="10"
                     android:id="@+id/continue_layout"
                     android:weightSum="100">
 
@@ -172,12 +172,13 @@
                         android:layout_weight="50"
                         android:weightSum="100">
 
-                        <TextView
+                        <Button
                             android:text="CONTINUE >"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/continue_text"
+                            android:id="@+id/btn_continue"
                             android:textAlignment="textEnd" />
+
                     </LinearLayout>
 
                     <LinearLayout
