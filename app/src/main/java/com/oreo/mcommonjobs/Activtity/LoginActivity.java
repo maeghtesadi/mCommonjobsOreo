@@ -1,4 +1,4 @@
-package com.oreo.mcommonjobs;
+package com.oreo.mcommonjobs.Activtity;
 
 import android.app.AlertDialog;
 import android.content.Context;

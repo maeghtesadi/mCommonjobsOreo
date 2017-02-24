@@ -1,4 +1,4 @@
-package com.oreo.mcommonjobs;
+package com.oreo.mcommonjobs.Activtity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.oreo.mcommonjobs.R;
 
 /**
  * Created by kimcodes on 2017-02-22.
@@ -58,7 +59,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         signInButton.setSize(SignInButton.SIZE_STANDARD);
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
-
 
     }
 

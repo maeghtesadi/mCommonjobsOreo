@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.oreo.mcommonjobs.ProfileSetUpActivity"
+    tools:context="com.oreo.mcommonjobs.Activtity.ProfileSetUpActivity"
     android:background="@drawable/background1">
 
     <LinearLayout
@@ -63,13 +63,13 @@
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="10"></LinearLayout>
+                android:layout_weight="13"></LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="80"
+                android:layout_weight="74"
                 android:background="@android:color/white"
                 android:id="@+id/main_panel"
                 android:weightSum="100">
@@ -88,7 +88,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="10"
-                    android:id="@+id/email_layout"></LinearLayout>
+                    android:id="@+id/email_layout">
+
+                    <TextView
+                        android:text="Email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/email_textview"
+                        android:layout_weight="1" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -98,6 +106,12 @@
                     android:id="@+id/edit_firstname_layout">
 
 
+                    <TextView
+                        android:text="First Name "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/firstname_textview"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -114,6 +128,12 @@
                     android:layout_weight="10"
                     android:id="@+id/edit_lastname_layout">
 
+                    <TextView
+                        android:text="Last Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lastname_textview"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -134,14 +154,47 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="15"
-                    android:id="@+id/continue_layout"></LinearLayout>
+                    android:id="@+id/continue_layout"
+                    android:weightSum="100">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:weightSum="100">
+
+                        <TextView
+                            android:text="CONTINUE >"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/continue_text"
+                            android:textAlignment="textEnd" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20">
+
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="10"></LinearLayout>
+                android:layout_weight="13"></LinearLayout>
         </LinearLayout>
 
         <LinearLayout

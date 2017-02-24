@@ -1,9 +1,11 @@
-package com.oreo.mcommonjobs;
+package com.oreo.mcommonjobs.Activtity;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.oreo.mcommonjobs.R;
 
 public class ProfileSetUpActivity extends AppCompatActivity {
 
@@ -12,11 +14,14 @@ public class ProfileSetUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_setup);
 
-        TextView profileSetupHeader;
-        profileSetupHeader = (TextView) findViewById(R.id.page_title_profile_info);
+        // find text to set the font
+        TextView profileSetupHeader = (TextView) findViewById(R.id.page_title_profile_info);
+        TextView continueText = (TextView) findViewById(R.id.continue_text);
 
+        // set the font to Montserrat
         Typeface montserratTypeface = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Bold.ttf");
         profileSetupHeader.setTypeface(montserratTypeface);
+        continueText.setTypeface(montserratTypeface);
     }
 
 }
