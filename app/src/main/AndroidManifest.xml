@@ -20,8 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activtity.SignInActivity" />
-        <activity android:name=".Activtity.ProfileSetUpActivity"></activity>
-        <activity android:name=".Activtity.SelectUserTypeActivity"></activity>
+        <activity android:name=".Activtity.ProfileSetUpActivity" />
+        <activity android:name=".Activtity.SelectUserTypeActivity" />
+        <activity android:name=".Activtity.NavigationActivity"></activity>
     </application>
 
 </manifest>

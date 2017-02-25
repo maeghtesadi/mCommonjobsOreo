@@ -26,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="20"
-            android:weightSum="100">
+            android:weightSum="100"
+            android:paddingBottom="10dp">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -60,19 +61,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="70"
-            android:weightSum="100">
+            android:weightSum="100"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="10dp">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="13"></LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="74"
+                android:layout_weight="60"
                 android:background="@android:color/white"
                 android:id="@+id/main_panel"
                 android:weightSum="100">
@@ -82,22 +80,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/user_icon_layout"
-                    android:layout_weight="30">
+                    android:paddingBottom="20dp">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="10"
-                    android:id="@+id/email_layout">
-
-                    <TextView
-                        android:text="Email"
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/email_textview"
+                        app:srcCompat="@drawable/person_icon"
+                        android:id="@+id/imageView2"
                         android:layout_weight="1" />
                 </LinearLayout>
 
@@ -105,100 +94,90 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="10"
+                    android:layout_weight="20"
+                    android:id="@+id/email_layout"
+                    android:textAlignment="center">
+
+                    <TextView
+                        android:text="Email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:id="@+id/email_textview"
+                        android:layout_weight="1"
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="15"
                     android:id="@+id/edit_firstname_layout">
 
 
                     <TextView
                         android:text="First Name "
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="18sp"
                         android:id="@+id/firstname_textview"
-                        android:layout_weight="1" />
+                        android:textAlignment="center" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="10"
+                    android:layout_weight="15"
                     android:id="@+id/firstname_layout"></LinearLayout>
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="10"
+                    android:layout_weight="15"
                     android:id="@+id/edit_lastname_layout">
 
                     <TextView
                         android:text="Last Name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="18sp"
                         android:id="@+id/lastname_textview"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textAlignment="center" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="10"
+                    android:layout_weight="15"
                     android:id="@+id/lastname_layout"></LinearLayout>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="10"></LinearLayout>
-
-                <LinearLayout
+                <RelativeLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="10"
-                    android:id="@+id/continue_layout"
-                    android:weightSum="100">
+                    android:id="@+id/continue_layout">
 
-                    <LinearLayout
-                        android:orientation="vertical"
+                    <Button
+                        android:text="CONTINUE >"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="30">
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:id="@+id/btn_continue"
+                        android:background="@drawable/btn02"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="false"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentEnd="true" />
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="50"
-                        android:weightSum="100">
-
-                        <Button
-                            android:text="CONTINUE >"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/btn_continue"
-                            android:textAlignment="textEnd" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="20">
-
-                    </LinearLayout>
-                </LinearLayout>
+                </RelativeLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="13"></LinearLayout>
         </LinearLayout>
 
         <LinearLayout

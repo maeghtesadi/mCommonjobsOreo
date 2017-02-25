@@ -25,12 +25,13 @@ public class ProfileSetUpActivity extends AppCompatActivity {
 
         // find text to set the font
         TextView profileSetupHeader = (TextView) findViewById(R.id.page_title_profile_info);
-       // TextView continueText = (TextView) findViewById(R.id.btn_continue);
+        btn_continue = (Button) findViewById(R.id.btn_continue);
 
         // set the font to Montserrat
-        Typeface montserratTypeface = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Bold.ttf");
-        profileSetupHeader.setTypeface(montserratTypeface);
-      //  continueText.setTypeface(montserratTypeface);
+        Typeface montserratBoldTypeface = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Bold.ttf");
+        Typeface montserratRegularTypeface = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Regular.ttf");
+        profileSetupHeader.setTypeface(montserratBoldTypeface);
+        btn_continue.setTypeface(montserratBoldTypeface);
 
         // get data grabbed from google
         Bundle bundle = getIntent().getExtras();
@@ -41,16 +42,18 @@ public class ProfileSetUpActivity extends AppCompatActivity {
         // display data
         TextView emailTextView = (TextView) findViewById(R.id.email_textview);
         emailTextView.setText(user_email);
+        emailTextView.setTypeface(montserratBoldTypeface);
 
         TextView firstNameTextView = (TextView) findViewById(R.id.firstname_textview);
         firstNameTextView.setText(user_first_name);
+        firstNameTextView.setTypeface(montserratRegularTypeface);
 
         TextView lastNameTextView = (TextView) findViewById(R.id.lastname_textview);
         lastNameTextView.setText(user_last_name);
+        lastNameTextView.setTypeface(montserratRegularTypeface);
         // finished displaying data
 
         // find button and set it to launch the next activity
-        btn_continue = (Button) findViewById(R.id.btn_continue);
         btn_continue.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
