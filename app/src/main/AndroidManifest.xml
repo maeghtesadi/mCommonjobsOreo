@@ -22,7 +22,8 @@
         <activity android:name=".Activtity.SignInActivity" />
         <activity android:name=".Activtity.ProfileSetUpActivity" />
         <activity android:name=".Activtity.SelectUserTypeActivity" />
-        <activity android:name=".Activtity.NavigationActivity"></activity>
+        <activity android:name=".Activtity.NavigationActivity" />
+        <activity android:name=".Activtity.CreateJobPostAcitvity"></activity>
     </application>
 
 </manifest>
