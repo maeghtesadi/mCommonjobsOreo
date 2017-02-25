@@ -47,7 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/page_title_profile_info"
-                    android:textColor="@color/common_plus_signin_btn_text_light_focused"
+                    android:textColor="@android:color/white"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:fontFamily="Montserrat-Regular"
