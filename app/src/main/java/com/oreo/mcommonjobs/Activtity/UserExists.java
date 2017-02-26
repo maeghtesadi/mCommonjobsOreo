@@ -2,7 +2,11 @@ package com.oreo.mcommonjobs.Activtity;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
+
+import com.oreo.mcommonjobs.Controller.PersonController;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -20,11 +24,11 @@ import java.net.URLEncoder;
  * Created by Rameen on 2/18/2017.
  */
 
-public class LoginActivity extends AsyncTask<String,Void,String> {
+public class UserExists extends AsyncTask<String,Void,String> {
         Context context;
         AlertDialog alert;
 
-        LoginActivity(Context context){
+        UserExists(Context context){
 
             this.context = context;
         }
@@ -38,14 +42,13 @@ public class LoginActivity extends AsyncTask<String,Void,String> {
 
         protected String doInBackground(String... params){
 
-            String loginLink = "http://192.168.2.11/test/login.php";
+            String loginLink = "http://localhost/oreo/login.php";
             String type = params[0];
 
             if(type.equals("login")){
 
                 try {
-                    String username = params[1];
-                    String password = params[2];
+                    String email = params[1];
                     URL url = new URL(loginLink);
 
                     HttpURLConnection httpcon = (HttpURLConnection)url.openConnection();
@@ -55,7 +58,7 @@ public class LoginActivity extends AsyncTask<String,Void,String> {
                     OutputStream outputStream = httpcon.getOutputStream();
                     BufferedWriter buffWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
-                    String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&" +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8");
+                    String post_data = URLEncoder.encode("email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8");
 
                     buffWriter.write(post_data);
                     buffWriter.flush();
@@ -95,8 +98,17 @@ public class LoginActivity extends AsyncTask<String,Void,String> {
 
     protected void onPostExecute(String result){
 
-        alert.setMessage(result);
-        alert.show();
+        if(result.equals("success")){
+           Intent i = new Intent(this.context, NavigationActivity.class);
+             context.startActivity(i);
+        }else{
+            Intent i = new Intent(this.context, SelectUserTypeActivity.class);
+            //PersonController instance = PersonController.getInstance();
+            // String s =instance.getEmail();
+            context.startActivity(i);            //context.startActivity(i);
+
+        }
+
 
 
     }

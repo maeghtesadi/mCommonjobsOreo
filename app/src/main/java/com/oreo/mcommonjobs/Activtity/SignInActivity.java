@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.oreo.mcommonjobs.Controller.PersonController;
 import com.oreo.mcommonjobs.R;
 
 /**
@@ -90,20 +91,30 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             String user_first_name = acct.getGivenName();
             String user_last_name = acct.getFamilyName();
             // Uri user_photo_url = acct.getPhotoUrl(); -- can give NULL
-
-            // PUT THIS INTO A CONTROLLER
-            // create intent for next activity
-            Intent i = new Intent(this, ProfileSetUpActivity.class);
-            // create bundle
             Bundle bundle = new Bundle();
             // add data to bundle
             bundle.putString("user_email", user_email);
             bundle.putString("user_first_name ", user_first_name);
             bundle.putString("user_last_name", user_last_name);
+            // PUT THIS INTO A CONTROLLER
+            // create intent for next activity
+            UserExists userExists = new UserExists(this);
+
+           // userExists.execute("login",user_email);
+            PersonController instance = PersonController.getInstance();
+
+            instance.setEmail(user_email);
+            instance.setFirstName(user_first_name);
+            instance.setLastName(user_last_name);
+            userExists.execute("login",instance.getEmail());
+
+            //Intent i = new Intent(this, ProfileSetUpActivity.class);
+            // create bundle
+
             // add bundle to intent
-            i.putExtras(bundle);
+            //i.putExtras(bundle);
             // start next activity
-            startActivity(i);
+            //startActivity(i);
             finish();
 
             // pass content to the next activity

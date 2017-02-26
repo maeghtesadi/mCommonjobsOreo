@@ -22,13 +22,12 @@ public class MainActivity extends AppCompatActivity {
     /**
     public void OnLogin(View view){
 
-        String username = usernameInput.getText().toString();
-        String password = passwordInput.getText().toString();
+        String email = usernameInput.getText().toString();
         String type = "login";
 
         /*
-        LoginActivity loginActivity = new LoginActivity(this);
-        loginActivity.execute(type,username,password);
+        UserExists loginActivity = new UserExists(this);
+        loginActivity.execute(type,email);
 
     }**/
 }
