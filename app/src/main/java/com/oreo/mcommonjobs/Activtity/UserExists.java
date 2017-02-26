@@ -4,9 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
-
-import com.oreo.mcommonjobs.Controller.PersonController;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -42,7 +39,7 @@ public class UserExists extends AsyncTask<String,Void,String> {
 
         protected String doInBackground(String... params){
 
-            String loginLink = "http://localhost/oreo/login.php";
+            String loginLink = "http://192.168.0.104/login.php";
             String type = params[0];
 
             if(type.equals("login")){
