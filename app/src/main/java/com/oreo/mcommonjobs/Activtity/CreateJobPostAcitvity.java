@@ -1,5 +1,6 @@
 package com.oreo.mcommonjobs.Activtity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.oreo.mcommonjobs.DatabaseTasks.Addjob;
+import com.oreo.mcommonjobs.Models.JobProvider;
 import com.oreo.mcommonjobs.R;
 public class CreateJobPostAcitvity extends AppCompatActivity {
 
@@ -19,12 +20,16 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
     String jobselected= "Painting Duties";
     Button b;
     EditText descption;
-    Addjob addjob = new Addjob(this);
+    //Addjob addjob = new Addjob(this);
+    JobProvider jobProvider = new JobProvider();
+    Context c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_job_post_acitvity);
+
+        c=this.getApplicationContext();
 
         dropdown_menu_category = (Spinner)findViewById(R.id.spinner);
         String[] menu_items = new String[] { "Painting Duties", "Gardening Duties", "Vehicle Repair Duties", "Restaurant Duties","House Work Duties","Care Duties" };
@@ -81,15 +86,15 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
-                String type = "addjob";
+              //  String type = "addjob";
                 String des = descption.getText().toString();
 
                 // Usermapper usersssss = new user mapper
 
                 //Users user = new User
                 // userssssss.addnewjob(type,jobsecled,des)
-                addjob.execute(type,jobselected,des);
-
+               // addjob.execute(type,jobselected,des);
+                jobProvider.createPosting(jobselected,des,c);
 
             }
         });
@@ -100,30 +105,5 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
 
 
 
-    /*
-    public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
 
-        switch (position) {
-            case 0: // Painting Duties
-                this.jobselected="Painting Duties";
-                break;
-            case 1: // Gardening Duties
-                this.jobselected="Gardening Duties";
-                break;
-            case 2: // Vehicle Repair Duties
-                this.jobselected="Vehicle Repair Duties";
-                break;
-            case 3: //Restaurant Duties
-                this.jobselected="Restaurant Duties";
-                break;
-            case 4: // House Work Duties
-                this.jobselected="House Work Duties";
-                break;
-            case 5: //Care Duties
-                this.jobselected="Care Duties";
-                break;
-
-        }
-    }
-*/
 }

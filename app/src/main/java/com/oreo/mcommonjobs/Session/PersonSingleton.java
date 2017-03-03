@@ -1,7 +1,7 @@
 package com.oreo.mcommonjobs.Session;
 
 /**
- * Created by kimcodes on 2017-02-24.
+ * Created by Jason on 2017-02-24.
  */
 
 public class PersonSingleton {

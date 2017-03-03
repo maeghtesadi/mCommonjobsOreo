@@ -21,7 +21,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Created by Rameen on 2/18/2017.
+ * Created by Jason on 2/18/2017.
  */
 
 public class UserExists extends AsyncTask<String,Void,String> {

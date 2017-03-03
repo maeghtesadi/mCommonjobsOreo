@@ -5,4 +5,7 @@ package com.oreo.mcommonjobs.Models;
  */
 
 public class Jobs {
+
+
+
 }
