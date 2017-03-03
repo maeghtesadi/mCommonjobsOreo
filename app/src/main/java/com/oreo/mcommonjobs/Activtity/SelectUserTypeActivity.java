@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.oreo.mcommonjobs.DatabaseTasks.RegisterAccount;
-import com.oreo.mcommonjobs.Singleton.PersonSingleton;
+import com.oreo.mcommonjobs.Session.PersonSingleton;
 import com.oreo.mcommonjobs.R;
 
 public class SelectUserTypeActivity extends AppCompatActivity {
@@ -23,6 +23,7 @@ public class SelectUserTypeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_user_type);
+
 
         btn_jobseeker = (Button) findViewById(R.id.btn_jobseeker);
         btn_jobprovider = (Button) findViewById(R.id.btn_jobprovider);

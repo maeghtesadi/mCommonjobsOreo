@@ -15,7 +15,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.oreo.mcommonjobs.DatabaseTasks.UserExists;
-import com.oreo.mcommonjobs.Singleton.PersonSingleton;
+import com.oreo.mcommonjobs.Session.PersonSingleton;
 import com.oreo.mcommonjobs.R;
 
 /**

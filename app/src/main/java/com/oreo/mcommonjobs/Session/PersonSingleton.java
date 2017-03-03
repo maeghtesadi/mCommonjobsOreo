@@ -1,4 +1,4 @@
-package com.oreo.mcommonjobs.Singleton;
+package com.oreo.mcommonjobs.Session;
 
 /**
  * Created by kimcodes on 2017-02-24.
