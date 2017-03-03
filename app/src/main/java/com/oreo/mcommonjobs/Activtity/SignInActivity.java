@@ -1,5 +1,6 @@
 package com.oreo.mcommonjobs.Activtity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,9 +15,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.oreo.mcommonjobs.DatabaseTasks.UserExists;
-import com.oreo.mcommonjobs.Session.PersonSingleton;
+import com.oreo.mcommonjobs.Models.Users;
 import com.oreo.mcommonjobs.R;
+import com.oreo.mcommonjobs.Session.PersonSingleton;
 
 /**
  * Created by kimcodes on 2017-02-22.
@@ -28,12 +29,16 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     static final int RC_SIGN_IN = 45798;
     private TextView mStatusTextView;
 
+    private static Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mStatusTextView = (TextView) findViewById(R.id.status);
+
+        mContext =getApplicationContext();
 
         // [START configure_signin]
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -54,6 +59,14 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
     }
+
+
+
+
+    public static Context getContext() {
+        return mContext;
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -99,7 +112,8 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             bundle.putString("user_last_name", user_last_name);
             // PUT THIS INTO A CONTROLLER
             // create intent for next activity
-            UserExists userExists = new UserExists(this);
+           // UserExists userExists = new UserExists(this);
+            Users user = new Users();
 
            // userExists.execute("login",user_email);
             PersonSingleton instance = PersonSingleton.getInstance();
@@ -107,8 +121,8 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             instance.setEmail(user_email);
             instance.setFirstName(user_first_name);
             instance.setLastName(user_last_name);
-            userExists.execute("login",instance.getEmail());
-
+            //userExists.execute("login",instance.getEmail());
+            user.checkifExsists(instance.getEmail(), this.getApplicationContext());
             //Intent i = new Intent(this, ProfileSetUpActivity.class);
             // create bundle
 
