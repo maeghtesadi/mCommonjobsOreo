@@ -1,9 +1,12 @@
-package com.oreo.mcommonjobs.Activtity;
+package com.oreo.mcommonjobs.DatabaseTasks;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+
+import com.oreo.mcommonjobs.Activtity.NavigationActivity;
+import com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -25,7 +28,7 @@ public class UserExists extends AsyncTask<String,Void,String> {
         Context context;
         AlertDialog alert;
 
-        UserExists(Context context){
+        public UserExists(Context context){
 
             this.context = context;
         }
@@ -100,7 +103,7 @@ public class UserExists extends AsyncTask<String,Void,String> {
              context.startActivity(i);
         }else{
             Intent i = new Intent(this.context, SelectUserTypeActivity.class);
-            //PersonController instance = PersonController.getInstance();
+            //PersonSingleton instance = PersonSingleton.getInstance();
             // String s =instance.getEmail();
             context.startActivity(i);            //context.startActivity(i);
 

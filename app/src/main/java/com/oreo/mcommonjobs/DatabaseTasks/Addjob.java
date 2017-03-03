@@ -1,4 +1,4 @@
-package com.oreo.mcommonjobs.Activtity;
+package com.oreo.mcommonjobs.DatabaseTasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -19,11 +19,11 @@ import java.net.URLEncoder;
  * Created by jason on 2017-02-26.
  */
 
-public class addJob extends AsyncTask<String, Void, String> {
+public class Addjob extends AsyncTask<String, Void, String> {
 
     Context context;
 
-    public addJob(Context context) {
+    public Addjob(Context context) {
         this.context = context;
     }
 

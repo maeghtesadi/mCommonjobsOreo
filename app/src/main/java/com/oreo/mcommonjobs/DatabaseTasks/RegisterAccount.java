@@ -1,4 +1,4 @@
-package com.oreo.mcommonjobs.Activtity;
+package com.oreo.mcommonjobs.DatabaseTasks;
 
 import android.content.Context;
 import android.os.AsyncTask;

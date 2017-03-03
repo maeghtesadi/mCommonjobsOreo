@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.oreo.mcommonjobs.Controller.PersonController;
+import com.oreo.mcommonjobs.DatabaseTasks.RegisterAccount;
+import com.oreo.mcommonjobs.Singleton.PersonSingleton;
 import com.oreo.mcommonjobs.R;
 
 public class SelectUserTypeActivity extends AppCompatActivity {
@@ -14,7 +15,7 @@ public class SelectUserTypeActivity extends AppCompatActivity {
     Button btn_jobseeker, btn_jobprovider;
     String typeofuser;
     RegisterAccount reg = new RegisterAccount(this);
-    PersonController instance = PersonController.getInstance();
+    PersonSingleton instance = PersonSingleton.getInstance();
     String debugz;
 
 

@@ -14,7 +14,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.oreo.mcommonjobs.Controller.PersonController;
+import com.oreo.mcommonjobs.DatabaseTasks.UserExists;
+import com.oreo.mcommonjobs.Singleton.PersonSingleton;
 import com.oreo.mcommonjobs.R;
 
 /**
@@ -101,7 +102,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             UserExists userExists = new UserExists(this);
 
            // userExists.execute("login",user_email);
-            PersonController instance = PersonController.getInstance();
+            PersonSingleton instance = PersonSingleton.getInstance();
 
             instance.setEmail(user_email);
             instance.setFirstName(user_first_name);

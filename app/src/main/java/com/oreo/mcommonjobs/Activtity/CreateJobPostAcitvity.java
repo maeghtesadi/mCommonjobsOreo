@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.oreo.mcommonjobs.DatabaseTasks.Addjob;
 import com.oreo.mcommonjobs.R;
 public class CreateJobPostAcitvity extends AppCompatActivity {
 
@@ -18,7 +19,7 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
     String jobselected= "Painting Duties";
     Button b;
     TextView descption;
-    addJob addjob = new addJob(this);
+    Addjob addjob = new Addjob(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +44,13 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
-            String type = "addjob";
-            String des = descption.getText().toString();
+                String type = "addjob";
+                String des = descption.getText().toString();
 
+                // Usermapper usersssss = new user mapper
+
+                //Users user = new User
+                // userssssss.addnewjob(type,jobsecled,des)
                 addjob.execute(type,jobselected,des);
 
 

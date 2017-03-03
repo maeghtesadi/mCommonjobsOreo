@@ -1,10 +1,10 @@
-package com.oreo.mcommonjobs.Controller;
+package com.oreo.mcommonjobs.Singleton;
 
 /**
  * Created by kimcodes on 2017-02-24.
  */
 
-public class PersonController {
+public class PersonSingleton {
 
     private String email;
     private String firstName;
@@ -34,17 +34,17 @@ public class PersonController {
         this.firstName = firstName;
     }
 
-    private static PersonController personCtrl = null;
+    private static PersonSingleton personCtrl = null;
 
-    protected PersonController(){
+    protected PersonSingleton(){
 
 
     }
 
 
-    public static PersonController getInstance() {
+    public static PersonSingleton getInstance() {
         if(personCtrl == null) {
-            personCtrl = new PersonController();
+            personCtrl = new PersonSingleton();
         }
         return personCtrl;
     }
