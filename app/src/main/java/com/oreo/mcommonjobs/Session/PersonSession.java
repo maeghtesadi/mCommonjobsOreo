@@ -4,7 +4,7 @@ package com.oreo.mcommonjobs.Session;
  * Created by Jason on 2017-02-24.
  */
 
-public class PersonSingleton {
+public class PersonSession {
 
     private String email;
     private String firstName;
@@ -34,17 +34,17 @@ public class PersonSingleton {
         this.firstName = firstName;
     }
 
-    private static PersonSingleton personCtrl = null;
+    private static PersonSession personCtrl = null;
 
-    protected PersonSingleton(){
+    protected PersonSession(){
 
 
     }
 
 
-    public static PersonSingleton getInstance() {
+    public static PersonSession getInstance() {
         if(personCtrl == null) {
-            personCtrl = new PersonSingleton();
+            personCtrl = new PersonSession();
         }
         return personCtrl;
     }

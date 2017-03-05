@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.oreo.mcommonjobs.Models.JobProvider;
+import com.oreo.mcommonjobs.Controllers.JobProviderController;
 import com.oreo.mcommonjobs.R;
 public class CreateJobPostAcitvity extends AppCompatActivity {
 
@@ -21,7 +21,7 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
     Button b;
     EditText descption;
     //Addjob addjob = new Addjob(this);
-    JobProvider jobProvider = new JobProvider();
+    JobProviderController jobProviderController = new JobProviderController();
     Context c;
 
     @Override
@@ -91,10 +91,10 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
 
                 // Usermapper usersssss = new user mapper
 
-                //Users user = new User
+                //UserController user = new User
                 // userssssss.addnewjob(type,jobsecled,des)
                // addjob.execute(type,jobselected,des);
-                jobProvider.createPosting(jobselected,des,c);
+                jobProviderController.createPosting(jobselected,des,c);
 
             }
         });

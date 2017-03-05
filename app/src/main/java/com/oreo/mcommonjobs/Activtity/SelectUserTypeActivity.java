@@ -7,21 +7,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.oreo.mcommonjobs.Models.Users;
+import com.oreo.mcommonjobs.Controllers.UserController;
 import com.oreo.mcommonjobs.R;
-import com.oreo.mcommonjobs.Session.PersonSingleton;
+import com.oreo.mcommonjobs.Session.PersonSession;
 
 public class SelectUserTypeActivity extends AppCompatActivity {
 
     Button btn_jobseeker, btn_jobprovider;
     String typeofuser;
     //RegisterAccount reg = new RegisterAccount(this);
-    PersonSingleton instance = PersonSingleton.getInstance();
+    PersonSession instance = PersonSession.getInstance();
 
 
     Context c;
     String debugz;
-    Users user = new Users();
+    UserController user = new UserController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

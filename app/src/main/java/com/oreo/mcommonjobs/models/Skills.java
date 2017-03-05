@@ -5,4 +5,11 @@ package com.oreo.mcommonjobs.Models;
  */
 
 public class Skills {
+
+    int id;
+    String name;
+    String category;
+
+
+
 }

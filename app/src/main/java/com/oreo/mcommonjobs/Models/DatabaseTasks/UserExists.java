@@ -1,4 +1,4 @@
-package com.oreo.mcommonjobs.DatabaseTasks;
+package com.oreo.mcommonjobs.Models.DatabaseTasks;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -103,7 +103,7 @@ public class UserExists extends AsyncTask<String,Void,String> {
              context.startActivity(i);
         }else{
             Intent i = new Intent(this.context, SelectUserTypeActivity.class);
-            //PersonSingleton instance = PersonSingleton.getInstance();
+            //PersonSession instance = PersonSession.getInstance();
             // String s =instance.getEmail();
             context.startActivity(i);            //context.startActivity(i);
 

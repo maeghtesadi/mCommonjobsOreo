@@ -1,15 +1,15 @@
-package com.oreo.mcommonjobs.Models;
+package com.oreo.mcommonjobs.Controllers;
 
 import android.content.Context;
 
-import com.oreo.mcommonjobs.DatabaseTasks.RegisterAccount;
-import com.oreo.mcommonjobs.DatabaseTasks.UserExists;
+import com.oreo.mcommonjobs.Models.DatabaseTasks.RegisterAccount;
+import com.oreo.mcommonjobs.Models.DatabaseTasks.UserExists;
 
 /**
  * Created by jason on 2017-02-26.
  */
 
-public class Users {
+public class UserController {
 
 
 

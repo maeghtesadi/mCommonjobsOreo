@@ -15,9 +15,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.oreo.mcommonjobs.Models.Users;
+import com.oreo.mcommonjobs.Controllers.UserController;
 import com.oreo.mcommonjobs.R;
-import com.oreo.mcommonjobs.Session.PersonSingleton;
+import com.oreo.mcommonjobs.Session.PersonSession;
 
 /**
  * Created by kimcodes on 2017-02-22.
@@ -113,10 +113,10 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             // PUT THIS INTO A CONTROLLER
             // create intent for next activity
            // UserExists userExists = new UserExists(this);
-            Users user = new Users();
+            UserController user = new UserController();
 
            // userExists.execute("login",user_email);
-            PersonSingleton instance = PersonSingleton.getInstance();
+            PersonSession instance = PersonSession.getInstance();
 
             instance.setEmail(user_email);
             instance.setFirstName(user_first_name);
