@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">mCommonJobs</string>
+    <string name="main_menu_profile_title">profile</string>
 </resources>
