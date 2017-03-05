@@ -11,5 +11,4 @@ public class Skills {
     String category;
 
 
-
 }

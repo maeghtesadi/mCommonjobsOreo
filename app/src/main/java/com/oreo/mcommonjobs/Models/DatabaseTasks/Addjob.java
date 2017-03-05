@@ -35,21 +35,21 @@ public class Addjob extends AsyncTask<String, Void, String> {
         String type = params[0];
 
 
-        if(type.equals("addjob")){
+        if (type.equals("addjob")) {
 
             try {
                 String typeofjob = params[1];
                 String description = params[2];
                 URL url = new URL(loginLink);
 
-                HttpURLConnection httpcon = (HttpURLConnection)url.openConnection();
+                HttpURLConnection httpcon = (HttpURLConnection) url.openConnection();
                 httpcon.setRequestMethod("POST");
                 httpcon.setDoOutput(true);
                 httpcon.setDoInput(true);
                 OutputStream outputStream = httpcon.getOutputStream();
                 BufferedWriter buffWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
-                String post_data = URLEncoder.encode("typeofjob","UTF-8")+"="+URLEncoder.encode(typeofjob,"UTF-8")+"&" +URLEncoder.encode("description","UTF-8")+"="+URLEncoder.encode(description,"UTF-8");
+                String post_data = URLEncoder.encode("typeofjob", "UTF-8") + "=" + URLEncoder.encode(typeofjob, "UTF-8") + "&" + URLEncoder.encode("description", "UTF-8") + "=" + URLEncoder.encode(description, "UTF-8");
 
                 buffWriter.write(post_data);
                 buffWriter.flush();
@@ -58,12 +58,12 @@ public class Addjob extends AsyncTask<String, Void, String> {
 
                 //reads response from post request
                 InputStream inputStream = httpcon.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
 
                 String result = "";
                 String line = "";
 
-                while((line = bufferedReader.readLine()) != null){
+                while ((line = bufferedReader.readLine()) != null) {
                     result += line;
 
                 }
@@ -87,23 +87,13 @@ public class Addjob extends AsyncTask<String, Void, String> {
         return null;
 
 
-
     }
-
-
 
 
     @Override
     protected void onPostExecute(String s) {
-      String t = s;
+        String t = s;
     }
-
-
-
-
-
-
-
 
 
 }

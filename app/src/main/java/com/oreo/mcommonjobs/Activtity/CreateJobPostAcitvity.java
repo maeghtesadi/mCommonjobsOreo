@@ -12,12 +12,13 @@ import android.widget.Spinner;
 
 import com.oreo.mcommonjobs.Controllers.JobProviderController;
 import com.oreo.mcommonjobs.R;
+
 public class CreateJobPostAcitvity extends AppCompatActivity {
 
     Spinner dropdown_menu_category;
 
 
-    String jobselected= "Painting Duties";
+    String jobselected = "Painting Duties";
     Button b;
     EditText descption;
     //Addjob addjob = new Addjob(this);
@@ -29,10 +30,10 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_job_post_acitvity);
 
-        c=this.getApplicationContext();
+        c = this.getApplicationContext();
 
-        dropdown_menu_category = (Spinner)findViewById(R.id.spinner);
-        String[] menu_items = new String[] { "Painting Duties", "Gardening Duties", "Vehicle Repair Duties", "Restaurant Duties","House Work Duties","Care Duties" };
+        dropdown_menu_category = (Spinner) findViewById(R.id.spinner);
+        String[] menu_items = new String[]{"Painting Duties", "Gardening Duties", "Vehicle Repair Duties", "Restaurant Duties", "House Work Duties", "Care Duties"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, menu_items);
@@ -40,70 +41,59 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropdown_menu_category.setAdapter(adapter);
         //dropdown_menu_category.setOnItemSelectedListener(this);
-        dropdown_menu_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id)
-            {
+        dropdown_menu_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 switch (pos) {
                     case 0: // Painting Duties
-                        jobselected="Painting Duties";
+                        jobselected = "Painting Duties";
                         break;
                     case 1: // Gardening Duties
-                        jobselected="Gardening Duties";
+                        jobselected = "Gardening Duties";
                         break;
                     case 2: // Vehicle Repair Duties
-                        jobselected="Vehicle Repair Duties";
+                        jobselected = "Vehicle Repair Duties";
                         break;
                     case 3: //Restaurant Duties
-                        jobselected="Restaurant Duties";
+                        jobselected = "Restaurant Duties";
                         break;
                     case 4: // House Work Duties
-                        jobselected="House Work Duties";
+                        jobselected = "House Work Duties";
                         break;
                     case 5: //Care Duties
-                        jobselected="Care Duties";
+                        jobselected = "Care Duties";
                         break;
 
                 }
 
             }
 
-            public void onNothingSelected(AdapterView<?> parent)
-            {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
 
 
-
-        b=(Button) findViewById(R.id.btn_continue);
-        descption=(EditText) findViewById(R.id.editText);
-
-
-
+        b = (Button) findViewById(R.id.btn_continue);
+        descption = (EditText) findViewById(R.id.editText);
 
 
         b.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
-              //  String type = "addjob";
+            public void onClick(View v) {
+                //  String type = "addjob";
                 String des = descption.getText().toString();
 
                 // Usermapper usersssss = new user mapper
 
                 //UserController user = new User
                 // userssssss.addnewjob(type,jobsecled,des)
-               // addjob.execute(type,jobselected,des);
-                jobProviderController.createPosting(jobselected,des,c);
+                // addjob.execute(type,jobselected,des);
+                jobProviderController.createPosting(jobselected, des, c);
 
             }
         });
 
 
-
     }
-
-
 
 
 }

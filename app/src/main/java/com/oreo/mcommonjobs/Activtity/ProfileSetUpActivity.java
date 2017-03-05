@@ -56,8 +56,7 @@ public class ProfileSetUpActivity extends AppCompatActivity {
 
         // find button and set it to launch the next activity
         btn_continue.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), SelectUserTypeActivity.class);
                 startActivity(i);
             }

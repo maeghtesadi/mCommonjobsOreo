@@ -19,8 +19,7 @@ public class NavigationActivity extends AppCompatActivity {
         btn_addjob = (Button) findViewById(R.id.btn_addjob);
 
         btn_addjob.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), CreateJobPostAcitvity.class);
                 startActivity(i);
             }

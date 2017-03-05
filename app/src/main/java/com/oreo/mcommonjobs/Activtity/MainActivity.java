@@ -19,15 +19,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, SignInActivity.class));
     }
 
-    /**
-    public void OnLogin(View view){
-
-        String email = usernameInput.getText().toString();
-        String type = "login";
-
-        /*
-        UserExists loginActivity = new UserExists(this);
-        loginActivity.execute(type,email);
-
-    }**/
 }

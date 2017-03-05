@@ -8,12 +8,9 @@ public class User {
 
 
     int id;
-    String name , lastname , email;
+    String name, lastname, email;
     int ratings;
     int[] allratings;
-
-
-
 
 
 }

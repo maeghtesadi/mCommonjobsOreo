@@ -38,7 +38,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
         mStatusTextView = (TextView) findViewById(R.id.status);
 
-        mContext =getApplicationContext();
+        mContext = getApplicationContext();
 
         // [START configure_signin]
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -48,7 +48,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
         // [START build_client]
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this , this)
+                .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
         // [END build_client]
@@ -59,8 +59,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
     }
-
-
 
 
     public static Context getContext() {
@@ -112,10 +110,10 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             bundle.putString("user_last_name", user_last_name);
             // PUT THIS INTO A CONTROLLER
             // create intent for next activity
-           // UserExists userExists = new UserExists(this);
+            // UserExists userExists = new UserExists(this);
             UserController user = new UserController();
 
-           // userExists.execute("login",user_email);
+            // userExists.execute("login",user_email);
             PersonSession instance = PersonSession.getInstance();
 
             instance.setEmail(user_email);

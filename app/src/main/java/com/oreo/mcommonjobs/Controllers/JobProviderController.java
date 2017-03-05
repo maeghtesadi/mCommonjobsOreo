@@ -11,27 +11,13 @@ import com.oreo.mcommonjobs.Models.DatabaseTasks.Addjob;
 public class JobProviderController {
 
 
+    public void createPosting(String type, String description, Context c) {
+
+        Addjob addjob = new Addjob(c);
+        addjob.execute("addjob", type, description);
 
 
-
-
-
-
-
-public void createPosting(String type, String description, Context c){
-
-    Addjob addjob = new Addjob(c);
-    addjob.execute("addjob", type, description);
-
-
-
-}
-
-
-
-
-
-
+    }
 
 
 }

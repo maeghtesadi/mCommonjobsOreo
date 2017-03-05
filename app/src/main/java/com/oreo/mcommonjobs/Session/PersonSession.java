@@ -36,14 +36,14 @@ public class PersonSession {
 
     private static PersonSession personCtrl = null;
 
-    protected PersonSession(){
+    protected PersonSession() {
 
 
     }
 
 
     public static PersonSession getInstance() {
-        if(personCtrl == null) {
+        if (personCtrl == null) {
             personCtrl = new PersonSession();
         }
         return personCtrl;

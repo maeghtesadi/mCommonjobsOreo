@@ -7,13 +7,7 @@ package com.oreo.mcommonjobs.Models;
 public class JobSeeker extends User {
 
 
-
-
-
-    Skills [] skills;
-
-
-
+    Skills[] skills;
 
 
 }

@@ -33,15 +33,14 @@ public class SelectUserTypeActivity extends AppCompatActivity {
         btn_jobprovider = (Button) findViewById(R.id.btn_jobprovider);
 
 
-        c= this.getApplicationContext();
+        c = this.getApplicationContext();
 
 
         btn_jobseeker.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
-                typeofuser = "jobseeker" ;
-                user.registerAccount(instance.getFirstName(),instance.getLastName(),instance.getEmail(),typeofuser, c);
-               // reg.execute("insert",instance.getFirstName(),instance.getLastName(),instance.getEmail(),typeofuser);
+            public void onClick(View v) {
+                typeofuser = "jobseeker";
+                user.registerAccount(instance.getFirstName(), instance.getLastName(), instance.getEmail(), typeofuser, c);
+                // reg.execute("insert",instance.getFirstName(),instance.getLastName(),instance.getEmail(),typeofuser);
 
                 // add person to table in db, we get their info ffrom the personcontroller, and we also add weather tehy are job seeker or provider
                 // based off button they clicked
@@ -51,10 +50,9 @@ public class SelectUserTypeActivity extends AppCompatActivity {
         });
 
         btn_jobprovider.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 typeofuser = "jobprovider";
-                user.registerAccount(instance.getFirstName(),instance.getLastName(),instance.getEmail(),typeofuser, c);
+                user.registerAccount(instance.getFirstName(), instance.getLastName(), instance.getEmail(), typeofuser, c);
                 //reg.execute("insert",instance.getFirstName(),instance.getLastName(),instance.getEmail(),typeofuser);
                 Intent i = new Intent(getApplicationContext(), NavigationActivity.class);
                 startActivity(i);
