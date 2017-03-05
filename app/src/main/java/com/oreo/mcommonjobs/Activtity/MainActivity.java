@@ -19,16 +19,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, SignInActivity.class));
     }
 
-    /**
-    public void OnLogin(View view){
-
-        String username = usernameInput.getText().toString();
-        String password = passwordInput.getText().toString();
-        String type = "login";
-
-        /*
-        LoginActivity loginActivity = new LoginActivity(this);
-        loginActivity.execute(type,username,password);
-
-    }**/
 }

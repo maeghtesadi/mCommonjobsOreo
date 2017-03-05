@@ -23,6 +23,7 @@ public class ProfileSetUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_setup);
 
+
         // find text to set the font
         TextView profileSetupHeader = (TextView) findViewById(R.id.page_title_profile_info);
         btn_continue = (Button) findViewById(R.id.btn_continue);
@@ -55,8 +56,7 @@ public class ProfileSetUpActivity extends AppCompatActivity {
 
         // find button and set it to launch the next activity
         btn_continue.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), SelectUserTypeActivity.class);
                 startActivity(i);
             }
