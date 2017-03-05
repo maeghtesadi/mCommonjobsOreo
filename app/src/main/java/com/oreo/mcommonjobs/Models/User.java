@@ -11,7 +11,7 @@ public class User {
     String name , lastname , email;
     int ratings;
     int[] allratings;
-    
+
 
 
 
