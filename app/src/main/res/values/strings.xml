@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">mCommonJobs</string>
-    <string name="main_menu_profile_title">profile</string>
+    <string name="main_menu_profile_title">Profile</string>
+    <string name="profile_setup_title">Profile Setup</string>
+    <string name="select_photo_title">Select a photo</string>
+    <string name="first_name_title">First name</string>
+    <string name="last_name_title">Last name</string>
+    <string name="skills_title">Skills</string>
+    <string name="continue_btn_title">Continue</string>
 </resources>
