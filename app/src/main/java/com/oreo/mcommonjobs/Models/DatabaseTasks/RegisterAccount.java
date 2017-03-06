@@ -22,6 +22,11 @@ import java.net.URLEncoder;
 public class RegisterAccount extends AsyncTask<String, Void, String> {
 
     Context context;
+    String testresults;
+
+    public String getTestresults() {
+        return testresults;
+    }
 
     public RegisterAccount(Context context) {
         this.context = context;
@@ -89,7 +94,7 @@ public class RegisterAccount extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String s) {
-
+        testresults=s;
         String z = s;
 
     }

@@ -28,6 +28,16 @@ public class UserExists extends AsyncTask<String, Void, String> {
     Context context;
     AlertDialog alert;
 
+
+
+    String testresult;
+
+
+    public String getTestresult() {
+        return testresult;
+    }
+
+
     public UserExists(Context context) {
 
         this.context = context;
@@ -98,6 +108,7 @@ public class UserExists extends AsyncTask<String, Void, String> {
     }
 
     protected void onPostExecute(String result) {
+        testresult=result;
 
         if (result.equals("success")) {
             Intent i = new Intent(this.context, NavigationActivity.class);
