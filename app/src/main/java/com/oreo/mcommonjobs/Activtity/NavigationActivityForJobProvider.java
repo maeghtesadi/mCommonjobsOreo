@@ -8,14 +8,14 @@ import android.widget.Button;
 
 import com.oreo.mcommonjobs.R;
 
-public class NavigationActivity extends AppCompatActivity {
+public class NavigationActivityForJobProvider extends AppCompatActivity {
 
     Button btn_addjob;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation);
+        setContentView(R.layout.activity_navigation_jobprovider);
         btn_addjob = (Button) findViewById(R.id.btn_addjob);
 
         btn_addjob.setOnClickListener(new View.OnClickListener() {
