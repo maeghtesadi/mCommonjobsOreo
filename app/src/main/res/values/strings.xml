@@ -7,4 +7,8 @@
     <string name="last_name_title">Last name</string>
     <string name="skills_title">Skills</string>
     <string name="continue_btn_title">Continue</string>
+    <string name="job_seeker">Job Seeker</string>
+    <string name="job_provider">Job Provider</string>
+    <string name="main_menu_search">Search</string>
+    <string name="main_menu_add_job">Add Job</string>
 </resources>
