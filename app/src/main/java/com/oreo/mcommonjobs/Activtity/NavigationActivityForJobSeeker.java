@@ -25,7 +25,7 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
 
         btn_addjob.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CreateJobPostAcitvity.class);
+                Intent i = new Intent(getApplicationContext(), ViewJobsActivity.class);
                 startActivity(i);
             }
         });
