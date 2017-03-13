@@ -31,11 +31,11 @@ public class LocaleTest {
 
     }
     private void setLocale(String language) {
-
+        //sets locale to be tested
         Locale locale = new Locale(language);
-        // here we update locale for date formatters
         Locale.setDefault(locale);
-        // here we update locale for app resources
+
+        //get access to resources
         Context context = getInstrumentation().getTargetContext();
         Resources res = context.getResources();
         Configuration config = res.getConfiguration();
@@ -45,15 +45,17 @@ public class LocaleTest {
 
     @Test
     public void testEnglishLocale() {
+        //set locale to EN (english)
         setLocale("en");
 
-
+        //get profile string from strings.xml
         String profileString = getTargetContext().getString(R.string.main_menu_profile_title);
         assertEquals("Profile", profileString);
     }
 
     @Test
     public void testFrenchLocale() {
+        //set locale to FR (french)
         setLocale("fr");
 
 
