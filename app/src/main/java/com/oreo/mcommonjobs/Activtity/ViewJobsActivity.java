@@ -53,8 +53,7 @@ public class ViewJobsActivity extends AppCompatActivity {
     }
 
     /**
-     * makes a volley request, expects JsonObject as response and procceeds to fill jobs arraylist
-     *
+     * Makes a volley request, expects JsonObject as response and proceeds to fill jobs Arraylist
      * @param void
      * @return void
      * @throws JSONException
@@ -69,14 +68,14 @@ public class ViewJobsActivity extends AppCompatActivity {
 
                         try {
 
-                            JSONArray jobz = response.getJSONArray("jobs");
+                            JSONArray jsonJobsarray = response.getJSONArray("jobs");
 
 
-                            for (int i = 0; i < jobz.length(); i++) {
-                                JSONObject temp = jobz.getJSONObject(i);
+                            for (int i = 0; i < jsonJobsarray.length(); i++) {
+                                JSONObject job_current_position = jsonJobsarray.getJSONObject(i);
 
-                                String des = temp.getString("description");
-                                String typeofjob = temp.getString("typeofjob");
+                                String des = job_current_position.getString("description");
+                                String typeofjob = job_current_position.getString("typeofjob");
 
 
                                 jobs.add(new Job(des, typeofjob));
@@ -109,15 +108,15 @@ public class ViewJobsActivity extends AppCompatActivity {
 
 
     /**
-     * inner class , extends arrayadapter
-     * used to customize  adapter handles
+     * Inner class , extends arrayadapter
+     * used to customize adapter handles
      */
 
     private class customAdapter extends ArrayAdapter<Job> {
 
         /**
          * Constructor for customAdapter
-         * takes fragment layout , decorates it with values taken from a job and than returns the converted view
+         * Takes fragment layout , decorates it with values taken from a job and than returns the converted view
          * @return convertView(VIEW)
          */
         public customAdapter() {

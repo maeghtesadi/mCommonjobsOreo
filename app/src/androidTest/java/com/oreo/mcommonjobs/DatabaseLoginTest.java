@@ -45,7 +45,7 @@ public class DatabaseLoginTest {
 
 
     @Test
-    public void dbtest() throws Exception {
+    public void UserExsistsTest() throws Exception {
     String email = "jtsalikis@hotmail.ca";
 
     user.execute("login", email);

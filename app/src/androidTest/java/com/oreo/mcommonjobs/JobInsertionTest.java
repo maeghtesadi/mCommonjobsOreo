@@ -39,7 +39,7 @@ import static junit.framework.Assert.assertEquals;
 
 public class JobInsertionTest {
     private Context instrumentationCtx;
-    
+
     final CountDownLatch signal = new CountDownLatch(1);
     Addjob addjob;
 
@@ -57,7 +57,7 @@ public class JobInsertionTest {
 
 
     @Test
-    public void dbtest() throws Exception {
+    public void JobInsertionTest() throws Exception {
         String type = "Care duties";
         String description = "something";
         ;

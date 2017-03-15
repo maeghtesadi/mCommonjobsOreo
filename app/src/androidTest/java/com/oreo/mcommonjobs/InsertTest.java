@@ -56,7 +56,7 @@ public class InsertTest {
 
 
     @Test
-    public void dbtest() throws Exception {
+    public void InsertUserinDbTest() throws Exception {
         String email = "jtsalikis@hotmail.ca";
         String firstname = "jason";
         String lastname = "tsalikis";

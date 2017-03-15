@@ -35,7 +35,7 @@ public class Addjob extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
 
-        String loginLink = "http://192.168.0.104/addjob.php";
+        String loginLink = "http://localhost/addjob.php";
         String type = params[0];
 
 
