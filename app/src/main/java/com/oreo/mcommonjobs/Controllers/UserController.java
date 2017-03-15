@@ -43,34 +43,42 @@ public class UserController {
     public void checkifExsists(String email, final Context c) {
         String loginLink = "http://192.168.0.104/login.php";
         final String email2 = email;
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 PersonSession instance = PersonSession.getInstance();
+               // instance.setTypeofuser("");
                 try {
-                    JSONObject values = new JSONObject(response);
-
-                    instance.setTypeofuser(values.getString("typeofuser"));
 
 
-                    if(instance.getTypeofuser().equals("jobprovider")){
-                        Intent i = new Intent(c, NavigationActivityForJobProvider.class);
-                        c.startActivity(i);
-
-                    }
-
-                    if(instance.getTypeofuser().equals("jobseeker")){
-                        Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
-                        c.startActivity(i);
-
-                    }
-
-                    if(instance.getTypeofuser()==null){
+                    if(response.equals("noUser")){
                         Intent z = new Intent(c, SelectUserTypeActivity.class);
                         c.startActivity(z);
 
-                    }
+                    }else {
 
+
+                        JSONObject values = new JSONObject(response);
+
+                        instance.setTypeofuser(values.getString("typeofuser"));
+
+
+                        if(instance.getTypeofuser().equals("jobprovider")){
+                            Intent i = new Intent(c, NavigationActivityForJobProvider.class);
+                            c.startActivity(i);
+
+                        }
+
+
+                        if(instance.getTypeofuser().equals("jobseeker")){
+                            Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
+                            c.startActivity(i);
+
+                        }
+
+
+                    }
 
 
 
