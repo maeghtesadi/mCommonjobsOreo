@@ -110,7 +110,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             bundle.putString("user_last_name", user_last_name);
 
 
-            UserController user = new UserController(); // controller initialized
+            UserController userController = new UserController(); // controller initialized
             PersonSession instance = PersonSession.getInstance(); // class for handling persistent data initialized
 
            // setting session values
@@ -118,7 +118,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             instance.setFirstName(user_first_name);
             instance.setLastName(user_last_name);
 
-            user.checkifExsists(instance.getEmail(), this.getApplicationContext()); // passing email to controller which will handle checking the users prescence on database
+            userController.checkifExsists(instance.getEmail(), this.getApplicationContext()); // passing email to controller which will handle checking the users prescence on database
 
             finish();
 
