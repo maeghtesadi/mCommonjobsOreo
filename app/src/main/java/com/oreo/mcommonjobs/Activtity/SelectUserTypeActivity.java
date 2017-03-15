@@ -41,10 +41,6 @@ public class SelectUserTypeActivity extends AppCompatActivity {
                 typeofuser = "jobseeker";
                 instance.setTypeofuser("jobseeker");
                 user.registerAccount(instance.getFirstName(), instance.getLastName(), instance.getEmail(), typeofuser, c);
-                // reg.execute("insert",instance.getFirstName(),instance.getLastName(),instance.getEmail(),typeofuser);
-
-                // add person to table in db, we get their info ffrom the personcontroller, and we also add weather tehy are job seeker or provider
-                // based off button they clicked
                 Intent i = new Intent(getApplicationContext(), NavigationActivityForJobSeeker.class);
                 startActivity(i);
             }

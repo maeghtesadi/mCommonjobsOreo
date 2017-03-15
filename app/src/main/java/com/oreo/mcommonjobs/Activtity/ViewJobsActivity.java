@@ -25,14 +25,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by jason on 2017-03-12.
+ * @author Jason Tsalikis
+ * @version 1.0
+ * @since 2017-03-34
  */
 
 
-
-
 public class ViewJobsActivity extends AppCompatActivity {
-
+    /**
+     * Variables
+     */
     ListView jobslist;
     private List<Job> jobs = new ArrayList<>();
 
@@ -50,7 +52,13 @@ public class ViewJobsActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * makes a volley request, expects JsonObject as response and procceeds to fill jobs arraylist
+     *
+     * @param void
+     * @return void
+     * @throws JSONException
+     */
     private void engine() {
 
         String url = "http://192.168.0.104/getjobs.php";
@@ -89,19 +97,29 @@ public class ViewJobsActivity extends AppCompatActivity {
 
         RequestSingleton.getInstance(this).addToRequestQueue(jsonRequest);
 
-
+        // initializing the custom adapter
         ArrayAdapter<Job> adapter = new customAdapter();
-
+        // retrieving list widget from activity_view_jobs
         ListView jobslist = (ListView) (findViewById(R.id.joblist));
+        // binding the custom adapter to our list
         jobslist.setAdapter(adapter);
 
 
     }
 
 
+    /**
+     * inner class , extends arrayadapter
+     * used to customize  adapter handles
+     */
+
     private class customAdapter extends ArrayAdapter<Job> {
 
-
+        /**
+         * Constructor for customAdapter
+         * takes fragment layout , decorates it with values taken from a job and than returns the converted view
+         * @return convertView(VIEW)
+         */
         public customAdapter() {
             super(ViewJobsActivity.this, R.layout.jobfragment, jobs);
         }

@@ -39,7 +39,7 @@ import static junit.framework.Assert.assertEquals;
 
 public class JobInsertionTest {
     private Context instrumentationCtx;
-    // final Context context = getInstrumentation().getTargetContext();
+    
     final CountDownLatch signal = new CountDownLatch(1);
     Addjob addjob;
 
