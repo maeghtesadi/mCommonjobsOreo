@@ -108,26 +108,18 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             bundle.putString("user_email", user_email);
             bundle.putString("user_first_name ", user_first_name);
             bundle.putString("user_last_name", user_last_name);
-            // PUT THIS INTO A CONTROLLER
-            // create intent for next activity
-            // UserExists userExists = new UserExists(this);
-            UserController user = new UserController();
 
-            // userExists.execute("login",user_email);
-            PersonSession instance = PersonSession.getInstance();
 
+            UserController user = new UserController(); // controller initialized
+            PersonSession instance = PersonSession.getInstance(); // class for handling persistent data initialized
+
+           // setting session values
             instance.setEmail(user_email);
             instance.setFirstName(user_first_name);
             instance.setLastName(user_last_name);
-            //userExists.execute("login",instance.getEmail());
-            user.checkifExsists(instance.getEmail(), this.getApplicationContext());
-            //Intent i = new Intent(this, ProfileSetUpActivity.class);
-            // create bundle
 
-            // add bundle to intent
-            //i.putExtras(bundle);
-            // start next activity
-            //startActivity(i);
+            user.checkifExsists(instance.getEmail(), this.getApplicationContext()); // passing email to controller which will handle checking the users prescence on database
+
             finish();
 
             // pass content to the next activity
@@ -142,12 +134,11 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     private void updateUI(boolean signedIn) {
         if (signedIn) {
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-            // findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+
         } else {
             mStatusTextView.setText("signed_Out");
 
-            // findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-            // findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
+
         }
     }
 
