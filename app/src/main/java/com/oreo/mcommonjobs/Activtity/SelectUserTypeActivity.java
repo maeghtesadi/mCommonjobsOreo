@@ -11,47 +11,51 @@ import com.oreo.mcommonjobs.Controllers.UserController;
 import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.PersonSession;
 
+/**
+ * Class/Activity description here
+ *
+ * @author Jason
+ * @author kimcodes
+ *
+ */
 public class SelectUserTypeActivity extends AppCompatActivity {
 
-    Button btn_jobseeker, btn_jobprovider;
-    String typeofuser;
-    //RegisterAccount reg = new RegisterAccount(this);
-    PersonSession instance = PersonSession.getInstance();
-
-
-    Context c;
-    String debugz;
+    Button btnJobSeeker, btnJobProvider;
+    String typeOfUser;
+    PersonSession personInstance = PersonSession.getInstance();
+    Context selectUserTypeContext;
     UserController user = new UserController();
 
+    /**
+     * Initializes the SelectUserTypeActivity.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_user_type);
 
+        btnJobSeeker = (Button) findViewById(R.id.btn_jobseeker);
+        btnJobProvider = (Button) findViewById(R.id.btn_jobprovider);
 
-        btn_jobseeker = (Button) findViewById(R.id.btn_jobseeker);
-        btn_jobprovider = (Button) findViewById(R.id.btn_jobprovider);
+        selectUserTypeContext = this.getApplicationContext();
 
-
-        c = this.getApplicationContext();
-
-
-        btn_jobseeker.setOnClickListener(new View.OnClickListener() {
+        btnJobSeeker.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                typeofuser = "jobseeker";
-                instance.setTypeofuser("jobseeker");
-                user.registerAccount(instance.getFirstName(), instance.getLastName(), instance.getEmail(), typeofuser, c);
+                typeOfUser = "jobseeker"; // turn this into an enum or something @jason
+                personInstance.setTypeofuser("jobseeker");
+                user.registerAccount(personInstance.getFirstName(), personInstance.getLastName(), personInstance.getEmail(), typeOfUser, selectUserTypeContext);
                 Intent i = new Intent(getApplicationContext(), NavigationActivityForJobSeeker.class);
                 startActivity(i);
             }
         });
 
-        btn_jobprovider.setOnClickListener(new View.OnClickListener() {
+        btnJobProvider.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                typeofuser = "jobprovider";
-                instance.setTypeofuser("jobprovider");
-                user.registerAccount(instance.getFirstName(), instance.getLastName(), instance.getEmail(), typeofuser, c);
-                //reg.execute("insert",instance.getFirstName(),instance.getLastName(),instance.getEmail(),typeofuser);
+                typeOfUser = "jobprovider";
+                personInstance.setTypeofuser("jobprovider");
+                user.registerAccount(personInstance.getFirstName(), personInstance.getLastName(), personInstance.getEmail(), typeOfUser, selectUserTypeContext);
                 Intent i = new Intent(getApplicationContext(), NavigationActivityForJobProvider.class);
                 startActivity(i);
             }
