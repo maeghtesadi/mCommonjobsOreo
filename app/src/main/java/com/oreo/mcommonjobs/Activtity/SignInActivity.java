@@ -85,7 +85,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
 
     /**
-     * Method for the signin onClick 
+     * Method passes the sign in credentials from user to the signin method.
      *
      * @param v
      */
@@ -99,77 +99,75 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
-     *
+     * Method connects to the Google signin API and passes the intent.
      */
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+    /**
+     *
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInApi
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
         }
     }
 
-    // [START handleSignInResult]
+    /**
+     * Method handles passing the information retrieved from Google
+     * Sets the Person Session and passes info to user controller to check
+     * if the user exists.
+     *
+     * @param result
+     */
     private void handleSignInResult(GoogleSignInResult result) {
+        UserController userController = new UserController();
+        PersonSession personInstance = PersonSession.getInstance();
+
         if (result.isSuccess()) {
-            // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = result.getSignInAccount();
+            GoogleSignInAccount googleAccount = result.getSignInAccount();
+            personInstance.setEmail(googleAccount.getEmail());
+            personInstance.setFirstName(googleAccount.getGivenName());
+            personInstance.setLastName(googleAccount.getFamilyName());
 
-            mStatusTextView.setText(acct.getDisplayName());
-            // grab information
-            String user_email = acct.getEmail();
-            String user_first_name = acct.getGivenName();
-            String user_last_name = acct.getFamilyName();
-            // Uri user_photo_url = acct.getPhotoUrl(); -- can give NULL
-            Bundle bundle = new Bundle();
-            // add data to bundle
-            bundle.putString("user_email", user_email);
-            bundle.putString("user_first_name ", user_first_name);
-            bundle.putString("user_last_name", user_last_name);
-
-
-            UserController userController = new UserController(); // controller initialized
-            PersonSession instance = PersonSession.getInstance(); // class for handling persistent data initialized
-
-           // setting session values
-            instance.setEmail(user_email);
-            instance.setFirstName(user_first_name);
-            instance.setLastName(user_last_name);
-
-            userController.checkifExsists(instance.getEmail(), this.getApplicationContext()); // passing email to controller which will handle checking the users prescence on database
+            userController.checkifExsists(personInstance.getEmail(), this.getApplicationContext());
 
             finish();
 
-            // pass content to the next activity
-            // updateUI(true);
+            updateUI(true);
         } else {
-            // Signed out, show unauthenticated UI.
             updateUI(false);
         }
     }
-    // [END handleSignInResult]
 
+    /**
+     * Method checks if the signin worked and removes the signin button from the UI.
+     * Else the button remains on the page.
+     * @param signedIn
+     */
     private void updateUI(boolean signedIn) {
         if (signedIn) {
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-
-        } else {
-            mStatusTextView.setText("signed_Out");
-
-
         }
     }
 
+    /**
+     * Method handles if the connection fails.
+     *
+     * @param connectionResult
+     */
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+        // log connection failed
     }
 }
