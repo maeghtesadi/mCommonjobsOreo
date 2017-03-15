@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         random = new Random();
         generatedConfirmation = random.nextInt(999999 - 100000) + 100000;
         SmsActivity smsActivity = new SmsActivity(this);
-        smsActivity.execute(Integer.toString(generatedConfirmation));
+        smsActivity.execute(Integer.toString(generatedConfirmation)); //sending the confirmation code to the Twilio phph file
         editText_confirmation = (EditText) findViewById(R.id.editText_confirmation_number);
         button_submit_confirmation = (Button) findViewById(R.id.button_submit_confirmation);
         button_submit_confirmation.setOnClickListener(new View.OnClickListener() {
@@ -34,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 inputConfirmation = Integer.getInteger(editText_confirmation.getText().toString());
                 if(inputConfirmation == generatedConfirmation){
-                    Toast.makeText(getApplicationContext(), "Confirmation codes matched!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Confirmation codes matched!", Toast.LENGTH_SHORT).show(); //temporary toast
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "Confirmation codes didn't match!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Confirmation codes didn't match!", Toast.LENGTH_SHORT).show(); //temporary toast
                 }
             }
         });

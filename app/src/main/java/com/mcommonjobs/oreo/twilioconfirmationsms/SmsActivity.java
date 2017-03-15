@@ -39,7 +39,7 @@ public class SmsActivity extends AsyncTask<String, Void, String>{
     protected String doInBackground(String... strings) {
         try{
             String confirmationCode = (String) strings[0];
-            String link = "ip address/path to Twilio index.php";
+            String link = "ip address/path to Twilio index.php"; //Enter the IP address and the path to the Twilio index.php file the WAMP www directory
 
             URL url = new URL(link);
             HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
