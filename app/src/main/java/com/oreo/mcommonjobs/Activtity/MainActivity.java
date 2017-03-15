@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.oreo.mcommonjobs.R;
 
 /**
- * Main Acitvity for the mCommonJobs application
+ * Main Activity for the mCommonJobs application
  * Launches startActivity to begin application.
  *
  * @author Jason
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Method initializes main activity to launch the startActivity for a user to sign in.
-     * 
+     *
      * @param savedInstanceState
      */
     @Override
