@@ -4,9 +4,18 @@
      <string name="profile_setup_title">Configuration du Profil</string>
      <string name="select_photo_title">Sélectionnez une photo</string>
      <string name="first_name_title">Prénom</string>
-     <string name="last_name_title">Nom</string>
+     <string name="last_name_title">Nom de Famille</string>
      <string name="skills_title">Compétences</string>
      <string name="continue_btn_title">Accéder</string>
      <string name="main_menu_search">Reserche</string>
      <string name="main_menu_add_job">Ajouter un Emploi</string>
+     <string name="create_posting">Créer une Annonce</string>
+     <string name="messages">Messages</string>
+     <string name="select_category">Sélectionner une Catégorie</string>
+     <string name="continue_btn">Continuer ></string>
+     <string name="job_provider">Fournisseur d\'Emploi</string>
+     <string name="job_desc_hint">Ajouter une description ici.</string>
+     <string name="job_seeker">Chercheur d\'Emploi</string>
+     <string name="email">Email</string>
+     <string name="select_user">"Sélectionner un Usager: "</string>
 </resources>

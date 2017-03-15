@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">mCommonJobs</string>
+    <string name="app_name" translatable="false">mCommonJobs</string>
     <string name="main_menu_profile_title">Profile</string>
     <string name="profile_setup_title">Profile Setup</string>
     <string name="select_photo_title">Select a photo</string>
@@ -11,4 +11,11 @@
     <string name="job_provider">Job Provider</string>
     <string name="main_menu_search">Search</string>
     <string name="main_menu_add_job">Add Job</string>
+    <string name="create_posting">Create Posting</string>
+    <string name="select_category">Select Category</string>
+    <string name="continue_btn">Continue ></string>
+    <string name="messages">Messages</string>
+    <string name="job_desc_hint">Add description here.</string>
+    <string name="email">Email</string>
+    <string name="select_user">"Select User: "</string>
 </resources>

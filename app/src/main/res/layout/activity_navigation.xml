@@ -97,7 +97,7 @@
                     android:layout_weight="50">
 
                     <Button
-                        android:text="Messages"
+                        android:text="@string/messages"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/btn_messages" />
