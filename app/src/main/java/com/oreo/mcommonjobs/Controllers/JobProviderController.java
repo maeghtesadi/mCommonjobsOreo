@@ -1,13 +1,11 @@
 package com.oreo.mcommonjobs.Controllers;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
 import java.util.HashMap;
@@ -40,11 +38,10 @@ public class JobProviderController {
             @Override
             public void onResponse(String response) {
 
+                
 
-                Intent i = new Intent(c, NavigationActivityForJobProvider.class);
-                c.startActivity(i);
 
-              
+
             }
         }, new Response.ErrorListener() {
             public void onErrorResponse(VolleyError error) {

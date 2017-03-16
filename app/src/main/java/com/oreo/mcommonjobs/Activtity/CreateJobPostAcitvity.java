@@ -89,7 +89,7 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
 
 
                 jobProviderController.createPosting(jobSelected, des, appContext);
-
+               finish();
             }
         });
 
