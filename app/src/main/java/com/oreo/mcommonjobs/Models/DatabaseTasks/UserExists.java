@@ -5,8 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 
-import com.oreo.mcommonjobs.Activtity.NavigationActivity;
+import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
+import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity;
+import com.oreo.mcommonjobs.Activtity.TwilioAuthenticationActivity;
+import com.oreo.mcommonjobs.Session.PersonSession;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -28,6 +34,16 @@ public class UserExists extends AsyncTask<String, Void, String> {
     Context context;
     AlertDialog alert;
 
+
+
+    String testresult;
+
+
+    public String getTestresult() {
+        return testresult;
+    }
+
+
     public UserExists(Context context) {
 
         this.context = context;
@@ -43,7 +59,7 @@ public class UserExists extends AsyncTask<String, Void, String> {
 
     protected String doInBackground(String... params) {
 
-        String loginLink = "http://192.168.0.104/login.php";
+        String loginLink = "http://192.168.0.101/mcommonjobs/login.php";
         String type = params[0];
 
         if (type.equals("login")) {
@@ -99,18 +115,56 @@ public class UserExists extends AsyncTask<String, Void, String> {
 
     protected void onPostExecute(String result) {
 
-        if (result.equals("success")) {
-            Intent i = new Intent(this.context, NavigationActivity.class);
-            context.startActivity(i);
-        } else {
-            Intent i = new Intent(this.context, SelectUserTypeActivity.class);
-            //PersonSession instance = PersonSession.getInstance();
-            // String s =instance.getEmail();
-            context.startActivity(i);            //context.startActivity(i);
+        PersonSession instance = PersonSession.getInstance();
 
+        try {
+            JSONObject values = new JSONObject(result);
+
+            testresult = values.getString("typeofuser");
+            instance.setTypeofuser(testresult);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
 
+        if(this.testresult.equals("jobprovider")){
+            Intent i = new Intent(this.context, NavigationActivityForJobProvider.class);
+            context.startActivity(i);
+
+        }
+
+       if(this.testresult.equals("jobseeker")){
+           Intent c = new Intent(this.context, NavigationActivityForJobSeeker.class);
+           context.startActivity(c);
+
+       }
+
+        if(this.testresult==null){
+           Intent z = new Intent(this.context, SelectUserTypeActivity.class);
+           context.startActivity(z);
+
+       }
+
+
+
+
+
+
+/*
+        if (result.equals("success")) {
+
+
+            Intent i = new Intent(this.context, NavigationActivityForJobProvider.class);
+            context.startActivity(i);
+
+
+        } else {
+            Intent i = new Intent(this.context, SelectUserTypeActivity.class);
+            context.startActivity(i);
+
+        }
+
+*/
     }
 
 

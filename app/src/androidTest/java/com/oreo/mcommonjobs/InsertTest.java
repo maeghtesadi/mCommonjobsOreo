@@ -1,24 +1,21 @@
 package com.oreo.mcommonjobs;
 
 
-
-
-
-
-import android.support.test.rule.ActivityTestRule;
+import android.content.Context;
+import android.os.Looper;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.oreo.mcommonjobs.Activtity.CreateJobPostAcitvity;
+import com.oreo.mcommonjobs.Models.DatabaseTasks.RegisterAccount;
 
-import org.junit.Rule;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+
+import static junit.framework.Assert.assertEquals;
 
 /**
  * Created by jason on 2017-02-26.
@@ -40,12 +37,35 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 @RunWith(AndroidJUnit4.class)
 public class InsertTest {
 
-    @Rule
-    public ActivityTestRule<CreateJobPostAcitvity> mActivityRule = new ActivityTestRule(CreateJobPostAcitvity.class);
+    private Context instrumentationCtx;
+
+    final CountDownLatch signal = new CountDownLatch(1);
+    RegisterAccount reg;
+
+
+    @Before
+    public void setup() {
+        Looper.prepare();
+        instrumentationCtx = InstrumentationRegistry.getTargetContext();
+
+        reg =  new RegisterAccount(instrumentationCtx);
+
+    }
+
+
+
 
     @Test
-    public void listGoesOverTheFold() {
-        onView(withId(R.id.editText)).perform(typeText("hello")).check(matches(isDisplayed()));
+    public void InsertUserinDbTest() throws Exception {
+        String email = "jtsalikis@hotmail.ca";
+        String firstname = "jason";
+        String lastname = "tsalikis";
+        String typeofuser="Job provider";
+
+        reg.execute("insert", firstname, lastname, email, typeofuser);
+
+        signal.await(2000, TimeUnit.MILLISECONDS);
+        assertEquals("exsists",reg.getTestresults());
 
 
     }

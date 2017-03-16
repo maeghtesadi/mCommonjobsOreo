@@ -9,6 +9,15 @@ public class PersonSession {
     private String email;
     private String firstName;
     private String lastName;
+    private String typeofuser;
+
+    public String getTypeofuser() {
+        return typeofuser;
+    }
+
+    public void setTypeofuser(String typeofuser) {
+        this.typeofuser = typeofuser;
+    }
 
     public String getEmail() {
         return email;

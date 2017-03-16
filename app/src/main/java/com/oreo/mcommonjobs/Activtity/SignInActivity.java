@@ -20,52 +20,75 @@ import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.PersonSession;
 
 /**
- * Created by kimcodes on 2017-02-22.
+ * SignInActivity connects to Google API to allow a user to sign in.
+ *
+ * @author kimcodes
  */
-
 public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     private GoogleApiClient mGoogleApiClient;
     static final int RC_SIGN_IN = 45798;
     private TextView mStatusTextView;
-
     private static Context mContext;
 
+    /**
+     * Method initializes SignInActivity.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mStatusTextView = (TextView) findViewById(R.id.status);
-
         mContext = getApplicationContext();
 
-        // [START configure_signin]
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        initializeGoogleSignInConnection();
+        setupSignInBtn();
+    }
+
+    /**
+     * Method configures Google API SignIn and builds the API client
+     * required to verify and retrieve credentials.
+     */
+    private void initializeGoogleSignInConnection(){
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-        // [END configure_signin]
 
-        // [START build_client]
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
                 .build();
-        // [END build_client]
 
-        // Set the dimensions of the sign-in button.
+    }
+
+    /**
+     * Method finds the sign in button in the UI
+     * Sets it's dimensions and sets its onClickListener
+     */
+    private void setupSignInBtn(){
         SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
-
         findViewById(R.id.sign_in_button).setOnClickListener(this);
     }
 
-
+    /**
+     * Getter method for StartActivity context.
+     *
+     * @return
+     */
     public static Context getContext() {
         return mContext;
     }
 
 
+    /**
+     * Method for the signin onClick 
+     *
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -75,9 +98,14 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         }
     }
 
+    /**
+     *
+     */
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        //Intent intent = new Intent(getApplicationContext(),TwilioAuthentication.class);
+        //startActivity(intent);
     }
 
     @Override
@@ -108,26 +136,18 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             bundle.putString("user_email", user_email);
             bundle.putString("user_first_name ", user_first_name);
             bundle.putString("user_last_name", user_last_name);
-            // PUT THIS INTO A CONTROLLER
-            // create intent for next activity
-            // UserExists userExists = new UserExists(this);
-            UserController user = new UserController();
 
-            // userExists.execute("login",user_email);
-            PersonSession instance = PersonSession.getInstance();
 
+            UserController userController = new UserController(); // controller initialized
+            PersonSession instance = PersonSession.getInstance(); // class for handling persistent data initialized
+
+           // setting session values
             instance.setEmail(user_email);
             instance.setFirstName(user_first_name);
             instance.setLastName(user_last_name);
-            //userExists.execute("login",instance.getEmail());
-            user.checkifExsists(instance.getEmail(), this.getApplicationContext());
-            //Intent i = new Intent(this, ProfileSetUpActivity.class);
-            // create bundle
 
-            // add bundle to intent
-            //i.putExtras(bundle);
-            // start next activity
-            //startActivity(i);
+            userController.checkifExsists(instance.getEmail(), this.getApplicationContext()); // passing email to controller which will handle checking the users prescence on database
+
             finish();
 
             // pass content to the next activity
@@ -142,12 +162,11 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     private void updateUI(boolean signedIn) {
         if (signedIn) {
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-            // findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+
         } else {
             mStatusTextView.setText("signed_Out");
 
-            // findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-            // findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
+
         }
     }
 

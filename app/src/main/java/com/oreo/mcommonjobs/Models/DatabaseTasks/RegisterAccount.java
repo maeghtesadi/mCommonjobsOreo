@@ -22,13 +22,18 @@ import java.net.URLEncoder;
 public class RegisterAccount extends AsyncTask<String, Void, String> {
 
     Context context;
+    String testresults;
+
+    public String getTestresults() {
+        return testresults;
+    }
 
     public RegisterAccount(Context context) {
         this.context = context;
     }
 
     protected String doInBackground(String... params) {
-        String loginLink = "http://192.168.0.104/insert.php";
+        String loginLink = "http://192.168.0.101/mcommonjobs/insert.php";
         String type = params[0];
 
         if (type.equals("insert")) {
@@ -89,7 +94,7 @@ public class RegisterAccount extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String s) {
-
+        testresults=s;
         String z = s;
 
     }

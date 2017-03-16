@@ -22,16 +22,20 @@ import java.net.URLEncoder;
 public class Addjob extends AsyncTask<String, Void, String> {
 
     Context context;
-
+    String testresult;
     public Addjob(Context context) {
         this.context = context;
     }
 
 
+    public String getTestresult() {
+        return testresult;
+    }
+
     @Override
     protected String doInBackground(String... params) {
 
-        String loginLink = "http://192.168.0.104/addjob.php";
+        String loginLink = "http://192.168.0.101/mcommonjobs/addjob.php";
         String type = params[0];
 
 
@@ -93,6 +97,7 @@ public class Addjob extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         String t = s;
+         testresult=s;
     }
 
 
