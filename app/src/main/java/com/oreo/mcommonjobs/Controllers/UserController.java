@@ -164,8 +164,8 @@ public class UserController {
             protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("email", email2);
-                params.put("firstname", firstname2);
-                params.put("lastname", lastname2);
+                params.put("firstName", firstname2);
+                params.put("lastName", lastname2);
                 params.put("typeofuser", typeofuser2);
 
                 return params;
