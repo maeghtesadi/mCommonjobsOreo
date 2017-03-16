@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         button_submit_confirmation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputConfirmation = Integer.getInteger(editText_confirmation.getText().toString());
+                inputConfirmation = Integer.parseInt(editText_confirmation.getText().toString());
                 if(inputConfirmation == generatedConfirmation){
                     Toast.makeText(getApplicationContext(), "Confirmation codes matched!", Toast.LENGTH_SHORT).show();
                 }
