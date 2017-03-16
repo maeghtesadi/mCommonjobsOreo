@@ -1,4 +1,8 @@
-package com.mcommonjobs.oreo.twilioconfirmationsms;
+package com.oreo.mcommonjobs.Controllers;
+
+/**
+ * Created by Ali on 3/16/2017.
+ */
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -18,15 +22,11 @@ import java.net.URLEncoder;
 
 import javax.net.ssl.HttpsURLConnection;
 
-/**
- * Created by Sam on 2017-03-14.
- */
-
-public class SmsActivity extends AsyncTask<String, Void, String>{
+public class SendConfirmationSms extends AsyncTask<String, Void, String>{
 
     private Context context;
 
-    public SmsActivity(Context context){
+    public SendConfirmationSms(Context context){
         this.context = context;
     }
 
@@ -39,6 +39,7 @@ public class SmsActivity extends AsyncTask<String, Void, String>{
     protected String doInBackground(String... strings) {
         try{
             String confirmationCode = (String) strings[0];
+            String phoneNumber = (String) strings[1];
             String link = "http://192.168.0.101/twilio/index.php";
 
             URL url = new URL(link);
@@ -48,7 +49,7 @@ public class SmsActivity extends AsyncTask<String, Void, String>{
             httpURLConnection.setDoInput(true);
             OutputStream outputStream = httpURLConnection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            String post_data = URLEncoder.encode("confirmationCode", "UTF-8") + "=" + URLEncoder.encode(confirmationCode, "UTF-8");
+            String post_data = URLEncoder.encode("confirmationCode", "UTF-8") + "=" + URLEncoder.encode(confirmationCode, "UTF-8") + "&" + URLEncoder.encode("phoneNumber","UTF-8") + "=" + URLEncoder.encode(phoneNumber, "UTF-8");
             bufferedWriter.write(post_data);
             bufferedWriter.flush();
             bufferedWriter.close();
@@ -78,3 +79,4 @@ public class SmsActivity extends AsyncTask<String, Void, String>{
         super.onPostExecute(s);
     }
 }
+
