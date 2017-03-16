@@ -45,7 +45,7 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropdown_menu_category.setAdapter(adapter);
-        //dropdown_menu_category.setOnItemSelectedListener(this);
+
         dropdown_menu_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 switch (pos) {
@@ -84,14 +84,10 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //  String type = "addjob";
+
                 String des = jobDescription.getText().toString();
 
-                // Usermapper usersssss = new user mapper
 
-                //UserController user = new User
-                // userssssss.addnewjob(type,jobsecled,des)
-                // addjob.execute(type,jobSelected,des);
                 jobProviderController.createPosting(jobSelected, des, appContext);
 
             }
