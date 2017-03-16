@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "22117428997",
+    "project_id": "mcommonjobs"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22117428997:android:b06c0eef4ab92d31",
+        "android_client_info": {
+          "package_name": "com.oreo.mcommonjobs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "22117428997-fo1m6hothqqjshafeeugiqck8l4ouahc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oreo.mcommonjobs",
+            "certificate_hash": "eb02bb7d67481a63b41de47e5b66526d96313cc1"
+          }
+        },
+        {
+          "client_id": "22117428997-ml7ssk31n7vnr8lga6hrnvn0fo5s7tl2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCyLFne86QXobT4OKIo_3sNr-EN4U34og"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
