@@ -120,7 +120,7 @@ public class UserExists extends AsyncTask<String, Void, String> {
             JSONObject values = new JSONObject(result);
 
             testresult = values.getString("typeofuser");
-            instance.setTypeofuser(testresult);
+            instance.setTypeOfUser(testresult);
         } catch (JSONException e) {
             e.printStackTrace();
         }

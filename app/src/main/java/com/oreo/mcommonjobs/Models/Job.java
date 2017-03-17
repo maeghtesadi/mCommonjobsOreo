@@ -91,7 +91,7 @@ public class Job {
 
     /**
      * Setter method for the status of a Job.
-     * 
+     *
      * @param status
      */
     public void setStatus(String status) {

@@ -48,7 +48,7 @@ public class UserController {
             @Override
             public void onResponse(String response) {
                 PersonSession instance = PersonSession.getInstance();
-               // instance.setTypeofuser("");
+               // instance.setTypeOfUser("");
                 try {
 
 
@@ -61,7 +61,7 @@ public class UserController {
 
                         JSONObject values = new JSONObject(response);
 
-                        instance.setTypeofuser(values.getString("typeofuser"));
+                        instance.setTypeOfUser(values.getString("typeofuser"));
 
 
                         if(instance.getTypeofuser().equals("jobprovider")){

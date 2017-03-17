@@ -43,7 +43,7 @@ public class SelectUserTypeActivity extends AppCompatActivity {
         btnJobSeeker.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 typeOfUser = "jobseeker"; // turn this into an enum or something @jason
-                personInstance.setTypeofuser("jobseeker");
+                personInstance.setTypeOfUser("jobseeker");
                 user.registerAccount(personInstance.getFirstName(), personInstance.getLastName(), personInstance.getEmail(), typeOfUser, selectUserTypeContext);
                 Intent i = new Intent(getApplicationContext(), NavigationActivityForJobSeeker.class);
                 startActivity(i);
@@ -53,7 +53,7 @@ public class SelectUserTypeActivity extends AppCompatActivity {
         btnJobProvider.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 typeOfUser = "jobprovider";
-                personInstance.setTypeofuser("jobprovider");
+                personInstance.setTypeOfUser("jobprovider");
                 user.registerAccount(personInstance.getFirstName(), personInstance.getLastName(), personInstance.getEmail(), typeOfUser, selectUserTypeContext);
                 Intent i = new Intent(getApplicationContext(), NavigationActivityForJobProvider.class);
                 startActivity(i);
