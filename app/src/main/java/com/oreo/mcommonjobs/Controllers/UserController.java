@@ -10,7 +10,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity;
-import com.oreo.mcommonjobs.Models.DatabaseTasks.RegisterAccount;
 import com.oreo.mcommonjobs.Session.PersonSession;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
@@ -118,12 +117,69 @@ public class UserController {
     }
 
 
-    public void registerAccount(String firstname, String lastname, String email, String typeofuser, Context c) {
+    public void registerAccount(String firstname, String lastname, String email, String typeofuser, final Context c) {
 
-        RegisterAccount reg = new RegisterAccount(c);
-        reg.execute("insert", firstname, lastname, email, typeofuser);
+
+        String loginLink = "http://192.168.0.104/insert.php";
+        final String email2 = email;
+        final String firstname2=firstname;
+        final String lastname2=lastname;
+        final String typeofuser2=typeofuser;
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                PersonSession instance = PersonSession.getInstance();
+                instance.setTypeofuser(typeofuser2);
+
+                if (instance.getTypeofuser().equals("jobprovider")) {
+                    Intent i = new Intent(c, NavigationActivityForJobProvider.class);
+                    c.startActivity(i);
+
+                }
+
+
+                if (instance.getTypeofuser().equals("jobseeker")) {
+                    Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
+                    c.startActivity(i);
+
+                }
+
+
+
+
+
+
+            }
+        }, new Response.ErrorListener() {
+            public void onErrorResponse(VolleyError error) {
+
+
+            }
+
+        }
+        ) {
+
+            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("email", email2);
+                params.put("firstName", firstname2);
+                params.put("lastName", lastname2);
+                params.put("typeofuser", typeofuser2);
+
+                return params;
+            }
+        };
+
+
+        RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
+
 
     }
+
+
+
 
 
 }
