@@ -37,23 +37,33 @@ public class TwilioAuthenticationActivity extends AppCompatActivity {
         button_sendConfirmationCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                generatedConfirmation = random.nextInt(999999 - 100000) + 100000;
-                phonenumber = editText_phoneNumber.getText().toString();
-                SendConfirmationSms smsAuthentication = new SendConfirmationSms(getApplicationContext());
-                smsAuthentication.execute(Integer.toString(generatedConfirmation), phonenumber);
+                if(editText_phoneNumber.getText().toString().matches("")){
+                    Toast.makeText(getApplicationContext(), "Please enter your phone number.", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    generatedConfirmation = random.nextInt(999999 - 100000) + 100000;
+                    phonenumber = editText_phoneNumber.getText().toString();
+                    SendConfirmationSms smsAuthentication = new SendConfirmationSms(getApplicationContext());
+                    smsAuthentication.execute(Integer.toString(generatedConfirmation), phonenumber);
+                }
             }
         });
         button_submit_confirmation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputConfirmation = Integer.parseInt(editText_confirmation.getText().toString());
-                if(inputConfirmation == generatedConfirmation){
-                    Toast.makeText(getApplicationContext(), "Confirmation codes matched!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(),SelectUserTypeActivity.class);
-                    startActivity(intent);
+                if(editText_confirmation.getText().toString().matches("")){
+                    Toast.makeText(getApplicationContext(), "Please enter your confirmation code.", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "Confirmation codes didn't match!", Toast.LENGTH_SHORT).show();
+                    inputConfirmation = Integer.parseInt(editText_confirmation.getText().toString());
+                    if(inputConfirmation == generatedConfirmation){
+                        Toast.makeText(getApplicationContext(), "Confirmation codes matched!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(),SelectUserTypeActivity.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "Confirmation codes didn't match!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
