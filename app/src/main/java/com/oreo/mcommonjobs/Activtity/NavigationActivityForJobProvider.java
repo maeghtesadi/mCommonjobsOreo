@@ -8,24 +8,32 @@ import android.widget.Button;
 
 import com.oreo.mcommonjobs.R;
 
+/**
+ * This is the class for the Navigation Activity belonging to a JobProvider.
+ *
+ * @author jason
+ * @author kimcodes
+ */
 public class NavigationActivityForJobProvider extends AppCompatActivity {
 
-    Button btn_addjob;
+    Button btnAddJob;
 
+    /**
+     * Initializes the NavigationActivity for a JobProvider.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_jobprovider);
-        btn_addjob = (Button) findViewById(R.id.btn_addjob);
+        btnAddJob = (Button) findViewById(R.id.btn_addjob);
 
-        btn_addjob.setOnClickListener(new View.OnClickListener() {
+        btnAddJob.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), CreateJobPostAcitvity.class);
                 startActivity(i);
             }
         });
-
     }
-
 
 }

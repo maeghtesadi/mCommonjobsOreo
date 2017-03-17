@@ -24,9 +24,10 @@ public class ProfileSetUpActivity extends AppCompatActivity {
     PersonSession personInstance = PersonSession.getInstance();
 
     /**
-     * Initializes ProfielSetUpActivity.
+     * Initializes ProfileSetUpActivity.
      * Sets the UI TextViews font family.
      * Collects data to be displayed in the UI.
+     * Sets onclick listeners.
      *
      * @param savedInstanceState
      */
@@ -44,7 +45,6 @@ public class ProfileSetUpActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
     }
 
     /**
