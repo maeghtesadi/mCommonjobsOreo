@@ -16,7 +16,6 @@ import com.oreo.mcommonjobs.Session.PersonSession;
  *
  * @author Jason
  * @author kimcodes
- *
  */
 public class SelectUserTypeActivity extends AppCompatActivity {
 

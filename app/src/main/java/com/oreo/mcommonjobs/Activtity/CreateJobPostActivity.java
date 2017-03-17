@@ -14,9 +14,9 @@ import com.oreo.mcommonjobs.Controllers.JobProviderController;
 import com.oreo.mcommonjobs.R;
 
 /**
- *
+ * Class for the CreateJobPost Activity
  */
-public class CreateJobPostAcitvity extends AppCompatActivity {
+public class CreateJobPostActivity extends AppCompatActivity {
 
     Spinner dropdown_menu_category;
     String jobSelected = "Painting Duties";
@@ -26,7 +26,7 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
     Context appContext;
 
     /**
-     * onCreate method initialize the CreateJobPostAcitvity.
+     * onCreate method initialize the CreateJobPostActivity.
      *
      * @param savedInstanceState
      */

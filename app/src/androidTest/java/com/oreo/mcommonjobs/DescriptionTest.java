@@ -3,7 +3,7 @@ package com.oreo.mcommonjobs;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.oreo.mcommonjobs.Activtity.CreateJobPostAcitvity;
+import com.oreo.mcommonjobs.Activtity.CreateJobPostActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -23,7 +23,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
  public class DescriptionTest {
 
     @Rule
-    public ActivityTestRule<CreateJobPostAcitvity> mActivityRule = new ActivityTestRule(CreateJobPostAcitvity.class);
+    public ActivityTestRule<CreateJobPostActivity> mActivityRule = new ActivityTestRule(CreateJobPostActivity.class);
 
     @Test
     public void listGoesOverTheFold() {

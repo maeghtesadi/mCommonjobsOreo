@@ -30,7 +30,7 @@ public class NavigationActivityForJobProvider extends AppCompatActivity {
 
         btnAddJob.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CreateJobPostAcitvity.class);
+                Intent i = new Intent(getApplicationContext(), CreateJobPostActivity.class);
                 startActivity(i);
             }
         });
