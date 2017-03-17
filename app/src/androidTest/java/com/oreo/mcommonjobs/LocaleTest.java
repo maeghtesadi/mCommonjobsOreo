@@ -42,11 +42,9 @@ public class LocaleTest {
      * @param language  name of the language to set the locale to
      */
     private void setLocale(String language) {
-        //sets locale to be tested
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
 
-        //get access to resources
         Context context = getInstrumentation().getTargetContext();
         Resources res = context.getResources();
         Configuration config = res.getConfiguration();
