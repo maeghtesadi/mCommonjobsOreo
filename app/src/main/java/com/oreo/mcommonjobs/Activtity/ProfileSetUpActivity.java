@@ -9,53 +9,36 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.oreo.mcommonjobs.R;
+import com.oreo.mcommonjobs.Session.PersonSession;
 
 /**
- * Created by kimcodes on 2017-02-22.
+ * This is the class for the Profile SetupActivity.
+ *
+ * @author kimcodes
  */
-
 public class ProfileSetUpActivity extends AppCompatActivity {
 
-    Button btn_continue;
+    Button btnContinue;
+    Typeface montserratBoldTypeface = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Bold.ttf");
+    Typeface montserratRegularTypeface = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Regular.ttf");
+    PersonSession personInstance = PersonSession.getInstance();
 
+    /**
+     * Initializes ProfielSetUpActivity.
+     * Sets the UI TextViews font family.
+     * Collects data to be displayed in the UI.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_setup);
 
+        setFontForActivity();
+        displayDataForActivity();
 
-        // find text to set the font
-        TextView profileSetupHeader = (TextView) findViewById(R.id.page_title_profile_info);
-        btn_continue = (Button) findViewById(R.id.btn_continue);
-
-        // set the font to Montserrat
-        Typeface montserratBoldTypeface = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Bold.ttf");
-        Typeface montserratRegularTypeface = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Regular.ttf");
-        profileSetupHeader.setTypeface(montserratBoldTypeface);
-        btn_continue.setTypeface(montserratBoldTypeface);
-
-        // get data grabbed from google
-        Bundle bundle = getIntent().getExtras();
-        String user_email = bundle.getString(("user_email"));
-        String user_first_name = bundle.getString(("user_first_name"));
-        String user_last_name = bundle.getString(("user_last_name"));
-
-        // display data
-        TextView emailTextView = (TextView) findViewById(R.id.email_textview);
-        emailTextView.setText(user_email);
-        emailTextView.setTypeface(montserratBoldTypeface);
-
-        TextView firstNameTextView = (TextView) findViewById(R.id.firstname_textview);
-        firstNameTextView.setText(user_first_name);
-        firstNameTextView.setTypeface(montserratRegularTypeface);
-
-        TextView lastNameTextView = (TextView) findViewById(R.id.lastname_textview);
-        lastNameTextView.setText(user_last_name);
-        lastNameTextView.setTypeface(montserratRegularTypeface);
-        // finished displaying data
-
-        // find button and set it to launch the next activity
-        btn_continue.setOnClickListener(new View.OnClickListener() {
+        btnContinue.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), SelectUserTypeActivity.class);
                 startActivity(i);
@@ -64,4 +47,31 @@ public class ProfileSetUpActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method sets the font for the texts in the Activity's UI.
+     */
+    private void setFontForActivity(){
+        Typeface montserratBoldTypeface = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Bold.ttf");
+        Typeface montserratRegularTypeface = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Regular.ttf");
+        TextView profileSetupHeader = (TextView) findViewById(R.id.page_title_profile_info);
+        profileSetupHeader.setTypeface(montserratBoldTypeface);
+        btnContinue.setTypeface(montserratBoldTypeface);
+    }
+
+    /**
+     * This method grabs the data needed to display on the Activity's UI.
+     */
+    private void displayDataForActivity(){
+        TextView emailTextView = (TextView) findViewById(R.id.email_textview);
+        emailTextView.setText(personInstance.getEmail());
+        emailTextView.setTypeface(montserratBoldTypeface);
+
+        TextView firstNameTextView = (TextView) findViewById(R.id.firstname_textview);
+        firstNameTextView.setText(personInstance.getFirstName());
+        firstNameTextView.setTypeface(montserratRegularTypeface);
+
+        TextView lastNameTextView = (TextView) findViewById(R.id.lastname_textview);
+        lastNameTextView.setText(personInstance.getLastName());
+        lastNameTextView.setTypeface(montserratRegularTypeface);
+    }
 }
