@@ -58,7 +58,7 @@ public class UserExists extends AsyncTask<String, Void, String> {
 
     protected String doInBackground(String... params) {
 
-        String loginLink = "http://localhost/login.php";
+        String loginLink = "http://192.168.0.104/login.php";
         String type = params[0];
 
         if (type.equals("login")) {
@@ -120,7 +120,7 @@ public class UserExists extends AsyncTask<String, Void, String> {
             JSONObject values = new JSONObject(result);
 
             testresult = values.getString("typeofuser");
-            instance.setTypeofuser(testresult);
+            instance.setTypeOfUser(testresult);
         } catch (JSONException e) {
             e.printStackTrace();
         }

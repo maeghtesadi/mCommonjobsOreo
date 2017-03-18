@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/background1"
-    tools:context="com.oreo.mcommonjobs.Activtity.CreateJobPostAcitvity">
+    tools:context="com.oreo.mcommonjobs.Activtity.CreateJobPostActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -137,7 +137,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="10">
                     <Button
-                        android:text="CONTINUE >"
+                        android:text="ADDJOB >"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"

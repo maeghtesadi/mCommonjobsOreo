@@ -13,24 +13,29 @@ import android.widget.Spinner;
 import com.oreo.mcommonjobs.Controllers.JobProviderController;
 import com.oreo.mcommonjobs.R;
 
-public class CreateJobPostAcitvity extends AppCompatActivity {
+/**
+ * Class for the CreateJobPost Activity
+ */
+public class CreateJobPostActivity extends AppCompatActivity {
 
     Spinner dropdown_menu_category;
-
-
-    String jobselected = "Painting Duties";
-    Button b;
-    EditText descption;
-    //Addjob addjob = new Addjob(this);
+    String jobSelected = "Painting Duties";
+    Button btn_submit;
+    EditText jobDescription;
     JobProviderController jobProviderController = new JobProviderController();
-    Context c;
+    Context appContext;
 
+    /**
+     * onCreate method initialize the CreateJobPostActivity.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_job_post_acitvity);
 
-        c = this.getApplicationContext();
+        appContext = this.getApplicationContext();
 
         dropdown_menu_category = (Spinner) findViewById(R.id.spinner);
         String[] menu_items = new String[]{"Painting Duties", "Gardening Duties", "Vehicle Repair Duties", "Restaurant Duties", "House Work Duties", "Care Duties"};
@@ -40,27 +45,27 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropdown_menu_category.setAdapter(adapter);
-        //dropdown_menu_category.setOnItemSelectedListener(this);
+
         dropdown_menu_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 switch (pos) {
                     case 0: // Painting Duties
-                        jobselected = "Painting Duties";
+                        jobSelected = "Painting Duties";
                         break;
                     case 1: // Gardening Duties
-                        jobselected = "Gardening Duties";
+                        jobSelected = "Gardening Duties";
                         break;
                     case 2: // Vehicle Repair Duties
-                        jobselected = "Vehicle Repair Duties";
+                        jobSelected = "Vehicle Repair Duties";
                         break;
                     case 3: //Restaurant Duties
-                        jobselected = "Restaurant Duties";
+                        jobSelected = "Restaurant Duties";
                         break;
                     case 4: // House Work Duties
-                        jobselected = "House Work Duties";
+                        jobSelected = "House Work Duties";
                         break;
                     case 5: //Care Duties
-                        jobselected = "Care Duties";
+                        jobSelected = "Care Duties";
                         break;
 
                 }
@@ -73,22 +78,18 @@ public class CreateJobPostAcitvity extends AppCompatActivity {
         });
 
 
-        b = (Button) findViewById(R.id.btn_continue);
-        descption = (EditText) findViewById(R.id.editText);
+        btn_submit = (Button) findViewById(R.id.btn_continue);
+        jobDescription = (EditText) findViewById(R.id.editText);
 
 
-        b.setOnClickListener(new View.OnClickListener() {
+        btn_submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //  String type = "addjob";
-                String des = descption.getText().toString();
 
-                // Usermapper usersssss = new user mapper
+                String des = jobDescription.getText().toString();
 
-                //UserController user = new User
-                // userssssss.addnewjob(type,jobsecled,des)
-                // addjob.execute(type,jobselected,des);
-                jobProviderController.createPosting(jobselected, des, c);
 
+                jobProviderController.createPosting(jobSelected, des, appContext);
+               finish();
             }
         });
 
