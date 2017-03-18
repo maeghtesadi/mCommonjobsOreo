@@ -9,17 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.oreo.mcommonjobs.Controllers.JobSeekerController;
 import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.R;
-import com.oreo.mcommonjobs.Session.RequestSingleton;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,14 +28,14 @@ import java.util.List;
 public class ViewJobsActivity extends AppCompatActivity {
 
     private List<Job> listOfJobs = new ArrayList<>();
-
+    JobSeekerController jobSeekerController = new JobSeekerController();
     TextView t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_jobs);
-        engine(); // @jason rename this method to be descriptive - pull from database? getJobsFromDatabase?
+        populateJobList(); // @jason rename this method to be descriptive - pull from database? getJobsFromDatabase?
     }
 
     /**
@@ -49,38 +43,9 @@ public class ViewJobsActivity extends AppCompatActivity {
      *
      * @throws JSONException
      */
-    private void engine() {
+    private void populateJobList() {
 
-        String url = "http://xx.xx.x.xx/getjobs.php";
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        try {
-                            JSONArray jsonJobsArray = response.getJSONArray("listOfJobs");
-
-                            for (int i = 0; i < jsonJobsArray.length(); i++) {
-                                JSONObject job_current_position = jsonJobsArray.getJSONObject(i);
-
-                                String des = job_current_position.getString("description");
-                                String typeofjob = job_current_position.getString("typeofjob");
-
-                                listOfJobs.add(new Job(des, typeofjob));
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-
-        RequestSingleton.getInstance(this).addToRequestQueue(jsonRequest);
+    listOfJobs = jobSeekerController.getJobs(this.getApplicationContext());
 
         ArrayAdapter<Job> adapter = new customAdapter();
         ListView jobsList = (ListView) (findViewById(R.id.joblist));
