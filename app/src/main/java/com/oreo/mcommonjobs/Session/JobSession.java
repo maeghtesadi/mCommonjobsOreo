@@ -1,13 +1,14 @@
 package com.oreo.mcommonjobs.Session;
 
 /**
+ * JobSession class.
+ *
  * Created by Rameen on 3/18/2017.
  */
-
 public class JobSession {
 
     private static JobSession currentJob = null;
-    private String typeofjob;
+    private String typeOfJob;
     private String description;
 
     /**
@@ -30,18 +31,38 @@ public class JobSession {
         return currentJob;
     }
 
-    public String getTypeofjob() {
-        return typeofjob;
+    /**
+     * Getter method for type of Job.
+     *
+     * @return
+     */
+    public String getTypeOfJob() {
+        return typeOfJob;
     }
 
-    public void setTypeofjob(String typeofjob) {
-        this.typeofjob = typeofjob;
+    /**
+     * Setter method for type of Job.
+     *
+     * @param typeOfJob
+     */
+    public void setTypeOfJob(String typeOfJob) {
+        this.typeOfJob = typeOfJob;
     }
 
+    /**
+     * Getter method for the description of a Job.
+     *
+     * @return - String, description of a job.
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Setter method for the description of a Job.
+     *
+     * @param description - String, description of a job.
+     */
     public void setDescription(String description) {
         this.description = description;
     }
