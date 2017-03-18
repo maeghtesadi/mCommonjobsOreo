@@ -26,18 +26,6 @@ import java.util.Map;
 public class UserController {
 
 
-    // Context context;
-    // UserExists userexsits;
-
-
-/*
-    public void checkifExsists(String email, Context c) {
-
-
-        UserExists userexsits = new UserExists(c);
-        userexsits.execute("login", email);
-    }
-*/
 
     public void checkifExsists(String email, final Context c) {
         String loginLink = "http://192.168.0.104/login.php";
