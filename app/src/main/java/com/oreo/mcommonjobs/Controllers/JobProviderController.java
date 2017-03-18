@@ -31,7 +31,7 @@ public class JobProviderController {
     public void createPosting(final String type, final String description, final Context c) {
 
 
-        String loginLink = "http://192.168.0.104/addjob.php";
+        String loginLink = "http://192.168.2.11/mcommonjobs/addjob.php";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {

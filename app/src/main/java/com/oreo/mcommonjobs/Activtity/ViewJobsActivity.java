@@ -1,17 +1,22 @@
 package com.oreo.mcommonjobs.Activtity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.oreo.mcommonjobs.Controllers.JobSeekerController;
 import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.R;
+import com.oreo.mcommonjobs.Session.JobSession;
 
 import org.json.JSONException;
 
@@ -45,11 +50,24 @@ public class ViewJobsActivity extends AppCompatActivity {
      */
     private void populateJobList() {
 
-    listOfJobs = jobSeekerController.getJobs(this.getApplicationContext());
+        listOfJobs = jobSeekerController.getJobs(this.getApplicationContext());
 
         ArrayAdapter<Job> adapter = new customAdapter();
         ListView jobsList = (ListView) (findViewById(R.id.joblist));
         jobsList.setAdapter(adapter);
+
+
+
+     /*   jobsList.setOnItemClickListener(new OnItemClickListener(){
+
+            @Override
+            public void OnItemClick(ArrayAdapter<Job> adapter, View view, int position, long id){
+
+                startActivity(new Intent(this, JobInfoActivity.class));
+
+            }
+
+        }); */
     }
 
 
@@ -59,6 +77,10 @@ public class ViewJobsActivity extends AppCompatActivity {
 
     private class customAdapter extends ArrayAdapter<Job> {
 
+
+        protected void onListItemClick(ListView list, View view, int position, long id){
+
+        }
         /**
          * Constructor for customAdapter
          * Takes fragment layout, decorates it with values taken from a job and than returns the converted view
@@ -92,8 +114,36 @@ public class ViewJobsActivity extends AppCompatActivity {
             heading.setText(currentJob.getCategory());
             desc.setText(currentJob.getDescription());
 
+
+
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    TextView heading = (TextView) view.findViewById(R.id.heading);
+                    TextView desc = (TextView) view.findViewById(R.id.desc);
+
+
+
+
+                    String headingString = heading.getText().toString();
+                    String descString = desc.getText().toString();
+
+                    JobSession jobSession = JobSession.getInstance();
+                    jobSession.setTypeofjob(headingString);
+                    jobSession.setDescription(descString);
+
+                    String test = jobSession.getDescription();
+                    Intent i = new Intent(ViewJobsActivity.this, JobInfoActivity.class);
+                    startActivity(i);
+                }
+            });
             return convertView;
         }
+
+
+
     }
 
 }

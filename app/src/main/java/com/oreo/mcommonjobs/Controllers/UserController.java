@@ -40,7 +40,7 @@ public class UserController {
 */
 
     public void checkifExsists(String email, final Context c) {
-        String loginLink = "http://192.168.0.104/login.php";
+        String loginLink = "http://192.168.2.11/mcommonjobs/login.php";
         final String email2 = email;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
