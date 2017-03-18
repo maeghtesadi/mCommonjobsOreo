@@ -14,7 +14,7 @@ import com.oreo.mcommonjobs.Session.JobSession;
  */
 public class JobInfoActivity extends AppCompatActivity{
 
-    JobSession jobSession = JobSession.getInstance();
+     JobSession jobSession = JobSession.getInstance();
 
     /**
      * Initialize the activity.
@@ -32,5 +32,6 @@ public class JobInfoActivity extends AppCompatActivity{
 
         jobTitle.setText(jobSession.getTypeOfJob());
         description.setText(jobSession.getDescription());
+
     }
 }

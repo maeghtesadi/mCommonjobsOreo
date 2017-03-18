@@ -4,20 +4,9 @@ package com.oreo.mcommonjobs;
 
 
 import android.content.Context;
-import android.os.Looper;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.oreo.mcommonjobs.Models.DatabaseTasks.Addjob;
-
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
-import static junit.framework.Assert.assertEquals;
 
 /**
  * Instrumentation test, which will execute on an Android device.
@@ -36,10 +25,9 @@ import static junit.framework.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4.class)
 
-
 public class JobInsertionTest {
     private Context instrumentationCtx;
-
+/*
     final CountDownLatch signal = new CountDownLatch(1);
     Addjob addjob;
 
@@ -69,4 +57,5 @@ public class JobInsertionTest {
 
 
     }
+    */
 }

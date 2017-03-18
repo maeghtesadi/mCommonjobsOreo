@@ -1,7 +1,7 @@
 package com.oreo.mcommonjobs.Session;
 
 /**
- * JobSession class.
+ * JobSession class.c
  *
  * Created by Rameen on 3/18/2017.
  */

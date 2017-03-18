@@ -25,7 +25,8 @@
         <activity android:name=".Activtity.CreateJobPostActivity"/>
         <activity android:name=".Activtity.NavigationActivityForJobSeeker" />
         <activity android:name=".Activtity.ViewJobsActivity" />
-        <activity android:name=".Activtity.JobInfoActivity" />
+        <activity android:name=".Activtity.JobInfoActivity" >
+        </activity>
 
     </application>
 
