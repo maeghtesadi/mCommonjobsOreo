@@ -63,14 +63,14 @@ public class UserController {
                         instance.setTypeOfUser(values.getString("typeofuser"));
 
 
-                        if(instance.getTypeofuser().equals("jobprovider")){
+                        if(instance.getTypeOfUser().equals("jobprovider")){
                             Intent i = new Intent(c, NavigationActivityForJobProvider.class);
                             c.startActivity(i);
 
                         }
 
 
-                        if(instance.getTypeofuser().equals("jobseeker")){
+                        if(instance.getTypeOfUser().equals("jobseeker")){
                             Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
                             c.startActivity(i);
 
@@ -131,16 +131,16 @@ public class UserController {
             @Override
             public void onResponse(String response) {
                 PersonSession instance = PersonSession.getInstance();
-                instance.setTypeofuser(typeofuser2);
+                instance.setTypeOfUser(typeofuser2);
 
-                if (instance.getTypeofuser().equals("jobprovider")) {
+                if (instance.getTypeOfUser().equals("jobprovider")) {
                     Intent i = new Intent(c, NavigationActivityForJobProvider.class);
                     c.startActivity(i);
 
                 }
 
 
-                if (instance.getTypeofuser().equals("jobseeker")) {
+                if (instance.getTypeOfUser().equals("jobseeker")) {
                     Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
                     c.startActivity(i);
 
