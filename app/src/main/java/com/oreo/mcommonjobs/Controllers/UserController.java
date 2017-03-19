@@ -25,7 +25,12 @@ import java.util.Map;
 
 public class UserController {
 
-
+    /**
+     * Makes a volley request, expects String as response, checks if user exsists, if so launches appropiate navigationactivity, else sends user to sign up page.
+     * @param email
+     * @param context
+     * @return void
+     */
 
     public void checkifExsists(String email, final Context c) {
         String loginLink = "http://192.168.0.104/login.php";

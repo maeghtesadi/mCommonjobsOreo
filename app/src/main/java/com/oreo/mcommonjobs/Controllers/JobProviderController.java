@@ -8,6 +8,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
+import org.json.JSONException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,18 +19,15 @@ import java.util.Map;
 
 public class JobProviderController {
 
-/*
-    public void createPosting(String type, String description, Context c) {
 
-        Addjob addjob = new Addjob(c);
-        addjob.execute("addjob", type, description);
-
-
-    }
-*/
-
-
-    public void createPosting(final String type, final String description, final Context c) {
+    /**
+     * Makes a volley request, sends job information for server to handle adding jobposting to database
+     * @param typeofjob
+     * @param descriptionofjob
+     * @param context
+     * @return void
+     */
+    public void createPosting(final String typeofjob, final String descriptionofjob, final Context c) {
 
 
         String loginLink = "http://192.168.0.104/addjob.php";
@@ -38,14 +37,9 @@ public class JobProviderController {
             @Override
             public void onResponse(String response) {
 
-                
-
-
-
             }
         }, new Response.ErrorListener() {
             public void onErrorResponse(VolleyError error) {
-
 
             }
 
@@ -54,9 +48,8 @@ public class JobProviderController {
 
             protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("description", description);
-                params.put("typeofjob", type);
-
+                params.put("description", descriptionofjob);
+                params.put("typeofjob", typeofjob);
 
                 return params;
             }
