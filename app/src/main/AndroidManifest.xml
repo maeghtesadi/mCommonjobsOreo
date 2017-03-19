@@ -21,9 +21,11 @@
         <activity android:name=".Activtity.SignInActivity" />
         <activity android:name=".Activtity.ProfileSetUpActivity" />
         <activity android:name=".Activtity.SelectUserTypeActivity" />
-        <activity android:name=".Activtity.NavigationActivity" />
-        <activity android:name=".Activtity.CreateJobPostAcitvity">
-        </activity>
+        <activity android:name=".Activtity.NavigationActivityForJobProvider" />
+        <activity android:name=".Activtity.CreateJobPostActivity"/>
+        <activity android:name=".Activtity.NavigationActivityForJobSeeker" />
+        <activity android:name=".Activtity.ViewJobsActivity" />
+
     </application>
 
 </manifest>
