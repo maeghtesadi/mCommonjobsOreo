@@ -6,6 +6,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
@@ -14,7 +15,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jason on 2017-03-17.
@@ -66,4 +69,51 @@ public class JobSeekerController {
 
         return jobs;
     }
+
+
+
+
+    public void applyToJob(final String type, final String description, final String email, final Context c) {
+
+
+        String applyUrl = "http://192.168.2.11/mcommonjobs/apply.php";
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, applyUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+
+
+
+
+            }
+        }, new Response.ErrorListener() {
+            public void onErrorResponse(VolleyError error) {
+
+
+            }
+
+        }
+        ) {
+
+            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("description", description);
+                params.put("typeofjob", type);
+                params.put("email", email);
+
+                return params;
+            }
+        };
+
+
+        RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
+
+
+    }
+
+
+
 }

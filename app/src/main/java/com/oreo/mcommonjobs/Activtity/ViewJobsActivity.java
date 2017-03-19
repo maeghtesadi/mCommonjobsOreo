@@ -75,9 +75,7 @@ public class ViewJobsActivity extends AppCompatActivity {
     private class customAdapter extends ArrayAdapter<Job> {
 
 
-        protected void onListItemClick(ListView list, View view, int position, long id){
 
-        }
         /**
          * Constructor for customAdapter
          * Takes fragment layout, decorates it with values taken from a job and than returns the converted view
