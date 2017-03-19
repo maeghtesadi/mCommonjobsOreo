@@ -86,10 +86,8 @@ public class CreateJobPostActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String des = jobDescription.getText().toString();
-
-
                 jobProviderController.createPosting(jobSelected, des, appContext);
-               finish();
+                finish();
             }
         });
 
