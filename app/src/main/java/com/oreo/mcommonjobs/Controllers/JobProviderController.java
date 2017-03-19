@@ -22,12 +22,13 @@ public class JobProviderController {
 
     /**
      * This method creates a job posting and sends it to be entered into the database.
-     *
-     * @param type
-     * @param description
+     * Makes a volley request, sends job information for server to handle adding jobposting to database
+     * @param typeofjob
+     * @param descriptionofjob
      * @param c
+     * @return void
      */
-    public void createPosting(final String type, final String description, final Context c) {
+    public void createPosting(final String typeofjob, final String descriptionofjob, final Context c) {
 
         String loginLink = "http://xxx.xxx.x.x/mcommonjobs/addjob.php";
 
@@ -46,8 +47,8 @@ public class JobProviderController {
 
             protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("description", description);
-                params.put("typeofjob", type);
+                params.put("description", descriptionofjob);
+                params.put("typeofjob", typeofjob);
 
                 return params;
             }

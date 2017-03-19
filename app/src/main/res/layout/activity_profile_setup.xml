@@ -43,7 +43,7 @@
                 android:weightSum="100">
 
                 <TextView
-                    android:text="Profile Setup"
+                    android:text="@string/profile_setup_title"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/page_title_profile_info"
@@ -99,7 +99,7 @@
                     android:textAlignment="center">
 
                     <TextView
-                        android:text="Email"
+                        android:text="@string/email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
@@ -117,7 +117,7 @@
 
 
                     <TextView
-                        android:text="First Name "
+                        android:text="@string/first_name_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
@@ -140,7 +140,7 @@
                     android:id="@+id/edit_lastname_layout">
 
                     <TextView
-                        android:text="Last Name"
+                        android:text="@string/last_name_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
@@ -164,7 +164,7 @@
                     android:id="@+id/continue_layout">
 
                     <Button
-                        android:text="CONTINUE >"
+                        android:text="@string/continue_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"

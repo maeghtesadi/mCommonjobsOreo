@@ -20,25 +20,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by jason on 2017-02-26.
+ * User Controller
+ *
+ * @author Jason
  */
-
 public class UserController {
 
-
-    // Context context;
-    // UserExists userexsits;
-
-
-/*
-    public void checkifExsists(String email, Context c) {
-
-
-        UserExists userexsits = new UserExists(c);
-        userexsits.execute("login", email);
-    }
-*/
-
+    /**
+     * Makes a volley request, expects String as response, checks if user exsists, if so launches appropiate navigationactivity, else sends user to sign up page.
+     *
+     * @param email
+     * @param c
+     */
     public void checkifExsists(String email, final Context c) {
         String loginLink = "http://192.168.2.11/mcommonjobs/login.php";
         final String email2 = email;
@@ -47,59 +40,33 @@ public class UserController {
             @Override
             public void onResponse(String response) {
                 PersonSession instance = PersonSession.getInstance();
-               // instance.setTypeOfUser("");
                 try {
-
-
                     if(response.equals("noUser")){
                         Intent z = new Intent(c, SelectUserTypeActivity.class);
                         c.startActivity(z);
-
                     }else {
-
-
                         JSONObject values = new JSONObject(response);
 
                         instance.setTypeOfUser(values.getString("typeofuser"));
 
-
-                        if(instance.getTypeOfUser().equals("jobprovider")){
+                        if (instance.getTypeOfUser().equals("jobprovider")) {
                             Intent i = new Intent(c, NavigationActivityForJobProvider.class);
                             c.startActivity(i);
-
                         }
 
-
-                        if(instance.getTypeOfUser().equals("jobseeker")){
+                        if (instance.getTypeOfUser().equals("jobseeker")) {
                             Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
                             c.startActivity(i);
-
                         }
-
-
                     }
-
-
-
-
-
-
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
             }} , new Response.ErrorListener( ){
                 public void onErrorResponse(VolleyError error){
-
-
                 }
-
             }
         ){
-
             protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                params.put("email",  email2);
@@ -107,25 +74,16 @@ public class UserController {
                 return params;
             }
         };
-
-
         RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
-
-
-
-
     }
 
 
-    public void registerAccount(String firstname, String lastname, String email, String typeofuser, final Context c) {
-
-
-        String loginLink = "http://192.168.0.104/insert.php";
+    public void registerAccount(String firstName, String lastName, String email, String typeOfUser, final Context c) {
+        String loginLink = "http://xxx.xxx.xx.x/insert.php";
         final String email2 = email;
-        final String firstname2=firstname;
-        final String lastname2=lastname;
-        final String typeofuser2=typeofuser;
-
+        final String firstname2=firstName;
+        final String lastname2=lastName;
+        final String typeofuser2=typeOfUser;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
             @Override
@@ -136,31 +94,19 @@ public class UserController {
                 if (instance.getTypeOfUser().equals("jobprovider")) {
                     Intent i = new Intent(c, NavigationActivityForJobProvider.class);
                     c.startActivity(i);
-
                 }
-
 
                 if (instance.getTypeOfUser().equals("jobseeker")) {
                     Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
                     c.startActivity(i);
-
                 }
-
-
-
-
-
-
             }
         }, new Response.ErrorListener() {
             public void onErrorResponse(VolleyError error) {
 
-
             }
-
         }
         ) {
-
             protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("email", email2);
@@ -172,14 +118,6 @@ public class UserController {
             }
         };
 
-
         RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
-
-
     }
-
-
-
-
-
 }

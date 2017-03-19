@@ -6,7 +6,6 @@ package com.oreo.mcommonjobs.Session;
  * Created by Rameen on 3/18/2017.
  */
 public class JobSession {
-
     private static JobSession currentJob = null;
     private String typeOfJob;
     private String description;

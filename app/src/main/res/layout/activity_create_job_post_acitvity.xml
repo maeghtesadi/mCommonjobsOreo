@@ -41,7 +41,7 @@
                 android:weightSum="100">
 
                 <TextView
-                    android:text="CREATE POSTING"
+                    android:text="@string/create_posting"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/page_title_profile_info"
@@ -126,7 +126,7 @@
                             android:layout_height="match_parent"
                             android:inputType="textMultiLine"
                             android:id="@+id/editText"
-                            android:hint="Add description here." />
+                            android:hint="@string/job_desc_hint" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -137,7 +137,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="10">
                     <Button
-                        android:text="ADDJOB >"
+                        android:text="@string/continue_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
