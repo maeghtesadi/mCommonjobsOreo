@@ -12,40 +12,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by jason on 2017-03-02.
+ * JobSeekerController class that handles all functionality related to jobs
+ * for a user of type JobProvider.
+ *
+ * @author Jason
  */
-
 public class JobProviderController {
 
-/*
-    public void createPosting(String type, String description, Context c) {
 
-        Addjob addjob = new Addjob(c);
-        addjob.execute("addjob", type, description);
-
-
-    }
-*/
-
-
+    /**
+     * This method creates a job posting and sends it to be entered into the database.
+     *
+     * @param type
+     * @param description
+     * @param c
+     */
     public void createPosting(final String type, final String description, final Context c) {
 
-
-        String loginLink = "http://192.168.2.11/mcommonjobs/addjob.php";
-
+        String loginLink = "http://xxx.xxx.x.x/mcommonjobs/addjob.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-                
-
-
-
             }
         }, new Response.ErrorListener() {
             public void onErrorResponse(VolleyError error) {
-
 
             }
 
@@ -57,16 +49,10 @@ public class JobProviderController {
                 params.put("description", description);
                 params.put("typeofjob", type);
 
-
                 return params;
             }
         };
 
-
         RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
-
-
     }
-
-
 }
