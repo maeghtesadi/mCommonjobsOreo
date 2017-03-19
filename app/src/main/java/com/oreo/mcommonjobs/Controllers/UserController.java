@@ -41,7 +41,7 @@ public class UserController {
 */
 
     public void checkifExsists(String email, final Context c) {
-        String loginLink = "http://192.168.0.101/mcommonjobs/login.php";
+        String loginLink = "http://[IP address]/mcommonjobs/login.php";
         final String email2 = email;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
@@ -121,7 +121,7 @@ public class UserController {
     public void registerAccount(String firstname, String lastname, String email, String typeofuser, final Context c) {
 
 
-        String loginLink = "http://192.168.0.101/mcommonjobs/insert.php";
+        String loginLink = "http://[IP address]/mcommonjobs/insert.php";
         final String email2 = email;
         final String firstname2=firstname;
         final String lastname2=lastname;

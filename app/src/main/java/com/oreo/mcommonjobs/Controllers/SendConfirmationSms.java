@@ -22,6 +22,14 @@ import java.net.URLEncoder;
 
 import javax.net.ssl.HttpsURLConnection;
 
+/**
+ * this class is responsible to call the Twilio PHP scripts on the server whichi will implement the twilio API for sending an sms to the user.
+ *
+ * @author Sam
+ * @author Ali
+ * @since 3-16-2017
+ * @version 1.0
+ */
 public class SendConfirmationSms extends AsyncTask<String, Void, String>{
 
     private Context context;
@@ -35,12 +43,20 @@ public class SendConfirmationSms extends AsyncTask<String, Void, String>{
         super.onPreExecute();
     }
 
+    /**
+     * this method establishes a connection to the server and once it is connected to the server the method will send to the php scripts the confirmaton code and the phonenumber.
+     *
+     * @param strings
+     * @return A string that represents the result of the post request.
+     * @throws MalformedURLException
+     * @throws IOException
+     */
     @Override
     protected String doInBackground(String... strings) {
         try{
             String confirmationCode = (String) strings[0];
             String phoneNumber = (String) strings[1];
-            String link = "http://192.168.0.101/twilio/index.php";
+            String link = "http://[IP address]/twilio/index.php";
 
             URL url = new URL(link);
             HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();

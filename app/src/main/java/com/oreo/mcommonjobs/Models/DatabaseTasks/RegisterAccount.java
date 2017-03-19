@@ -33,7 +33,7 @@ public class RegisterAccount extends AsyncTask<String, Void, String> {
     }
 
     protected String doInBackground(String... params) {
-        String loginLink = "http://192.168.0.101/mcommonjobs/insert.php";
+        String loginLink = "http://[IP address]/mcommonjobs/insert.php";
         String type = params[0];
 
         if (type.equals("insert")) {

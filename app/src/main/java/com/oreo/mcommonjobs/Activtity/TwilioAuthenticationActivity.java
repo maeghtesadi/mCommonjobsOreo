@@ -15,7 +15,12 @@ import com.oreo.mcommonjobs.Controllers.SendConfirmationSms;
 import java.util.Random;
 
 /**
- * Created by Sam and Ali
+ * The TwilioAuthenticationActivity has a responsibility of sending a confirmation code to the user
+ * via sms and the user has to input that code into the textfield in order to be logged in
+ * @author  Sam
+ * @author  Ali
+ * @version 1.0
+ * @since   2017-03-13
  */
 
 public class TwilioAuthenticationActivity extends AppCompatActivity {
@@ -28,6 +33,10 @@ public class TwilioAuthenticationActivity extends AppCompatActivity {
     private int inputConfirmation, generatedConfirmation;
     private String phonenumber;
 
+    /**
+     * this method instantiates every UI element of this activity and sets the onclick listenners on the buttons
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
