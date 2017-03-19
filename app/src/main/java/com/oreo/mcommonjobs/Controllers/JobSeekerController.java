@@ -22,7 +22,12 @@ import java.util.List;
 
 public class JobSeekerController {
 
-
+    /**
+     * Makes a volley request, expects JsonObject as response and proceeds to return Jobs Arraylist
+     * @param context
+     * @return List<Jobs>
+     * @throws JSONException
+     */
     public List<Job> getJobs(Context context){
         final List<Job> jobs = new ArrayList<>();
 
