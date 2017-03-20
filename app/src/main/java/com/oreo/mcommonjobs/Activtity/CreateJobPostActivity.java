@@ -12,6 +12,7 @@ import android.widget.Spinner;
 
 import com.oreo.mcommonjobs.Controllers.JobProviderController;
 import com.oreo.mcommonjobs.R;
+import com.oreo.mcommonjobs.Session.PersonSession;
 
 /**
  * Class for the CreateJobPost Activity
@@ -24,6 +25,7 @@ public class CreateJobPostActivity extends AppCompatActivity {
     EditText jobDescription;
     JobProviderController jobProviderController = new JobProviderController();
     Context appContext;
+    PersonSession personInstance = PersonSession.getInstance();
 
     /**
      * onCreate method initialize the CreateJobPostActivity.
@@ -86,7 +88,7 @@ public class CreateJobPostActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String des = jobDescription.getText().toString();
-                jobProviderController.createPosting(jobSelected, des, appContext);
+                jobProviderController.createPosting(jobSelected, des, personInstance.getEmail(), appContext);
                 finish();
             }
         });

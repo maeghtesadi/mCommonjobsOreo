@@ -40,7 +40,8 @@ public class NavigationActivityForJobProvider extends AppCompatActivity {
 
         viewApplicants.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v ){
-
+                Intent i = new Intent(getApplicationContext(), ViewApplicants.class);
+                startActivity(i);
             }
         });
 

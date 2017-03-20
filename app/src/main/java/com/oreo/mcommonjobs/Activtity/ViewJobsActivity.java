@@ -55,16 +55,6 @@ public class ViewJobsActivity extends AppCompatActivity {
 
 
 
-     /*   jobsList.setOnItemClickListener(new OnItemClickListener(){
-
-            @Override
-            public void OnItemClick(ArrayAdapter<Job> adapter, View view, int position, long id){
-
-                startActivity(new Intent(this, JobInfoActivity.class));
-
-            }
-
-        }); */
     }
 
 
