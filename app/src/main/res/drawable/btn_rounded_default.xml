@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <corners
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp" />
+    <solid android:color="#06bebd" />
+    <size
+        android:height="48dip"
+        android:width="70dip" />
+    <item android:state_pressed="true"
+        android:color="#d8d4d4"/> <!-- pressed -->
+    <item android:state_focused="true"
+        android:color="#FFFFFF" /> <!-- focused -->
+</shape>
+

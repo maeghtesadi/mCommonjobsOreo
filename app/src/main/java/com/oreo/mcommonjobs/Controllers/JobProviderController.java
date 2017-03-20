@@ -8,30 +8,29 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
-import org.json.JSONException;
-
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by jason on 2017-03-02.
+ * JobSeekerController class that handles all functionality related to jobs
+ * for a user of type JobProvider.
+ *
+ * @author Jason
  */
-
 public class JobProviderController {
 
 
     /**
+     * This method creates a job posting and sends it to be entered into the database.
      * Makes a volley request, sends job information for server to handle adding jobposting to database
      * @param typeofjob
      * @param descriptionofjob
-     * @param context
+     * @param c
      * @return void
      */
     public void createPosting(final String typeofjob, final String descriptionofjob, final Context c) {
 
-
-        String loginLink = "http://192.168.0.104/addjob.php";
-
+        String loginLink = "http://xxx.xxx.x.x/mcommonjobs/addjob.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
             @Override
@@ -55,11 +54,6 @@ public class JobProviderController {
             }
         };
 
-
         RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
-
-
     }
-
-
 }
