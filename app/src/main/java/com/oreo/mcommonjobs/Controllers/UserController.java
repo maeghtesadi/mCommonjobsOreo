@@ -33,7 +33,7 @@ public class UserController {
      * @param c
      */
     public void checkifExsists(String email, final Context c) {
-        String loginLink = "http://192.168.2.11/mcommonjobs/login.php";
+        String loginLink = "http://192.168.0.104/login.php";
         final String email2 = email;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
@@ -79,7 +79,7 @@ public class UserController {
 
 
     public void registerAccount(String firstName, String lastName, String email, String typeOfUser, final Context c) {
-        String loginLink = "http://xxx.xxx.xx.x/insert.php";
+        String loginLink = "http://192.168.0.104/insert.php";
         final String email2 = email;
         final String firstname2=firstName;
         final String lastname2=lastName;
