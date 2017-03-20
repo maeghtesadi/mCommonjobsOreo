@@ -47,7 +47,7 @@ public class ViewApplicants extends AppCompatActivity {
 
 
  }
- // FKen hell i am blind
+
 
  private class customAdapter extends ArrayAdapter<Application>{
 
