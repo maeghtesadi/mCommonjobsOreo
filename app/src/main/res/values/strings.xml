@@ -10,6 +10,7 @@
     <string name="job_seeker">Job Seeker</string>
     <string name="job_provider">Job Provider</string>
     <string name="main_menu_search">Search</string>
+    <string name="main_menu_view_applicants">View Applicants</string>
     <string name="main_menu_add_job">Add Job</string>
     <string name="create_posting">Create Posting</string>
     <string name="select_category">Select Category</string>

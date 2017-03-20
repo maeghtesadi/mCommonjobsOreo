@@ -17,6 +17,7 @@ import com.oreo.mcommonjobs.R;
 public class NavigationActivityForJobProvider extends AppCompatActivity {
 
     Button btnAddJob;
+    Button viewApplicants;
 
     /**
      * Initializes the NavigationActivity for a JobProvider.
@@ -27,6 +28,7 @@ public class NavigationActivityForJobProvider extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_jobprovider);
         btnAddJob = (Button) findViewById(R.id.btn_addjob);
+        viewApplicants = (Button) findViewById(R.id.btn_view_applicants);
 
         btnAddJob.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -34,6 +36,15 @@ public class NavigationActivityForJobProvider extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
+        viewApplicants.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v ){
+
+            }
+        });
+
+
     }
 
 }
