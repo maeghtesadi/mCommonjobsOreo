@@ -56,7 +56,7 @@ public class SendConfirmationSms extends AsyncTask<String, Void, String>{
         try{
             String confirmationCode = (String) strings[0];
             String phoneNumber = (String) strings[1];
-            String link = "http://[IP address]/twilio/index.php";
+            String link = "http://[Ip address here]/twilio/index.php";
 
             URL url = new URL(link);
             HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();

@@ -41,7 +41,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:text="SELECT USER: "
+                    android:text="@string/select_user"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/page_title_profile_info"
@@ -83,7 +83,7 @@
                     android:layout_weight="50">
 
                     <Button
-                        android:text="Job Seeker"
+                        android:text="@string/job_seeker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/btn_jobseeker"
@@ -97,7 +97,7 @@
                     android:layout_weight="50">
 
                     <Button
-                        android:text="Job Provider"
+                        android:text="@string/job_provider"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/btn_jobprovider"

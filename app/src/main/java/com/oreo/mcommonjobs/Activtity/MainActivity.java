@@ -12,7 +12,6 @@ import com.oreo.mcommonjobs.R;
  * @author Jason
  * @author Rameen
  * @author kimcodes
- *
  */
 public class MainActivity extends AppCompatActivity {
 

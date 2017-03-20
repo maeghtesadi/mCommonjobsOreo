@@ -15,7 +15,6 @@
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -23,11 +22,13 @@
         <activity android:name=".Activtity.ProfileSetUpActivity" />
         <activity android:name=".Activtity.SelectUserTypeActivity" />
         <activity android:name=".Activtity.NavigationActivityForJobProvider" />
-        <activity android:name=".Activtity.CreateJobPostAcitvity" />
+        <activity android:name=".Activtity.CreateJobPostActivity"/>
         <activity android:name=".Activtity.NavigationActivityForJobSeeker" />
         <activity android:name=".Activtity.ViewJobsActivity" />
-        <activity android:name=".Activtity.TwilioAuthenticationActivity">
+        <activity android:name=".Activtity.JobInfoActivity" />
+	<activity android:name=".Activtity.TwilioAuthenticationActivity" >
         </activity>
+
     </application>
 
 </manifest>
