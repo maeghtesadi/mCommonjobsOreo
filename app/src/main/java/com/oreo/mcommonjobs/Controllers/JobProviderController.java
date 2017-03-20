@@ -68,7 +68,7 @@ public class JobProviderController {
 
 
 
-    public List<Application> getApplicants(Context context){
+    public List<Application> getApplicants(final String jobprovider_email,Context context){
 
         final List<Application> applicants = new ArrayList<>();
 
@@ -99,7 +99,18 @@ public class JobProviderController {
             @Override
             public void onErrorResponse(VolleyError error) {
             }
-        });
+        }){
+
+            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("jobprovider_email", jobprovider_email);
+
+
+                return params;
+            }
+
+
+        };
         RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
 
 

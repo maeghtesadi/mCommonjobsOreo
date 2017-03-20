@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.oreo.mcommonjobs.Controllers.JobProviderController;
 import com.oreo.mcommonjobs.Models.Application;
 import com.oreo.mcommonjobs.R;
+import com.oreo.mcommonjobs.Session.PersonSession;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.List;
 public class ViewApplicants extends AppCompatActivity {
     private List<Application> applicants = new ArrayList<>();
      JobProviderController jobProviderController = new JobProviderController();
-
+    PersonSession personInstance = PersonSession.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,7 @@ public class ViewApplicants extends AppCompatActivity {
 
  private void populateApplicantList (){
 
-    applicants = jobProviderController.getApplicants(this.getApplicationContext());
+    applicants = jobProviderController.getApplicants(personInstance.getEmail(),this.getApplicationContext());
      ArrayAdapter<Application> adapter = new ViewApplicants.customAdapter();
      ListView applicantslist = (ListView) (findViewById(R.id.applicantslist));
      applicantslist.setAdapter(adapter);
