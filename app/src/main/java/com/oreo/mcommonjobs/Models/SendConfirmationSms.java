@@ -1,4 +1,4 @@
-package com.oreo.mcommonjobs.Controllers;
+package com.oreo.mcommonjobs.Models;
 
 /**
  * Created by Ali on 3/16/2017.
