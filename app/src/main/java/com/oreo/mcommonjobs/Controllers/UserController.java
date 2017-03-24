@@ -10,7 +10,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity;
-import com.oreo.mcommonjobs.Activtity.TwilioAuthenticationActivity;
 import com.oreo.mcommonjobs.Session.PersonSession;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
@@ -34,7 +33,7 @@ public class UserController {
      * @param c
      */
     public void checkifExsists(String email, final Context c) {
-        String loginLink = "http://[Ip address here]/login.php";
+        String loginLink = "http://192.168.2.11/mcommonjobs/login.php";
         final String email2 = email;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
@@ -43,7 +42,7 @@ public class UserController {
                 PersonSession instance = PersonSession.getInstance();
                 try {
                     if(response.equals("noUser")){
-                        Intent z = new Intent(c, TwilioAuthenticationActivity.class);
+                        Intent z = new Intent(c, SelectUserTypeActivity.class);
                         c.startActivity(z);
                     }else {
                         JSONObject values = new JSONObject(response);
@@ -80,7 +79,7 @@ public class UserController {
 
 
     public void registerAccount(String firstName, String lastName, String email, String typeOfUser, final Context c) {
-        String loginLink = "http://[Ip address here]/insert.php";
+        String loginLink = "http://xxx.xxx.xx.x/insert.php";
         final String email2 = email;
         final String firstname2=firstName;
         final String lastname2=lastName;
