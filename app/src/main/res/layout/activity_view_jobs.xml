@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/ViewJobsTitle"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:fontFamily="Asap-Regular"
-        android:text="Available Jobs"
-        android:textAlignment="center"
-        android:textColor="#06bebd"
-        android:textSize="44sp" />
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:weightSum="100">
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ViewJobsTitle"
-        android:id="@+id/joblist">
+        <TextView
+            android:id="@+id/ViewJobsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="30"
+            android:fontFamily="Asap-Regular"
+            android:text="Available Jobs"
+            android:textAlignment="center"
+            android:textColor="#06bebd"
+            android:textSize="44sp" />
 
-    </ListView>
+        <ListView
+            android:id="@+id/joblist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ViewJobsTitle"
+            android:layout_margin="5dp"
+            android:layout_weight="70">
+
+        </ListView>
+
+    </LinearLayout>
 
 
 </RelativeLayout>
