@@ -91,7 +91,7 @@ public class ViewJobsActivity extends AppCompatActivity {
                 convertView = getLayoutInflater().inflate(R.layout.jobfragment, parent, false);
             }
 
-            Job currentJob = listOfJobs.get(position);
+            final Job currentJob = listOfJobs.get(position);
 
             TextView heading = (TextView) convertView.findViewById(R.id.heading);
             TextView desc = (TextView) convertView.findViewById(R.id.desc);
@@ -118,6 +118,7 @@ public class ViewJobsActivity extends AppCompatActivity {
                     JobSession jobSession = JobSession.getInstance();
                     jobSession.setTypeOfJob(headingString);
                     jobSession.setDescription(descString);
+                    jobSession.setEmail_job_provider(currentJob.getJob_provider_email());
 
                     String test = jobSession.getDescription();
                     Intent i = new Intent(ViewJobsActivity.this, JobInfoActivity.class);

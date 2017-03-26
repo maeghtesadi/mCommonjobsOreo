@@ -48,7 +48,7 @@ public class JobInfoActivity extends AppCompatActivity{
 
                 JobSeekerController jobSeekerController = new JobSeekerController();
 
-                jobSeekerController.applyToJob(jobSession.getTypeOfJob(),jobSession.getDescription(),personSession.getEmail(),c);
+                jobSeekerController.applyToJob(jobSession.getTypeOfJob(),jobSession.getDescription(),jobSession.getEmail_job_provider(),personSession.getEmail(),c);
             finish();
             }
         });

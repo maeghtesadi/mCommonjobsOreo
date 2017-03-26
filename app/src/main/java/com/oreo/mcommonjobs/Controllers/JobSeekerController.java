@@ -53,7 +53,8 @@ public class JobSeekerController {
 
                                 String des = job_current_position.getString("description");
                                 String typeofjob = job_current_position.getString("typeofjob");
-
+                               // String email = job_current_position.getString("email_job_provider");
+                                // jobs.add(new Job(des, typeofjob, email));
                                 jobs.add(new Job(des, typeofjob));
                             }
                         } catch (JSONException e) {
@@ -78,7 +79,7 @@ public class JobSeekerController {
      * @param email - email of the JobSeeker user applying to the job
      * @param c
      */
-    public void applyToJob(final String type, final String description, final String email, final Context c) {
+    public void applyToJob(final String type, final String description, final String email_provider, final String email_seeker, final Context c) {
 
         String applyUrl = "http://192.168.0.104/apply.php";
 
@@ -99,7 +100,8 @@ public class JobSeekerController {
 
                 params.put("description", description);
                 params.put("typeofjob", type);
-                params.put("email", email);
+                params.put("email_seeker", email_provider);
+                params.put("email_seeker", email_seeker);
 
                 return params;
             }
