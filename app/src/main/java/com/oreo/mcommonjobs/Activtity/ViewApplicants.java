@@ -39,8 +39,8 @@ public class ViewApplicants extends AppCompatActivity {
  private void populateApplicantList (){
 
     applicants = jobProviderController.getApplicants(personInstance.getEmail(),this.getApplicationContext());
-     ArrayAdapter<Application> adapter = new ViewApplicants.customAdapter();
      ListView applicantslist = (ListView) (findViewById(R.id.applicantslist));
+     ArrayAdapter<Application> adapter = new customAdapter();
      applicantslist.setAdapter(adapter);
 
 
@@ -58,7 +58,7 @@ public class ViewApplicants extends AppCompatActivity {
       * @return convertView(VIEW)
       */
      public customAdapter() {
-         super(ViewApplicants.this, R.layout.jobfragment, applicants);
+         super(ViewApplicants.this, R.layout.applicantfragment, applicants);
      }
 
      /**

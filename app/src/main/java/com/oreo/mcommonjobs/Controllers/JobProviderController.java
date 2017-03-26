@@ -78,21 +78,24 @@ public class JobProviderController {
 
         String url = "http://192.168.0.104/getApplicants.php";
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-
+                  ;
                         try {
-                            JSONArray jsonJobsarray = response.getJSONArray("application");
 
-                            for (int i = 0; i < jsonJobsarray.length(); i++) {
-                                JSONObject applicant_current_position = jsonJobsarray.getJSONObject(i);
+                            JSONArray jsonApplicantssarray = response.getJSONArray("applications");
 
-                                String username = applicant_current_position.getString("username");
+                            for (int i = 0; i < jsonApplicantssarray.length(); i++) {
+                                JSONObject applicant_current_position = jsonApplicantssarray.getJSONObject(i);
+
+                                String displayname = applicant_current_position.getString("displayname");
                                 String typeofjob = applicant_current_position.getString("typeofjob");
+                                Application app= new Application(typeofjob,displayname);
 
-                                applicants.add(new Application(typeofjob, username));
+                                applicants.add(app);
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -101,6 +104,8 @@ public class JobProviderController {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                String z= "hello";
             }
         }){
 

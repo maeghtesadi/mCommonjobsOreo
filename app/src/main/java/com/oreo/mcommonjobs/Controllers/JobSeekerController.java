@@ -53,9 +53,9 @@ public class JobSeekerController {
 
                                 String des = job_current_position.getString("description");
                                 String typeofjob = job_current_position.getString("typeofjob");
-                               // String email = job_current_position.getString("email_job_provider");
-                                // jobs.add(new Job(des, typeofjob, email));
-                                jobs.add(new Job(des, typeofjob));
+                                String email = job_current_position.getString("email_job_provider");
+                                 jobs.add(new Job(des, typeofjob, email));
+                                //jobs.add(new Job(des, typeofjob));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -100,7 +100,7 @@ public class JobSeekerController {
 
                 params.put("description", description);
                 params.put("typeofjob", type);
-                params.put("email_seeker", email_provider);
+                params.put("email_provider", email_provider);
                 params.put("email_seeker", email_seeker);
 
                 return params;
