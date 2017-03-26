@@ -23,26 +23,36 @@ public class getJobsTest {
 
     private Context context;
     JobSeekerController jobSeekerController;
-     List<Job> jobs;
-    int test;
+   //  List<Job> jobz;
+    //int numberOfJobs;
     /**
      * Setup method to run before every test to set the target context.
      */
     @Before
     public void setup() {
         context = getTargetContext();
-        jobSeekerController = new JobSeekerController();
-        jobs= jobSeekerController.getJobs(context);
+        //jobSeekerController = new JobSeekerController();
+
+
 
     }
 
 
     @Test
     public void testGetJobResponse() {
+        JobSeekerController jobSeekerController;
+        jobSeekerController = new JobSeekerController();
+        List<Job> jobz;
+        int numberOfJobs;
 
-    test = jobs.size();
+       // assertNotNull(jobSeekerController.getJobs(context));
 
-        assertTrue(jobs.size()==5);
+       jobz = jobSeekerController.getJobs(context);
+        jobz.toArray();
+        numberOfJobs = jobz.size();
+        //assertTrue((jobs = jobSeekerController.getJobs(context)).size()==5);
+        assertTrue(jobz.size()==1);
+
 
 
 
