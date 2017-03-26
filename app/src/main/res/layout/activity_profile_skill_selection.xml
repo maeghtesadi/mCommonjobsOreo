@@ -28,4 +28,13 @@
         android:layout_marginTop="69dp"
         android:id="@+id/Profile_Skill_Selection_title" />
 
+    <ListView
+        android:id="@+id/skillListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/finish_bt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp" />
+
 </RelativeLayout>

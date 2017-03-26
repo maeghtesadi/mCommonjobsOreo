@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.oreo.mcommonjobs.R;
+import com.oreo.mcommonjobs.UserSession;
 
 public class UserTypeSelectionActivity extends AppCompatActivity {
 
@@ -19,12 +20,16 @@ public class UserTypeSelectionActivity extends AppCompatActivity {
 
         seekerBt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                UserSession session = UserSession.getInstance();
+                session.setUserType("JobSeeker");
                 startActivity(new Intent(getApplicationContext(), ProfileMenuActivity.class));
             }
         });
 
         providerBt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                UserSession session = UserSession.getInstance();
+                session.setUserType("JobProvider");
                 startActivity(new Intent(getApplicationContext(), ProfileMenuActivity.class));
             }
         });

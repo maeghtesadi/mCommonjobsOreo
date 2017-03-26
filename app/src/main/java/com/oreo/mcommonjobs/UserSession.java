@@ -4,11 +4,10 @@ import com.oreo.mcommonjobs.Models.Profile;
 
 public class UserSession {
 
-    private String email;
-    private String firstName;
-    private String lastName;
-    private String userType = null;
-    private Profile profile = null;
+    private String email = "";
+    private String firstName = "";
+    private String lastName = "";
+    private String userType = "";
     private static UserSession session = null;
 
     private UserSession() {
@@ -27,14 +26,6 @@ public class UserSession {
 
     public void setUserType(String userType){
         this.userType = userType;
-    }
-
-    public Profile getProfile(){
-        return profile;
-    }
-
-    public void setProfile(Profile profile){
-        this.profile = profile;
     }
 
     public String getEmail() {

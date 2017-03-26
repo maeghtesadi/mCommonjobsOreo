@@ -27,4 +27,27 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="89dp"
         android:id="@+id/userNameSetup_title" />
+
+    <EditText
+        android:id="@+id/firstNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userNameSetup_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="86dp"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/lastNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/firstNameText"
+        android:layout_alignStart="@+id/firstNameText"
+        android:layout_below="@+id/firstNameText"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:hint="Last Name"
+        android:inputType="textPersonName" />
 </RelativeLayout>

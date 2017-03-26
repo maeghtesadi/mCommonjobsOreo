@@ -82,8 +82,8 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 UserSession session = UserSession.getInstance();
                 GoogleSignInAccount googleAccount = result.getSignInAccount();
                 session.setEmail(googleAccount.getEmail());
-                session.setFirstName(googleAccount.getGivenName());
-                session.setLastName(googleAccount.getFamilyName());
+                // session.setFirstName(googleAccount.getGivenName());
+                // session.setLastName(googleAccount.getFamilyName());
                 userExistsRequest(session.getEmail());
             }
         }
