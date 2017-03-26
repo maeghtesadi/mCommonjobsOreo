@@ -87,6 +87,7 @@ public class JobSeekerController {
             @Override
             public void onResponse(String response) {
 
+
             }
         }, new Response.ErrorListener() {
             public void onErrorResponse(VolleyError error) {

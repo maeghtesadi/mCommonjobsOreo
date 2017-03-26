@@ -1,6 +1,7 @@
 package com.oreo.mcommonjobs.Controllers;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -9,6 +10,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Models.Application;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
+import com.oreo.mcommonjobs.Session.ValidateInputs;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +28,7 @@ import java.util.Map;
  * @author Jason
  */
 public class JobProviderController {
-
+    ValidateInputs validateInputs = ValidateInputs.getInstance();
 
     /**
      * This method creates a job posting and sends it to be entered into the database.
@@ -39,12 +41,12 @@ public class JobProviderController {
     public void createPosting(final String typeofjob, final String descriptionofjob, final String email, final Context c) {
         // validateinputs(params[])
         String loginLink = "http://192.168.0.104/addjob.php";
+    if(validateInputs.ValidateCreatePosting(typeofjob,descriptionofjob,email)) {
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
-
 
 
             }
@@ -60,13 +62,22 @@ public class JobProviderController {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("description", descriptionofjob);
                 params.put("typeofjob", typeofjob);
-                params.put("email",email);
+                params.put("email", email);
 
                 return params;
             }
         };
 
         RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
+    }else{
+
+        CharSequence text = "Invalid input enter description please";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(c, text, duration);
+        toast.show();
+
+    }
     }
 
 
