@@ -15,15 +15,19 @@
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activtity.UserNameSetupActivity" />
+        <activity android:name=".Activtity.UserProfileSetupActivity" />
+        <activity android:name=".Activtity.ProfileMenuActivity" />
+        <activity android:name=".Activtity.UserTypeSelectionActivity" />
         <activity android:name=".Activtity.SignInActivity" />
-        <activity android:name=".Activtity.ProfileSetUpActivity" />
-        <activity android:name=".Activtity.SelectUserTypeActivity" />
-        <activity android:name=".Activtity.NavigationActivity" />
-        <activity android:name=".Activtity.CreateJobPostAcitvity">
-        </activity>
+        <activity android:name=".Activtity.UserPictureSetupActivity" />
+        <activity android:name=".Activtity.JobSeekerNavigationMenuActivity" />
+        <activity android:name=".Activtity.JobProviderNavigationMenuActivity" />
+        <activity android:name=".Activtity.ProfileSkillSelectionActivity"></activity>
     </application>
 
 </manifest>

@@ -1,17 +1,14 @@
 package com.oreo.mcommonjobs.Activtity;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import com.oreo.mcommonjobs.R;
 
-public class MainActivity extends AppCompatActivity {
+public class JobSeekerNavigationMenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        startActivity(new Intent(this, SignInActivity.class));
+        setContentView(R.layout.activity_job_seeker_navigation_menu);
     }
 }
