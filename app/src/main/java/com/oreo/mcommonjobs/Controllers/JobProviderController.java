@@ -37,12 +37,15 @@ public class JobProviderController {
      * @return void
      */
     public void createPosting(final String typeofjob, final String descriptionofjob, final String email, final Context c) {
-
+        // validateinputs(params[])
         String loginLink = "http://192.168.0.104/addjob.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
+
+
 
             }
         }, new Response.ErrorListener() {
