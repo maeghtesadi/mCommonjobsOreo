@@ -18,7 +18,7 @@ public class PersonSession {
     private String lastName;
     private String typeOfUser;
     private List<Profile> profiles;
-    private Profile currentprofile;
+    private String currentprofile;
     enum userType {JOBPROVIDER, JOBSEEKER}
 
     /**
@@ -42,11 +42,11 @@ public class PersonSession {
     }
 
 
-    public Profile getCurrentprofile() {
+    public String getCurrentprofile() {
         return currentprofile;
     }
 
-    public void setCurrentprofile(Profile currentprofile) {
+    public void setCurrentprofile(String currentprofile) {
         this.currentprofile = currentprofile;
     }
 

@@ -1,6 +1,6 @@
 package com.oreo.mcommonjobs.Activtity;
 
-import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +16,7 @@ import com.oreo.mcommonjobs.Models.Profile;
 import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.PersonSession;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,10 +25,10 @@ import java.util.List;
 
 public class AddProfileActivity extends AppCompatActivity {
     String selectedprofile="Painting";
-    private List<Profile> profiles;
+    private List<Profile> profiles = new ArrayList<>();
     ListView profiledisplaylist;
     Button addNewProfile;
-    JobSeekerController jobSeekerController;
+    JobSeekerController jobSeekerController = new JobSeekerController();
     PersonSession personInstance = PersonSession.getInstance();
 
     @Override
@@ -36,7 +37,7 @@ public class AddProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_profile);
 
        addNewProfile=(Button)findViewById(R.id.addprofile);
-
+        profiledisplaylist= (ListView) findViewById(R.id.Profiles);
        Profile d = new Profile("Painting");
         Profile e = new Profile("Gardening");
         Profile f = new Profile("Vehicle Repair");
@@ -60,9 +61,9 @@ public class AddProfileActivity extends AppCompatActivity {
         addNewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             jobSeekerController.addProfile(selectedprofile,personInstance.getEmail() , getApplicationContext());
-                Intent i = new Intent(getApplicationContext(), NavigationActivityForJobSeeker.class);
-                startActivity(i);
+                personInstance.setCurrentprofile(selectedprofile);
+                jobSeekerController.addProfile(selectedprofile,personInstance.getEmail() , getApplicationContext());
+
 
             }
         });
@@ -103,7 +104,12 @@ public class AddProfileActivity extends AppCompatActivity {
                 public void onClick(View view) {
 
                     TextView heading = (TextView) view.findViewById(R.id.prof);
-                    selectedprofile= heading.toString();
+                    heading.setBackgroundColor(Color.GREEN);
+                    selectedprofile= heading.getText().toString();
+
+
+
+
 
                 }
             });

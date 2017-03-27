@@ -1,12 +1,14 @@
 package com.oreo.mcommonjobs.Controllers;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
@@ -117,13 +119,16 @@ public class JobSeekerController {
 
 
 
-public void addProfile(final String profile,final String email , Context c){
+public void addProfile(final String profile,final String email , final Context c){
 
     String Url = "http://192.168.0.104/addProfile.php";
 
     StringRequest stringRequest = new StringRequest(Request.Method.POST, Url, new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
+
+            Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
+            c.startActivity(i);
 
 
         }
