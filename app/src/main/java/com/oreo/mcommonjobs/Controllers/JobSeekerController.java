@@ -9,7 +9,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
+import com.oreo.mcommonjobs.Models.Application;
 import com.oreo.mcommonjobs.Models.Job;
+import com.oreo.mcommonjobs.Models.Profile;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
 import org.json.JSONArray;
@@ -156,6 +158,65 @@ public void addProfile(final String profile,final String email , final Context c
 }
 
 
+
+
+    public List<Profile> getYourProfiles(final String email, final Context context ){
+        final List<Profile> profiles = new ArrayList<>();
+
+        String url = "http://192.168.0.104/getProfiles.php";
+
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+
+                            JSONArray jsonApplicantssarray = response.getJSONArray("Profile");
+
+                            for (int i = 0; i < jsonApplicantssarray.length(); i++) {
+                                JSONObject profile_current_position = jsonApplicantssarray.getJSONObject(i);
+
+                                String typeofprofile = profile_current_position.getString("typeofprofile");
+
+
+
+                                profiles.add(new Profile(typeofprofile));
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                String z= "hello";
+            }
+        }){
+
+            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("email", email);
+
+
+                return params;
+            }
+
+
+        };
+        RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
+
+
+
+
+
+
+
+
+        return profiles;
+    }
 
 
 

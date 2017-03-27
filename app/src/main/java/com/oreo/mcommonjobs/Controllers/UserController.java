@@ -9,8 +9,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Activtity.AddProfileActivity;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
-import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity;
+import com.oreo.mcommonjobs.Activtity.ViewYourProfilesActivity;
 import com.oreo.mcommonjobs.Session.PersonSession;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
@@ -58,7 +58,8 @@ public class UserController {
                         if (instance.getTypeOfUser().equals("jobseeker")) {
 
                           //send them to their profile select page first, where they can add their profiles, profiles corrospond to skillz
-                            Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
+                            //Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
+                            Intent i = new Intent (c, ViewYourProfilesActivity.class);
                             c.startActivity(i);
                         }
                     }
@@ -100,8 +101,9 @@ public class UserController {
                 }
 
                 if (instance.getTypeOfUser().equals("jobseeker")) {
-                   // Intent i = new Intent(c, NavigationActivityForJobSeeker.class); // THIS ONE WORKS
+                    //Intent i = new Intent(c, NavigationActivityForJobSeeker.class); // THIS ONE WORKS
                     Intent i = new Intent (c, AddProfileActivity.class); //IT GETS HERE BUT WHEN IT CALLS THIS IT CRASHES
+
                     c.startActivity(i);
                 }
             }

@@ -25,6 +25,9 @@ public class ViewApplicants extends AppCompatActivity {
     private List<Application> applicants = new ArrayList<>();
      JobProviderController jobProviderController = new JobProviderController();
     PersonSession personInstance = PersonSession.getInstance();
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +77,7 @@ public class ViewApplicants extends AppCompatActivity {
      public View getView(int position, View convertView, ViewGroup parent) {
 
          if (convertView == null) {
-             convertView = getLayoutInflater().inflate(R.layout.jobfragment, parent, false);
+             convertView = getLayoutInflater().inflate(R.layout.applicantfragment, parent, false);
          }
 
          Application currentApplicant = applicants.get(position);

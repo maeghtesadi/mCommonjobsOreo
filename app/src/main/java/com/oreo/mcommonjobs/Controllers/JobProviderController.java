@@ -1,6 +1,7 @@
 package com.oreo.mcommonjobs.Controllers;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -108,6 +109,7 @@ public class JobProviderController {
                                 applicants.add(app);
 
                             }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -116,7 +118,7 @@ public class JobProviderController {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                String z= "hello";
+                Log.e("Error", "Unable to parse json array");
             }
         }){
 

@@ -6,18 +6,19 @@ package com.oreo.mcommonjobs.Models;
 
 public class Profile {
 
-    String type;
+    String typeofprofile;
 
     public Profile(String type) {
-        this.type = type;
+        this.typeofprofile = type;
     }
 
     public String getType() {
-        return type;
+        return typeofprofile;
     }
 
+
     public void setType(String type) {
-        this.type = type;
+        this.typeofprofile = type;
     }
 }
 
