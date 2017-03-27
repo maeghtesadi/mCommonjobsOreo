@@ -2,6 +2,7 @@ package com.oreo.mcommonjobs.Controllers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -192,7 +193,7 @@ public void addProfile(final String profile,final String email , final Context c
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                String z= "hello";
+                Log.e("Error", "Unable to parse json array");
             }
         }){
 
