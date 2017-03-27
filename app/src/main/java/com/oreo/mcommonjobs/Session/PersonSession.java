@@ -1,5 +1,9 @@
 package com.oreo.mcommonjobs.Session;
 
+import com.oreo.mcommonjobs.Models.Profile;
+
+import java.util.List;
+
 /**
  * This class consists methods for operating on a Job object.
  *
@@ -13,6 +17,8 @@ public class PersonSession {
     private String firstName;
     private String lastName;
     private String typeOfUser;
+    private List<Profile> profiles;
+    private Profile currentprofile;
     enum userType {JOBPROVIDER, JOBSEEKER}
 
     /**
@@ -33,6 +39,28 @@ public class PersonSession {
             personCtrl = new PersonSession();
         }
         return personCtrl;
+    }
+
+
+    public Profile getCurrentprofile() {
+        return currentprofile;
+    }
+
+    public void setCurrentprofile(Profile currentprofile) {
+        this.currentprofile = currentprofile;
+    }
+
+    public void addProfile(Profile p){
+
+       this.profiles.add(p);
+   }
+
+    public List<Profile> getProfiles() {
+        return profiles;
+    }
+
+    public void setProfiles(List<Profile> profiles) {
+        this.profiles = profiles;
     }
 
     /**

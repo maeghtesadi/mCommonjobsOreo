@@ -1,7 +1,6 @@
 package com.oreo.mcommonjobs.Activtity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -45,8 +44,11 @@ public class SelectUserTypeActivity extends AppCompatActivity {
                 typeOfUser = "jobseeker"; // turn this into an enum or something @jason
                 personInstance.setTypeOfUser("jobseeker");
                 user.registerAccount(personInstance.getFirstName(), personInstance.getLastName(), personInstance.getEmail(), typeOfUser, selectUserTypeContext);
-                Intent i = new Intent(getApplicationContext(), NavigationActivityForJobSeeker.class);
-                startActivity(i);
+                // now we send them to profile page
+
+               // Intent i = new Intent(getApplicationContext(), NavigationActivityForJobSeeker.class);
+             //   Intent i = new Intent(getApplicationContext(), AddProfileActivity.class);
+               // startActivity(i);
             }
         });
 
@@ -55,8 +57,8 @@ public class SelectUserTypeActivity extends AppCompatActivity {
                 typeOfUser = "jobprovider";
                 personInstance.setTypeOfUser("jobprovider");
                 user.registerAccount(personInstance.getFirstName(), personInstance.getLastName(), personInstance.getEmail(), typeOfUser, selectUserTypeContext);
-                Intent i = new Intent(getApplicationContext(), NavigationActivityForJobProvider.class);
-                startActivity(i);
+               // Intent i = new Intent(getApplicationContext(), NavigationActivityForJobProvider.class);
+             //   startActivity(i);
             }
         });
     }

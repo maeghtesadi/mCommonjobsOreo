@@ -110,4 +110,51 @@ public class JobSeekerController {
 
         RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
     }
+
+
+
+
+
+
+
+public void addProfile(final String profile,final String email , Context c){
+
+    String Url = "http://192.168.0.104/addProfile.php";
+
+    StringRequest stringRequest = new StringRequest(Request.Method.POST, Url, new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+
+
+        }
+    }, new Response.ErrorListener() {
+        public void onErrorResponse(VolleyError error) {
+
+        }
+    }
+    ) {
+
+        protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
+            Map<String, String> params = new HashMap<String, String>();
+
+            params.put("profile", profile);
+            params.put("email", email);
+
+
+            return params;
+        }
+    };
+
+    RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
+
+
+}
+
+
+
+
+
+
+
+
 }

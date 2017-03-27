@@ -7,6 +7,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.oreo.mcommonjobs.Activtity.AddProfileActivity;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity;
@@ -42,7 +43,7 @@ public class UserController {
                 PersonSession instance = PersonSession.getInstance();
                 try {
                     if(response.equals("noUser")){
-                        Intent z = new Intent(c, SelectUserTypeActivity.class);
+                        Intent z = new Intent(c, SelectUserTypeActivity.class);  // this is fine, but after they select their type, if its jobseeker send them to profile page
                         c.startActivity(z);
                     }else {
                         JSONObject values = new JSONObject(response);
@@ -50,11 +51,13 @@ public class UserController {
                         instance.setTypeOfUser(values.getString("typeofuser"));
 
                         if (instance.getTypeOfUser().equals("jobprovider")) {
-                            Intent i = new Intent(c, NavigationActivityForJobProvider.class);
+                            Intent i = new Intent(c, NavigationActivityForJobProvider.class);  //   also this part is fine I think
                             c.startActivity(i);
                         }
 
                         if (instance.getTypeOfUser().equals("jobseeker")) {
+
+                          //send them to their profile select page first, where they can add their profiles, profiles corrospond to skillz
                             Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
                             c.startActivity(i);
                         }
@@ -97,7 +100,8 @@ public class UserController {
                 }
 
                 if (instance.getTypeOfUser().equals("jobseeker")) {
-                    Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
+                   // Intent i = new Intent(c, NavigationActivityForJobSeeker.class); // THIS ONE WORKS
+                    Intent i = new Intent (c, AddProfileActivity.class); //IT GETS HERE BUT WHEN IT CALLS THIS IT CRASHES
                     c.startActivity(i);
                 }
             }
