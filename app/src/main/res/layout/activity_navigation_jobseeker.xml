@@ -94,10 +94,10 @@
                     android:layout_weight="50">
 
                     <Button
-                        android:text="@string/main_menu_add_job"
+                        android:text="View Jobs"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/btn_addjob" />
+                        android:id="@+id/btn_viewjobs" />
                 </LinearLayout>
 
                 <LinearLayout
