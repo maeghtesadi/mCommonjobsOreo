@@ -6,12 +6,20 @@
 
 
  <Button
-     android:layout_width="match_parent"
+     android:layout_width="wrap_content"
      android:layout_height="60dp"
-     android:text="Add new profile"
+     android:text="click here to add a new profile"
      android:gravity="center"
      android:id="@+id/addnewprofile"
      />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please select a profile you wish to continue as "
+        />
+
+
 
     <ListView
         android:layout_width="match_parent"
