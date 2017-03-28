@@ -41,7 +41,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mStatusTextView = (TextView) findViewById(R.id.status);
         mContext = getApplicationContext();
 
         initializeGoogleSignInConnection();

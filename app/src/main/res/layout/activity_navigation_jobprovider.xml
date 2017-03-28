@@ -59,11 +59,11 @@
                     android:layout_weight="50">
 
                     <Button
-                        android:text="@string/main_menu_search"
+                        android:text="@string/main_menu_view_applicants"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/btn_search"
-                        android:layout_weight="1" />
+                        android:id="@+id/btn_view_applicants"
+                        android:layout_weight="50" />
                 </LinearLayout>
 
                 <LinearLayout
