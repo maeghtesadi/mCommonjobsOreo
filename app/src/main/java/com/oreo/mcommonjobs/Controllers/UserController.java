@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity;
+import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.Session.PersonSession;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
@@ -33,10 +34,10 @@ public class UserController {
      * @param c
      */
     public void checkifExsists(String email, final Context c) {
-        String loginLink = "http://192.168.0.104/login.php";
+        //String loginLink = "http://192.168.2.11/mcommonjobs/login.php";
         final String email2 = email;
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLPath.login, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 PersonSession instance = PersonSession.getInstance();
@@ -79,13 +80,13 @@ public class UserController {
 
 
     public void registerAccount(String firstName, String lastName, String email, String typeOfUser, final Context c) {
-        String loginLink = "http://192.168.0.104/insert.php";
+        //String loginLink = "http://192.168.2.11/mcommonjobs/insert.php";
         final String email2 = email;
         final String firstname2=firstName;
         final String lastname2=lastName;
         final String typeofuser2=typeOfUser;
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLPath.insert, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 PersonSession instance = PersonSession.getInstance();

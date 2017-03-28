@@ -38,7 +38,7 @@ public class JobProviderController {
      */
     public void createPosting(final String typeofjob, final String descriptionofjob, final String email, final Context c) {
         // validateinputs(params[])
-        String loginLink = "http://192.168.0.104/addjob.php";
+        String loginLink = "http://192.168.2.11/mcommonjobs/addjob.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
             @Override
@@ -76,7 +76,7 @@ public class JobProviderController {
         final List<Application> applicants = new ArrayList<>();
 
 
-        String url = "http://192.168.0.104/getApplicants.php";
+        String url = "http://192.168.2.11/mcommonjobs/getApplicants.php";
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, null,
                 new Response.Listener<JSONObject>() {
