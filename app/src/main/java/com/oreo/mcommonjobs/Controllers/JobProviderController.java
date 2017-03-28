@@ -36,10 +36,10 @@ public class JobProviderController {
      * Makes a volley request, sends job information for server to handle adding jobposting to database
      * @param typeofjob
      * @param descriptionofjob
-     * @param c
+     * @param context
      * @return void
      */
-    public void createPosting(final String typeofjob, final String descriptionofjob, final String email, final Context c) {
+    public void createPosting(final String typeofjob, final String descriptionofjob, final String email, final Context context) {
         // validateinputs(params[])
         String loginLink = "http://192.168.0.104/addjob.php";
     if(validateInputs.ValidateCreatePosting(typeofjob,descriptionofjob,email)) {
@@ -69,20 +69,25 @@ public class JobProviderController {
             }
         };
 
-        RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
+        RequestSingleton.getInstance(context).addToRequestQueue(stringRequest);
     }else{
 
         CharSequence text = "Invalid input enter description please";
         int duration = Toast.LENGTH_LONG;
 
-        Toast toast = Toast.makeText(c, text, duration);
+        Toast toast = Toast.makeText(context, text, duration);
         toast.show();
 
     }
     }
 
 
-
+    /**
+     * This method allows a user of type JobProvider to get the list of people who applied to a job he posted
+     * @param jobprovider_email - email of the Jobprovider
+     * @param context
+     * @return List of applications
+     */
     public List<Application> getApplicants(final String jobprovider_email,Context context){
 
         final List<Application> applicants = new ArrayList<>();
@@ -133,10 +138,6 @@ public class JobProviderController {
 
         };
         RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
-
-
-
-
 
 
 

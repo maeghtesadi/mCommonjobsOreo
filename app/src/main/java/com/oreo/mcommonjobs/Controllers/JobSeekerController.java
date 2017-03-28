@@ -119,10 +119,16 @@ public class JobSeekerController {
 
 
 
+    /**
+     * This method allows a jobseeker to add a profille to their account
+     *
+     * @param profile - the type of job (category)
+     * @param email - email of the JobSeeker
+     * @param context
+     */
 
 
-
-public void addProfile(final String profile,final String email , final Context c){
+public void addProfile(final String profile,final String email , final Context context){
 
     String Url = "http://192.168.0.104/addProfile.php";
 
@@ -130,8 +136,8 @@ public void addProfile(final String profile,final String email , final Context c
         @Override
         public void onResponse(String response) {
 
-            Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
-            c.startActivity(i);
+            Intent i = new Intent(context, NavigationActivityForJobSeeker.class);
+            context.startActivity(i);
 
 
         }
@@ -153,11 +159,16 @@ public void addProfile(final String profile,final String email , final Context c
         }
     };
 
-    RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
+    RequestSingleton.getInstance(context).addToRequestQueue(stringRequest);
 
 
 }
 
+    /**
+     * This method gets
+     * @param email - email of the JobSeeker
+     * @param context
+     */
 
 
 
@@ -208,13 +219,6 @@ public void addProfile(final String profile,final String email , final Context c
 
         };
         RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
-
-
-
-
-
-
-
 
         return profiles;
     }
