@@ -71,6 +71,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     private void setupSignInBtn(){
         SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
+        signInButton.setColorScheme(SignInButton.COLOR_DARK);
         findViewById(R.id.sign_in_button).setOnClickListener(this);
     }
 
