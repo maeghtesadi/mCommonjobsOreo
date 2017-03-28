@@ -18,6 +18,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Activtity/SignInActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Controllers/UserController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
       </map>
     </option>
   </component>

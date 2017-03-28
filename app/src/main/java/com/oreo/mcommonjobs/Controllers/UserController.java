@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
@@ -33,20 +34,21 @@ public class UserController {
      * @param email
      * @param c
      */
+    /*
     public void checkifExsists(String email, final Context c) {
         //String loginLink = "http://192.168.2.11/mcommonjobs/login.php";
         final String email2 = email;
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLPath.login, new Response.Listener<String>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.login, null, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(String response) {
+            public void onResponse(JSONObject response) {
                 PersonSession instance = PersonSession.getInstance();
                 try {
-                    if(response.equals("noUser")){
+                    if(response.has("error")){
                         Intent z = new Intent(c, SelectUserTypeActivity.class);
                         c.startActivity(z);
                     }else {
-                        JSONObject values = new JSONObject(response);
+                        JSONObject values = response.getJSONObject("result");
 
                         instance.setTypeOfUser(values.getString("typeofuser"));
 
@@ -77,7 +79,54 @@ public class UserController {
         };
         RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
     }
+    */
 
+
+    public void checkIfExists(final String email, final Context context){
+        // Post params to be sent to the server
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("email", email);
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.login, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            PersonSession personSession = PersonSession.getInstance();
+                            if(!response.has("error")){
+                                JSONObject result = response.getJSONObject("result");
+                                personSession.setTypeOfUser(result.getString("type"));
+
+                                if (personSession.getTypeOfUser().equals("jobprovider")) {
+                                    Intent i = new Intent(context, NavigationActivityForJobProvider.class);
+                                    context.startActivity(i);
+                                }
+
+                                if (personSession.getTypeOfUser().equals("jobseeker")) {
+                                    Intent i = new Intent(context, NavigationActivityForJobSeeker.class);
+                                    context.startActivity(i);
+                                }
+
+                            }
+                            else{
+                                Intent z = new Intent(context, SelectUserTypeActivity.class);
+                                context.startActivity(z);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error
+                    }
+                });
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
+
+    }
 
     public void registerAccount(String firstName, String lastName, String email, String typeOfUser, final Context c) {
         //String loginLink = "http://192.168.2.11/mcommonjobs/insert.php";
