@@ -14,6 +14,7 @@ import com.oreo.mcommonjobs.Controllers.JobSeekerController;
 import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.JobSession;
+import com.oreo.mcommonjobs.Session.PersonSession;
 
 import org.json.JSONException;
 
@@ -31,13 +32,18 @@ public class ViewJobsActivity extends AppCompatActivity {
 
     private List<Job> listOfJobs = new ArrayList<>();
     JobSeekerController jobSeekerController = new JobSeekerController();
-    TextView t;
+    String buttonClicked;
+    PersonSession personInstance = PersonSession.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_jobs);
-        populateJobList(); // @jason rename this method to be descriptive - pull from database? getJobsFromDatabase?
+
+
+
+
+        populateJobList();
     }
 
     /**
@@ -47,7 +53,14 @@ public class ViewJobsActivity extends AppCompatActivity {
      */
     private void populateJobList() {
 
-        listOfJobs = jobSeekerController.getJobs(this.getApplicationContext());
+
+        buttonClicked = getIntent().getStringExtra("EXTRA_JOB_BUTTON_CLICKED");
+
+        if(buttonClicked.equals("allJobs")){
+            listOfJobs = jobSeekerController.getallJobs(this.getApplicationContext());}
+        else{
+            listOfJobs = jobSeekerController.getYourProfileJobs(personInstance.getCurrentprofile() ,this.getApplicationContext());
+        }
 
         ArrayAdapter<Job> adapter = new customAdapter();
         ListView jobsList = (ListView) (findViewById(R.id.joblist));

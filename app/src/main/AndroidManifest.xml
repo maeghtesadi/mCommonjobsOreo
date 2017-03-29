@@ -26,8 +26,9 @@
         <activity android:name=".Activtity.NavigationActivityForJobSeeker" />
         <activity android:name=".Activtity.ViewJobsActivity" />
         <activity android:name=".Activtity.JobInfoActivity" />
-        <activity android:name=".Activtity.ViewApplicants" >
-        </activity>
+        <activity android:name=".Activtity.ViewApplicants" />
+        <activity android:name=".Activtity.AddProfileActivity" />
+        <activity android:name=".Activtity.ViewYourProfilesActivity" />
 
     </application>
 

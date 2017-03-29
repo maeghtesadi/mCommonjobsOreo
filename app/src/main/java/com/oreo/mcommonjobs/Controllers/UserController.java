@@ -8,10 +8,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.oreo.mcommonjobs.Activtity.AddProfileActivity;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
-import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity;
 import com.oreo.mcommonjobs.Models.URLPath;
+import com.oreo.mcommonjobs.Activtity.ViewYourProfilesActivity;
 import com.oreo.mcommonjobs.Session.PersonSession;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
@@ -28,10 +29,8 @@ import java.util.Map;
  */
 public class UserController {
 
-
-
     /**
-     * Makes a volley request, expects JSONObject as response, checks if user exists, if so launches appropriate navigationactivity, else sends user to sign up page.
+     * Makes a volley request, expects String as response, checks if user exsists, if so launches appropiate navigationactivity, else sends user to sign up page.
      *
      * @param email
      * @param context
@@ -56,33 +55,30 @@ public class UserController {
                                     context.startActivity(i);
                                 }
 
-                                if (personSession.getTypeOfUser().equals("jobseeker")) {
-                                    Intent i = new Intent(context, NavigationActivityForJobSeeker.class);
-                                    context.startActivity(i);
-                                }
+                        if (personSession.getTypeOfUser().equals("jobprovider")) {
+                            Intent i = new Intent(context, NavigationActivityForJobProvider.class);
+                            context.startActivity(i);
+                        }
 
-                            }
-                            else{
-                                Intent z = new Intent(context, SelectUserTypeActivity.class);
-                                context.startActivity(z);
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        if (personSession.getTypeOfUser().equals("jobseeker")) {
+
+                          //send them to their profile select page first, where they can add their profiles, profiles corrospond to skillz
+                            //Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
+                            Intent i = new Intent (context, ViewYourProfilesActivity.class);
+                            context.startActivity(i);
                         }
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Handle error
-                    }
-                });
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }} , new Response.ErrorListener( ){
+                public void onErrorResponse(VolleyError error){
+                }
+            }
+        );
         request.setShouldCache(false);
         RequestSingleton.getInstance(context).addToRequestQueue(request);
-
     }
-
-
 
 
     /**
@@ -111,19 +107,19 @@ public class UserController {
 
 
 
-                            PersonSession personSession = PersonSession.getInstance();
-                            personSession.setTypeOfUser(typeofuser);
+                        PersonSession personSession = PersonSession.getInstance();
+                        personSession.setTypeOfUser(typeofuser);
 
 
-                                if (personSession.getTypeOfUser().equals("jobprovider")) {
-                                    Intent i = new Intent(context, NavigationActivityForJobProvider.class);
-                                    context.startActivity(i);
-                                }
+                        if (personSession.getTypeOfUser().equals("jobprovider")) {
+                            Intent i = new Intent(context, NavigationActivityForJobProvider.class);
+                            context.startActivity(i);
+                        }
 
-                                if (personSession.getTypeOfUser().equals("jobseeker")) {
-                                    Intent i = new Intent(context, NavigationActivityForJobSeeker.class);
-                                    context.startActivity(i);
-                                }
+                        if (personSession.getTypeOfUser().equals("jobseeker")) {
+                            Intent i = new Intent(context, AddProfileActivity.class);
+                            context.startActivity(i);
+                        }
 
 
 
@@ -139,7 +135,4 @@ public class UserController {
         RequestSingleton.getInstance(context).addToRequestQueue(request);
 
     }
-
-
-
 }

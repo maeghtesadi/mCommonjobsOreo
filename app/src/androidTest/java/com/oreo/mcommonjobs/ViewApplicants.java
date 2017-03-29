@@ -3,8 +3,8 @@ package com.oreo.mcommonjobs;
 import android.content.Context;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.oreo.mcommonjobs.Controllers.JobSeekerController;
-import com.oreo.mcommonjobs.Models.Job;
+import com.oreo.mcommonjobs.Controllers.JobProviderController;
+import com.oreo.mcommonjobs.Models.Application;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,23 +16,23 @@ import static android.support.test.InstrumentationRegistry.getTargetContext;
 import static junit.framework.Assert.assertNotNull;
 
 /**
- * Created by jason on 2017-03-25.
+ * Created by jason on 2017-03-26.
  */
 @RunWith(AndroidJUnit4.class)
-public class getJobsTest {
+public class ViewApplicants {
 
     private Context context;
 
-    JobSeekerController jobSeekerController;
+    JobProviderController jobProviderController;
 
-    List<Job> jobs;
+    List<Application> applicants;
     /**
      * Setup method to run before every test to set the target context.
      */
     @Before
     public void setup() {
         context = getTargetContext();
-        jobSeekerController = new JobSeekerController();
+        jobProviderController = new JobProviderController();
 
 
 
@@ -42,13 +42,13 @@ public class getJobsTest {
     @Test
     public void testGetJobResponse() {
 
+        String email = "jtsalikis@hotmail.ca";
+
+        assertNotNull (jobProviderController.getApplicants(email ,context));
 
 
-        assertNotNull( jobSeekerController.getallJobs(context));
-       // assertTrue(jobs.size()==1); // size of entries on db
+     //   assertTrue(applicants.size()==3); // size of entries on db
 
 
 
-
-    }
-}
+}}

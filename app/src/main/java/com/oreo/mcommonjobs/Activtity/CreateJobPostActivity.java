@@ -20,7 +20,7 @@ import com.oreo.mcommonjobs.Session.PersonSession;
 public class CreateJobPostActivity extends AppCompatActivity {
 
     Spinner dropdown_menu_category;
-    String jobSelected = "Painting Duties";
+    String jobSelected = "Painting";
     Button btn_submit;
     EditText jobDescription;
     JobProviderController jobProviderController = new JobProviderController();
@@ -40,7 +40,7 @@ public class CreateJobPostActivity extends AppCompatActivity {
         appContext = this.getApplicationContext();
 
         dropdown_menu_category = (Spinner) findViewById(R.id.spinner);
-        String[] menu_items = new String[]{"Painting Duties", "Gardening Duties", "Vehicle Repair Duties", "Restaurant Duties", "House Work Duties", "Care Duties"};
+        String[] menu_items = new String[]{"Painting", "Gardening", "Vehicle Repair", "Restaurant", "House Work", "Care"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, menu_items);
