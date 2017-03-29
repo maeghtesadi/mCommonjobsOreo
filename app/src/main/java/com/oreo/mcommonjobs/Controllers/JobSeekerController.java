@@ -8,6 +8,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Models.Job;
+import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
 import org.json.JSONArray;
@@ -39,8 +40,8 @@ public class JobSeekerController {
     public List<Job> getJobs(Context context){
         final List<Job> jobs = new ArrayList<>();
 
-        String url = "http://192.168.2.11/mcommonjobs/getjobs.php";
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+        //String url = "http://192.168.2.11/mcommonjobs/getjobs.php";
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, URLPath.getJobs, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -49,11 +50,11 @@ public class JobSeekerController {
                             JSONArray jsonJobsarray = response.getJSONArray("jobs");
 
                             for (int i = 0; i < jsonJobsarray.length(); i++) {
-                                JSONObject job_current_position = jsonJobsarray.getJSONObject(i);
+                                JSONObject currentJob = jsonJobsarray.getJSONObject(i);
 
-                                String des = job_current_position.getString("description");
-                                String typeofjob = job_current_position.getString("typeofjob");
-                                String email = job_current_position.getString("email_job_provider");
+                                String des = currentJob.getString("description");
+                                String typeofjob = currentJob.getString("typeofjob");
+                                String email = currentJob.getString("posterEmail");
                                  jobs.add(new Job(des, typeofjob, email));
                                 //jobs.add(new Job(des, typeofjob));
                             }
