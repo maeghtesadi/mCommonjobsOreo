@@ -1,13 +1,19 @@
 package com.oreo.mcommonjobs.Controllers;
 
 import android.content.Context;
+import android.content.Intent;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
+import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Models.Application;
+import com.oreo.mcommonjobs.Models.URLPath;
+import com.oreo.mcommonjobs.Session.PersonSession;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
 import org.json.JSONArray;
@@ -28,45 +34,48 @@ import java.util.Map;
 public class JobProviderController {
 
 
+
     /**
      * This method creates a job posting and sends it to be entered into the database.
      * Makes a volley request, sends job information for server to handle adding jobposting to database
      * @param typeofjob
-     * @param descriptionofjob
-     * @param c
+     * @param descriptionOfJob
+     * @param context
      * @return void
      */
-    public void createPosting(final String typeofjob, final String descriptionofjob, final String email, final Context c) {
-        // validateinputs(params[])
-        String loginLink = "http://192.168.2.11/mcommonjobs/addjob.php";
+    public void createPosting(final String typeofjob, final String descriptionOfJob, final String email, final Context context){
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-
+        // Post params to be sent to the server
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("description", descriptionOfJob);
+        params.put("typeofjob", typeofjob);
+        params.put("email",email);
 
 
-            }
-        }, new Response.ErrorListener() {
-            public void onErrorResponse(VolleyError error) {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.addJob, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
 
-            }
+                        CharSequence text = "New Job Posting Created!";
+                        int duration = Toast.LENGTH_LONG;
 
-        }
-        ) {
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
 
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("description", descriptionofjob);
-                params.put("typeofjob", typeofjob);
-                params.put("email",email);
 
-                return params;
-            }
-        };
 
-        RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error
+                    }
+                });
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
+
     }
 
 
