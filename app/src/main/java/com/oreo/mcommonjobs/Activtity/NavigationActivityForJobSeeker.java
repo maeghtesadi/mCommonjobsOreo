@@ -16,7 +16,7 @@ import com.oreo.mcommonjobs.R;
  */
 public class NavigationActivityForJobSeeker extends AppCompatActivity {
 
-    Button btnAddJob, btnProfile;
+    Button btnViewAllJobs, btnProfile, btnViewProfileJobs;
 
 
     /**
@@ -27,11 +27,26 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_jobseeker);
-        btnAddJob = (Button) findViewById(R.id.btn_addjob);
+        btnViewAllJobs = (Button) findViewById(R.id.btn_addjob);
         btnProfile = (Button) findViewById(R.id.btn_profile);
-        btnAddJob.setOnClickListener(new View.OnClickListener() {
+       btnViewProfileJobs = (Button) findViewById(R.id.btn_view_jobs_for_your_profile);
+
+       btnViewProfileJobs.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent i = new Intent(getApplicationContext(), ViewJobsActivity.class);
+               i.putExtra("EXTRA_JOB_BUTTON_CLICKED", "profileJobs");
+               startActivity(i);
+           }
+       });
+
+
+
+
+        btnViewAllJobs.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), ViewJobsActivity.class);
+                i.putExtra("EXTRA_JOB_BUTTON_CLICKED", "allJobs");
                 startActivity(i);
             }
         });

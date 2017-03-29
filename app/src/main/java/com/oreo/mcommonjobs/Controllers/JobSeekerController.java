@@ -10,7 +10,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
-import com.oreo.mcommonjobs.Models.Application;
 import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.Models.Profile;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
@@ -41,7 +40,7 @@ public class JobSeekerController {
      * @return List<Jobs>
      * @throws JSONException
      */
-    public List<Job> getJobs(Context context){
+    public List<Job> getallJobs(Context context){
         final List<Job> jobs = new ArrayList<>();
 
         String url = "http://192.168.0.104/getjobs.php";
@@ -81,7 +80,7 @@ public class JobSeekerController {
      *
      * @param type - the type of job (category)
      * @param description - description of the job
-     * @param email - email of the JobSeeker user applying to the job
+     * @param email_provider - email of the JobSeeker user applying to the job
      * @param c
      */
     public void applyToJob(final String type, final String description, final String email_provider, final String email_seeker, final Context c) {
@@ -165,7 +164,7 @@ public void addProfile(final String profile,final String email , final Context c
 }
 
     /**
-     * This method gets
+     * This method gets your profiles
      * @param email - email of the JobSeeker
      * @param context
      */
@@ -223,6 +222,62 @@ public void addProfile(final String profile,final String email , final Context c
         return profiles;
     }
 
+
+    /**
+     * This method gets your jobs that pertain to your current profile
+     * @param currentProfile - email of the JobSeeker
+     * @param context
+     */
+
+    public List<Job> getYourProfileJobs(final String currentProfile, Context context){
+        final List<Job> jobs = new ArrayList<>();
+
+        String url = "http://192.168.0.104/getJobforCurrentProfile.php";
+
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+
+                            JSONArray jsonJobsarray = response.getJSONArray("jobs");
+
+                            for (int i = 0; i < jsonJobsarray.length(); i++) {
+                                JSONObject job_current_position = jsonJobsarray.getJSONObject(i);
+
+                                String des = job_current_position.getString("description");
+                                String typeofjob = job_current_position.getString("typeofjob");
+                                String email = job_current_position.getString("email_job_provider");
+                                jobs.add(new Job(des, typeofjob, email));
+                                //jobs.add(new Job(des, typeofjob));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.e("Error", "Unable to parse json array");
+            }
+        }){
+
+            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("currentProfile", currentProfile);
+
+
+                return params;
+            }
+
+
+        };
+        RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
+ 
+        return jobs;
+    }
 
 
 
