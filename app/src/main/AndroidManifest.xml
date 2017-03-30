@@ -15,6 +15,7 @@
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -22,14 +23,19 @@
         <activity android:name=".Activtity.ProfileSetUpActivity" />
         <activity android:name=".Activtity.SelectUserTypeActivity" />
         <activity android:name=".Activtity.NavigationActivityForJobProvider" />
-        <activity android:name=".Activtity.CreateJobPostActivity"/>
+        <activity android:name=".Activtity.CreateJobPostActivity" />
         <activity android:name=".Activtity.NavigationActivityForJobSeeker" />
         <activity android:name=".Activtity.ViewJobsActivity" />
         <activity android:name=".Activtity.JobInfoActivity" />
         <activity android:name=".Activtity.ViewApplicants" />
         <activity android:name=".Activtity.AddProfileActivity" />
         <activity android:name=".Activtity.ViewYourProfilesActivity" />
-
+        <activity android:name=".Activtity.ProviderRatingMenuActivity" />
+        <activity android:name=".Activtity.ProviderRatingsListActivity" />
+        <activity android:name=".Activtity.ProviderJobsListActivity" />
+        <activity android:name=".Activtity.ProviderEmployeesListActivity" />
+        <activity android:name=".Activtity.ProviderViewRatingActivity" />
+        <activity android:name=".Activtity.ProviderRateActivity"></activity>
     </application>
 
 </manifest>
