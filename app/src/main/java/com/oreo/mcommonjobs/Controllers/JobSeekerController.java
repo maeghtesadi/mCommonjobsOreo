@@ -184,8 +184,6 @@ public void addProfile(final String profile,final String email , final Context c
                     @Override
                     public void onResponse(JSONObject response) {
 
-                        Intent i = new Intent(context, NavigationActivityForJobSeeker.class);
-                        context.startActivity(i);
 
                     }
                 },
@@ -198,6 +196,9 @@ public void addProfile(final String profile,final String email , final Context c
         request.setShouldCache(false);
         RequestSingleton.getInstance(context).addToRequestQueue(request);
 
+        //send to navigation menu after adding a profile
+        Intent i = new Intent(context, NavigationActivityForJobSeeker.class);
+        context.startActivity(i);
     }
 
 
