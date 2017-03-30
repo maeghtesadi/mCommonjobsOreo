@@ -39,8 +39,7 @@ public class ViewYourProfilesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_your_profiles);
         addprofilebutton = (Button) findViewById(R.id.addnewprofile);
         list = (ListView) findViewById(R.id.viewprofiles);
-
-      profiles=  jobSeekerController.getYourProfiles(personInstance.getEmail(), getApplicationContext());
+        profiles = jobSeekerController.getYourProfiles(personInstance.getEmail(), getApplicationContext());
 
         ArrayAdapter<Profile> adapter = new customAdapter();
         list.setAdapter(adapter);

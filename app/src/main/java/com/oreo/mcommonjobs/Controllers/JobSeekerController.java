@@ -126,42 +126,7 @@ public class JobSeekerController {
      * @param context
      */
 
-/*
-public void addProfile(final String profile,final String email , final Context context){
 
-    //String Url = "http://192.168.2.11/mcommonjobs/addProfile.php";
-
-    StringRequest stringRequest = new StringRequest(Request.Method.POST, URLPath.addProfile, new Response.Listener<String>() {
-        @Override
-        public void onResponse(String response) {
-
-            Intent i = new Intent(context, NavigationActivityForJobSeeker.class);
-            context.startActivity(i);
-
-
-        }
-    }, new Response.ErrorListener() {
-        public void onErrorResponse(VolleyError error) {
-
-        }
-    }
-    ) {
-
-        protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-            Map<String, String> params = new HashMap<String, String>();
-
-            params.put("profile", profile);
-            params.put("email", email);
-
-
-            return params;
-        }
-    };
-
-    RequestSingleton.getInstance(context).addToRequestQueue(stringRequest);
-
-
-}*/
 
     /**
      * Makes a volley request which adds user into the database after selecting their profile type (JobSeeker or JobProvider)
@@ -207,15 +172,12 @@ public void addProfile(final String profile,final String email , final Context c
      * @param email - email of the JobSeeker
      * @param context
      */
-
-
-
     public List<Profile> getYourProfiles(final String email, final Context context ){
         final List<Profile> profiles = new ArrayList<>();
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("email", email);
 
-        String url = "http://192.168.0.104/getProfiles.php";
-
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, null,
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getProfiles, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -244,18 +206,7 @@ public void addProfile(final String profile,final String email , final Context c
 
                 Log.e("Error", "Unable to parse json array");
             }
-        }){
-
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("email", email);
-
-
-                return params;
-            }
-
-
-        };
+        });
         RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
 
         return profiles;

@@ -3,47 +3,12 @@
   <component name="issues">
     <option name="index">
       <map>
-        <entry key="$PROJECT_DIR$/../app running/app/src/main/java/com/oreo/mcommonjobs/Controllers/JobProviderController.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/../app running/app/src/main/java/com/oreo/mcommonjobs/Controllers/JobSeekerController.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/../app running/app/src/main/java/com/oreo/mcommonjobs/Controllers/UserController.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Activtity/AddProfileActivity.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Activtity/SelectUserTypeActivity.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Activtity/SignInActivity.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Controllers/JobProviderController.java">
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Activtity/ViewYourProfilesActivity.java">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Controllers/JobSeekerController.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Controllers/UserController.java">
           <value>
             <set />
           </value>
