@@ -67,7 +67,11 @@ public class UserController {
                             Intent i = new Intent (context, ViewYourProfilesActivity.class);
                             context.startActivity(i);
                         }
-                    }
+                    } else{
+                                Intent z = new Intent(context, SelectUserTypeActivity.class);
+                                context.startActivity(z);
+
+                            }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -104,9 +108,7 @@ public class UserController {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-
-
-
+                     /*
                         PersonSession personSession = PersonSession.getInstance();
                         personSession.setTypeOfUser(typeofuser);
 
@@ -121,7 +123,7 @@ public class UserController {
                             context.startActivity(i);
                         }
 
-
+                    */
 
                     }
                 },

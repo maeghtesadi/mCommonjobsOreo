@@ -12,6 +12,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.Models.Profile;
+import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
 import org.json.JSONArray;
@@ -44,7 +45,7 @@ public class JobSeekerController {
         final List<Job> jobs = new ArrayList<>();
 
         String url = "http://192.168.0.104/getjobs.php";
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, URLPath.getJobs, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -57,9 +58,8 @@ public class JobSeekerController {
 
                                 String des = job_current_position.getString("description");
                                 String typeofjob = job_current_position.getString("typeofjob");
-                                String email = job_current_position.getString("email_job_provider");
+                                String email = job_current_position.getString("posterEmail");
                                  jobs.add(new Job(des, typeofjob, email));
-                                //jobs.add(new Job(des, typeofjob));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -126,12 +126,12 @@ public class JobSeekerController {
      * @param context
      */
 
-
+/*
 public void addProfile(final String profile,final String email , final Context context){
 
-    String Url = "http://192.168.2.11/mcommonjobs/addProfile.php";
+    //String Url = "http://192.168.2.11/mcommonjobs/addProfile.php";
 
-    StringRequest stringRequest = new StringRequest(Request.Method.POST, Url, new Response.Listener<String>() {
+    StringRequest stringRequest = new StringRequest(Request.Method.POST, URLPath.addProfile, new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
 
@@ -161,7 +161,45 @@ public void addProfile(final String profile,final String email , final Context c
     RequestSingleton.getInstance(context).addToRequestQueue(stringRequest);
 
 
-}
+}*/
+
+    /**
+     * Makes a volley request which adds user into the database after selecting their profile type (JobSeeker or JobProvider)
+     *
+     * @param profile
+     * @param email
+     * @param context
+     */
+    public void addProfile(final String profile, final String email , final Context context){
+
+        // Post params to be sent to the server
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("profile", profile);
+        params.put("email", email);
+
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.addProfile, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        Intent i = new Intent(context, NavigationActivityForJobSeeker.class);
+                        context.startActivity(i);
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error
+                    }
+                });
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
+
+    }
+
 
     /**
      * This method gets your profiles

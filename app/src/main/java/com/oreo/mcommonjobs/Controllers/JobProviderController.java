@@ -41,8 +41,7 @@ public class JobProviderController {
      * @return void
      */
     public void createPosting(final String typeofjob, final String descriptionOfJob, final String email, final Context context) {
-        // validateinputs(params[])
-        //String loginLink = "http://192.168.0.104/addjob.php";
+
     if(validateInputs.ValidateCreatePosting(typeofjob,descriptionOfJob,email)) {
 
         // Post params to be sent to the server
