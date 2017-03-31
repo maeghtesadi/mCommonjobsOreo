@@ -44,7 +44,7 @@ public class JobSeekerController {
     public List<Job> getallJobs(Context context){
         final List<Job> jobs = new ArrayList<>();
 
-        String url = "http://192.168.0.104/getjobs.php";
+       // String url = "http://192.168.0.104/getjobs.php";
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, URLPath.getJobs, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -221,10 +221,11 @@ public class JobSeekerController {
 
     public List<Job> getYourProfileJobs(final String currentProfile, Context context){
         final List<Job> jobs = new ArrayList<>();
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("currentProfile", currentProfile);
 
-        String url = "http://192.168.0.104/getJobforCurrentProfile.php";
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, null,
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getJobsForCurrentProfile, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -238,7 +239,7 @@ public class JobSeekerController {
 
                                 String des = job_current_position.getString("description");
                                 String typeofjob = job_current_position.getString("typeofjob");
-                                String email = job_current_position.getString("email_job_provider");
+                                String email = job_current_position.getString("posterEmail");
                                 jobs.add(new Job(des, typeofjob, email));
                                 //jobs.add(new Job(des, typeofjob));
                             }
@@ -252,18 +253,7 @@ public class JobSeekerController {
 
                 Log.e("Error", "Unable to parse json array");
             }
-        }){
-
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("currentProfile", currentProfile);
-
-
-                return params;
-            }
-
-
-        };
+        });
         RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
  
         return jobs;

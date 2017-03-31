@@ -18,5 +18,7 @@ public class URLPath {
     public static final String getApplicants = prefix + "/getApplicants.php";
     public static final String addProfile = prefix + "/addprofile.php";
     public static final String getProfiles = prefix + "/getprofiles.php";
+    public static final String getJobsForCurrentProfile = prefix + "/getjobsforcurrentprofile.php";
+
 }
 

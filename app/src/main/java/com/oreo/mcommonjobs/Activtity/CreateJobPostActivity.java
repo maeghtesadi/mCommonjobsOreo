@@ -52,22 +52,22 @@ public class CreateJobPostActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 switch (pos) {
                     case 0: // Painting Duties
-                        jobSelected = "Painting Duties";
+                        jobSelected = "Painting";
                         break;
                     case 1: // Gardening Duties
-                        jobSelected = "Gardening Duties";
+                        jobSelected = "Gardening";
                         break;
                     case 2: // Vehicle Repair Duties
-                        jobSelected = "Vehicle Repair Duties";
+                        jobSelected = "Vehicle Repair";
                         break;
                     case 3: //Restaurant Duties
-                        jobSelected = "Restaurant Duties";
+                        jobSelected = "Restaurant";
                         break;
                     case 4: // House Work Duties
-                        jobSelected = "House Work Duties";
+                        jobSelected = "House Work";
                         break;
                     case 5: //Care Duties
-                        jobSelected = "Care Duties";
+                        jobSelected = "Care";
                         break;
 
                 }
