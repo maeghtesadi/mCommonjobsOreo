@@ -45,7 +45,6 @@ public class JobSeekerController {
     public List<Job> getallJobs(Context context){
         final List<Job> jobs = new ArrayList<>();
 
-       // String url = "http://192.168.0.104/getjobs.php";
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, URLPath.getJobs, null,
                 new Response.Listener<JSONObject>() {
                     @Override

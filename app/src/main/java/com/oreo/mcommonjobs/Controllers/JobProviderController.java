@@ -93,18 +93,18 @@ public class JobProviderController {
 
     /**
      * This method allows a user of type JobProvider to get the list of people who applied to a job he posted
-     * @param jobprovider_email - email of the Jobprovider
+     * @param email - email of the Jobprovider
      * @param context
      * @return List of applications
      */
-    public List<Application> getApplicants(final String jobprovider_email,Context context){
+    public List<Application> getApplicants(final String email,Context context){
 
         final List<Application> applicants = new ArrayList<>();
 
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("email", email);
 
-        String url = "http://192.168.0.104/getApplicants.php";
-
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, null,
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getApplicants, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -134,18 +134,7 @@ public class JobProviderController {
 
                 Log.e("Error", "Unable to parse json array");
             }
-        }){
-
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("jobprovider_email", jobprovider_email);
-
-
-                return params;
-            }
-
-
-        };
+        });
         RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
 
 
