@@ -20,7 +20,7 @@ import com.oreo.mcommonjobs.Session.PersonSession;
 public class CreateJobPostActivity extends AppCompatActivity {
 
     Spinner dropdown_menu_category;
-    String jobSelected = "Painting Duties";
+    String jobSelected = "Painting";
     Button btn_submit;
     EditText jobDescription;
     JobProviderController jobProviderController = new JobProviderController();
@@ -40,7 +40,7 @@ public class CreateJobPostActivity extends AppCompatActivity {
         appContext = this.getApplicationContext();
 
         dropdown_menu_category = (Spinner) findViewById(R.id.spinner);
-        String[] menu_items = new String[]{"Painting Duties", "Gardening Duties", "Vehicle Repair Duties", "Restaurant Duties", "House Work Duties", "Care Duties"};
+        String[] menu_items = new String[]{"Painting", "Gardening", "Vehicle Repair", "Restaurant", "House Work", "Care"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, menu_items);
@@ -52,22 +52,22 @@ public class CreateJobPostActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 switch (pos) {
                     case 0: // Painting Duties
-                        jobSelected = "Painting Duties";
+                        jobSelected = "Painting";
                         break;
                     case 1: // Gardening Duties
-                        jobSelected = "Gardening Duties";
+                        jobSelected = "Gardening";
                         break;
                     case 2: // Vehicle Repair Duties
-                        jobSelected = "Vehicle Repair Duties";
+                        jobSelected = "Vehicle Repair";
                         break;
                     case 3: //Restaurant Duties
-                        jobSelected = "Restaurant Duties";
+                        jobSelected = "Restaurant";
                         break;
                     case 4: // House Work Duties
-                        jobSelected = "House Work Duties";
+                        jobSelected = "House Work";
                         break;
                     case 5: //Care Duties
-                        jobSelected = "Care Duties";
+                        jobSelected = "Care";
                         break;
 
                 }

@@ -38,7 +38,7 @@ public class AddProfileActivity extends AppCompatActivity {
 
        addNewProfile=(Button)findViewById(R.id.addprofile);
         profiledisplaylist= (ListView) findViewById(R.id.Profiles);
-       Profile d = new Profile("Painting");
+        Profile d = new Profile("Painting");
         Profile e = new Profile("Gardening");
         Profile f = new Profile("Vehicle Repair");
         Profile g = new Profile("Restaurant");
@@ -51,7 +51,7 @@ public class AddProfileActivity extends AppCompatActivity {
         profiles.add(h);
         profiles.add(i);
 
-        //listOfJobs = jobSeekerController.getJobs(this.getApplicationContext());
+        //listOfJobs = jobSeekerController.getallJobs(this.getApplicationContext());
 
         ArrayAdapter<Profile> adapter = new customAdapter();
 
@@ -62,6 +62,7 @@ public class AddProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 personInstance.setCurrentprofile(selectedprofile);
+                String s = personInstance.getEmail();
                 jobSeekerController.addProfile(selectedprofile,personInstance.getEmail() , getApplicationContext());
 
 

@@ -10,6 +10,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Models.Application;
+import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 import com.oreo.mcommonjobs.Session.ValidateInputs;
 
@@ -35,54 +36,62 @@ public class JobProviderController {
      * This method creates a job posting and sends it to be entered into the database.
      * Makes a volley request, sends job information for server to handle adding jobposting to database
      * @param typeofjob
-     * @param descriptionofjob
-     * @param c
+     * @param descriptionOfJob
+     * @param context
      * @return void
      */
-    public void createPosting(final String typeofjob, final String descriptionofjob, final String email, final Context c) {
-        // validateinputs(params[])
-        String loginLink = "http://192.168.0.104/addjob.php";
-    if(validateInputs.ValidateCreatePosting(typeofjob,descriptionofjob,email)) {
+    public void createPosting(final String typeofjob, final String descriptionOfJob, final String email, final Context context) {
+
+    if(validateInputs.ValidateCreatePosting(typeofjob,descriptionOfJob,email)) {
+
+        // Post params to be sent to the server
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("description", descriptionOfJob);
+        params.put("typeofjob", typeofjob);
+        params.put("email",email);
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.addJob, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        CharSequence text = "New Job Posting Created!";
+                        int duration = Toast.LENGTH_LONG;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
 
 
-            }
-        }, new Response.ErrorListener() {
-            public void onErrorResponse(VolleyError error) {
 
-            }
-
-        }
-        ) {
-
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("description", descriptionofjob);
-                params.put("typeofjob", typeofjob);
-                params.put("email", email);
-
-                return params;
-            }
-        };
-
-        RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error
+                    }
+                });
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
     }else{
 
-        CharSequence text = "Invalid input enter description please";
+        CharSequence text = "Job Post Invalid: enter a description please!";
         int duration = Toast.LENGTH_LONG;
 
-        Toast toast = Toast.makeText(c, text, duration);
+        Toast toast = Toast.makeText(context, text, duration);
         toast.show();
 
     }
     }
 
 
-
+    /**
+     * This method allows a user of type JobProvider to get the list of people who applied to a job he posted
+     * @param jobprovider_email - email of the Jobprovider
+     * @param context
+     * @return List of applications
+     */
     public List<Application> getApplicants(final String jobprovider_email,Context context){
 
         final List<Application> applicants = new ArrayList<>();
@@ -133,10 +142,6 @@ public class JobProviderController {
 
         };
         RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
-
-
-
-
 
 
 

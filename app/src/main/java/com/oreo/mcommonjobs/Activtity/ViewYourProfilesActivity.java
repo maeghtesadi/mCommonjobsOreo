@@ -39,8 +39,7 @@ public class ViewYourProfilesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_your_profiles);
         addprofilebutton = (Button) findViewById(R.id.addnewprofile);
         list = (ListView) findViewById(R.id.viewprofiles);
-
-      profiles=  jobSeekerController.getYourProfiles(personInstance.getEmail(), getApplicationContext());
+        profiles = jobSeekerController.getYourProfiles(personInstance.getEmail(), getApplicationContext());
 
         ArrayAdapter<Profile> adapter = new customAdapter();
         list.setAdapter(adapter);
@@ -102,6 +101,7 @@ public class ViewYourProfilesActivity extends AppCompatActivity {
                     TextView heading = (TextView) view.findViewById(R.id.prof);
                     heading.setBackgroundColor(Color.GREEN);
                     selectedprofile= heading.getText().toString();
+                    personInstance.setCurrentprofile(selectedprofile);
                     Intent i = new Intent(getApplicationContext(), NavigationActivityForJobSeeker.class);
                     startActivity(i);
 

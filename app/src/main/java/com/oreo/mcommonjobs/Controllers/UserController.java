@@ -6,10 +6,12 @@ import android.content.Intent;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Activtity.AddProfileActivity;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
 import com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity;
+import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.Activtity.ViewYourProfilesActivity;
 import com.oreo.mcommonjobs.Session.PersonSession;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
@@ -31,38 +33,45 @@ public class UserController {
      * Makes a volley request, expects String as response, checks if user exsists, if so launches appropiate navigationactivity, else sends user to sign up page.
      *
      * @param email
-     * @param c
+     * @param context
      */
-    public void checkifExsists(String email, final Context c) {
-        String loginLink = "http://192.168.0.104/login.php";
-        final String email2 = email;
+    public void checkIfExists(final String email, final Context context){
+        // Post params to be sent to the server
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("email", email);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                PersonSession instance = PersonSession.getInstance();
-                try {
-                    if(response.equals("noUser")){
-                        Intent z = new Intent(c, SelectUserTypeActivity.class);  // this is fine, but after they select their type, if its jobseeker send them to profile page
-                        c.startActivity(z);
-                    }else {
-                        JSONObject values = new JSONObject(response);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.login, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            PersonSession personSession = PersonSession.getInstance();
+                            if(response.has("result")){
+                                JSONObject result = response.getJSONObject("result");
+                                personSession.setTypeOfUser(result.getString("type"));
 
-                        instance.setTypeOfUser(values.getString("typeofuser"));
+                                if (personSession.getTypeOfUser().equals("jobprovider")) {
+                                    Intent i = new Intent(context, NavigationActivityForJobProvider.class);
+                                    context.startActivity(i);
+                                }
 
-                        if (instance.getTypeOfUser().equals("jobprovider")) {
-                            Intent i = new Intent(c, NavigationActivityForJobProvider.class);  //   also this part is fine I think
-                            c.startActivity(i);
+                        if (personSession.getTypeOfUser().equals("jobprovider")) {
+                            Intent i = new Intent(context, NavigationActivityForJobProvider.class);
+                            context.startActivity(i);
                         }
 
-                        if (instance.getTypeOfUser().equals("jobseeker")) {
+                        if (personSession.getTypeOfUser().equals("jobseeker")) {
 
                           //send them to their profile select page first, where they can add their profiles, profiles corrospond to skillz
                             //Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
-                            Intent i = new Intent (c, ViewYourProfilesActivity.class);
-                            c.startActivity(i);
+                            Intent i = new Intent (context, ViewYourProfilesActivity.class);
+                            context.startActivity(i);
                         }
-                    }
+                    } else{
+                                Intent z = new Intent(context, SelectUserTypeActivity.class);
+                                context.startActivity(z);
+
+                            }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -70,60 +79,62 @@ public class UserController {
                 public void onErrorResponse(VolleyError error){
                 }
             }
-        ){
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-               params.put("email",  email2);
-
-                return params;
-            }
-        };
-        RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
+        );
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
     }
 
 
-    public void registerAccount(String firstName, String lastName, String email, String typeOfUser, final Context c) {
-        String loginLink = "http://192.168.0.104/insert.php";
-        final String email2 = email;
-        final String firstname2=firstName;
-        final String lastname2=lastName;
-        final String typeofuser2=typeOfUser;
+    /**
+     * Makes a volley request which adds user into the database after selecting their profile type (JobSeeker or JobProvider)
+     *
+     * @param email
+     * @param firstname
+     * @param lastname
+     * @param typeofuser
+     * @param context
+     */
+    public void registerAccount(final String firstname, final String lastname, final String email, final String typeofuser, final Context context){
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                PersonSession instance = PersonSession.getInstance();
-                instance.setTypeOfUser(typeofuser2);
+        // Post params to be sent to the server
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("firstname", firstname);
+        params.put("lastname", lastname);
+        params.put("email", email);
+        params.put("typeofuser", typeofuser);
 
-                if (instance.getTypeOfUser().equals("jobprovider")) {
-                    Intent i = new Intent(c, NavigationActivityForJobProvider.class);
-                    c.startActivity(i);
-                }
 
-                if (instance.getTypeOfUser().equals("jobseeker")) {
-                    //Intent i = new Intent(c, NavigationActivityForJobSeeker.class); // THIS ONE WORKS
-                    Intent i = new Intent (c, AddProfileActivity.class); //IT GETS HERE BUT WHEN IT CALLS THIS IT CRASHES
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.insert, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                     /*
+                        PersonSession personSession = PersonSession.getInstance();
+                        personSession.setTypeOfUser(typeofuser);
 
-                    c.startActivity(i);
-                }
-            }
-        }, new Response.ErrorListener() {
-            public void onErrorResponse(VolleyError error) {
 
-            }
-        }
-        ) {
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("email", email2);
-                params.put("firstname", firstname2);
-                params.put("lastname", lastname2);
-                params.put("typeofuser", typeofuser2);
+                        if (personSession.getTypeOfUser().equals("jobprovider")) {
+                            Intent i = new Intent(context, NavigationActivityForJobProvider.class);
+                            context.startActivity(i);
+                        }
 
-                return params;
-            }
-        };
+                        if (personSession.getTypeOfUser().equals("jobseeker")) {
+                            Intent i = new Intent(context, AddProfileActivity.class);
+                            context.startActivity(i);
+                        }
 
-        RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
+                    */
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error
+                    }
+                });
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
+
     }
 }

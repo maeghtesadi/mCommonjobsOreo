@@ -44,7 +44,7 @@ public class getJobsTest {
 
 
 
-        assertNotNull( jobSeekerController.getJobs(context));
+        assertNotNull( jobSeekerController.getallJobs(context));
        // assertTrue(jobs.size()==1); // size of entries on db
 
 

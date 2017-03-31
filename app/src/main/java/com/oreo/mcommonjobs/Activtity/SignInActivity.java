@@ -140,7 +140,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             personInstance.setFirstName(googleAccount.getGivenName());
             personInstance.setLastName(googleAccount.getFamilyName());
 
-            userController.checkifExsists(personInstance.getEmail(), this.getApplicationContext());
+            userController.checkIfExists(personInstance.getEmail(), this.getApplicationContext());
 
             finish();
 
