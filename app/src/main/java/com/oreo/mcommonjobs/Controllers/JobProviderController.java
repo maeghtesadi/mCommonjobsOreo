@@ -74,6 +74,11 @@ public class JobProviderController {
                 });
         request.setShouldCache(false);
         RequestSingleton.getInstance(context).addToRequestQueue(request);
+        CharSequence text = "Job Posting Created!";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }else{
 
         CharSequence text = "Job Post Invalid: enter a description please!";

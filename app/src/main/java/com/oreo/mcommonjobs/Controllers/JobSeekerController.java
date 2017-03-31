@@ -3,6 +3,7 @@ package com.oreo.mcommonjobs.Controllers;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -80,41 +81,46 @@ public class JobSeekerController {
      *
      * @param type - the type of job (category)
      * @param description - description of the job
-     * @param email_provider - email of the JobSeeker user applying to the job
-     * @param c
+     * @param emailProvider - email of the JobProvider who posted the job
+     * @param emailSeeker - email of the JobSeeker user applying to the job
+     * @param context
      */
-    public void applyToJob(final String type, final String description, final String email_provider, final String email_seeker, final Context c) {
+    public void applyToJob(final String type, final String description, final String emailProvider, final String emailSeeker, final Context context){
 
-        String applyUrl = "http://192.168.0.104/apply.php";
+        // Post params to be sent to the server
+        Map<String, String> params = new HashMap<String, String>();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, applyUrl, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
+        params.put("description", description);
+        params.put("typeofjob", type);
+        params.put("emailProvider", emailProvider);
+        params.put("emailSeeker", emailSeeker);
 
 
-            }
-        }, new Response.ErrorListener() {
-            public void onErrorResponse(VolleyError error) {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.apply, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
 
-            }
-        }
-        ) {
 
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error
+                    }
+                });
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
 
-                params.put("description", description);
-                params.put("typeofjob", type);
-                params.put("email_provider", email_provider);
-                params.put("email_seeker", email_seeker);
+        CharSequence text = "Application Sent!";
+        int duration = Toast.LENGTH_LONG;
 
-                return params;
-            }
-        };
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
 
-        RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
+
     }
-
 
 
 
