@@ -24,7 +24,7 @@ import java.util.List;
  * Created by jason on 2017-03-27.
  */
 
-public class ViewYourProfilesActivity extends AppCompatActivity {
+public class ViewProfilesActivity extends AppCompatActivity {
     Button addprofilebutton;
     String selectedprofile;
     ListView list;
@@ -59,19 +59,10 @@ public class ViewYourProfilesActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
-
     private class customAdapter extends ArrayAdapter<Profile> {
 
         public customAdapter() {
-            super(ViewYourProfilesActivity.this, R.layout.profilefragment, profiles);
+            super(ViewProfilesActivity.this, R.layout.profilefragment, profiles);
         }
 
 
@@ -84,14 +75,8 @@ public class ViewYourProfilesActivity extends AppCompatActivity {
             }
 
             final Profile currentProfile = profiles.get(position);
-
             TextView heading = (TextView) convertView.findViewById(R.id.prof);
-
-
             heading.setText(currentProfile.getType());
-
-
-
 
 
             convertView.setOnClickListener(new View.OnClickListener() {
@@ -104,9 +89,6 @@ public class ViewYourProfilesActivity extends AppCompatActivity {
                     personInstance.setCurrentprofile(selectedprofile);
                     Intent i = new Intent(getApplicationContext(), NavigationActivityForJobSeeker.class);
                     startActivity(i);
-
-
-
 
 
                 }

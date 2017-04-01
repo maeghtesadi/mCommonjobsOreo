@@ -7,12 +7,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.oreo.mcommonjobs.Activtity.AddProfileActivity;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
 import com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity;
 import com.oreo.mcommonjobs.Models.URLPath;
-import com.oreo.mcommonjobs.Activtity.ViewYourProfilesActivity;
+import com.oreo.mcommonjobs.Activtity.ViewProfilesActivity;
 import com.oreo.mcommonjobs.Session.PersonSession;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
@@ -62,9 +60,7 @@ public class UserController {
 
                         if (personSession.getTypeOfUser().equals("jobseeker")) {
 
-                          //send them to their profile select page first, where they can add their profiles, profiles corrospond to skillz
-                            //Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
-                            Intent i = new Intent (context, ViewYourProfilesActivity.class);
+                            Intent i = new Intent (context, ViewProfilesActivity.class);
                             context.startActivity(i);
                         }
                     } else{
@@ -108,22 +104,7 @@ public class UserController {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                     /*
-                        PersonSession personSession = PersonSession.getInstance();
-                        personSession.setTypeOfUser(typeofuser);
 
-
-                        if (personSession.getTypeOfUser().equals("jobprovider")) {
-                            Intent i = new Intent(context, NavigationActivityForJobProvider.class);
-                            context.startActivity(i);
-                        }
-
-                        if (personSession.getTypeOfUser().equals("jobseeker")) {
-                            Intent i = new Intent(context, AddProfileActivity.class);
-                            context.startActivity(i);
-                        }
-
-                    */
 
                     }
                 },

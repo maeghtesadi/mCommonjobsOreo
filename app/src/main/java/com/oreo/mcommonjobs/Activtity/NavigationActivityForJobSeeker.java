@@ -57,7 +57,7 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
     btnProfile.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent i = new Intent(getApplicationContext(), ViewYourProfilesActivity.class);
+            Intent i = new Intent(getApplicationContext(), ViewProfilesActivity.class);
             startActivity(i);
         }
     });

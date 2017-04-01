@@ -85,7 +85,9 @@ public class AddProfileActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Inner class to customize adapter handles
+     */
     private class customAdapter extends ArrayAdapter<Profile> {
 
         public customAdapter() {

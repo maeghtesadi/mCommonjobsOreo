@@ -1,9 +1,11 @@
 package com.oreo.mcommonjobs.Models;
 
 /**
- * Created by jason on 2017-03-19.
+ * This class consists methods for operating on an Application object.
+ *
+ * @author Jason
+ * @author Rameen
  */
-
 public class Application {
 
     String jobtype;

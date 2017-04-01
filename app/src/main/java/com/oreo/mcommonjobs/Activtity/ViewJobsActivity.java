@@ -40,9 +40,6 @@ public class ViewJobsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_jobs);
 
-
-
-
         populateJobList();
     }
 
@@ -57,27 +54,21 @@ public class ViewJobsActivity extends AppCompatActivity {
         buttonClicked = getIntent().getStringExtra("EXTRA_JOB_BUTTON_CLICKED");
 
         if(buttonClicked.equals("allJobs")){
-            listOfJobs = jobSeekerController.getallJobs(this.getApplicationContext());}
+            listOfJobs = jobSeekerController.getAllJobs(this.getApplicationContext());}
         else{
-            listOfJobs = jobSeekerController.getYourProfileJobs(personInstance.getCurrentprofile() ,this.getApplicationContext());
+            listOfJobs = jobSeekerController.getProfileJobs(personInstance.getCurrentprofile() ,this.getApplicationContext());
         }
 
         ArrayAdapter<Job> adapter = new customAdapter();
         ListView jobsList = (ListView) (findViewById(R.id.joblist));
         jobsList.setAdapter(adapter);
 
-
-
     }
-
 
     /**
      * Inner class to customize adapter handles
      */
-
     private class customAdapter extends ArrayAdapter<Job> {
-
-
 
         /**
          * Constructor for customAdapter
@@ -112,18 +103,12 @@ public class ViewJobsActivity extends AppCompatActivity {
             heading.setText(currentJob.getCategory());
             desc.setText(currentJob.getDescription());
 
-
-
-
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     TextView heading = (TextView) view.findViewById(R.id.heading);
                     TextView desc = (TextView) view.findViewById(R.id.desc);
-
-
-
 
                     String headingString = heading.getText().toString();
                     String descString = desc.getText().toString();
@@ -133,7 +118,6 @@ public class ViewJobsActivity extends AppCompatActivity {
                     jobSession.setDescription(descString);
                     jobSession.setEmail_job_provider(currentJob.getJob_provider_email());
 
-                    String test = jobSession.getDescription();
                     Intent i = new Intent(ViewJobsActivity.this, JobInfoActivity.class);
                     startActivity(i);
                 }

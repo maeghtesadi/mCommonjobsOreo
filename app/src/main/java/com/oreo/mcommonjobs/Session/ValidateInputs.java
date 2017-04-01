@@ -1,7 +1,10 @@
 package com.oreo.mcommonjobs.Session;
 
 /**
- * Created by jason on 2017-03-26.
+ * This class consists methods which validate the inputs of various methods in our application's activities
+ *
+ * @author Jason
+ * @author Rameen
  */
 
 public class ValidateInputs {

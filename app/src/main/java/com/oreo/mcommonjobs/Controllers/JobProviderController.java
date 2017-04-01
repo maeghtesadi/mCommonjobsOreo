@@ -92,7 +92,7 @@ public class JobProviderController {
 
 
     /**
-     * This method allows a user of type JobProvider to get the list of people who applied to a job he posted
+     * This method allows a user of type JobProvider to get the list of people who applied to a job they posted
      * @param email - email of the Jobprovider
      * @param context
      * @return List of applications

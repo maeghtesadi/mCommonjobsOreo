@@ -87,7 +87,7 @@ public class ViewApplicants extends AppCompatActivity {
 
          jobtitle.setText(currentApplicant.getJobtype());
          name.setText(currentApplicant.getUser_name());
-         
+
          return convertView;
      }
 

@@ -42,7 +42,7 @@ public class JobSeekerController {
      * @return List<Jobs>
      * @throws JSONException
      */
-    public List<Job> getallJobs(Context context){
+    public List<Job> getAllJobs(Context context){
         final List<Job> jobs = new ArrayList<>();
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, URLPath.getJobs, null,
@@ -130,16 +130,6 @@ public class JobSeekerController {
      * @param email - email of the JobSeeker
      * @param context
      */
-
-
-
-    /**
-     * Makes a volley request which adds user into the database after selecting their profile type (JobSeeker or JobProvider)
-     *
-     * @param profile
-     * @param email
-     * @param context
-     */
     public void addProfile(final String profile, final String email , final Context context){
 
         // Post params to be sent to the server
@@ -219,12 +209,12 @@ public class JobSeekerController {
 
 
     /**
-     * This method gets your jobs that pertain to your current profile
+     * This method gets the jobs that pertain to the seeker's current profile
      * @param currentProfile - email of the JobSeeker
      * @param context
      */
 
-    public List<Job> getYourProfileJobs(final String currentProfile, Context context){
+    public List<Job> getProfileJobs(final String currentProfile, Context context){
         final List<Job> jobs = new ArrayList<>();
         Map<String, String> params = new HashMap<String, String>();
         params.put("currentProfile", currentProfile);
@@ -240,13 +230,12 @@ public class JobSeekerController {
                             JSONArray jsonJobsarray = response.getJSONArray("jobs");
 
                             for (int i = 0; i < jsonJobsarray.length(); i++) {
-                                JSONObject job_current_position = jsonJobsarray.getJSONObject(i);
+                                JSONObject currentJob = jsonJobsarray.getJSONObject(i);
 
-                                String des = job_current_position.getString("description");
-                                String typeofjob = job_current_position.getString("typeofjob");
-                                String email = job_current_position.getString("posterEmail");
+                                String des = currentJob.getString("description");
+                                String typeofjob = currentJob.getString("typeofjob");
+                                String email = currentJob.getString("posterEmail");
                                 jobs.add(new Job(des, typeofjob, email));
-                                //jobs.add(new Job(des, typeofjob));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
