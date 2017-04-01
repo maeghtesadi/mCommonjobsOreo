@@ -6,7 +6,8 @@
 
 
 
- <TextView
+ <CheckedTextView
+     android:checkMark="?android:attr/listChoiceIndicatorMultiple"
      android:layout_width="match_parent"
      android:layout_height="60sp"
      android:id="@+id/prof"

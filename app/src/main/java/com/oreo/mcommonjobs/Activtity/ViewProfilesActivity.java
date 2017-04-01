@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,7 +32,7 @@ public class ViewProfilesActivity extends AppCompatActivity {
     private List<Profile> profiles = new ArrayList<>();
     JobSeekerController jobSeekerController = new JobSeekerController();
     PersonSession personInstance = PersonSession.getInstance();
-
+    CheckedTextView prevChecked;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -83,10 +84,14 @@ public class ViewProfilesActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    TextView heading = (TextView) view.findViewById(R.id.prof);
-                    heading.setBackgroundColor(Color.GREEN);
+                    if(prevChecked != null) {
+                        prevChecked.setChecked(false);
+                    }
+                    CheckedTextView heading = (CheckedTextView) view.findViewById(R.id.prof);
                     selectedprofile= heading.getText().toString();
                     personInstance.setCurrentprofile(selectedprofile);
+                    heading.setChecked(true);
+                    prevChecked=heading;
                     Intent i = new Intent(getApplicationContext(), NavigationActivityForJobSeeker.class);
                     startActivity(i);
 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ public class AddProfileActivity extends AppCompatActivity {
     ListView profiledisplaylist;
     Button addNewProfile;
     JobSeekerController jobSeekerController = new JobSeekerController();
+    CheckedTextView prevChecked;
 
     //profile enum to store the names of profiles
     private enum ProfileEnum{
@@ -54,6 +56,7 @@ public class AddProfileActivity extends AppCompatActivity {
 
        addNewProfile=(Button)findViewById(R.id.addprofile);
         profiledisplaylist= (ListView) findViewById(R.id.Profiles);
+        profiledisplaylist.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         //iterate through profile enum to add the profiles to the profile list
         for(ProfileEnum profileEnum : ProfileEnum.values()){
@@ -105,34 +108,28 @@ public class AddProfileActivity extends AppCompatActivity {
 
             final Profile currentProfile = profiles.get(position);
 
-            TextView heading = (TextView) convertView.findViewById(R.id.prof);
+            CheckedTextView heading = (CheckedTextView) convertView.findViewById(R.id.prof);
 
 
             heading.setText(currentProfile.getType());
 
 
-
-
-
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    TextView heading = (TextView) view.findViewById(R.id.prof);
-                    heading.setBackgroundColor(Color.GREEN);
+                    if(prevChecked != null) {
+                        prevChecked.setChecked(false);
+                    }
+                    CheckedTextView heading = (CheckedTextView) view.findViewById(R.id.prof);
                     selectedprofile= heading.getText().toString();
-
-
-
+                    heading.setChecked(true);
+                    prevChecked=heading;
 
 
                 }
             });
             return convertView;
         }
-
-
-
 
 
     }
