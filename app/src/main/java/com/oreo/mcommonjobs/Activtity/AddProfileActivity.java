@@ -29,8 +29,24 @@ public class AddProfileActivity extends AppCompatActivity {
     ListView profiledisplaylist;
     Button addNewProfile;
     JobSeekerController jobSeekerController = new JobSeekerController();
-    PersonSession personInstance = PersonSession.getInstance();
 
+    //profile enum to store the names of profiles
+    private enum ProfileEnum{
+        Painting("Painting"), Gardening("Gardening"), VehicleRepair("Vehicle Repair"), Restaurant("Restaurant"), HouseWork("House Work"), Care("Care");
+
+        private String name;
+
+        ProfileEnum(String name) {
+            this.name = name;
+        }
+
+        public String getName(){
+            return this.name;
+
+        }
+    };
+
+    PersonSession personInstance = PersonSession.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,18 +54,15 @@ public class AddProfileActivity extends AppCompatActivity {
 
        addNewProfile=(Button)findViewById(R.id.addprofile);
         profiledisplaylist= (ListView) findViewById(R.id.Profiles);
-        Profile d = new Profile("Painting");
-        Profile e = new Profile("Gardening");
-        Profile f = new Profile("Vehicle Repair");
-        Profile g = new Profile("Restaurant");
-        Profile h = new Profile("House Work");
-        Profile i = new Profile("Care");
-        profiles.add(d);
-        profiles.add(e);
-        profiles.add(f);
-        profiles.add(g);
-        profiles.add(h);
-        profiles.add(i);
+
+        //iterate through profile enum to add the profiles to the profile list
+        for(ProfileEnum profileEnum : ProfileEnum.values()){
+
+            Profile profile = new Profile(profileEnum.getName());
+            profiles.add(profile);
+
+        }
+
 
         //listOfJobs = jobSeekerController.getallJobs(this.getApplicationContext());
 
