@@ -102,6 +102,8 @@ public class ViewYourProfilesActivity extends AppCompatActivity {
                     TextView heading = (TextView) view.findViewById(R.id.prof);
                     heading.setBackgroundColor(Color.GREEN);
                     selectedprofile= heading.getText().toString();
+                    personInstance.setCurrentprofile(currentProfile.getType());
+
                     Intent i = new Intent(getApplicationContext(), NavigationActivityForJobSeeker.class);
                     startActivity(i);
 
