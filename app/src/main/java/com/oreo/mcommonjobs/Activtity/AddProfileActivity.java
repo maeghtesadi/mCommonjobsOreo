@@ -64,7 +64,6 @@ public class AddProfileActivity extends AppCompatActivity {
         }
 
 
-        //listOfJobs = jobSeekerController.getallJobs(this.getApplicationContext());
 
         ArrayAdapter<Profile> adapter = new customAdapter();
 

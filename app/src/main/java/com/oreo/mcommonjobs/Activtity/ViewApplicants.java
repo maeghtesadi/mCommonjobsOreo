@@ -87,34 +87,7 @@ public class ViewApplicants extends AppCompatActivity {
 
          jobtitle.setText(currentApplicant.getJobtype());
          name.setText(currentApplicant.getUser_name());
-
-
-/*
-
-         convertView.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-
-                 TextView heading = (TextView) view.findViewById(R.id.heading);
-                 TextView desc = (TextView) view.findViewById(R.id.desc);
-
-
-
-
-                 String headingString = heading.getText().toString();
-                 String descString = desc.getText().toString();
-
-                 JobSession jobSession = JobSession.getInstance();
-                 jobSession.setTypeOfJob(headingString);
-                 jobSession.setDescription(descString);
-
-                 //String test = jobSession.getDescription();
-              //   Intent i = new Intent(ViewJobsActivity.this, JobInfoActivity.class);
-                // startActivity(i);
-             }
-         });
-
-         */
+         
          return convertView;
      }
 
