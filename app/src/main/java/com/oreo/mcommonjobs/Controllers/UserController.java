@@ -9,8 +9,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
 import com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity;
+
 import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.Activtity.ViewProfilesActivity;
+
 import com.oreo.mcommonjobs.Session.PersonSession;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
@@ -33,6 +35,7 @@ public class UserController {
      * @param email
      * @param context
      */
+
     public void checkIfExists(final String email, final Context context){
         // Post params to be sent to the server
         HashMap<String, String> params = new HashMap<String, String>();
@@ -56,6 +59,7 @@ public class UserController {
                         if (personSession.getTypeOfUser().equals("jobprovider")) {
                             Intent i = new Intent(context, NavigationActivityForJobProvider.class);
                             context.startActivity(i);
+
                         }
 
                         if (personSession.getTypeOfUser().equals("jobseeker")) {
@@ -81,6 +85,7 @@ public class UserController {
     }
 
 
+
     /**
      * Makes a volley request which adds user into the database after selecting their profile type (JobSeeker or JobProvider)
      *
@@ -91,6 +96,7 @@ public class UserController {
      * @param context
      */
     public void registerAccount(final String firstname, final String lastname, final String email, final String typeofuser, final Context context){
+
 
         // Post params to be sent to the server
         Map<String, String> params = new HashMap<String, String>();
