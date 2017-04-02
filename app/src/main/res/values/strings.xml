@@ -19,4 +19,6 @@
     <string name="job_desc_hint">Add description here.</string>
     <string name="email">Email</string>
     <string name="select_user">"Select User: "</string>
+    <string name="title_activity_profile_menu">ProfileMenuActivity</string>
+    <string name="title_activity_profile_addition">ProfileAdditionActivity</string>
 </resources>
