@@ -17,8 +17,7 @@ public class UserNameSetupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_name_setup_activity);
 
-        /*
-        Button continueBt = (Button) findViewById(R.id.continue_bt);
+        Button continueBt = (Button) findViewById(R.id.btn_continue);
         final TextView firstNameTextView = (TextView) findViewById(R.id.firstNameText);
         final TextView lastNameTextView = (TextView) findViewById(R.id.lastNameText);
 
@@ -32,6 +31,5 @@ public class UserNameSetupActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), UserTypeSelectionActivity.class));
             }
         });
-        */
     }
 }
