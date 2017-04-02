@@ -81,6 +81,9 @@ public class JobSeekerController {
      * @param description - description of the job
      * @param emailProvider - email of the JobProvider who posted the job
      * @param emailSeeker - email of the JobSeeker user applying to the job
+     * @param yearsofExperience - the years of experience user has for a job
+     * @param avalibilty - their general avalibility
+     * @param expected_wage - the users expected wage
      * @param context
      */
     public void applyToJob(final String type, final String description, final String emailProvider, final String emailSeeker,final String yearsofExperience, final String avalibilty, final String expected_wage, final Context context){

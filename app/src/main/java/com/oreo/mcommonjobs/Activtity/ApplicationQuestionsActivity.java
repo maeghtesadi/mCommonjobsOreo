@@ -19,11 +19,11 @@ import com.oreo.mcommonjobs.Session.PersonSession;
 public class ApplicationQuestionsActivity extends AppCompatActivity {
 
     JobSeekerController jobSeekerController = new JobSeekerController();
-    Button btn_submit;
-    EditText expectedWageText;
+    Button btn_submit; // submit button
+    EditText expectedWageText; // editTextfield holding the users desired wage
 
-    String [] yearsofExperienceOptions = {"1-3 years", "4-6 years" , "6+ years"};
-    String [] avilabilityOptions = {"DAY", "NIGHT" , "DAY AND NIGHT"};
+    String [] yearsofExperienceOptions = {"1-3 years", "4-6 years" , "6+ years"}; //options for years of experience
+    String [] avilabilityOptions = {"DAY", "NIGHT" , "DAY AND NIGHT"}; // options for avalibility
     String yearsofExperience, availability, expected_wage;
     RadioGroup experienceRDG, availabilityRDG;
 
@@ -42,7 +42,10 @@ public class ApplicationQuestionsActivity extends AppCompatActivity {
 
 
 
-
+        /**
+         * When submit button is clicked on xml, the values from the two radio groups and one edittextview are recorded and sent to jobseekercontrller
+         *
+         */
 
 
 
@@ -80,13 +83,8 @@ public class ApplicationQuestionsActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-                jobSeekerController.applyToJob(jobSession.getTypeOfJob(),jobSession.getDescription(),jobSession.getEmail_job_provider(),personSession.getEmail(),yearsofExperience,availability,expected_wage,getApplicationContext());
-
+                jobSeekerController.applyToJob(jobSession.getTypeOfJob(),jobSession.getDescription(),jobSession.getEmail_job_provider(),personSession.getEmail(), yearsofExperience, availability, expected_wage,getApplicationContext());
+              finish();
             }
         });
 
