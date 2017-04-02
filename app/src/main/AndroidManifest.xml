@@ -15,22 +15,26 @@
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activtity.SignInActivity" />
-        <activity android:name=".Activtity.ProfileSetUpActivity" />
-        <activity android:name=".Activtity.SelectUserTypeActivity" />
-        <activity android:name=".Activtity.NavigationActivityForJobProvider" />
-        <activity android:name=".Activtity.CreateJobPostActivity"/>
-        <activity android:name=".Activtity.NavigationActivityForJobSeeker" />
-        <activity android:name=".Activtity.ViewJobsActivity" />
-        <activity android:name=".Activtity.JobInfoActivity" />
-        <activity android:name=".Activtity.ViewApplicants" />
-        <activity android:name=".Activtity.AddProfileActivity" />
-        <activity android:name=".Activtity.ViewProfilesActivity" />
-
-
+        <activity android:name=".Activtity.UserSignInActivity" />
+        <activity android:name=".Activtity.UserTypeSelectionActivity" />
+        <activity android:name=".Activtity.UserNameSetupActivity" />
+        <activity android:name=".Activtity.JobSeekerNavigationMenuActivity" />
+        <activity android:name=".Activtity.JobSeekerProfileMenuActivity" />
+        <activity android:name=".Activtity.JobSeekerProfileAdditionActivity" />
+        <activity android:name=".Activtity.JobSeekerViewProfileJobsActivity" />
+        <activity android:name=".Activtity.JobSeekerViewOtherJobsActivity" />
+        <activity android:name=".Activtity.JobProviderCreateJobPostingActivity" />
+        <activity android:name=".Activtity.JobProviderNavigationMenuActivity" />
+        <activity android:name=".Activtity.JobProviderViewApplicantsActivity" />
+        <activity android:name=".Activtity.JobProviderViewJobPostingsActivity" />
+        <activity android:name=".Activtity.JobProviderViewJobPostingDetailsActivity" />
+        <activity android:name=".Activtity.JobProviderViewApplicantDetailsActivity" />
+        <activity android:name=".Activtity.JobSeekerViewJobDetailsActivity" />
+        <activity android:name=".Activtity.JobSeekerFillJobApplicationActivity"></activity>
     </application>
 
 </manifest>
