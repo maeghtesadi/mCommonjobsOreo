@@ -18,23 +18,19 @@ public class ViewApplicantCredentials extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_applicant_credentials);
 
+        // getting the views to display info aftewards
         usernameTextView= (TextView) findViewById(R.id.nameofapplicant);
         exspected_wageTextView= (TextView) findViewById(R.id.exepctedwage);
         availibilityTextView= (TextView) findViewById(R.id.availabilityofuser);
         typeofjobTextView= (TextView) findViewById(R.id.typeofjob);
         yearsofExperienceTextview= (TextView) findViewById(R.id.yearsofexperience);
 
-        String test;
+        //setting the textviews with the data of applicants we recieved from previous activity
         usernameTextView.setText(getIntent().getStringExtra("username"));
-        test= getIntent().getStringExtra("username");
         exspected_wageTextView.setText(getIntent().getStringExtra("expected_wage"));
-        test= getIntent().getStringExtra("expected_wage");
         typeofjobTextView.setText(getIntent().getStringExtra("typeofjob"));
-        test= getIntent().getStringExtra("typeofjob");
         availibilityTextView.setText(getIntent().getStringExtra("availibility"));
-        test= getIntent().getStringExtra("availibility");
         yearsofExperienceTextview.setText(getIntent().getStringExtra("yearsofExperience"));
-        test= getIntent().getStringExtra("yearsofExperience");
 
 
 
