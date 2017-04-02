@@ -1,13 +1,13 @@
 package com.oreo.mcommonjobs.Activtity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.oreo.mcommonjobs.Controllers.JobSeekerController;
 import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.JobSession;
 import com.oreo.mcommonjobs.Session.PersonSession;
@@ -46,9 +46,12 @@ public class JobInfoActivity extends AppCompatActivity{
             public void onClick(View view) {
 
 
-                JobSeekerController jobSeekerController = new JobSeekerController();
+                Intent i = new Intent (getApplicationContext(), ApplicationQuestionsActivity.class);
+                startActivity(i);
+                // JobSeekerController jobSeekerController = new JobSeekerController();
 
-                jobSeekerController.applyToJob(jobSession.getTypeOfJob(),jobSession.getDescription(),jobSession.getEmail_job_provider(),personSession.getEmail(),c);
+             //   jobSeekerController.applyToJob(jobSession.getTypeOfJob(),jobSession.getDescription(),jobSession.getEmail_job_provider(),personSession.getEmail(),c);
+
             finish();
             }
         });
