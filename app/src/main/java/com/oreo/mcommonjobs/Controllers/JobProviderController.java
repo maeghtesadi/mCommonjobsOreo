@@ -145,7 +145,14 @@ public class JobProviderController {
     }
 
 
-
+    /**
+     * This method allows a user of type JobProvider to get the list of people who applied to a job they posted
+     * @param emailProvider - email of the Jobprovider
+     * @param displayNameSeeker - display name of the job seeker
+     * @param typeOfJob - type of job being applied to
+     * @param context
+     *
+     */
     public void acceptApplicant(final String emailProvider, final String displayNameSeeker, final String typeOfJob, final Context context){
 
         // Post params to be sent to the server
@@ -182,10 +189,6 @@ public class JobProviderController {
 
 
     }
-
-
-
-
-
+    
 
 }
