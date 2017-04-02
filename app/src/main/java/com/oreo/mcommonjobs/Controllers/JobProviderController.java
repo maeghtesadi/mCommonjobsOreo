@@ -8,7 +8,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Models.Application;
 import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
@@ -118,8 +117,11 @@ public class JobProviderController {
 
                                 String displayname = applicant_current_position.getString("displayname");
                                 String typeofjob = applicant_current_position.getString("typeofjob");
-                                Application app= new Application(typeofjob,displayname);
-
+                                String yearsofExperience = applicant_current_position.getString("yearsofexperience");
+                                String expected_wage = applicant_current_position.getString("expected_wage");
+                                String availability = applicant_current_position.getString("availability");
+                                //Application app= new Application(typeofjob,displayname);
+                                Application app = new Application(typeofjob,displayname,yearsofExperience,availability,expected_wage);
                                 applicants.add(app);
 
                             }
