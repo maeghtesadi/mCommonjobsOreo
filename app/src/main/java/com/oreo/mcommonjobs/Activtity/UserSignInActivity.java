@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -34,6 +35,7 @@ public class UserSignInActivity extends AppCompatActivity implements GoogleApiCl
     static final int RC_SIGN_IN = 45798;
     private GoogleApiClient mGoogleApiClient;
     private SignInButton signInButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,16 +131,18 @@ public class UserSignInActivity extends AppCompatActivity implements GoogleApiCl
                             if(!response.has("error")){
                                 JSONObject result = response.getJSONObject("result");
                                 String userType = (String) result.get("type");
-                                if(userType.equals("JobSeeker")){
-                                    // Jump to profile selection
+                                if(userType.equalsIgnoreCase("JobSeeker")){
+                                    // Go to Job Seeker Profile Menu
+                                    UserSession.getInstance().setUserType("JobSeeker");
                                     startActivity(new Intent(getApplicationContext(), JobSeekerProfileMenuActivity.class));
                                 }
-                                else if(userType.equals("JobProvider")){
-                                    // Jump to Main Menu for Job Providers
+                                else if(userType.equalsIgnoreCase("JobProvider")){
+                                    // Go to Job Provider Navigation Menu
+                                    UserSession.getInstance().setUserType("JobProvider");
                                     startActivity(new Intent(getApplicationContext(), JobProviderNavigationMenuActivity.class)); }
                             }
                             else{
-                                // Handle error
+                                Log.d("User Type", "Could not determine user type.");
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -148,7 +152,7 @@ public class UserSignInActivity extends AppCompatActivity implements GoogleApiCl
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Handle error
+                        Log.d("User Type", "Could not determine user type.");
                     }
                 });
         request.setShouldCache(false);
@@ -157,6 +161,6 @@ public class UserSignInActivity extends AppCompatActivity implements GoogleApiCl
 
 
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        // log connection failed
+        Log.d("Connection", "Could not establish connection.");
     }
 }
