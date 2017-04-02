@@ -14,6 +14,7 @@ import com.oreo.mcommonjobs.Controllers.JobSeekerController;
 import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.JobSession;
+import com.oreo.mcommonjobs.Session.PersonSession;
 
 import org.json.JSONException;
 
@@ -31,13 +32,15 @@ public class ViewJobsActivity extends AppCompatActivity {
 
     private List<Job> listOfJobs = new ArrayList<>();
     JobSeekerController jobSeekerController = new JobSeekerController();
-    TextView t;
+    String buttonClicked;
+    PersonSession personInstance = PersonSession.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_jobs);
-        populateJobList(); // @jason rename this method to be descriptive - pull from database? getJobsFromDatabase?
+
+        populateJobList();
     }
 
     /**
@@ -47,34 +50,25 @@ public class ViewJobsActivity extends AppCompatActivity {
      */
     private void populateJobList() {
 
-        listOfJobs = jobSeekerController.getJobs(this.getApplicationContext());
+
+        buttonClicked = getIntent().getStringExtra("EXTRA_JOB_BUTTON_CLICKED");
+
+        if(buttonClicked.equals("allJobs")){
+            listOfJobs = jobSeekerController.getAllJobs(this.getApplicationContext());}
+        else{
+            listOfJobs = jobSeekerController.getProfileJobs(personInstance.getCurrentprofile() ,this.getApplicationContext());
+        }
 
         ArrayAdapter<Job> adapter = new customAdapter();
         ListView jobsList = (ListView) (findViewById(R.id.joblist));
         jobsList.setAdapter(adapter);
 
-
-
-     /*   jobsList.setOnItemClickListener(new OnItemClickListener(){
-
-            @Override
-            public void OnItemClick(ArrayAdapter<Job> adapter, View view, int position, long id){
-
-                startActivity(new Intent(this, JobInfoActivity.class));
-
-            }
-
-        }); */
     }
-
 
     /**
      * Inner class to customize adapter handles
      */
-
     private class customAdapter extends ArrayAdapter<Job> {
-
-
 
         /**
          * Constructor for customAdapter
@@ -101,16 +95,13 @@ public class ViewJobsActivity extends AppCompatActivity {
                 convertView = getLayoutInflater().inflate(R.layout.jobfragment, parent, false);
             }
 
-            Job currentJob = listOfJobs.get(position);
+            final Job currentJob = listOfJobs.get(position);
 
             TextView heading = (TextView) convertView.findViewById(R.id.heading);
             TextView desc = (TextView) convertView.findViewById(R.id.desc);
 
             heading.setText(currentJob.getCategory());
             desc.setText(currentJob.getDescription());
-
-
-
 
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -119,17 +110,14 @@ public class ViewJobsActivity extends AppCompatActivity {
                     TextView heading = (TextView) view.findViewById(R.id.heading);
                     TextView desc = (TextView) view.findViewById(R.id.desc);
 
-
-
-
                     String headingString = heading.getText().toString();
                     String descString = desc.getText().toString();
 
                     JobSession jobSession = JobSession.getInstance();
                     jobSession.setTypeOfJob(headingString);
                     jobSession.setDescription(descString);
+                    jobSession.setEmail_job_provider(currentJob.getJob_provider_email());
 
-                    String test = jobSession.getDescription();
                     Intent i = new Intent(ViewJobsActivity.this, JobInfoActivity.class);
                     startActivity(i);
                 }

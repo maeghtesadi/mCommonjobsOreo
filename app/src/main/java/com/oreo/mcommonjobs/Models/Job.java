@@ -10,10 +10,18 @@ public class Job {
     int id;
     String description;
     String category;
+    String job_provider_email;
     String status;
 
     enum JobStatus { AVAILABLE, EXPIRED}
     enum JobCategory {GARDENING, VEHICULE, COOKING, CARE}
+
+
+    public Job(String description, String category, String job_provider_email) {
+        this.description = description;
+        this.category = category;
+        this.job_provider_email = job_provider_email;
+    }
 
     /**
      * Constructor for object Job.
@@ -96,5 +104,14 @@ public class Job {
      */
     public void setStatus(String status) {
         this.status = status;
+    }
+
+
+    public String getJob_provider_email() {
+        return job_provider_email;
+    }
+
+    public void setJob_provider_email(String job_provider_email) {
+        this.job_provider_email = job_provider_email;
     }
 }

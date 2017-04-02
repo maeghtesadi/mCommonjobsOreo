@@ -9,6 +9,7 @@ public class JobSession {
     private static JobSession currentJob = null;
     private String typeOfJob;
     private String description;
+    private String email_job_provider;
 
     /**
      * Default constructor & exists only to defeat instantiation.
@@ -64,5 +65,13 @@ public class JobSession {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getEmail_job_provider() {
+        return email_job_provider;
+    }
+
+    public void setEmail_job_provider(String email_job_provider) {
+        this.email_job_provider = email_job_provider;
     }
 }

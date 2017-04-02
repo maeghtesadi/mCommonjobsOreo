@@ -1,7 +1,6 @@
 package com.oreo.mcommonjobs.Activtity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -49,8 +48,8 @@ public class JobInfoActivity extends AppCompatActivity{
 
                 JobSeekerController jobSeekerController = new JobSeekerController();
 
-                jobSeekerController.applyToJob(jobSession.getTypeOfJob(),jobSession.getDescription(),personSession.getEmail(),c);
-
+                jobSeekerController.applyToJob(jobSession.getTypeOfJob(),jobSession.getDescription(),jobSession.getEmail_job_provider(),personSession.getEmail(),c);
+            finish();
             }
         });
 

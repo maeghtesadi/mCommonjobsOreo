@@ -6,11 +6,13 @@ import android.content.Intent;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
-import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity;
-import com.oreo.mcommonjobs.Activtity.TwilioAuthenticationActivity;
+
+import com.oreo.mcommonjobs.Models.URLPath;
+import com.oreo.mcommonjobs.Activtity.ViewProfilesActivity;
+
 import com.oreo.mcommonjobs.Session.PersonSession;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
@@ -31,35 +33,45 @@ public class UserController {
      * Makes a volley request, expects String as response, checks if user exsists, if so launches appropiate navigationactivity, else sends user to sign up page.
      *
      * @param email
-     * @param c
+     * @param context
      */
-    public void checkifExsists(String email, final Context c) {
-        String loginLink = "http://[Ip address here]/login.php";
-        final String email2 = email;
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                PersonSession instance = PersonSession.getInstance();
-                try {
-                    if(response.equals("noUser")){
-                        Intent z = new Intent(c, TwilioAuthenticationActivity.class);
-                        c.startActivity(z);
-                    }else {
-                        JSONObject values = new JSONObject(response);
+    public void checkIfExists(final String email, final Context context){
+        // Post params to be sent to the server
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("email", email);
 
-                        instance.setTypeOfUser(values.getString("typeofuser"));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.login, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            PersonSession personSession = PersonSession.getInstance();
+                            if(response.has("result")){
+                                JSONObject result = response.getJSONObject("result");
+                                personSession.setTypeOfUser(result.getString("type"));
 
-                        if (instance.getTypeOfUser().equals("jobprovider")) {
-                            Intent i = new Intent(c, NavigationActivityForJobProvider.class);
-                            c.startActivity(i);
+                                if (personSession.getTypeOfUser().equals("jobprovider")) {
+                                    Intent i = new Intent(context, NavigationActivityForJobProvider.class);
+                                    context.startActivity(i);
+                                }
+
+                        if (personSession.getTypeOfUser().equals("jobprovider")) {
+                            Intent i = new Intent(context, NavigationActivityForJobProvider.class);
+                            context.startActivity(i);
+
                         }
 
-                        if (instance.getTypeOfUser().equals("jobseeker")) {
-                            Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
-                            c.startActivity(i);
+                        if (personSession.getTypeOfUser().equals("jobseeker")) {
+
+                            Intent i = new Intent (context, ViewProfilesActivity.class);
+                            context.startActivity(i);
                         }
-                    }
+                    } else{
+                                Intent z = new Intent(context, SelectUserTypeActivity.class);
+                                context.startActivity(z);
+
+                            }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -67,58 +79,49 @@ public class UserController {
                 public void onErrorResponse(VolleyError error){
                 }
             }
-        ){
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-               params.put("email",  email2);
-
-                return params;
-            }
-        };
-        RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
+        );
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
     }
 
 
-    public void registerAccount(String firstName, String lastName, String email, String typeOfUser, final Context c) {
-        String loginLink = "http://[Ip address here]/insert.php";
-        final String email2 = email;
-        final String firstname2=firstName;
-        final String lastname2=lastName;
-        final String typeofuser2=typeOfUser;
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, loginLink, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                PersonSession instance = PersonSession.getInstance();
-                instance.setTypeOfUser(typeofuser2);
+    /**
+     * Makes a volley request which adds user into the database after selecting their profile type (JobSeeker or JobProvider)
+     *
+     * @param email
+     * @param firstname
+     * @param lastname
+     * @param typeofuser
+     * @param context
+     */
+    public void registerAccount(final String firstname, final String lastname, final String email, final String typeofuser, final Context context){
 
-                if (instance.getTypeOfUser().equals("jobprovider")) {
-                    Intent i = new Intent(c, NavigationActivityForJobProvider.class);
-                    c.startActivity(i);
-                }
 
-                if (instance.getTypeOfUser().equals("jobseeker")) {
-                    Intent i = new Intent(c, NavigationActivityForJobSeeker.class);
-                    c.startActivity(i);
-                }
-            }
-        }, new Response.ErrorListener() {
-            public void onErrorResponse(VolleyError error) {
+        // Post params to be sent to the server
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("firstname", firstname);
+        params.put("lastname", lastname);
+        params.put("email", email);
+        params.put("typeofuser", typeofuser);
 
-            }
-        }
-        ) {
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("email", email2);
-                params.put("firstName", firstname2);
-                params.put("lastName", lastname2);
-                params.put("typeofuser", typeofuser2);
 
-                return params;
-            }
-        };
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.insert, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
 
-        RequestSingleton.getInstance(c).addToRequestQueue(stringRequest);
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error
+                    }
+                });
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
+
     }
 }

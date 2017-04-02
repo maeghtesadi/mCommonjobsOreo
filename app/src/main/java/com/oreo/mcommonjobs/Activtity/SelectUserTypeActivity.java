@@ -45,7 +45,10 @@ public class SelectUserTypeActivity extends AppCompatActivity {
                 typeOfUser = "jobseeker"; // turn this into an enum or something @jason
                 personInstance.setTypeOfUser("jobseeker");
                 user.registerAccount(personInstance.getFirstName(), personInstance.getLastName(), personInstance.getEmail(), typeOfUser, selectUserTypeContext);
-                Intent i = new Intent(getApplicationContext(), NavigationActivityForJobSeeker.class);
+                // now we send them to profile page
+
+               // Intent i = new Intent(getApplicationContext(), NavigationActivityForJobSeeker.class);
+               Intent i = new Intent(getApplicationContext(), AddProfileActivity.class);
                 startActivity(i);
             }
         });

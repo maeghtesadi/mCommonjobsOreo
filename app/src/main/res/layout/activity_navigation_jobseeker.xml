@@ -49,10 +49,10 @@
                     android:layout_weight="50">
 
                     <Button
-                        android:text="Search"
+                        android:text="ViewJobs profile jobs"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/btn_search"
+                        android:id="@+id/btn_view_jobs_for_your_profile"
                         android:layout_weight="1" />
                 </LinearLayout>
 
@@ -84,7 +84,7 @@
                     android:layout_weight="50">
 
                     <Button
-                        android:text="View Jobs"
+                        android:text="View All Jobs"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/btn_addjob" />
