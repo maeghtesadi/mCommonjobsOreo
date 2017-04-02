@@ -132,13 +132,15 @@ public class UserSignInActivity extends AppCompatActivity implements GoogleApiCl
                                 JSONObject result = response.getJSONObject("result");
                                 String userType = (String) result.get("type");
                                 if(userType.equalsIgnoreCase("JobSeeker")){
-                                    // Go to Job Seeker Profile Menu
                                     UserSession.getInstance().setUserType("JobSeeker");
+
+                                    // Go to Job Seeker Profile Menu
                                     startActivity(new Intent(getApplicationContext(), JobSeekerProfileMenuActivity.class));
                                 }
                                 else if(userType.equalsIgnoreCase("JobProvider")){
-                                    // Go to Job Provider Navigation Menu
                                     UserSession.getInstance().setUserType("JobProvider");
+
+                                    // Go to Job Provider Navigation Menu
                                     startActivity(new Intent(getApplicationContext(), JobProviderNavigationMenuActivity.class)); }
                             }
                             else{
