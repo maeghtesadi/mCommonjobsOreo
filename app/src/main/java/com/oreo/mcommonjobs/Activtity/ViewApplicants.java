@@ -95,9 +95,11 @@ public class ViewApplicants extends AppCompatActivity {
              public void onClick(View v) {
 
             Intent i = new Intent(getApplicationContext(), ViewApplicantCredentials.class);
-                 i.putExtra("availibility", currentApplicant.getAvalibility());
-                 i.putExtra("expected_wage", currentApplicant.getExpected_wage());
-                 i.putExtra("yearsofExperience", currentApplicant.getYearsofExperience());
+                  i.putExtra("username", currentApplicant.getUser_name());
+                  i.putExtra("typeofjob", currentApplicant.getJobtype());
+                  i.putExtra("availibility", currentApplicant.getAvalibility());
+                  i.putExtra("expected_wage", currentApplicant.getExpected_wage());
+                  i.putExtra("yearsofExperience", currentApplicant.getYearsofExperience());
                  startActivity(i);
 
 
