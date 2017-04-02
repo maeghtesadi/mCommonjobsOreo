@@ -2,21 +2,27 @@ package com.oreo.mcommonjobs.Activtity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.oreo.mcommonjobs.Controllers.JobProviderController;
 import com.oreo.mcommonjobs.R;
+import com.oreo.mcommonjobs.Session.PersonSession;
 
 /**
  * Created by jason on 2017-04-02.
  */
 
 public class ViewApplicantCredentials extends AppCompatActivity {
-
+    PersonSession personSession = PersonSession.getInstance();
     TextView usernameTextView, exspected_wageTextView, availibilityTextView, typeofjobTextView, yearsofExperienceTextview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_applicant_credentials);
+        Button btnAccept = (Button) findViewById(R.id.acceptApplicant);
 
         // getting the views to display info aftewards
         usernameTextView= (TextView) findViewById(R.id.nameofapplicant);
@@ -33,6 +39,19 @@ public class ViewApplicantCredentials extends AppCompatActivity {
         yearsofExperienceTextview.setText(getIntent().getStringExtra("yearsofExperience"));
 
 
+        btnAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                JobProviderController jobProviderController = new JobProviderController();
+                String s = personSession.getEmail();
+                String y = usernameTextView.getText().toString();
+                String z = typeofjobTextView.getText().toString();
+
+                jobProviderController.acceptApplicant(personSession.getEmail(),usernameTextView.getText().toString(),typeofjobTextView.getText().toString(), getApplicationContext());
+                finish();
+            }
+        });
 
 
 

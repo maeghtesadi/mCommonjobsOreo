@@ -146,6 +146,43 @@ public class JobProviderController {
 
 
 
+    public void acceptApplicant(final String emailProvider, final String displayNameSeeker, final String typeOfJob, final Context context){
+
+        // Post params to be sent to the server
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("typeOfJob", typeOfJob);
+        params.put("emailProvider", emailProvider);
+        params.put("displayNameSeeker", displayNameSeeker);
+
+
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.acceptApplicant, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error
+                    }
+                });
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
+
+        CharSequence text = "Applicant accepted and notified!";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+
+    }
+
 
 
 
