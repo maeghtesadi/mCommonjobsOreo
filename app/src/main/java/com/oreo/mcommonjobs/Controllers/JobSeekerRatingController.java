@@ -9,6 +9,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.oreo.mcommonjobs.Models.JobSeekerRating;
+import com.oreo.mcommonjobs.Models.ReviewableJobProvider;
+import com.oreo.mcommonjobs.Models.ReviewableJobSeeker;
 import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
@@ -65,6 +67,10 @@ public class JobSeekerRatingController {
                     for(int i = 0; i < jsonJobSeekerRatingsArray.length(); i++){
                         JSONObject ratingCurrentPosition = jsonJobSeekerRatingsArray.getJSONObject(i);
 
+                        String displayName = ratingCurrentPosition.getString("displayName");
+                        String firstName = ratingCurrentPosition.getString("firstName");
+                        String lastName = ratingCurrentPosition.getString("lastName");
+                        String email = ratingCurrentPosition.getString("email");
                         int raterId = ratingCurrentPosition.getInt("raterid");
                         int jobSeekerId = ratingCurrentPosition.getInt("jobseekerid");
                         int rating1 = ratingCurrentPosition.getInt("rating1");
@@ -73,7 +79,7 @@ public class JobSeekerRatingController {
                         int averageRating = ratingCurrentPosition.getInt("averagerating");
                         String comment = ratingCurrentPosition.getString("comment");
 
-                        JobSeekerRating jobSeekerRating = new JobSeekerRating(raterId, jobSeekerId, rating1, rating2, rating3, averageRating, comment);
+                        JobSeekerRating jobSeekerRating = new JobSeekerRating(displayName, firstName, lastName, email, raterId, jobSeekerId, rating1, rating2, rating3, averageRating, comment);
 
                         jobSeekerRatingList.add(jobSeekerRating);
                     }
@@ -99,5 +105,51 @@ public class JobSeekerRatingController {
         RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
 
         return jobSeekerRatingList;
+    }
+
+    public List<ReviewableJobProvider> getReviewableJobProviders(final String seekerEmail, Context context){
+
+        final List<ReviewableJobProvider> reviewableJobProviderList= new ArrayList<ReviewableJobProvider>();
+
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getProvidersForSeeker, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try{
+                    JSONArray jsonReviewableJobproviderArray = response.getJSONArray("applications ");
+
+                    for(int i = 0; i < jsonReviewableJobproviderArray.length(); i++){
+                        JSONObject reviewableJobProviderCurrentPosition = jsonReviewableJobproviderArray.getJSONObject(i);
+
+                        String displayName = reviewableJobProviderCurrentPosition.getString("displayName");
+                        String firstName = reviewableJobProviderCurrentPosition.getString("firstName");
+                        String lastName = reviewableJobProviderCurrentPosition.getString("lastName");
+                        String email = reviewableJobProviderCurrentPosition.getString("posterEmail");
+
+                        ReviewableJobProvider reviewableJobProvider = new ReviewableJobProvider(displayName, firstName, lastName, email);
+
+                        reviewableJobProviderList.add(reviewableJobProvider);
+                    }
+                }catch(JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Error", "Unable to parse json array");
+            }
+        }){
+            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError{
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("seekerEmail", seekerEmail);
+
+                return params;
+            }
+
+        };
+
+        RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
+
+        return reviewableJobProviderList;
     }
 }
