@@ -105,7 +105,7 @@ public class JobProviderRatingController {
         return jobProviderRatingList;
     }
 
-    public List<ReviewableJobSeeker> getReviewableHiredEmployees(final String providerEmail, Context context) {
+    public List<ReviewableJobSeeker> getReviewableJobSeekers(final String providerEmail, Context context) {
 
         final List<ReviewableJobSeeker> reviewableJobSeekerList = new ArrayList<ReviewableJobSeeker>();
 
