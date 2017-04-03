@@ -1,9 +1,10 @@
 package com.oreo.mcommonjobs.Models;
 
 /**
- * Created by Rameen on 4/3/2017.
+ * This class consists methods for operating on an ApplicationStatus object.
+ *
+ * @author Rameen
  */
-
 public class ApplicationStatus {
     private String status;
     private String typeOfJob;
