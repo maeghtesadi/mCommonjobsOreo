@@ -29,6 +29,8 @@ import java.util.Map;
  * @author Jason
  */
 public class JobProviderController {
+
+
     ValidateInputs validateInputs = ValidateInputs.getInstance();
 
     /**
@@ -89,60 +91,6 @@ public class JobProviderController {
     }
     }
 
-
-    /**
-     * This method allows a user of type JobProvider to get the list of people who applied to a job they posted
-     * @param email - email of the Jobprovider
-     * @param context
-     * @return List of applications
-     */
-    public List<Application> getApplicants(final String email,Context context){
-
-        final List<Application> applicants = new ArrayList<>();
-
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("email", email);
-
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getApplicants, new JSONObject(params),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                  ;
-                        try {
-
-                            JSONArray jsonApplicantssarray = response.getJSONArray("applications");
-
-                            for (int i = 0; i < jsonApplicantssarray.length(); i++) {
-                                JSONObject applicant_current_position = jsonApplicantssarray.getJSONObject(i);
-
-                                String displayname = applicant_current_position.getString("displayname");
-                                String typeofjob = applicant_current_position.getString("typeofjob");
-                                String yearsofExperience = applicant_current_position.getString("yearsofexperience");
-                                String expected_wage = applicant_current_position.getString("expected_wage");
-                                String availability = applicant_current_position.getString("availability");
-                                //Application app= new Application(typeofjob,displayname);
-                                Application app = new Application(typeofjob,displayname,yearsofExperience,availability,expected_wage);
-                                applicants.add(app);
-
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Log.e("Error", "Unable to parse json array");
-            }
-        });
-        RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
-
-
-
-        return applicants;
-    }
 
 
     /**
