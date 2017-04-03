@@ -8,7 +8,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Models.Application;
 import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
@@ -118,8 +117,11 @@ public class JobProviderController {
 
                                 String displayname = applicant_current_position.getString("displayname");
                                 String typeofjob = applicant_current_position.getString("typeofjob");
-                                Application app= new Application(typeofjob,displayname);
-
+                                String yearsofExperience = applicant_current_position.getString("yearsofexperience");
+                                String expected_wage = applicant_current_position.getString("expected_wage");
+                                String availability = applicant_current_position.getString("availability");
+                                //Application app= new Application(typeofjob,displayname);
+                                Application app = new Application(typeofjob,displayname,yearsofExperience,availability,expected_wage);
                                 applicants.add(app);
 
                             }
@@ -143,10 +145,50 @@ public class JobProviderController {
     }
 
 
+    /**
+     * This method allows a user of type JobProvider to get the list of people who applied to a job they posted
+     * @param emailProvider - email of the Jobprovider
+     * @param displayNameSeeker - display name of the job seeker
+     * @param typeOfJob - type of job being applied to
+     * @param context
+     *
+     */
+    public void acceptApplicant(final String emailProvider, final String displayNameSeeker, final String typeOfJob, final Context context){
+
+        // Post params to be sent to the server
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("typeOfJob", typeOfJob);
+        params.put("emailProvider", emailProvider);
+        params.put("displayNameSeeker", displayNameSeeker);
 
 
 
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.acceptApplicant, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
 
 
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error
+                    }
+                });
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
+
+        CharSequence text = "Applicant accepted and notified!";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+
+    }
+    
 
 }

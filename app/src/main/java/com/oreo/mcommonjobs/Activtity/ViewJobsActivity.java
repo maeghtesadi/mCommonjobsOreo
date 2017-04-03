@@ -104,6 +104,7 @@ public class ViewJobsActivity extends AppCompatActivity {
             desc.setText(currentJob.getDescription());
 
             convertView.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View view) {
 
@@ -118,7 +119,9 @@ public class ViewJobsActivity extends AppCompatActivity {
                     jobSession.setDescription(descString);
                     jobSession.setEmail_job_provider(currentJob.getJob_provider_email());
 
+
                     Intent i = new Intent(ViewJobsActivity.this, JobInfoActivity.class);
+
                     startActivity(i);
                 }
             });

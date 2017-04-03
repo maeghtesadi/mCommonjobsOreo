@@ -31,6 +31,9 @@
         <activity android:name=".Activtity.ViewApplicants" />
         <activity android:name=".Activtity.AddProfileActivity" />
         <activity android:name=".Activtity.ViewProfilesActivity" />
+        <activity android:name=".Activtity.ApplicationQuestionsActivity" />
+        <activity android:name=".Activtity.ViewApplicantCredentials" />
+
 
 
     </application>

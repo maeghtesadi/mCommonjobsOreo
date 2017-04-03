@@ -1,5 +1,6 @@
 package com.oreo.mcommonjobs.Activtity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -80,13 +81,41 @@ public class ViewApplicants extends AppCompatActivity {
              convertView = getLayoutInflater().inflate(R.layout.applicantfragment, parent, false);
          }
 
-         Application currentApplicant = applicants.get(position);
+         final Application currentApplicant = applicants.get(position);
 
          TextView jobtitle = (TextView) convertView.findViewById(R.id.textView2);
          TextView name = (TextView) convertView.findViewById(R.id.desc);
 
          jobtitle.setText(currentApplicant.getJobtype());
          name.setText(currentApplicant.getUser_name());
+
+
+         convertView.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+
+            Intent i = new Intent(getApplicationContext(), ViewApplicantCredentials.class);
+                  i.putExtra("username", currentApplicant.getUser_name());
+                  i.putExtra("typeofjob", currentApplicant.getJobtype());
+                  i.putExtra("availibility", currentApplicant.getAvalibility());
+                  i.putExtra("expected_wage", currentApplicant.getExpected_wage());
+                  i.putExtra("yearsofExperience", currentApplicant.getYearsofExperience());
+                 startActivity(i);
+
+
+             }
+         });
+
+
+
+
+
+
+
+
+
+
+
 
          return convertView;
      }

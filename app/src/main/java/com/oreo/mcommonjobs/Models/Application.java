@@ -8,13 +8,24 @@ package com.oreo.mcommonjobs.Models;
  */
 public class Application {
 
-    String jobtype;
-    String user_name;
+    private    String jobtype;
+    private    String user_name;
+    private    String yearsofExperience;
+    private    String avalibility;
+    private    String expected_wage;
 
 
     public Application(String jobtype, String user_name) {
         this.jobtype = jobtype;
         this.user_name = user_name;
+    }
+
+    public Application(String jobtype, String user_name, String yearsofExperience, String avalibility, String expected_wage) {
+        this.jobtype = jobtype;
+        this.user_name = user_name;
+        this.yearsofExperience = yearsofExperience;
+        this.avalibility = avalibility;
+        this.expected_wage = expected_wage;
     }
 
     public String getJobtype() {
@@ -31,5 +42,29 @@ public class Application {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    public String getYearsofExperience() {
+        return yearsofExperience;
+    }
+
+    public void setYearsofExperience(String yearsofExperience) {
+        this.yearsofExperience = yearsofExperience;
+    }
+
+    public String getAvalibility() {
+        return avalibility;
+    }
+
+    public void setAvalibility(String avalibility) {
+        this.avalibility = avalibility;
+    }
+
+    public String getExpected_wage() {
+        return expected_wage;
+    }
+
+    public void setExpected_wage(String expected_wage) {
+        this.expected_wage = expected_wage;
     }
 }

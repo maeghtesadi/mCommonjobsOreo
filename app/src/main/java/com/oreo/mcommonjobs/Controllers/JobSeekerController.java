@@ -9,7 +9,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.Models.Profile;
@@ -82,9 +81,12 @@ public class JobSeekerController {
      * @param description - description of the job
      * @param emailProvider - email of the JobProvider who posted the job
      * @param emailSeeker - email of the JobSeeker user applying to the job
+     * @param yearsofExperience - the years of experience user has for a job
+     * @param avalibilty - their general avalibility
+     * @param expected_wage - the users expected wage
      * @param context
      */
-    public void applyToJob(final String type, final String description, final String emailProvider, final String emailSeeker, final Context context){
+    public void applyToJob(final String type, final String description, final String emailProvider, final String emailSeeker,final String yearsofExperience, final String avalibilty, final String expected_wage, final Context context){
 
         // Post params to be sent to the server
         Map<String, String> params = new HashMap<String, String>();
@@ -93,6 +95,9 @@ public class JobSeekerController {
         params.put("typeofjob", type);
         params.put("emailProvider", emailProvider);
         params.put("emailSeeker", emailSeeker);
+        params.put("yearsofExperience", yearsofExperience);
+        params.put("availability", avalibilty);
+        params.put("expected_wage", expected_wage);
 
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.apply, new JSONObject(params),
