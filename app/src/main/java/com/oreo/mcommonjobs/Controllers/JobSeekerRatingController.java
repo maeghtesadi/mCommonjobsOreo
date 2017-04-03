@@ -76,7 +76,7 @@ public class JobSeekerRatingController {
                         int rating1 = ratingCurrentPosition.getInt("rating1");
                         int rating2 = ratingCurrentPosition.getInt("rating2");
                         int rating3 = ratingCurrentPosition.getInt("rating3");
-                        int averageRating = ratingCurrentPosition.getInt("averagerating");
+                        double averageRating = ratingCurrentPosition.getDouble("averagerating");
                         String comment = ratingCurrentPosition.getString("comment");
 
                         JobSeekerRating jobSeekerRating = new JobSeekerRating(displayName, firstName, lastName, email, raterId, jobSeekerId, rating1, rating2, rating3, averageRating, comment);

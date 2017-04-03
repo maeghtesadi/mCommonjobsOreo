@@ -15,10 +15,10 @@ public class JobProviderRating {
     int rating1;
     int rating2;
     int rating3;
-    int averageRating;
+    double averageRating;
     String comment;
 
-    public JobProviderRating(String displayName, String firstName, String lastName, String email, int raterId, int jobProviderId, int rating1, int rating2, int rating3, int averageRating, String comment){
+    public JobProviderRating(String displayName, String firstName, String lastName, String email, int raterId, int jobProviderId, int rating1, int rating2, int rating3, double averageRating, String comment){
         this.displayName = displayName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -68,7 +68,7 @@ public class JobProviderRating {
         return rating3;
     }
 
-    public int getAverageRating() {
+    public double getAverageRating() {
         return averageRating;
     }
 
@@ -112,7 +112,7 @@ public class JobProviderRating {
         this.rating3 = rating3;
     }
 
-    public void setAverageRating(int averageRating) {
+    public void setAverageRating(double averageRating) {
         this.averageRating = averageRating;
     }
 
