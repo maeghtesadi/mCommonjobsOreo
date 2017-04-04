@@ -107,10 +107,10 @@
                     android:layout_weight="50">
 
                     <Button
-                        android:text="@string/messages"
+                        android:id="@+id/btn_rating"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/btn_messages" />
+                        android:text="@string/rating" />
                 </LinearLayout>
             </LinearLayout>
 

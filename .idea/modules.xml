@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mCommonjobsOreo.iml" filepath="$PROJECT_DIR$/mCommonjobsOreo.iml" />
-
+      <module fileurl="file://$PROJECT_DIR$/mcommonjob-ft-rating.iml" filepath="$PROJECT_DIR$/mcommonjob-ft-rating.iml" />
     </modules>
   </component>
 </project>

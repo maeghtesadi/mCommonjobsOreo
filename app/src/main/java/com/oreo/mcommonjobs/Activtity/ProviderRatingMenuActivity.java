@@ -28,7 +28,7 @@ public class ProviderRatingMenuActivity extends AppCompatActivity {
         button_rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent rateSeekerIntent = new Intent(getApplicationContext(), ProviderJobsListActivity.class);
+                Intent rateSeekerIntent = new Intent(getApplicationContext(), ProviderEmployeesListActivity.class);
                 startActivity(rateSeekerIntent);
             }
         });
