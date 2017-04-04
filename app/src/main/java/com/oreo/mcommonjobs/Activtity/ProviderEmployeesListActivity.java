@@ -54,10 +54,12 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
 
         applicantsList = getReviewableJobSeekers(personInstance.getEmail(), this.getApplicationContext());
 
+        /*
         ArrayAdapter<ReviewableJobSeeker> adapter = new customAdapter();
         ListView employeeList = (ListView) (findViewById(R.id.provideremployeelist));
         employeeList.setAdapter(adapter);
         employeeList.setOnItemClickListener(onListClick);
+        */
     }
 
     private AdapterView.OnItemClickListener onListClick = new AdapterView.OnItemClickListener() {
@@ -134,6 +136,10 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
 
                         reviewableJobSeekerList.add(reviewableJobSeeker);
                     }
+                    ArrayAdapter<ReviewableJobSeeker> adapter = new customAdapter();
+                    ListView employeeList = (ListView) (findViewById(R.id.provideremployeelist));
+                    employeeList.setAdapter(adapter);
+                    employeeList.setOnItemClickListener(onListClick);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
