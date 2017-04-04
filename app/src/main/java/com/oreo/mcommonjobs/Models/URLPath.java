@@ -21,6 +21,7 @@ public class URLPath {
     public static final String getJobsForCurrentProfile = prefix + "/getjobsforcurrentprofile.php";
     public static final String acceptApplicant = prefix + "/acceptapplicant.php";
     public static final String getApplications = prefix + "/getapplicationstatuses.php";
+    public static final String checkIfAcceptedApplication = prefix + "/checkifacceptedapplication.php";
 
 }
 
