@@ -15,15 +15,21 @@ public class URLPath {
     public static final String insert = prefix + "/insert.php";
     public static final String apply = prefix + "/apply.php";
     public static final String addJob = prefix + "/addjob.php";
-    public static final String getApplicants = prefix + "/getApplicants.php";
+    public static final String getApplicants = prefix + "/getapplicants.php";
     public static final String addProfile = prefix + "/addprofile.php";
     public static final String getProfiles = prefix + "/getprofiles.php";
     public static final String getJobsForCurrentProfile = prefix + "/getjobsforcurrentprofile.php";
+
     public static final String addProviderRating = prefix + "addProviderRating.php";
     public static final String addSeekerRating = prefix + "addSeekerRating.php";
     public static final String getProviderRatings = prefix + "getProviderRatings.php";
     public static final String getSeekerRatings = prefix + "getSeekerRatings.php";
     public static final String getProvidersForSeeker = prefix + "getProvidersForSeeker.php";
     public static final String getHiredSeekersForJobProvider = prefix + "getHiredSeekersForJobProvider.php";
+
+    public static final String acceptApplicant = prefix + "/acceptapplicant.php";
+    public static final String getApplications = prefix + "/getapplicationstatuses.php";
+
+
 }
 

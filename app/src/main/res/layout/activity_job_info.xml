@@ -66,19 +66,21 @@
             android:id="@+id/btnApply"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_rounded_green_1"
-            android:layout_weight="40"
             android:layout_margin="5dp"
-            android:text="Apply" />
+            android:layout_weight="40"
+            android:background="@drawable/btn_rounded_green_1"
+            android:text="Apply"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btnShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_rounded_default"
             android:layout_margin="5dp"
             android:layout_weight="40"
-            android:text="Share" />
+            android:background="@drawable/btn_rounded_default"
+            android:text="Share"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 </LinearLayout>

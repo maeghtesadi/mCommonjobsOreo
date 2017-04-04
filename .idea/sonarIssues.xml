@@ -3,17 +3,22 @@
   <component name="issues">
     <option name="index">
       <map>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Activtity/CreateJobPostActivity.java">
+        <entry key="/fragment.java">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Activtity/ViewYourProfilesActivity.java">
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Activtity/NavigationActivityForJobSeeker.java">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Controllers/JobSeekerController.java">
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Activtity/ViewPendingApplicationsActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Models/ApplicationStatus.java">
           <value>
             <set />
           </value>

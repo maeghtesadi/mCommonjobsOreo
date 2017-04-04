@@ -8,16 +8,19 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/background1"><![CDATA[
+    android:background="#FFFFFF"
     tools:context="com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity">
 
-    ]]>
+
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="100">
+        android:weightSum="100"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:orientation="vertical"
@@ -45,71 +48,91 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/page_title_profile_info"
-                    android:textColor="@color/common_plus_signin_btn_text_light_focused"
+                    android:textColor="#06bebd"
                     android:textAlignment="center"
                     android:textAllCaps="true"
-                    android:fontFamily="Montserrat-Regular"
-                    android:textSize="32sp" />
+                    android:fontFamily="Asap-Regular"
+                    android:textSize="44sp" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="70"
             android:weightSum="100">
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="13">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="13"
+                android:orientation="vertical">
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="74"
-                android:background="@android:color/white"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
                 android:weightSum="100">
 
+
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="50">
+                    android:layout_weight="50"
+                    android:orientation="horizontal">
 
                     <Button
-                        android:text="@string/job_seeker"
+                        android:id="@+id/btn_jobseeker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/btn_jobseeker"
-                        android:layout_weight="1" />
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/circlebtn"
+                        android:text="@string/job_seeker"
+                        android:textColor="#FFFFFF" />
+
+                    <Button
+                        android:id="@+id/btn_jobprovider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/circlebtn"
+                        android:text="@string/job_provider"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="50">
+                    android:layout_weight="50"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
 
                     <Button
-                        android:text="@string/job_provider"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/btn_continue"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/btn_jobprovider"
-                        android:layout_weight="1" />
+                        android:layout_gravity="right"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/btn_rounded_default"
+                        android:text="Continue"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="13"></LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="13"
+                android:orientation="vertical"></LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -119,3 +142,4 @@
             android:layout_weight="10"></LinearLayout>
     </LinearLayout>
 </RelativeLayout>
+

@@ -1,25 +1,37 @@
 package com.oreo.mcommonjobs.Activtity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.oreo.mcommonjobs.Controllers.JobSeekerController;
 import com.oreo.mcommonjobs.Models.Job;
+import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.JobSession;
 import com.oreo.mcommonjobs.Session.PersonSession;
+import com.oreo.mcommonjobs.Session.RequestSingleton;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Class/Activity Description here
@@ -40,9 +52,6 @@ public class ViewJobsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_jobs);
 
-
-
-
         populateJobList();
     }
 
@@ -57,27 +66,17 @@ public class ViewJobsActivity extends AppCompatActivity {
         buttonClicked = getIntent().getStringExtra("EXTRA_JOB_BUTTON_CLICKED");
 
         if(buttonClicked.equals("allJobs")){
-            listOfJobs = jobSeekerController.getallJobs(this.getApplicationContext());}
+            listOfJobs = getAllJobs(this.getApplicationContext());}
         else{
-            listOfJobs = jobSeekerController.getYourProfileJobs(personInstance.getCurrentprofile() ,this.getApplicationContext());
+            listOfJobs = getProfileJobs(personInstance.getCurrentprofile() ,this.getApplicationContext());
         }
 
-        ArrayAdapter<Job> adapter = new customAdapter();
-        ListView jobsList = (ListView) (findViewById(R.id.joblist));
-        jobsList.setAdapter(adapter);
-
-
-
     }
-
 
     /**
      * Inner class to customize adapter handles
      */
-
     private class customAdapter extends ArrayAdapter<Job> {
-
-
 
         /**
          * Constructor for customAdapter
@@ -112,18 +111,13 @@ public class ViewJobsActivity extends AppCompatActivity {
             heading.setText(currentJob.getCategory());
             desc.setText(currentJob.getDescription());
 
-
-
-
             convertView.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View view) {
 
                     TextView heading = (TextView) view.findViewById(R.id.heading);
                     TextView desc = (TextView) view.findViewById(R.id.desc);
-
-
-
 
                     String headingString = heading.getText().toString();
                     String descString = desc.getText().toString();
@@ -133,8 +127,9 @@ public class ViewJobsActivity extends AppCompatActivity {
                     jobSession.setDescription(descString);
                     jobSession.setEmail_job_provider(currentJob.getJob_provider_email());
 
-                    String test = jobSession.getDescription();
+
                     Intent i = new Intent(ViewJobsActivity.this, JobInfoActivity.class);
+
                     startActivity(i);
                 }
             });
@@ -143,6 +138,100 @@ public class ViewJobsActivity extends AppCompatActivity {
 
 
 
+    }
+
+
+    /**
+     * This method retrieves a list of jobs from the database.
+     *
+     * Makes a volley request, expects JsonObject as response and proceeds to return Jobs Arraylist
+     * @param context
+     * @return List<Jobs>
+     * @throws JSONException
+     */
+    private List<Job> getAllJobs(Context context){
+        final List<Job> jobs = new ArrayList<>();
+
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, URLPath.getJobs, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            JSONArray jsonJobsarray = response.getJSONArray("jobs");
+
+                            for (int i = 0; i < jsonJobsarray.length(); i++) {
+                                JSONObject job_current_position = jsonJobsarray.getJSONObject(i);
+
+                                String des = job_current_position.getString("description");
+                                String typeofjob = job_current_position.getString("typeofjob");
+                                String email = job_current_position.getString("posterEmail");
+                                jobs.add(new Job(des, typeofjob, email));
+                            }
+                            ArrayAdapter<Job> adapter = new customAdapter();
+                            ListView jobsList = (ListView) (findViewById(R.id.joblist));
+                            jobsList.setAdapter(adapter);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+        RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
+
+        return jobs;
+    }
+
+
+    /**
+     * This method gets the jobs that pertain to the seeker's current profile
+     * @param currentProfile - email of the JobSeeker
+     * @param context
+     */
+    private List<Job> getProfileJobs(final String currentProfile, Context context){
+        final List<Job> jobs = new ArrayList<>();
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("currentProfile", currentProfile);
+
+
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getJobsForCurrentProfile, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+
+                            JSONArray jsonJobsarray = response.getJSONArray("jobs");
+
+                            for (int i = 0; i < jsonJobsarray.length(); i++) {
+                                JSONObject currentJob = jsonJobsarray.getJSONObject(i);
+
+                                String des = currentJob.getString("description");
+                                String typeofjob = currentJob.getString("typeofjob");
+                                String email = currentJob.getString("posterEmail");
+                                jobs.add(new Job(des, typeofjob, email));
+                            }
+
+                            ArrayAdapter<Job> adapter = new customAdapter();
+                            ListView jobsList = (ListView) (findViewById(R.id.joblist));
+                            jobsList.setAdapter(adapter);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.e("Error", "Unable to parse json array");
+            }
+        });
+        RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
+
+        return jobs;
     }
 
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+
+    <!--top, dark, inner shadow-->
+    <item
+        android:bottom="@dimen/depth">
+        <shape android:shape="rectangle">
+            <solid android:color="#E5E5E5" />
+        </shape>
+    </item>
+
+    <!--left, dark, inner shadow-->
+    <item
+        android:bottom="@dimen/depth">
+        <shape android:shape="rectangle">
+            <solid android:color="#E5E5E5" />
+        </shape>
+    </item>
+
+    <!--bottom, light, outer glow-->
+    <item
+        android:top="@dimen/depth">
+        <shape android:shape="rectangle">
+            <solid android:color="#E5E5E5" />
+        </shape>
+    </item>
+    <!--left, light, outer glow-->
+    <item
+        android:top="@dimen/depth">
+        <shape android:shape="rectangle">
+            <solid android:color="#E5E5E5" />
+        </shape>
+    </item>
+    <item
+        android:top="@dimen/depth"
+        android:bottom="@dimen/depth"
+        android:left="@dimen/depth"
+        android:right="@dimen/depth">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+</layer-list>

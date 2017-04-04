@@ -8,7 +8,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.oreo.mcommonjobs.Models.Application;
 import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
@@ -30,6 +29,8 @@ import java.util.Map;
  * @author Jason
  */
 public class JobProviderController {
+
+
     ValidateInputs validateInputs = ValidateInputs.getInstance();
 
     /**
@@ -74,6 +75,11 @@ public class JobProviderController {
                 });
         request.setShouldCache(false);
         RequestSingleton.getInstance(context).addToRequestQueue(request);
+        CharSequence text = "Job Posting Created!";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }else{
 
         CharSequence text = "Job Post Invalid: enter a description please!";
@@ -86,73 +92,51 @@ public class JobProviderController {
     }
 
 
+
     /**
-     * This method allows a user of type JobProvider to get the list of people who applied to a job he posted
-     * @param jobprovider_email - email of the Jobprovider
+     * This method allows a user of type JobProvider to get the list of people who applied to a job they posted
+     * @param emailProvider - email of the Jobprovider
+     * @param displayNameSeeker - display name of the job seeker
+     * @param typeOfJob - type of job being applied to
      * @param context
-     * @return List of applications
+     *
      */
-    public List<Application> getApplicants(final String jobprovider_email,Context context){
+    public void acceptApplicant(final String emailProvider, final String displayNameSeeker, final String typeOfJob, final Context context){
 
-        final List<Application> applicants = new ArrayList<>();
+        // Post params to be sent to the server
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("typeOfJob", typeOfJob);
+        params.put("emailProvider", emailProvider);
+        params.put("displayNameSeeker", displayNameSeeker);
 
 
-        String url = "http://192.168.0.104/getApplicants.php";
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, null,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.acceptApplicant, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                  ;
-                        try {
 
-                            JSONArray jsonApplicantssarray = response.getJSONArray("applications");
 
-                            for (int i = 0; i < jsonApplicantssarray.length(); i++) {
-                                JSONObject applicant_current_position = jsonApplicantssarray.getJSONObject(i);
-
-                                String displayname = applicant_current_position.getString("displayname");
-                                String typeofjob = applicant_current_position.getString("typeofjob");
-                                Application app= new Application(typeofjob,displayname);
-
-                                applicants.add(app);
-
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error
+                    }
+                });
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
 
-                Log.e("Error", "Unable to parse json array");
-            }
-        }){
+        CharSequence text = "Applicant accepted and notified!";
+        int duration = Toast.LENGTH_LONG;
 
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("jobprovider_email", jobprovider_email);
-
-
-                return params;
-            }
-
-
-        };
-        RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
 
 
-
-        return applicants;
     }
-
-
-
-
-
-
-
+    
 
 }
