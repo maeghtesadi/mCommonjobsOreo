@@ -126,12 +126,12 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/extra_btn"
+                        android:id="@+id/btn_pending_applications"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@drawable/btn_square_menu"
-                        android:text="ViewJobs profile jobs"
+                        android:text="View your pending applications"
                         android:textColor="#06bebd" />
 
                     <Button
