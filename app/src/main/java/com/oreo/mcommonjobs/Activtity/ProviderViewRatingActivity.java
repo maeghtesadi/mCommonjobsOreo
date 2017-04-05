@@ -24,18 +24,18 @@ public class ProviderViewRatingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provider_view_rating);
 
-        name = (TextView) findViewById(R.id.seekerName1);
-        avgrating = (TextView) findViewById(R.id.avgRating);
-        attitudeR = (TextView) findViewById(R.id.rating1);
-        helpfulnessR = (TextView) findViewById(R.id.rating2);
-        QualityR = (TextView) findViewById(R.id.rating3);
-        comments = (TextView) findViewById(R.id.comment);
+        name = (TextView)findViewById(R.id.seekerName1);
+        avgrating = (TextView)findViewById(R.id.avgRating);
+        attitudeR = (TextView)findViewById(R.id.rating1);
+        helpfulnessR = (TextView)findViewById(R.id.rating2);
+        QualityR = (TextView)findViewById(R.id.rating3);
+        comments = (TextView)findViewById(R.id.comment);
 
         name.setText(getIntent().getStringExtra("DISPNAME_EXTRA") + " " + getIntent().getStringExtra("LASTNAME_EXTRA"));
         avgrating.setText(Double.toString(getIntent().getDoubleExtra("AVG_EXTRA", 0.0)));
-        attitudeR.setText(getIntent().getIntExtra("R1_EXTRA", 0));
-        helpfulnessR.setText(getIntent().getIntExtra("R2_EXTRA", 0));
-        QualityR.setText(getIntent().getIntExtra("R3_EXTRA", 0));
+        attitudeR.setText(Integer.toString(getIntent().getIntExtra("R1_EXTRA", 0)));
+        helpfulnessR.setText(Integer.toString(getIntent().getIntExtra("R2_EXTRA", 0)));
+        QualityR.setText(Integer.toString(getIntent().getIntExtra("R3_EXTRA", 0)));
         comments.setText(getIntent().getStringExtra("COMMENT_EXTRA"));
     }
 }

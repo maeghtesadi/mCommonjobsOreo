@@ -36,6 +36,7 @@
                 android:id="@+id/desc1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="Average rating:"
                 android:layout_weight="1"
                 android:padding="10dp"
@@ -64,6 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Attitude:"
+                android:textStyle="bold"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:textSize="20sp"/>
@@ -91,6 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Helpfulness:"
+                android:textStyle="bold"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:textSize="20sp"/>
@@ -118,6 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Quality of work environment:"
+                android:textStyle="bold"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:textSize="20sp"/>
@@ -145,6 +149,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Comment:"
+                android:textStyle="bold"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:textSize="20sp"/>
