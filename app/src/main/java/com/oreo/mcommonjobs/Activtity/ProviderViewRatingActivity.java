@@ -32,7 +32,7 @@ public class ProviderViewRatingActivity extends AppCompatActivity {
         comment = (TextView) findViewById(R.id.comment);
 
         seekerName.setText(getIntent().getStringExtra("DISPNAME_EXTRA") + " " + getIntent().getStringExtra("LASTNAME_EXTRA"));
-        avgrating.setText(Double.toString(getIntent().getDoubleExtra("AVGR_EXTRA", 0.0)));
+        avgrating.setText(Double.toString(getIntent().getDoubleExtra("AVG_EXTRA", 0.0)));
         attitudeR.setText(getIntent().getIntExtra("R1_EXTRA", 0));
         helpfulnessR.setText(getIntent().getIntExtra("R2_EXTRA", 0));
         QualityR.setText(getIntent().getIntExtra("R3_EXTRA", 0));

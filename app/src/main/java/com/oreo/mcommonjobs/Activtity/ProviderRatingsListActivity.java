@@ -41,14 +41,6 @@ import java.util.Map;
  */
 
 public class ProviderRatingsListActivity extends AppCompatActivity {
-    public final static int ID_EXTRA = 0;
-    public final static String DISPNAME_EXTRA = null;
-    public final static String LASTNAME_EXTRA = null;
-    public final static int R1_EXTRA = 0;
-    public final static int R2_EXTRA = 0;
-    public final static int R3_EXTRA = 0;
-    public final static double AVG_EXTRA = 0;
-    public final static String COMMENT_EXTRA = null;
     private List<JobProviderRating> jobProviderRatingsList = new ArrayList<>();
     PersonSession personInstance = PersonSession.getInstance();
 
@@ -66,13 +58,13 @@ public class ProviderRatingsListActivity extends AppCompatActivity {
                                 long id) {
             Intent i=new Intent(ProviderRatingsListActivity.this, ProviderViewRatingActivity.class);
             i.putExtra("ID_EXTRA", jobProviderRatingsList.get(position).getRaterId());
-            i.putExtra(DISPNAME_EXTRA, String.valueOf(jobProviderRatingsList.get(position).getDisplayName()));
-            i.putExtra(LASTNAME_EXTRA, String.valueOf(jobProviderRatingsList.get(position).getLastName()));
+            i.putExtra("DISPNAME_EXTRA", String.valueOf(jobProviderRatingsList.get(position).getDisplayName()));
+            i.putExtra("LASTNAME_EXTRA", String.valueOf(jobProviderRatingsList.get(position).getLastName()));
             i.putExtra("R1_EXTRA", jobProviderRatingsList.get(position).getRating1());
             i.putExtra("R2_EXTRA", jobProviderRatingsList.get(position).getRating2());
             i.putExtra("R3_EXTRA", jobProviderRatingsList.get(position).getRating3());
             i.putExtra("AVG_EXTRA",jobProviderRatingsList.get(position).getAverageRating());
-            i.putExtra(COMMENT_EXTRA, String.valueOf(jobProviderRatingsList.get(position).getComment()));
+            i.putExtra("COMMENT_EXTRA", String.valueOf(jobProviderRatingsList.get(position).getComment()));
             startActivity(i);
         }
     };
