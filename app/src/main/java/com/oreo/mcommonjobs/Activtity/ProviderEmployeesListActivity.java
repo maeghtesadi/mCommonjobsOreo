@@ -42,9 +42,8 @@ import java.util.Map;
  */
 
 public class ProviderEmployeesListActivity extends AppCompatActivity {
-    public final static String ID_EXTRA = null;
+    public final static String EMAIL_EXTRA = null;
     private List<ReviewableJobSeeker> applicantsList = new ArrayList<>();
-    JobProviderRatingController jobProviderController = new JobProviderRatingController();
     PersonSession personInstance = PersonSession.getInstance();
 
     @Override
@@ -53,13 +52,6 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_provider_employees_list);
 
         applicantsList = getReviewableJobSeekers(personInstance.getEmail(), this.getApplicationContext());
-
-        /*
-        ArrayAdapter<ReviewableJobSeeker> adapter = new customAdapter();
-        ListView employeeList = (ListView) (findViewById(R.id.provideremployeelist));
-        employeeList.setAdapter(adapter);
-        employeeList.setOnItemClickListener(onListClick);
-        */
     }
 
     private AdapterView.OnItemClickListener onListClick = new AdapterView.OnItemClickListener() {
@@ -67,7 +59,7 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
                                 View view, int position,
                                 long id) {
             Intent i=new Intent(ProviderEmployeesListActivity.this, ProviderRateActivity.class);
-            i.putExtra(ID_EXTRA, String.valueOf(applicantsList.get(position).getEmail()));
+            i.putExtra(EMAIL_EXTRA, String.valueOf(applicantsList.get(position).getEmail()));
             startActivity(i);
         }
     };
@@ -90,23 +82,6 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
 
             name.setText(currentSeeker.getDisplayName() + " " + currentSeeker.getLastName());
 
-            /*convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-                public void onClick(View view) {
-
-                    TextView name = (TextView) view.findViewById(R.id.seekerName);
-                    String headingString = name.getText().toString();
-
-                    JobSession jobSession = JobSession.getInstance();
-                    jobSession.setTypeOfJob(headingString);
-                    jobSession.setDescription(descString);
-                    jobSession.setEmail_job_provider(currentJob.getJob_provider_email());
-
-                    String test = jobSession.getDescription();
-                    Intent i = new Intent(ViewJobsActivity.this, JobInfoActivity.class);
-                    startActivity(i);
-                }
-            });*/
             return convertView;
         }
     }
@@ -136,10 +111,12 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
 
                         reviewableJobSeekerList.add(reviewableJobSeeker);
                     }
+
                     ArrayAdapter<ReviewableJobSeeker> adapter = new customAdapter();
                     ListView employeeList = (ListView) (findViewById(R.id.provideremployeelist));
                     employeeList.setAdapter(adapter);
                     employeeList.setOnItemClickListener(onListClick);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
