@@ -42,7 +42,6 @@ import java.util.Map;
  */
 
 public class ProviderEmployeesListActivity extends AppCompatActivity {
-    public final static String EMAIL_EXTRA = null;
     private List<ReviewableJobSeeker> applicantsList = new ArrayList<>();
     PersonSession personInstance = PersonSession.getInstance();
 
@@ -59,7 +58,7 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
                                 View view, int position,
                                 long id) {
             Intent i=new Intent(ProviderEmployeesListActivity.this, ProviderRateActivity.class);
-            i.putExtra(EMAIL_EXTRA, String.valueOf(applicantsList.get(position).getEmail()));
+            i.putExtra("EMAIL_EXTRA", String.valueOf(applicantsList.get(position).getEmail()));
             startActivity(i);
         }
     };

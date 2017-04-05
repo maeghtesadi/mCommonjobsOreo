@@ -17,25 +17,25 @@ import com.oreo.mcommonjobs.Session.PersonSession;
 public class ProviderViewRatingActivity extends AppCompatActivity {
 
     PersonSession personSession = PersonSession.getInstance();
-    TextView seekerName, avgrating, attitudeR, helpfulnessR, QualityR, comment;
+    TextView name, avgrating, attitudeR, helpfulnessR, QualityR, comments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provider_view_rating);
 
-        seekerName = (TextView) findViewById(R.id.seekerName);
+        name = (TextView) findViewById(R.id.seekerName1);
         avgrating = (TextView) findViewById(R.id.avgRating);
         attitudeR = (TextView) findViewById(R.id.rating1);
         helpfulnessR = (TextView) findViewById(R.id.rating2);
         QualityR = (TextView) findViewById(R.id.rating3);
-        comment = (TextView) findViewById(R.id.comment);
+        comments = (TextView) findViewById(R.id.comment);
 
-        seekerName.setText(getIntent().getStringExtra("DISPNAME_EXTRA") + " " + getIntent().getStringExtra("LASTNAME_EXTRA"));
+        name.setText(getIntent().getStringExtra("DISPNAME_EXTRA") + " " + getIntent().getStringExtra("LASTNAME_EXTRA"));
         avgrating.setText(Double.toString(getIntent().getDoubleExtra("AVG_EXTRA", 0.0)));
         attitudeR.setText(getIntent().getIntExtra("R1_EXTRA", 0));
         helpfulnessR.setText(getIntent().getIntExtra("R2_EXTRA", 0));
         QualityR.setText(getIntent().getIntExtra("R3_EXTRA", 0));
-        comment.setText(getIntent().getStringExtra("COMMENT_EXTRA"));
+        comments.setText(getIntent().getStringExtra("COMMENT_EXTRA"));
     }
 }

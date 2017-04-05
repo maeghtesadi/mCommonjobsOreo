@@ -7,7 +7,7 @@
     tools:context="com.oreo.mcommonjobs.Activtity.ProviderViewRatingActivity">
 
     <TextView
-        android:id="@+id/seekerName"
+        android:id="@+id/seekerName1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_below="@+id/seekerName"
+        android:layout_below="@+id/seekerName1"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true">
 
