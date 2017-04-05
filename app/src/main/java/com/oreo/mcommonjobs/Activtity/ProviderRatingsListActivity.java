@@ -90,12 +90,14 @@ public class ProviderRatingsListActivity extends AppCompatActivity {
     private List<JobProviderRating> getJobProviderRatings(final String providerEmail, Context context){
 
         final List<JobProviderRating> jobProviderRatingList = new ArrayList<JobProviderRating>();
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("providerEmail", providerEmail);
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getProviderRatings, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getProviderRatings, new JSONObject(params), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try{
-                    JSONArray jsonJobProviderRatingsArray = response.getJSONArray("jobprovider_ratings");
+                    JSONArray jsonJobProviderRatingsArray = response.getJSONArray("providerRatings");
 
                     for(int i = 0; i < jsonJobProviderRatingsArray.length(); i++){
                         JSONObject ratingCurrentPosition = jsonJobProviderRatingsArray.getJSONObject(i);
@@ -131,14 +133,7 @@ public class ProviderRatingsListActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Log.e("Error", "Unable to parse json array");
             }
-        }){
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError{
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("providerEmail", providerEmail);
-
-                return params;
-            }
-        };
+        });
 
         RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
 
