@@ -14,6 +14,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.oreo.mcommonjobs.Controllers.UserController;
 import com.oreo.mcommonjobs.Models.ApplicationStatus;
 import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.R;
@@ -36,9 +37,10 @@ import java.util.Map;
  */
 public class NavigationActivityForJobSeeker extends AppCompatActivity {
 
-    Button btnViewAllJobs, btnProfile, btnViewProfileJobs, btnApplications;
+    Button btnViewAllJobs, btnProfile, btnViewProfileJobs, btnApplications, btnAccount;
     private List<ApplicationStatus> listOfApplications = new ArrayList<>();
     PersonSession personInstance = PersonSession.getInstance();
+    UserController userController = new UserController();
     /**
      * Initializes the NavigationActivity for a JobSeeker.
      * @param savedInstanceState
@@ -51,10 +53,28 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
         btnProfile = (Button) findViewById(R.id.btn_profile);
         btnViewProfileJobs = (Button) findViewById(R.id.btn_view_jobs_for_your_profile);
         btnApplications = (Button) findViewById(R.id.btn_pending_applications);
+        btnAccount = (Button) findViewById(R.id.btn_account);
+
+
+
+        getDisplayName(personInstance.getEmail(), getApplicationContext());
 
         checkIfAcceptedApplication(personInstance.getEmail(),getApplicationContext());
 
-       btnViewProfileJobs.setOnClickListener(new View.OnClickListener() {
+
+        btnAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), AccountActivity.class);
+                startActivity(i);
+
+            }
+        });
+
+
+
+
+        btnViewProfileJobs.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                Intent i = new Intent(getApplicationContext(), ViewJobsActivity.class);
@@ -95,6 +115,52 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
         });
 
     }
+
+
+    /**
+     * This method checks gets the displayName of user from db
+     * @param email - email of the jobseeker
+     * @param context
+     */
+
+
+    public void getDisplayName(final String email, Context context){
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("email", email);
+
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getDisplayName, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        ;
+                        try {
+                            PersonSession personInstance = PersonSession.getInstance();
+                            personInstance.setDisplayName(response.getString("displayname"));
+
+
+
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.e("Error", "Unable to parse json array");
+            }
+        });
+        RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
+
+
+    }
+
+
+
+
 
 
 
