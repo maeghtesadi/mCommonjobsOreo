@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,7 @@ public class ProviderRateActivity extends AppCompatActivity {
     PersonSession personInstance = PersonSession.getInstance();
     JobSeekerRatingController jobSeekerRatingController = new JobSeekerRatingController();
     private RatingBar ratingBar1, ratingBar2, ratingBar3;
-    TextView comment;
+    EditText comment;
     private Button btnSubmit;
     final String seekerEmail = getIntent().getStringExtra("EMAIL_EXTRA");
     Context appContext;
@@ -55,16 +56,16 @@ public class ProviderRateActivity extends AppCompatActivity {
         ratingBar1 = (RatingBar) findViewById(R.id.ratingBar1);
         ratingBar2 = (RatingBar) findViewById(R.id.ratingBar2);
         ratingBar3 = (RatingBar) findViewById(R.id.ratingBar3);
-        comment = (TextView) findViewById(R.id.comment);
+        comment = (EditText) findViewById(R.id.comment);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String providerComment = comment.getText().toString();
-                final int providerRating1 = ratingBar1.getNumStars();
-                final int providerRating2 = ratingBar2.getNumStars();
-                final int providerRating3 = ratingBar3.getNumStars();
+                final int providerRating1 = Math.round(ratingBar1.getRating());
+                final int providerRating2 = Math.round(ratingBar2.getRating());
+                final int providerRating3 = Math.round(ratingBar3.getRating());
 
                 jobSeekerRatingController.registerJobSeekerRating(personInstance.getEmail(), seekerEmail, providerRating1, providerRating2, providerRating3, providerComment, appContext);
                 Toast.makeText(ProviderRateActivity.this, "Rating Submitted", Toast.LENGTH_LONG).show();
