@@ -1,12 +1,14 @@
 package com.oreo.mcommonjobs.Activtity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +34,7 @@ public class AccountActivity extends AppCompatActivity {
 
     PersonSession personInstance = PersonSession.getInstance();
     Button btn_editphonenumber, btn_editusername;
+    ImageButton profileImage;
     TextView firstNameTextView, lastNameTextView, emailTextView, phoneNumberTextView, usernameTextView;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -42,11 +45,21 @@ public class AccountActivity extends AppCompatActivity {
         inflateAccountFields();
 
 
-
-
+        profileImage = (ImageButton) findViewById(R.id.imageButton);
         btn_editphonenumber= (Button)  findViewById(R.id.btn_edit_phonenumber);
         btn_editusername= (Button)  findViewById(R.id.btn_edit_username);
 
+
+
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getApplicationContext(), UploadImageActivity.class);
+                startActivity(i);
+
+            }
+        });
 
 
         btn_editphonenumber.setOnClickListener(new View.OnClickListener() {
