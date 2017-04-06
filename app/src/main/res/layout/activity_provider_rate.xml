@@ -131,6 +131,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text="Submit"
+        android:textColor="#06bebd"
+        android:background="@drawable/roundedbtn2"
+        android:textAllCaps="false"
         android:textSize="20sp" />
 
 </LinearLayout>
