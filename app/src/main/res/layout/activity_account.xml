@@ -25,6 +25,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="First Name goes here"
+            android:id="@+id/textView_firstname"
+
             />
 
     </LinearLayout>
@@ -42,7 +44,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last Name goes here"
+            android:text="lastname goes here"
+            android:id="@+id/textView_lastname"
             />
 
     </LinearLayout>
@@ -62,9 +65,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="email goes here"
+            android:id="@+id/textView_email"
+
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username:"
+            android:paddingRight="50dp"
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:id="@+id/textView_username"
+            android:inputType="none"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:id="@+id/btn_edit_username"
             />
 
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -77,29 +113,22 @@
             android:text="Phone Number:"
             android:paddingRight="50dp"
             />
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="###"
+            android:id="@+id/textView_phonenumber"
+            android:inputType="none"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:id="@+id/btn_edit_phonenumber"
             />
 
     </LinearLayout>
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-<EditText
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:hint="Enter number here"/>
 
-  <Button
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Add new Number"
-      />
-
-</LinearLayout>
 
 </LinearLayout>

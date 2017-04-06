@@ -17,6 +17,7 @@ public class PersonSession {
     private String firstName;
     private String lastName;
     private String typeOfUser;
+    private String displayName;
     private List<Profile> profiles;
     private String currentprofile;
     enum userType {JOBPROVIDER, JOBSEEKER}
@@ -41,6 +42,14 @@ public class PersonSession {
         return personCtrl;
     }
 
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
 
     public String getCurrentprofile() {
         return currentprofile;
