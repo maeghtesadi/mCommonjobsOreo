@@ -33,6 +33,7 @@
         <activity android:name=".Activtity.ApplicationQuestionsActivity" />
         <activity android:name=".Activtity.ViewApplicantCredentials" />
         <activity android:name=".Activtity.ViewPendingApplicationsActivity" />
+        <activity android:name=".Activtity.AccountActivity" />
         
 
 
