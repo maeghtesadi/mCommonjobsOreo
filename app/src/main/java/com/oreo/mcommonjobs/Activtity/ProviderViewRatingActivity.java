@@ -19,6 +19,12 @@ public class ProviderViewRatingActivity extends AppCompatActivity {
     PersonSession personSession = PersonSession.getInstance();
     TextView name, avgrating, attitudeR, helpfulnessR, QualityR, comments;
 
+    /**
+     * onCreate method initialize the ProviderViewRatingActivity
+     * the method sets the textviews with values passed from previous activity
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

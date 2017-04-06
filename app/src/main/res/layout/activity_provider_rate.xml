@@ -1,9 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
     tools:context="com.oreo.mcommonjobs.Activtity.ProviderRateActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/lblRateMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="Asap-Regular"
+        android:textAlignment="center"
+        android:textColor="#06bebd"
+        android:textSize="44sp"/>
+
+    <LinearLayout
+        android:id="@+id/rating1Field1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/desc1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="Attitude:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/ratingBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1.0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rating1Field2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/desc2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Punctuality:"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:textSize="20sp"/>
+
+        <RatingBar
+            android:id="@+id/ratingBar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1.0"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rating1Field3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/desc3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cleanliness:"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:textSize="20sp"/>
+
+        <RatingBar
+            android:id="@+id/ratingBar3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1.0"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/commentField"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.95"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/desc5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Comment (150 characters max):"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/common_google_signin_btn_text_dark_disabled"
+            android:maxEms="150"
+            android:padding="10dp"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="Submit"
+        android:textSize="20sp" />
+
+</LinearLayout>
+

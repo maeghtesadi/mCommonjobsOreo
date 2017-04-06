@@ -45,6 +45,11 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
     private List<ReviewableJobSeeker> applicantsList = new ArrayList<>();
     PersonSession personInstance = PersonSession.getInstance();
 
+    /**
+     * onCreate method initialize the ProviderEmployeesListActivity
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,10 +70,22 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
 
     class customAdapter extends ArrayAdapter<ReviewableJobSeeker> {
 
+        /**
+         * Constructor for customAdapter class
+         * Takes fragment layout, decorates it with values taken from an employee and than returns the converted view
+         */
         public customAdapter() {
             super(ProviderEmployeesListActivity.this, R.layout.seeker_content, applicantsList);
         }
 
+        /**
+         * method that customizes the View
+         *
+         * @param position
+         * @param convertView
+         * @param parent
+         * @return
+         */
         public View getView(int position, View convertView, ViewGroup parent) {
 
             if (convertView == null) {
@@ -85,6 +102,13 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * getReviewableJobSeekers method that retrieves a list of reviewable seekers from the database
+     *
+     * @param providerEmail
+     * @param context
+     * @return
+     */
     private List<ReviewableJobSeeker> getReviewableJobSeekers(final String providerEmail, Context context) {
 
         final List<ReviewableJobSeeker> reviewableJobSeekerList = new ArrayList<ReviewableJobSeeker>();

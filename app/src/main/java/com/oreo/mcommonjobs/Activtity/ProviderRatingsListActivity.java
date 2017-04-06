@@ -44,6 +44,11 @@ public class ProviderRatingsListActivity extends AppCompatActivity {
     private List<JobProviderRating> jobProviderRatingsList = new ArrayList<>();
     PersonSession personInstance = PersonSession.getInstance();
 
+    /**
+     * onCreate method initialize the ProviderRatingsListActivity
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,12 +74,25 @@ public class ProviderRatingsListActivity extends AppCompatActivity {
         }
     };
 
+
     class customAdapter extends ArrayAdapter<JobProviderRating> {
 
+        /**
+         * Constructor for customAdapter class
+         * Takes fragment layout, decorates it with values taken from an job provider's given rating and than returns the converted view
+         */
         public customAdapter() {
             super(ProviderRatingsListActivity.this, R.layout.rating_content, jobProviderRatingsList);
         }
 
+        /**
+         * method that customizes the View
+         *
+         * @param position
+         * @param convertView
+         * @param parent
+         * @return
+         */
         public View getView(int position, View convertView, ViewGroup parent) {
 
             if (convertView == null) {
@@ -93,6 +111,12 @@ public class ProviderRatingsListActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * method that retrieves a list of the ratings given to a job provider from the database
+     * @param providerEmail
+     * @param context
+     * @return
+     */
     private List<JobProviderRating> getJobProviderRatings(final String providerEmail, Context context){
 
         final List<JobProviderRating> jobProviderRatingList = new ArrayList<JobProviderRating>();

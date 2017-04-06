@@ -19,6 +19,12 @@ public class ProviderRatingMenuActivity extends AppCompatActivity {
 
     Button button_rate, button_view_rating;
 
+    /**
+     * onCreate method initialize the ProviderRatingMenuActivity
+     * Main menu for navigation of the rating feature
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
