@@ -19,7 +19,6 @@ import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.PersonSession;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -56,6 +55,17 @@ public class AccountActivity extends AppCompatActivity {
 
                 personInstance.setPhoneNumber(phoneNumberTextView.getText().toString());
                 updatePhoneNumber(personInstance.getEmail(),phoneNumberTextView.getText().toString(), getApplicationContext());
+            }
+        });
+
+
+        btn_editusername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                personInstance.setDisplayName(usernameTextView.getText().toString());
+                updateDisplayName(personInstance.getEmail(),usernameTextView.getText().toString(), getApplicationContext());
+
             }
         });
 
@@ -141,28 +151,19 @@ public class AccountActivity extends AppCompatActivity {
         params.put("email", email);
         params.put("displayName", displayName);
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getDisplayName, new JSONObject(params),
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.updateDisplayName, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        ;
-                        try {
-                            PersonSession personInstance = PersonSession.getInstance();
-                            personInstance.setDisplayName(response.getString("displayname"));
 
-                            if(response.getString("phoneNumber").equals("None")){
-                                personInstance.setPhoneNumber("Add your number");
+                        CharSequence text = "Displayname updated!";
+                        int duration = Toast.LENGTH_LONG;
 
-                            }else{
-                                personInstance.setPhoneNumber(response.getString("phoneNumber"));
-                                String test = response.getString("phoneNumber");
-                            }
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
 
 
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -173,6 +174,12 @@ public class AccountActivity extends AppCompatActivity {
         });
         RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
 
+
+        CharSequence text = "Displayname updated!";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
 
     }
 
