@@ -31,7 +31,7 @@ public class ProviderRateActivity extends AppCompatActivity {
     private RatingBar ratingBar1, ratingBar2, ratingBar3;
     EditText comment;
     private Button btnSubmit;
-    final String seekerEmail = getIntent().getStringExtra("EMAIL_EXTRA");
+    String seekerEmail;
     Context appContext;
 
     /**
@@ -66,6 +66,7 @@ public class ProviderRateActivity extends AppCompatActivity {
                 final int providerRating1 = Math.round(ratingBar1.getRating());
                 final int providerRating2 = Math.round(ratingBar2.getRating());
                 final int providerRating3 = Math.round(ratingBar3.getRating());
+                seekerEmail = getIntent().getStringExtra("EMAIL_EXTRA");
 
                 jobSeekerRatingController.registerJobSeekerRating(personInstance.getEmail(), seekerEmail, providerRating1, providerRating2, providerRating3, providerComment, appContext);
                 Toast.makeText(ProviderRateActivity.this, "Rating Submitted", Toast.LENGTH_LONG).show();
