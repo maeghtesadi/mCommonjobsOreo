@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.oreo.mcommonjobs.Controllers.JobSeekerController;
 import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.JobSession;
 import com.oreo.mcommonjobs.Session.PersonSession;
@@ -28,6 +29,7 @@ public class JobInfoActivity extends AppCompatActivity{
      PersonSession personSession = PersonSession.getInstance();
      Context context;
      private String shareEmail;
+    JobSeekerController jobSeekerController = new JobSeekerController();
 
     /**
      * Initialize the activity.
@@ -65,6 +67,7 @@ public class JobInfoActivity extends AppCompatActivity{
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         shareEmail = input.getText().toString();
+                        jobSeekerController.shareJob(personSession.getEmail(),shareEmail,jobSession.getDescription(),jobSession.getTypeOfJob(),context);
                     }
                 });
                 builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -90,7 +93,7 @@ public class JobInfoActivity extends AppCompatActivity{
 
                 Intent i = new Intent (getApplicationContext(), ApplicationQuestionsActivity.class);
                 startActivity(i);
-                
+
             finish();
             }
         });
