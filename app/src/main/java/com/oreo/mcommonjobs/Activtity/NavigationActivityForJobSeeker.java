@@ -57,7 +57,7 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
 
 
 
-        getDisplayName(personInstance.getEmail(), getApplicationContext());
+        getDisplayName_PhoneNumber(personInstance.getEmail(), getApplicationContext());
 
         checkIfAcceptedApplication(personInstance.getEmail(),getApplicationContext());
 
@@ -124,7 +124,7 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
      */
 
 
-    public void getDisplayName(final String email, Context context){
+    public void getDisplayName_PhoneNumber(final String email, Context context){
 
         Map<String, String> params = new HashMap<String, String>();
         params.put("email", email);
@@ -138,7 +138,13 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
                             PersonSession personInstance = PersonSession.getInstance();
                             personInstance.setDisplayName(response.getString("displayname"));
 
+                            if(response.getString("phoneNumber").equals("None")){
+                                personInstance.setPhoneNumber("Add your number");
 
+                            }else{
+                                personInstance.setPhoneNumber(response.getString("phoneNumber"));
+                                String test = response.getString("phoneNumber");
+                            }
 
 
 

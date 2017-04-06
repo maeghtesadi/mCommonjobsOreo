@@ -20,6 +20,7 @@ public class PersonSession {
     private String displayName;
     private List<Profile> profiles;
     private String currentprofile;
+    private String phoneNumber;
     enum userType {JOBPROVIDER, JOBSEEKER}
 
     /**
@@ -42,6 +43,14 @@ public class PersonSession {
         return personCtrl;
     }
 
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public String getDisplayName() {
         return displayName;
