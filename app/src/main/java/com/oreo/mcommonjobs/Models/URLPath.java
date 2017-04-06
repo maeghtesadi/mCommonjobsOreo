@@ -24,5 +24,6 @@ public class URLPath {
     public static final String checkIfAcceptedApplication = prefix + "/checkifacceptedapplication.php";
     public static final String getDisplayName = prefix + "/getdisplayname.php";
     public static final String updatePhoneNumber = prefix + "/updatephonenumber.php";
+    public static final String updateDisplayName = prefix + "/updatedisplayname.php";
 }
 
