@@ -135,12 +135,12 @@
                         android:textColor="#06bebd" />
 
                     <Button
-                        android:id="@+id/extra_btn_two"
+                        android:id="@+id/btn_account"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@drawable/btn_square_menu"
-                        android:text="Profile"
+                        android:text="Account"
                         android:textColor="#06bebd" />
                 </LinearLayout>
 
