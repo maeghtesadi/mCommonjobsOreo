@@ -6,42 +6,39 @@
 
     <View
         android:id="@+id/top_line"
+        android:padding="5dp"
         android:layout_width="fill_parent"
         android:layout_alignTop="@+id/raterName"
-        android:layout_marginBottom="8dp"
-        android:layout_height="4dp"
-        android:background="#c0c0c0" />
+        android:layout_height="5dp"/>
 
     <TextView
         android:id="@+id/raterName"
-        android:layout_width="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:textColor="#06bebd"
+        android:textSize="22sp"
+        android:textColor="#4c70a3"
         android:textStyle="bold"
         android:scrollHorizontally="true"
         android:maxLines="1"
-        android:layout_marginBottom="8dp"
-        android:ellipsize="end"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp" />
+        android:text="My Ratings"
+        android:ellipsize="end"/> />
 
     <TextView
         android:id="@+id/ratingAverage"
+        android:layout_marginLeft="8dp"
         android:textColor="#4c70a3"
+        android:textStyle="bold"
         android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:lineSpacingExtra="-3dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"/>
+        android:text="My Ratings"/>
 
     <View
         android:id="@+id/bottom_line"
+        android:padding="5dp"
         android:layout_width="fill_parent"
         android:layout_below="@+id/ratingAverage"
-        android:layout_height="5dp"
-        android:background="#c0c0c0" />
+        android:layout_height="5dp"/>
 
 </LinearLayout>
