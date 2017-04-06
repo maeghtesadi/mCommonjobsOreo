@@ -118,7 +118,7 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
 
 
     /**
-     * This method checks gets the displayName of user from db
+     * This method checks gets the displayName and phone number of jobseeker from database
      * @param email - email of the jobseeker
      * @param context
      */

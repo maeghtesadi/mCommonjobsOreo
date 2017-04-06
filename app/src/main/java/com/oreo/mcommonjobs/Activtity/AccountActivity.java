@@ -23,6 +23,26 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
+
+        inflateAccountFields();
+
+
+
+
+        btn_editphonenumber= (Button)  findViewById(R.id.btn_edit_phonenumber);
+        btn_editusername= (Button)  findViewById(R.id.btn_edit_username);
+
+
+
+    }
+
+    /**
+     * This method takes all the values stored in personinstance(our session class for user) and uses it to fill in the appropiate values on the
+     *  , activity_account layout
+     */
+
+    public void inflateAccountFields(){
+
         firstNameTextView = (TextView) findViewById(R.id.textView_firstname);
         firstNameTextView.setText(personInstance.getFirstName());
 
@@ -38,15 +58,6 @@ public class AccountActivity extends AppCompatActivity {
 
         usernameTextView = (EditText) findViewById(R.id.textView_username);
         usernameTextView.setText(personInstance.getDisplayName());
-
-
-
-
-
-        btn_editphonenumber= (Button)  findViewById(R.id.btn_edit_phonenumber);
-        btn_editusername= (Button)  findViewById(R.id.btn_edit_username);
-
-
 
     }
 
