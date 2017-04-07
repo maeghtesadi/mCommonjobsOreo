@@ -101,12 +101,12 @@
                         android:textColor="#06bebd" />
 
                     <Button
-                        android:id="@+id/btn_messages"
+                        android:id="@+id/btn_ratings"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@drawable/btn_square_menu"
-                        android:text="Messages"
+                        android:text="Ratings"
                         android:textColor="#06bebd" />
                 </LinearLayout>
 

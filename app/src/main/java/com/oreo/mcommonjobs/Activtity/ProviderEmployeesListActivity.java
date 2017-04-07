@@ -16,12 +16,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.oreo.mcommonjobs.Controllers.JobProviderRatingController;
-import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.Models.ReviewableJobSeeker;
 import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.R;
-import com.oreo.mcommonjobs.Session.JobSession;
 import com.oreo.mcommonjobs.Session.PersonSession;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
@@ -75,7 +72,7 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
          * Takes fragment layout, decorates it with values taken from an employee and than returns the converted view
          */
         public customAdapter() {
-            super(ProviderEmployeesListActivity.this, R.layout.seeker_content, applicantsList);
+            super(ProviderEmployeesListActivity.this, R.layout.list_content, applicantsList);
         }
 
         /**
@@ -89,12 +86,12 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
 
             if (convertView == null) {
-                convertView = getLayoutInflater().inflate(R.layout.seeker_content, parent, false);
+                convertView = getLayoutInflater().inflate(R.layout.list_content, parent, false);
             }
 
             final ReviewableJobSeeker currentSeeker = applicantsList.get(position);
 
-            TextView name = (TextView) convertView.findViewById(R.id.seekerName);
+            TextView name = (TextView) convertView.findViewById(R.id.name);
 
             name.setText(currentSeeker.getDisplayName() + " " + currentSeeker.getLastName());
 
