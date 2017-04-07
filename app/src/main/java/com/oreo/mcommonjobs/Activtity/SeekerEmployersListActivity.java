@@ -106,7 +106,7 @@ public class SeekerEmployersListActivity extends AppCompatActivity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("seekerEmail", seekerEmail);
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getProvidersForSeeker, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getProvidersForSeeker, new JSONObject(params), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try{
@@ -138,15 +138,7 @@ public class SeekerEmployersListActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Log.e("Error", "Unable to parse json array");
             }
-        }){
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError{
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("seekerEmail", seekerEmail);
-
-                return params;
-            }
-
-        };
+        });
 
         RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
 
