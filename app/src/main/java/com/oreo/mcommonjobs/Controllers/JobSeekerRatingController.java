@@ -62,7 +62,7 @@ public class JobSeekerRatingController {
             @Override
             public void onResponse(JSONObject response) {
                 try{
-                    JSONArray jsonJobSeekerRatingsArray = response.getJSONArray("jobseeker_ratings");
+                    JSONArray jsonJobSeekerRatingsArray = response.getJSONArray("seekerRatings");
 
                     for(int i = 0; i < jsonJobSeekerRatingsArray.length(); i++){
                         JSONObject ratingCurrentPosition = jsonJobSeekerRatingsArray.getJSONObject(i);
@@ -115,7 +115,7 @@ public class JobSeekerRatingController {
             @Override
             public void onResponse(JSONObject response) {
                 try{
-                    JSONArray jsonReviewableJobproviderArray = response.getJSONArray("applications ");
+                    JSONArray jsonReviewableJobproviderArray = response.getJSONArray("providersForSeeker");
 
                     for(int i = 0; i < jsonReviewableJobproviderArray.length(); i++){
                         JSONObject reviewableJobProviderCurrentPosition = jsonReviewableJobproviderArray.getJSONObject(i);

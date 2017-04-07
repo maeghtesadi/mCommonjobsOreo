@@ -33,9 +33,9 @@ public class JobProviderRatingController {
         Map<String, String> params = new HashMap<String, String>();
         params.put("seekerEmail", seekerEmail);
         params.put("providerEmail", providerEmail);
-        params.put("attitudeRating", Integer.toString(attitudeRating));
-        params.put("helpfulnessRating", Integer.toString(helpfulnessRating));
-        params.put("workEnvironmentRating", Integer.toString(workEnvironmentRating));
+        params.put("rating1", Integer.toString(attitudeRating));
+        params.put("rating2", Integer.toString(helpfulnessRating));
+        params.put("rating3", Integer.toString(workEnvironmentRating));
         params.put("comment", comment);
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.addProviderRating, new JSONObject(params), new Response.Listener<JSONObject>() {
