@@ -19,4 +19,6 @@
     <string name="job_desc_hint">Add description here.</string>
     <string name="email">Email</string>
     <string name="select_user">"Account Setup"</string>
+    <string name="rating">Rating</string>
+    <string name="title_activity_seeker_ratings_list">SeekerRatingsListActivity</string>
 </resources>

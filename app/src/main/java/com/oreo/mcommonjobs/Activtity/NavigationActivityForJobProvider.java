@@ -31,8 +31,10 @@ import java.util.Map;
  */
 public class NavigationActivityForJobProvider extends AppCompatActivity {
 
-    Button btnAddJob ,viewApplicants , account;
+
+    Button btnAddJob ,viewApplicants , account, btnRating;
     PersonSession personInstance = PersonSession.getInstance();
+
 
     /**
      * Initializes the NavigationActivity for a JobProvider.
@@ -43,6 +45,7 @@ public class NavigationActivityForJobProvider extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_jobprovider);
         btnAddJob = (Button) findViewById(R.id.btn_addjob);
+        btnRating = (Button) findViewById(R.id.btn_rating);
         viewApplicants = (Button) findViewById(R.id.btn_view_applicants);
         account = (Button) findViewById(R.id.btn_account);
 
@@ -73,6 +76,13 @@ public class NavigationActivityForJobProvider extends AppCompatActivity {
             }
         });
 
+        btnRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ProviderRatingMenuActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 

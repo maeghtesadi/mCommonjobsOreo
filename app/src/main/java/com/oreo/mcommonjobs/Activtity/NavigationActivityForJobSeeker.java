@@ -37,10 +37,12 @@ import java.util.Map;
  */
 public class NavigationActivityForJobSeeker extends AppCompatActivity {
 
-    Button btnViewAllJobs, btnProfile, btnViewProfileJobs, btnApplications, btnAccount;
+
+    Button btnViewAllJobs, btnProfile, btnViewProfileJobs, btnApplications, btnAccount, btnRatings, btnSharedJobs;
     private List<ApplicationStatus> listOfApplications = new ArrayList<>();
     PersonSession personInstance = PersonSession.getInstance();
     UserController userController = new UserController();
+
     /**
      * Initializes the NavigationActivity for a JobSeeker.
      * @param savedInstanceState
@@ -50,14 +52,19 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_jobseeker);
         btnViewAllJobs = (Button) findViewById(R.id.btn_addjob);
+        btnRatings = (Button) findViewById(R.id.btn_ratings);
         btnProfile = (Button) findViewById(R.id.btn_profile);
         btnViewProfileJobs = (Button) findViewById(R.id.btn_view_jobs_for_your_profile);
         btnApplications = (Button) findViewById(R.id.btn_pending_applications);
+
         btnAccount = (Button) findViewById(R.id.btn_account);
 
 
 
         getDisplayName_PhoneNumber(personInstance.getEmail(), getApplicationContext());
+
+        btnSharedJobs = (Button) findViewById(R.id.btn_shared_jobs);
+
 
         checkIfAcceptedApplication(personInstance.getEmail(),getApplicationContext());
 
@@ -85,6 +92,14 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
 
 
 
+        btnSharedJobs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ViewJobsActivity.class);
+                i.putExtra("EXTRA_JOB_BUTTON_CLICKED", "sharedJobs");
+                startActivity(i);
+            }
+        });
 
         btnViewAllJobs.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -94,17 +109,20 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
             }
         });
 
+        btnRatings.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SeekerRatingMenuActivity.class);
+                startActivity(i);
+            }
+        });
 
-
-
-    btnProfile.setOnClickListener(new View.OnClickListener() {
+        btnProfile.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), ViewProfilesActivity.class);
             startActivity(i);
-        }
-    });
-
+            }
+    }   );
 
         btnApplications.setOnClickListener(new View.OnClickListener() {
             @Override

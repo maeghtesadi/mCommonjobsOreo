@@ -34,9 +34,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Class/Activity Description here
+ * Displays a list of jobs (All Jobs, Profile-specific jobs, or Shared jobs based on the button clicked on the navigation menu)
  *
  * @author Jason Tsalikis
+ * @author rameenrastan
  * @version 1.0
  * @since 2017-03-34
  */
@@ -67,9 +68,13 @@ public class ViewJobsActivity extends AppCompatActivity {
 
         if(buttonClicked.equals("allJobs")){
             listOfJobs = getAllJobs(this.getApplicationContext());}
-        else{
+        else if(buttonClicked.equals("profileJobs")){
             listOfJobs = getProfileJobs(personInstance.getCurrentprofile() ,this.getApplicationContext());
         }
+        else if(buttonClicked.equals("sharedJobs")){
+            listOfJobs = getSharedJobs(personInstance.getEmail() ,this.getApplicationContext());
+        }
+
 
     }
 
@@ -126,6 +131,8 @@ public class ViewJobsActivity extends AppCompatActivity {
                     jobSession.setTypeOfJob(headingString);
                     jobSession.setDescription(descString);
                     jobSession.setEmail_job_provider(currentJob.getJob_provider_email());
+                    jobSession.setAddress(currentJob.getLocation());
+                    jobSession.setDuration(currentJob.getDuration());
 
 
                     Intent i = new Intent(ViewJobsActivity.this, JobInfoActivity.class);
@@ -161,12 +168,15 @@ public class ViewJobsActivity extends AppCompatActivity {
                             JSONArray jsonJobsarray = response.getJSONArray("jobs");
 
                             for (int i = 0; i < jsonJobsarray.length(); i++) {
-                                JSONObject job_current_position = jsonJobsarray.getJSONObject(i);
+                                JSONObject currentJob = jsonJobsarray.getJSONObject(i);
 
-                                String des = job_current_position.getString("description");
-                                String typeofjob = job_current_position.getString("typeofjob");
-                                String email = job_current_position.getString("posterEmail");
-                                jobs.add(new Job(des, typeofjob, email));
+                                String des = currentJob.getString("description");
+                                String typeofjob = currentJob.getString("typeofjob");
+                                String email = currentJob.getString("posterEmail");
+                                String location = currentJob.getString("location");
+                                String duration = currentJob.getString("duration");
+
+                                jobs.add(new Job(des, typeofjob, email, location, duration));
                             }
                             ArrayAdapter<Job> adapter = new customAdapter();
                             ListView jobsList = (ListView) (findViewById(R.id.joblist));
@@ -188,7 +198,7 @@ public class ViewJobsActivity extends AppCompatActivity {
 
     /**
      * This method gets the jobs that pertain to the seeker's current profile
-     * @param currentProfile - email of the JobSeeker
+     * @param currentProfile - job seeker's current profile
      * @param context
      */
     private List<Job> getProfileJobs(final String currentProfile, Context context){
@@ -212,7 +222,62 @@ public class ViewJobsActivity extends AppCompatActivity {
                                 String des = currentJob.getString("description");
                                 String typeofjob = currentJob.getString("typeofjob");
                                 String email = currentJob.getString("posterEmail");
-                                jobs.add(new Job(des, typeofjob, email));
+                                String location = currentJob.getString("location");
+                                String duration = currentJob.getString("duration");
+
+                                jobs.add(new Job(des, typeofjob, email, location, duration));
+                            }
+
+                            ArrayAdapter<Job> adapter = new customAdapter();
+                            ListView jobsList = (ListView) (findViewById(R.id.joblist));
+                            jobsList.setAdapter(adapter);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.e("Error", "Unable to parse json array");
+            }
+        });
+        RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
+
+        return jobs;
+    }
+
+
+    /**
+     * This method gets the jobs that were shared to the user
+     * @param email - email of the JobSeeker
+     * @param context
+     */
+    private List<Job> getSharedJobs(final String email, Context context){
+        final List<Job> jobs = new ArrayList<>();
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("email", email);
+
+
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getSharedJobs, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+
+                            JSONArray jsonJobsarray = response.getJSONArray("jobs");
+
+                            for (int i = 0; i < jsonJobsarray.length(); i++) {
+                                JSONObject currentJob = jsonJobsarray.getJSONObject(i);
+
+                                String des = currentJob.getString("description");
+                                String typeofjob = currentJob.getString("typeofjob");
+                                String email = currentJob.getString("posterEmail");
+                                String location = currentJob.getString("location");
+                                String duration = currentJob.getString("duration");
+
+                                jobs.add(new Job(des, typeofjob, email, location, duration));
                             }
 
                             ArrayAdapter<Job> adapter = new customAdapter();

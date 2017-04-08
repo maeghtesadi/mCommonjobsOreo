@@ -12,15 +12,51 @@ public class Job {
     String category;
     String job_provider_email;
     String status;
+    String location;
+    String duration;
 
     enum JobStatus { AVAILABLE, EXPIRED}
     enum JobCategory {GARDENING, VEHICULE, COOKING, CARE}
 
 
-    public Job(String description, String category, String job_provider_email) {
+    public Job(String description, String category, String job_provider_email, String location, String duration) {
         this.description = description;
         this.category = category;
         this.job_provider_email = job_provider_email;
+        this.location = location;
+        this.duration = duration;
+    }
+    /**
+     * Getter method for the duration of a Job.
+     *
+     * @return - String, duration of a job.
+     */
+    public String getDuration() {
+        return duration;
+    }
+    /**
+     * Setter method for the duration of a Job.
+     *
+     * @param duration - duration of a Job
+     */
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+    /**
+     * Getter method for the location of a Job.
+     *
+     * @return - String, location of a job.
+     */
+    public String getLocation() {
+        return location;
+    }
+    /**
+     * Setter method for the location of a Job.
+     *
+     * @param location - location of a Job
+     */
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     /**
