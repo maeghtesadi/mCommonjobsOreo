@@ -131,6 +131,8 @@ public class ViewJobsActivity extends AppCompatActivity {
                     jobSession.setTypeOfJob(headingString);
                     jobSession.setDescription(descString);
                     jobSession.setEmail_job_provider(currentJob.getJob_provider_email());
+                    jobSession.setAddress(currentJob.getLocation());
+                    jobSession.setDuration(currentJob.getDuration());
 
 
                     Intent i = new Intent(ViewJobsActivity.this, JobInfoActivity.class);
@@ -166,12 +168,15 @@ public class ViewJobsActivity extends AppCompatActivity {
                             JSONArray jsonJobsarray = response.getJSONArray("jobs");
 
                             for (int i = 0; i < jsonJobsarray.length(); i++) {
-                                JSONObject job_current_position = jsonJobsarray.getJSONObject(i);
+                                JSONObject currentJob = jsonJobsarray.getJSONObject(i);
 
-                                String des = job_current_position.getString("description");
-                                String typeofjob = job_current_position.getString("typeofjob");
-                                String email = job_current_position.getString("posterEmail");
-                                jobs.add(new Job(des, typeofjob, email));
+                                String des = currentJob.getString("description");
+                                String typeofjob = currentJob.getString("typeofjob");
+                                String email = currentJob.getString("posterEmail");
+                                String location = currentJob.getString("location");
+                                String duration = currentJob.getString("duration");
+
+                                jobs.add(new Job(des, typeofjob, email, location, duration));
                             }
                             ArrayAdapter<Job> adapter = new customAdapter();
                             ListView jobsList = (ListView) (findViewById(R.id.joblist));
@@ -217,7 +222,10 @@ public class ViewJobsActivity extends AppCompatActivity {
                                 String des = currentJob.getString("description");
                                 String typeofjob = currentJob.getString("typeofjob");
                                 String email = currentJob.getString("posterEmail");
-                                jobs.add(new Job(des, typeofjob, email));
+                                String location = currentJob.getString("location");
+                                String duration = currentJob.getString("duration");
+
+                                jobs.add(new Job(des, typeofjob, email, location, duration));
                             }
 
                             ArrayAdapter<Job> adapter = new customAdapter();
@@ -266,7 +274,10 @@ public class ViewJobsActivity extends AppCompatActivity {
                                 String des = currentJob.getString("description");
                                 String typeofjob = currentJob.getString("typeofjob");
                                 String email = currentJob.getString("posterEmail");
-                                jobs.add(new Job(des, typeofjob, email));
+                                String location = currentJob.getString("location");
+                                String duration = currentJob.getString("duration");
+
+                                jobs.add(new Job(des, typeofjob, email, location, duration));
                             }
 
                             ArrayAdapter<Job> adapter = new customAdapter();
