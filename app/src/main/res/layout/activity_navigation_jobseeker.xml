@@ -148,7 +148,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@drawable/btn_square_menu"
-                        android:text="Account"
                         android:text="View Shared Jobs"
                         android:textColor="#06bebd" />
                 </LinearLayout>
