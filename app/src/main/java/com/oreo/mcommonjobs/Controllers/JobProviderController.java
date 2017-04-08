@@ -39,6 +39,8 @@ public class JobProviderController {
      * @param typeofjob
      * @param descriptionOfJob
      * @param context
+     * @param address
+     * @param jobDuration
      * @return void
      */
     public void createPosting(final String typeofjob, final String descriptionOfJob, final String address, final String jobDuration, final String email, final Context context) {
