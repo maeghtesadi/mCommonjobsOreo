@@ -37,10 +37,8 @@ import java.util.Map;
 public class NavigationActivityForJobSeeker extends AppCompatActivity {
 
 
-    Button btnViewAllJobs, btnProfile, btnViewProfileJobs, btnApplications, btnRatings;
+    Button btnViewAllJobs, btnProfile, btnViewProfileJobs, btnApplications, btnRatings, btnSharedJobs;
 
-
-    Button btnViewAllJobs, btnProfile, btnViewProfileJobs, btnApplications, btnSharedJobs;
     private List<ApplicationStatus> listOfApplications = new ArrayList<>();
     PersonSession personInstance = PersonSession.getInstance();
 
