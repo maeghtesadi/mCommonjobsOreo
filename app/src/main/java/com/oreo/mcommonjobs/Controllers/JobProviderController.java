@@ -41,7 +41,7 @@ public class JobProviderController {
      * @param context
      * @return void
      */
-    public void createPosting(final String typeofjob, final String descriptionOfJob, final String email, final Context context) {
+    public void createPosting(final String typeofjob, final String descriptionOfJob, final String address, final String jobDuration, final String email, final Context context) {
 
     if(validateInputs.ValidateCreatePosting(typeofjob,descriptionOfJob,email)) {
 
@@ -50,7 +50,8 @@ public class JobProviderController {
         params.put("description", descriptionOfJob);
         params.put("typeofjob", typeofjob);
         params.put("email",email);
-
+        params.put("location", address);
+        params.put("duration", jobDuration);
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.addJob, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
