@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mCommonjobsOreo.iml" filepath="$PROJECT_DIR$/mCommonjobsOreo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/view applications.iml" filepath="$PROJECT_DIR$/view applications.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ft-share-job.iml" filepath="$PROJECT_DIR$/ft-share-job.iml" />
     </modules>
   </component>
 </project>

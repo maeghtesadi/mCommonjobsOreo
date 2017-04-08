@@ -1,6 +1,7 @@
 package com.oreo.mcommonjobs.Models;
 
 /**
+ * Contains the URL Path to all php scripts on the client's server (web services that query the db)
  * Created by Rameen on 3/27/2017.
  */
 
@@ -22,6 +23,7 @@ public class URLPath {
     public static final String acceptApplicant = prefix + "/acceptapplicant.php";
     public static final String getApplications = prefix + "/getapplicationstatuses.php";
     public static final String checkIfAcceptedApplication = prefix + "/checkifacceptedapplication.php";
-
+    public static final String shareJob = prefix + "/sharejob.php";
+    public static final String getSharedJobs = prefix + "/getsharedjobs.php";
 }
 

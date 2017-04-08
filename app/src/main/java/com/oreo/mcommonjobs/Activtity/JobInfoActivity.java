@@ -1,13 +1,19 @@
 package com.oreo.mcommonjobs.Activtity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.oreo.mcommonjobs.Controllers.JobSeekerController;
 import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.JobSession;
 import com.oreo.mcommonjobs.Session.PersonSession;
@@ -21,7 +27,10 @@ public class JobInfoActivity extends AppCompatActivity{
 
      JobSession jobSession = JobSession.getInstance();
      PersonSession personSession = PersonSession.getInstance();
-     Context c;
+     Context context;
+     private String shareEmail;
+    JobSeekerController jobSeekerController = new JobSeekerController();
+
     /**
      * Initialize the activity.
      * Grabs the job details and displays the content on the UI.
@@ -30,16 +39,52 @@ public class JobInfoActivity extends AppCompatActivity{
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        c = this.getApplicationContext();
+        context = this.getApplicationContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_info);
         TextView jobTitle = (TextView) findViewById(R.id.jobtitle);
         TextView description = (TextView) findViewById(R.id.jobdescription);
 
-        Button apply = (Button) findViewById(R.id.btnApply);
 
+        Button apply = (Button) findViewById(R.id.btnApply);
+        Button share = (Button) findViewById(R.id.btnShare);
         jobTitle.setText(jobSession.getTypeOfJob());
         description.setText(jobSession.getDescription());
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(JobInfoActivity.this);
+                builder.setTitle("Share this job to a user (enter email):");
+
+
+                final EditText input = new EditText(JobInfoActivity.this);
+
+                builder.setView(input);
+
+
+                builder.setPositiveButton("SHARE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        shareEmail = input.getText().toString();
+                        jobSeekerController.shareJob(personSession.getEmail(),shareEmail,jobSession.getDescription(),jobSession.getTypeOfJob(),context);
+                    }
+                });
+                builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog shareAlert = builder.create();
+
+                shareAlert.show();
+                Button cancelButton = shareAlert.getButton(DialogInterface.BUTTON_NEGATIVE);
+                cancelButton.setTextColor(Color.BLACK);
+                Button sharebutton = shareAlert.getButton(DialogInterface.BUTTON_POSITIVE);
+                sharebutton.setTextColor(Color.BLACK);
+            }
+        });
 
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,9 +93,6 @@ public class JobInfoActivity extends AppCompatActivity{
 
                 Intent i = new Intent (getApplicationContext(), ApplicationQuestionsActivity.class);
                 startActivity(i);
-                // JobSeekerController jobSeekerController = new JobSeekerController();
-
-             //   jobSeekerController.applyToJob(jobSession.getTypeOfJob(),jobSession.getDescription(),jobSession.getEmail_job_provider(),personSession.getEmail(),c);
 
             finish();
             }

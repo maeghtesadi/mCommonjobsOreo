@@ -36,7 +36,7 @@ import java.util.Map;
  */
 public class NavigationActivityForJobSeeker extends AppCompatActivity {
 
-    Button btnViewAllJobs, btnProfile, btnViewProfileJobs, btnApplications;
+    Button btnViewAllJobs, btnProfile, btnViewProfileJobs, btnApplications, btnSharedJobs;
     private List<ApplicationStatus> listOfApplications = new ArrayList<>();
     PersonSession personInstance = PersonSession.getInstance();
     /**
@@ -51,6 +51,7 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
         btnProfile = (Button) findViewById(R.id.btn_profile);
         btnViewProfileJobs = (Button) findViewById(R.id.btn_view_jobs_for_your_profile);
         btnApplications = (Button) findViewById(R.id.btn_pending_applications);
+        btnSharedJobs = (Button) findViewById(R.id.btn_shared_jobs);
 
         checkIfAcceptedApplication(personInstance.getEmail(),getApplicationContext());
 
@@ -64,7 +65,14 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
        });
 
 
-
+        btnSharedJobs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ViewJobsActivity.class);
+                i.putExtra("EXTRA_JOB_BUTTON_CLICKED", "sharedJobs");
+                startActivity(i);
+            }
+        });
 
         btnViewAllJobs.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
