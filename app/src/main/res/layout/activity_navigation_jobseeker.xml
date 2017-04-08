@@ -7,6 +7,12 @@
     android:background="#FFFFFF"
     tools:context="com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker">
 
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="View account details"
+    android:id="@+id/btn_account"
+    />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -135,11 +141,14 @@
                         android:textColor="#06bebd" />
 
                     <Button
+
                         android:id="@+id/btn_shared_jobs"
+
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@drawable/btn_square_menu"
+                        android:text="Account"
                         android:text="View Shared Jobs"
                         android:textColor="#06bebd" />
                 </LinearLayout>

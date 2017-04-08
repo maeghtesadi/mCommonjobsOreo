@@ -60,6 +60,7 @@ public class UserController {
                             Intent i = new Intent(context, NavigationActivityForJobProvider.class);
                             context.startActivity(i);
 
+
                         }
 
                         if (personSession.getTypeOfUser().equals("jobseeker")) {
@@ -124,4 +125,10 @@ public class UserController {
         RequestSingleton.getInstance(context).addToRequestQueue(request);
 
     }
+
+
+
+
+
+
 }

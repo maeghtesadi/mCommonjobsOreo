@@ -3,7 +3,7 @@
     package="com.oreo.mcommonjobs">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -39,6 +39,10 @@
         <activity android:name=".Activtity.ApplicationQuestionsActivity" />
         <activity android:name=".Activtity.ViewApplicantCredentials" />
         <activity android:name=".Activtity.ViewPendingApplicationsActivity" />
+
+        <activity android:name=".Activtity.AccountActivity" />
+        <activity android:name=".Activtity.UploadImageActivity" />
+
         <activity android:name=".Activtity.SeekerRatingMenuActivity" />
         <activity
             android:name=".Activtity.SeekerRatingsListActivity"
@@ -47,6 +51,7 @@
         <activity android:name=".Activtity.SeekerEmployersListActivity" />
         <activity android:name=".Activtity.SeekerViewRatingActivity" />
         <activity android:name=".Activtity.SeekerRateActivity"></activity>
+
     </application>
 
 </manifest>
