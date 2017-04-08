@@ -110,7 +110,12 @@ public class UploadImageActivity extends AppCompatActivity {
 
 
 
-
+    /**
+     * This method gets uploads an image to the server
+     * @param email - email of the user
+     * @param  name -name of the user
+     * @param context
+     */
 
     public void uploadImg(final String email , final String name, final Context context){
 
@@ -152,7 +157,11 @@ public class UploadImageActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * This method converts a bitmap into a string
+     * @param bitmap - the bitmap of your photo
+     * @return String - decoded bitmap into a string
+     */
 private String imageToString(Bitmap bitmap){
 
 
