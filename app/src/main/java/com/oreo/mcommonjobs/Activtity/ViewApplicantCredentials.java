@@ -52,17 +52,5 @@ public class ViewApplicantCredentials extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
     }
-
-
-
-
-
-
-
-
-
 }
