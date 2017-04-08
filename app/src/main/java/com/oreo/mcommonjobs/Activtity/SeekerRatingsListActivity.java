@@ -87,7 +87,7 @@ public class SeekerRatingsListActivity extends AppCompatActivity {
          * @param position
          * @param convertView
          * @param parent
-         * @return
+         * @return view
          */
         public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -111,7 +111,7 @@ public class SeekerRatingsListActivity extends AppCompatActivity {
      * method that retrieves a list of the ratings given to a job seeker from the database
      * @param seekerEmail
      * @param context
-     * @return
+     * @return list of job seeker ratings
      */
     private List<JobSeekerRating> getJobSeekerRatingsList(final String seekerEmail, Context context){
 

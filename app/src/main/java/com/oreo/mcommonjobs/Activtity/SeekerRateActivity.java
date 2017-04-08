@@ -15,6 +15,13 @@ import com.oreo.mcommonjobs.Controllers.JobSeekerRatingController;
 import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.PersonSession;
 
+/**
+ * This is the class for the seeker rating a provider Activity.
+ *
+ * @author Armine-i
+ * @author sammoosavi
+ */
+
 public class SeekerRateActivity extends AppCompatActivity {
 
     PersonSession personInstance = PersonSession.getInstance();

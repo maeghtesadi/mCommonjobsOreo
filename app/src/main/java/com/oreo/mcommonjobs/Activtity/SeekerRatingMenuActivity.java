@@ -8,6 +8,13 @@ import android.widget.Button;
 
 import com.oreo.mcommonjobs.R;
 
+/**
+ * This is the class for the seeker's rating menu Activity.
+ *
+ * @author Armine-i
+ * @author sammoosavi
+ */
+
 public class SeekerRatingMenuActivity extends AppCompatActivity {
 
     Button button_rate, button_view_rating;

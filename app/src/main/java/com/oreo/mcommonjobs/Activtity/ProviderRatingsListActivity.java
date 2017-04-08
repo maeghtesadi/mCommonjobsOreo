@@ -91,7 +91,7 @@ public class ProviderRatingsListActivity extends AppCompatActivity {
          * @param position
          * @param convertView
          * @param parent
-         * @return
+         * @return view
          */
         public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -115,7 +115,7 @@ public class ProviderRatingsListActivity extends AppCompatActivity {
      * method that retrieves a list of the ratings given to a job provider from the database
      * @param providerEmail
      * @param context
-     * @return
+     * @return list og job provider ratings.
      */
     private List<JobProviderRating> getJobProviderRatings(final String providerEmail, Context context){
 

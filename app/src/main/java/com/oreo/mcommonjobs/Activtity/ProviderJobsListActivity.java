@@ -14,6 +14,11 @@ import com.oreo.mcommonjobs.R;
 
 public class ProviderJobsListActivity extends AppCompatActivity {
 
+    /**
+     * onCreate method initializes the ProviderJobsListActivity
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

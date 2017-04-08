@@ -29,6 +29,18 @@ import java.util.Map;
 
 public class JobSeekerRatingController {
 
+    /**
+     * This method creates a job seeker rating and sends it to be entered into the database.
+     * Makes a volley request, sends job information for server to handle adding a job provider rating to database
+     *
+     * @param providerEmail
+     * @param seekerEmail
+     * @param rating1
+     * @param rating2
+     * @param rating3
+     * @param comment
+     * @param context
+     */
     public void registerJobSeekerRating(final String providerEmail, final String seekerEmail, final int rating1, final int rating2, final int rating3, final String comment, final Context context){
 
         Map<String ,String> params = new HashMap<String, String>();
@@ -54,6 +66,13 @@ public class JobSeekerRatingController {
         RequestSingleton.getInstance(context).addToRequestQueue(request);
     }
 
+    /**
+     * This method returns a list of job seeker ratings.
+     *
+     * @param seekerEmail
+     * @param context
+     * @return list of job seeker ratings
+     */
     public List<JobSeekerRating> getJobSeekerRatingsList(final String seekerEmail, Context context){
 
         final List<JobSeekerRating> jobSeekerRatingList = new ArrayList<JobSeekerRating>();
@@ -107,6 +126,13 @@ public class JobSeekerRatingController {
         return jobSeekerRatingList;
     }
 
+    /**
+     * This method returns a list of reviewable job providers.
+     *
+     * @param seekerEmail
+     * @param context
+     * @return list of reviewable job providers.
+     */
     public List<ReviewableJobProvider> getReviewableJobProviders(final String seekerEmail, Context context){
 
         final List<ReviewableJobProvider> reviewableJobProviderList= new ArrayList<ReviewableJobProvider>();

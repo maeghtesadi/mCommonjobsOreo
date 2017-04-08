@@ -32,6 +32,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This is the class for displaying a list of the seeker's employers Activity.
+ *
+ * @author Armine-i
+ * @author sammoosavi
+ */
+
 public class SeekerEmployersListActivity extends AppCompatActivity {
     private List<ReviewableJobProvider> providersList = new ArrayList<>();
     PersonSession personInstance = PersonSession.getInstance();
@@ -75,7 +82,7 @@ public class SeekerEmployersListActivity extends AppCompatActivity {
          * @param position
          * @param convertView
          * @param parent
-         * @return
+         * @return view
          */
         public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -98,7 +105,7 @@ public class SeekerEmployersListActivity extends AppCompatActivity {
      *
      * @param seekerEmail
      * @param context
-     * @return
+     * @return list of reviewable job providers
      */
     private List<ReviewableJobProvider> getReviewableJobProviders(final String seekerEmail, Context context){
 

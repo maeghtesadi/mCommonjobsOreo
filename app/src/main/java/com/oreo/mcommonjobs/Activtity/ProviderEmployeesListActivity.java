@@ -81,7 +81,7 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
          * @param position
          * @param convertView
          * @param parent
-         * @return
+         * @return view
          */
         public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -104,7 +104,7 @@ public class ProviderEmployeesListActivity extends AppCompatActivity {
      *
      * @param providerEmail
      * @param context
-     * @return
+     * @return list of reviewable job seekers
      */
     private List<ReviewableJobSeeker> getReviewableJobSeekers(final String providerEmail, Context context) {
 

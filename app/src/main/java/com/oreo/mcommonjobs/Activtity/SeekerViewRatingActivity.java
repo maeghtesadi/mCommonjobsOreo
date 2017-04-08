@@ -7,6 +7,13 @@ import android.widget.TextView;
 import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.PersonSession;
 
+/**
+ * This is the class for the seeker viewing one of their ratings Activity.
+ *
+ * @author Armine-i
+ * @author sammoosavi
+ */
+
 public class SeekerViewRatingActivity extends AppCompatActivity {
 
     PersonSession personSession = PersonSession.getInstance();
