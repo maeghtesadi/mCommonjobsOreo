@@ -127,6 +127,66 @@ public class JobSeekerController {
     }
 
 
+    /**
+     * This method shares a job to a job seeker of the specified email address
+     *
+     * @param emailRecipient
+     * @param emailSender
+     * @param jobDescription
+     * @param typeOfJob
+     * @param context
+     */
+    public void shareJob(final String emailSender,final String emailRecipient, final String jobDescription, final String typeOfJob, final Context context){
+
+        // Post params to be sent to the server
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("description", jobDescription);
+        params.put("typeofjob", typeOfJob);
+        params.put("emailRecipient", emailRecipient);
+        params.put("emailSender", emailSender);
+
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.shareJob, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if(!response.has("error")){
+
+
+                            CharSequence text = "Job shared with " + emailRecipient + "!";
+                            int duration = Toast.LENGTH_LONG;
+
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+
+                        }else{
+
+
+                            CharSequence text = "Failed: email not found!";
+                            int duration = Toast.LENGTH_LONG;
+
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error
+                    }
+                });
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
+
+
+    }
+
+
+
 
 
 

@@ -135,12 +135,12 @@
                         android:textColor="#06bebd" />
 
                     <Button
-                        android:id="@+id/extra_btn_two"
+                        android:id="@+id/btn_shared_jobs"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@drawable/btn_square_menu"
-                        android:text="Profile"
+                        android:text="View Shared Jobs"
                         android:textColor="#06bebd" />
                 </LinearLayout>
 
