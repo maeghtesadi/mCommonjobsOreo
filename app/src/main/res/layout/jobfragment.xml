@@ -36,6 +36,7 @@
         android:lineSpacingExtra="-3dp"
         android:id="@+id/desc"
         android:paddingTop="10dp"
+        android:paddingRight="5dp"
         android:layout_alignBottom="@+id/leftIco"
         android:layout_alignLeft="@+id/heading"
         android:layout_alignStart="@+id/heading" />
