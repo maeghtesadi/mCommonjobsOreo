@@ -1,14 +1,19 @@
 package com.oreo.mcommonjobs.Activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,7 +23,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.oreo.mcommonjobs.Controllers.JobSeekerController;
 import com.oreo.mcommonjobs.Models.ApplicationStatus;
-import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.JobSession;
@@ -48,13 +52,13 @@ public class ViewPendingApplicationsActivity extends AppCompatActivity {
     JobSeekerController jobSeekerController = new JobSeekerController();
     String buttonClicked;
     PersonSession personInstance = PersonSession.getInstance();
-
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pending_applications);
 
-       listOfApplications = getApplications(personInstance.getEmail(),getApplicationContext());
+        listOfApplications = getApplications(personInstance.getEmail(),getApplicationContext());
     }
 
 
@@ -96,29 +100,44 @@ public class ViewPendingApplicationsActivity extends AppCompatActivity {
 
             typeOfJobView.setText(currentApplication.getTypeOfJob());
             statusView.setText(currentApplication.getStatus());
-/*
-            convertView.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View view) {
+            if(currentApplication.getStatus().equals("accepted")){
 
-                    TextView heading = (TextView) view.findViewById(R.id.heading);
-                    TextView desc = (TextView) view.findViewById(R.id.desc);
+                convertView.setOnClickListener(new View.OnClickListener() {
 
-                    String headingString = heading.getText().toString();
-                    String descString = desc.getText().toString();
+                    @Override
+                    public void onClick(View view) {
 
-                    JobSession jobSession = JobSession.getInstance();
-                    jobSession.setTypeOfJob(headingString);
-                    jobSession.setDescription(descString);
-                    jobSession.setEmail_job_provider(currentJob.getJob_provider_email());
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ViewPendingApplicationsActivity.this);
+                        builder.setTitle("Would you like to accept this job offer?");
 
 
-                    Intent i = new Intent(ViewPendingApplicationsActivity.this, JobInfoActivity.class);
 
-                    startActivity(i);
-                }
-            }); */
+
+
+                        builder.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                jobSeekerController.acceptJob(personInstance.getEmail(), currentApplication.getTypeOfJob(), currentApplication.getDescription(),getApplicationContext());
+                            }
+                        });
+                        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                        AlertDialog shareAlert = builder.create();
+
+                        shareAlert.show();
+                        Button cancelButton = shareAlert.getButton(DialogInterface.BUTTON_NEGATIVE);
+                        cancelButton.setTextColor(Color.BLACK);
+                        Button sharebutton = shareAlert.getButton(DialogInterface.BUTTON_POSITIVE);
+                        sharebutton.setTextColor(Color.BLACK);
+                    }
+                });
+
+            }
             return convertView;
         }
 
@@ -154,7 +173,8 @@ public class ViewPendingApplicationsActivity extends AppCompatActivity {
 
                                 String typeOfJob = currentApplication.getString("typeofjob");
                                 String status = currentApplication.getString("status");
-                                applications.add(new ApplicationStatus(typeOfJob, status));
+                                String description = currentApplication.getString("description");
+                                applications.add(new ApplicationStatus(typeOfJob, status, description));
                             }
 
                             ArrayAdapter<ApplicationStatus> adapter = new customAdapter();

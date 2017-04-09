@@ -8,11 +8,21 @@ package com.oreo.mcommonjobs.Models;
 public class ApplicationStatus {
     private String status;
     private String typeOfJob;
+    private String description;
 
-    public ApplicationStatus(String typeOfJob, String status){
+    public ApplicationStatus(String typeOfJob, String status, String description){
 
         this.status = status;
         this.typeOfJob = typeOfJob;
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getStatus() {
