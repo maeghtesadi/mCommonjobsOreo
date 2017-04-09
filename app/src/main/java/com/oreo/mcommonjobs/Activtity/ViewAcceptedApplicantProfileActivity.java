@@ -1,8 +1,13 @@
 package com.oreo.mcommonjobs.Activtity;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -25,7 +30,8 @@ import java.util.Map;
 
 public class ViewAcceptedApplicantProfileActivity extends AppCompatActivity {
 
-    TextView firstNameTextView, lastNameTextView  , emailTextView, userNameTextView, phoneNumberTextView , ratingTextView;
+    TextView firstNameTextView, lastNameTextView, emailTextView, userNameTextView, phoneNumberTextView, ratingTextView;
+    Button call;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +39,22 @@ public class ViewAcceptedApplicantProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_applicants_account);
 
         populateLayout(getIntent().getStringExtra("username"));
+        call = (Button) findViewById(R.id.btn_call);
 
+
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                    callIntent.setData(Uri.parse("tel:" + phoneNumberTextView.getText().toString()));
+                    startActivity(callIntent);
+                } catch (ActivityNotFoundException activityException) {
+                    Log.e("Calling a Phone Number", "Call failed", activityException);
+                }
+            }
+        });
 
     }
 
