@@ -8,6 +8,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/oreo/mcommonjobs/Activity/AcceptApplicantTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/oreo/mcommonjobs/Activity/AddNewProfileListTest.java">
           <value>
             <set />
@@ -24,6 +29,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/oreo/mcommonjobs/Activity/ApplyToSharedJobTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/oreo/mcommonjobs/Activity/CreateJobPostingTest.java">
           <value>
             <set />
           </value>
