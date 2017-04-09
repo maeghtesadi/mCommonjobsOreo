@@ -74,6 +74,7 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), AccountActivity.class);
                 startActivity(i);
+                overridePendingTransition(R.layout.fade_in, R.layout.fade_out);
 
             }
         });
