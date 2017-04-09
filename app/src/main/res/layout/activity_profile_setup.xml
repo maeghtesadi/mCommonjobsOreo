@@ -1,79 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_profile_setup"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.oreo.mcommonjobs.Activity.ProfileSetUpActivity"
-    android:background="@drawable/background1">
+    tools:context="com.oreo.mcommonjobs.Activity.ProfileSetUpActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/page_title_profile_info"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="100"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="20"
-            android:weightSum="100"
-            android:paddingBottom="10dp">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="50"></LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="50"
-                android:weightSum="100">
-
-                <TextView
-                    android:text="@string/profile_setup_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/page_title_profile_info"
-                    android:textColor="@android:color/white"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:fontFamily="Montserrat-Regular"
-                    android:textSize="32sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="70"
-            android:weightSum="100"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:paddingBottom="10dp">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="60"
-                android:background="@android:color/white"
-                android:id="@+id/main_panel"
-                android:weightSum="100">
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:fontFamily="Asap-Regular"
+        android:layout_marginTop="43dp"
+        android:textColor="#06bebd"
+        android:textSize="44sp"
+        android:textAlignment="center"
+        android:text="Profile Setup"/>
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -90,102 +36,93 @@
                         android:layout_weight="1" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="20"
-                    android:id="@+id/email_layout"
-                    android:textAlignment="center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:textAlignment="center"
+        android:padding="5dp"
+        android:id="@+id/firstname_layout"
+        >
 
-                    <TextView
-                        android:text="@string/email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:id="@+id/email_textview"
-                        android:layout_weight="1"
-                        android:textAlignment="center" />
-                </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="First Name goes here"
+            android:id="@+id/firstname_textview"
+            android:gravity="center_horizontal"
+            android:textSize="25sp"
+            android:textColor="#445677"/>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="15"
-                    android:id="@+id/edit_firstname_layout">
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/lastname_layout"
+        >
 
-                    <TextView
-                        android:text="@string/first_name_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:id="@+id/firstname_textview"
-                        android:textAlignment="center" />
-                </LinearLayout>
+        <TextView
+            android:text="@string/last_name_title"
+            android:id="@+id/lastname_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="#445677"
+            />
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="15"
-                    android:id="@+id/firstname_layout"></LinearLayout>
+    </LinearLayout>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="15"
-                    android:id="@+id/edit_lastname_layout">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:id="@+id/email_layout"
+        >
 
-                    <TextView
-                        android:text="@string/last_name_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:id="@+id/lastname_textview"
-                        android:layout_weight="1"
-                        android:textAlignment="center" />
-                </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textAlignment="center"
+            android:textSize="22sp"
+            android:textColor="#445677"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="15dp"
+            android:id="@+id/email_textview"
+            />
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="15"
-                    android:id="@+id/lastname_layout"></LinearLayout>
+    </LinearLayout>
 
-                <RelativeLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="10"
-                    android:id="@+id/continue_layout">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
                     <Button
-                        android:text="@string/continue_btn"
+                        android:text="Continue"
+                        android:id="@+id/btn_continue"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentEnd="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:id="@+id/btn_continue"
-                        android:background="@drawable/btn02"
                         android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="false"
-                        android:layout_alignParentLeft="false"
-                        android:layout_alignParentEnd="true" />
+                        android:layout_alignParentBottom="true"
+                        android:textSize="20sp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="#ffffff"
+                        android:textAllCaps="false"
+                        android:background="@drawable/roundedbtn"/>
 
                 </RelativeLayout>
-            </LinearLayout>
-
-        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="10"></LinearLayout>
+            ></LinearLayout>
 
     </LinearLayout>
-
-</RelativeLayout>
