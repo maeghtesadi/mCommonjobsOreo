@@ -69,7 +69,7 @@ public class ProviderRateActivity extends AppCompatActivity {
                 seekerEmail = getIntent().getStringExtra("EMAIL_EXTRA");
 
                 jobSeekerRatingController.registerJobSeekerRating(personInstance.getEmail(), seekerEmail, providerRating1, providerRating2, providerRating3, providerComment, appContext);
-                Toast.makeText(ProviderRateActivity.this, "Rating Submitted", Toast.LENGTH_LONG).show();
+                Toast.makeText(ProviderRateActivity.this, R.string.rating_submitted, Toast.LENGTH_LONG).show();
                 Intent submitRatingIntent = new Intent(getApplicationContext(), ProviderRatingMenuActivity.class);
                 startActivity(submitRatingIntent);
                 finish();

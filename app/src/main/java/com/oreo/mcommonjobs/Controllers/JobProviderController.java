@@ -10,6 +10,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.oreo.mcommonjobs.Models.Application;
 import com.oreo.mcommonjobs.Models.URLPath;
+import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 import com.oreo.mcommonjobs.Session.ValidateInputs;
 
@@ -60,7 +61,7 @@ public class JobProviderController {
                     @Override
                     public void onResponse(JSONObject response) {
 
-                        CharSequence text = "New Job Posting Created!";
+                        CharSequence text = context.getString(R.string.job_posting_created);
                         int duration = Toast.LENGTH_LONG;
 
                         Toast toast = Toast.makeText(context, text, duration);
@@ -78,14 +79,14 @@ public class JobProviderController {
                 });
         request.setShouldCache(false);
         RequestSingleton.getInstance(context).addToRequestQueue(request);
-        CharSequence text = "Job Posting Created!";
+        CharSequence text = context.getString(R.string.job_posting_created);
         int duration = Toast.LENGTH_LONG;
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     }else{
 
-        CharSequence text = "Job Post Invalid: enter a description please!";
+        CharSequence text = context.getString(R.string.job_posting_error);
         int duration = Toast.LENGTH_LONG;
 
         Toast toast = Toast.makeText(context, text, duration);
@@ -132,7 +133,7 @@ public class JobProviderController {
         request.setShouldCache(false);
         RequestSingleton.getInstance(context).addToRequestQueue(request);
 
-        CharSequence text = "Applicant accepted and notified!";
+        CharSequence text = context.getString(R.string.applicant_accepted);
         int duration = Toast.LENGTH_LONG;
 
         Toast toast = Toast.makeText(context, text, duration);

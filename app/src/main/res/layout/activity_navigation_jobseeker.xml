@@ -10,7 +10,7 @@
 <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="View account details"
+    android:text="@string/view_account_details"
     android:id="@+id/btn_account"
     />
     <LinearLayout

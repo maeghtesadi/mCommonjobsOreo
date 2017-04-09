@@ -132,7 +132,7 @@ public class UploadImageActivity extends AppCompatActivity {
 
 
 
-                            CharSequence text = "Image uploaded successfully";
+                            CharSequence text = getString(R.string.image_uploaded_successfully);
                             int duration = Toast.LENGTH_LONG;
 
                             Toast toast = Toast.makeText(context, text, duration);
