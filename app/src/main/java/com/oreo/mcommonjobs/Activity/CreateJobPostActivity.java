@@ -40,7 +40,7 @@ public class CreateJobPostActivity extends AppCompatActivity {
         appContext = this.getApplicationContext();
 
         dropdown_menu_category = (Spinner) findViewById(R.id.spinner);
-        String[] menu_items = new String[]{"Painting", "Gardening", "Vehicle Repair", "Restaurant", "House Work", "Care"};
+      final  String[] menu_items = new String[]{"Painting", "Gardening", "Vehicle Repair", "Restaurant", "House Work", "Care"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, menu_items);
@@ -50,27 +50,8 @@ public class CreateJobPostActivity extends AppCompatActivity {
 
         dropdown_menu_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                switch (pos) {
-                    case 0: // Painting Duties
-                        jobSelected = "Painting";
-                        break;
-                    case 1: // Gardening Duties
-                        jobSelected = "Gardening";
-                        break;
-                    case 2: // Vehicle Repair Duties
-                        jobSelected = "Vehicle Repair";
-                        break;
-                    case 3: //Restaurant Duties
-                        jobSelected = "Restaurant";
-                        break;
-                    case 4: // House Work Duties
-                        jobSelected = "House Work";
-                        break;
-                    case 5: //Care Duties
-                        jobSelected = "Care";
-                        break;
 
-                }
+                jobSelected = menu_items[pos];
 
             }
 
