@@ -51,6 +51,7 @@
         <activity android:name=".Activtity.SeekerEmployersListActivity" />
         <activity android:name=".Activtity.SeekerViewRatingActivity" />
         <activity android:name=".Activtity.SeekerRateActivity"></activity>
+        <activity android:name=".Activtity.ViewAcceptedApplicantProfileActivity" />
 
     </application>
 
