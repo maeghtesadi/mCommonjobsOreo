@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.oreo.mcommonjobs.Controllers.ImageController;
 import com.oreo.mcommonjobs.Controllers.JobSeekerController;
 import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.Models.URLPath;
@@ -47,6 +49,7 @@ public class ViewJobsActivity extends AppCompatActivity {
     JobSeekerController jobSeekerController = new JobSeekerController();
     String buttonClicked;
     PersonSession personInstance = PersonSession.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,9 +115,12 @@ public class ViewJobsActivity extends AppCompatActivity {
 
             TextView heading = (TextView) convertView.findViewById(R.id.heading);
             TextView desc = (TextView) convertView.findViewById(R.id.desc);
-
+            ImageView  imageView =(ImageView) convertView.findViewById(R.id.job_image);
             heading.setText(currentJob.getCategory());
             desc.setText(currentJob.getDescription());
+
+            ImageController imageController = new ImageController();
+            imageView.setImageResource(imageController.setJobImage(currentJob.getCategory()));
 
             convertView.setOnClickListener(new View.OnClickListener() {
 
@@ -123,6 +129,7 @@ public class ViewJobsActivity extends AppCompatActivity {
 
                     TextView heading = (TextView) view.findViewById(R.id.heading);
                     TextView desc = (TextView) view.findViewById(R.id.desc);
+
 
                     String headingString = heading.getText().toString();
                     String descString = desc.getText().toString();
