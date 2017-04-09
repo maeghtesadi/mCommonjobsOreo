@@ -40,7 +40,9 @@ public class CreateJobPostActivity extends AppCompatActivity {
         appContext = this.getApplicationContext();
 
         dropdown_menu_category = (Spinner) findViewById(R.id.spinner);
+
         final String[] menu_items = new String[]{"Painting", "Gardening", "Vehicle Repair", "Restaurant", "House Work", "Care"};
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, menu_items);
@@ -50,6 +52,7 @@ public class CreateJobPostActivity extends AppCompatActivity {
 
         dropdown_menu_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+
                 jobSelected = menu_items[pos];
 
             }
