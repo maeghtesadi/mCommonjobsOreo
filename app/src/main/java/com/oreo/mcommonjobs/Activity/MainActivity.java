@@ -1,4 +1,4 @@
-package com.oreo.mcommonjobs.Activtity;
+package com.oreo.mcommonjobs.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;

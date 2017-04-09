@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context="com.oreo.mcommonjobs.Activtity.ProviderEmployeesListActivity">
+    tools:context="com.oreo.mcommonjobs.Activity.ProviderEmployeesListActivity">
 
     <TextView
         android:id="@+id/EmployeeListTitle"

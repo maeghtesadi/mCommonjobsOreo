@@ -3,7 +3,7 @@
     package="com.oreo.mcommonjobs">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activtity.MainActivity"
+            android:name=".Activity.MainActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,34 +19,39 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activtity.SignInActivity" />
-        <activity android:name=".Activtity.ProfileSetUpActivity" />
-        <activity android:name=".Activtity.SelectUserTypeActivity" />
-        <activity android:name=".Activtity.NavigationActivityForJobProvider" />
-        <activity android:name=".Activtity.CreateJobPostActivity" />
-        <activity android:name=".Activtity.NavigationActivityForJobSeeker" />
-        <activity android:name=".Activtity.ViewJobsActivity" />
-        <activity android:name=".Activtity.JobInfoActivity" />
-        <activity android:name=".Activtity.ViewApplicants" />
-        <activity android:name=".Activtity.AddProfileActivity" />
-        <activity android:name=".Activtity.ProviderRatingMenuActivity" />
-        <activity android:name=".Activtity.ProviderRatingsListActivity" />
-        <activity android:name=".Activtity.ProviderJobsListActivity" />
-        <activity android:name=".Activtity.ProviderEmployeesListActivity" />
-        <activity android:name=".Activtity.ProviderViewRatingActivity" />
-        <activity android:name=".Activtity.ProviderRateActivity" />
-        <activity android:name=".Activtity.ViewProfilesActivity" />
-        <activity android:name=".Activtity.ApplicationQuestionsActivity" />
-        <activity android:name=".Activtity.ViewApplicantCredentials" />
-        <activity android:name=".Activtity.ViewPendingApplicationsActivity" />
-        <activity android:name=".Activtity.SeekerRatingMenuActivity" />
+        <activity android:name=".Activity.SignInActivity" />
+        <activity android:name=".Activity.ProfileSetUpActivity" />
+        <activity android:name=".Activity.SelectUserTypeActivity" />
+        <activity android:name=".Activity.NavigationActivityForJobProvider" />
+        <activity android:name=".Activity.CreateJobPostActivity" />
+        <activity android:name=".Activity.NavigationActivityForJobSeeker" />
+        <activity android:name=".Activity.ViewJobsActivity" />
+        <activity android:name=".Activity.JobInfoActivity" />
+        <activity android:name=".Activity.ViewApplicants" />
+        <activity android:name=".Activity.AddProfileActivity" />
+        <activity android:name=".Activity.ProviderRatingMenuActivity" />
+        <activity android:name=".Activity.ProviderRatingsListActivity" />
+        <activity android:name=".Activity.ProviderJobsListActivity" />
+        <activity android:name=".Activity.ProviderEmployeesListActivity" />
+        <activity android:name=".Activity.ProviderViewRatingActivity" />
+        <activity android:name=".Activity.ProviderRateActivity" />
+        <activity android:name=".Activity.ViewProfilesActivity" />
+        <activity android:name=".Activity.ApplicationQuestionsActivity" />
+        <activity android:name=".Activity.ViewApplicantCredentials" />
+        <activity android:name=".Activity.ViewPendingApplicationsActivity" />
+
+        <activity android:name=".Activity.AccountActivity" />
+        <activity android:name=".Activity.UploadImageActivity" />
+
+        <activity android:name=".Activity.SeekerRatingMenuActivity" />
         <activity
-            android:name=".Activtity.SeekerRatingsListActivity"
+            android:name=".Activity.SeekerRatingsListActivity"
             android:label="@string/title_activity_seeker_ratings_list"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activtity.SeekerEmployersListActivity" />
-        <activity android:name=".Activtity.SeekerViewRatingActivity" />
-        <activity android:name=".Activtity.SeekerRateActivity"></activity>
+        <activity android:name=".Activity.SeekerEmployersListActivity" />
+        <activity android:name=".Activity.SeekerViewRatingActivity" />
+        <activity android:name=".Activity.SeekerRateActivity"></activity>
+
     </application>
 
 </manifest>

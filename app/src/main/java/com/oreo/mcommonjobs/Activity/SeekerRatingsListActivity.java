@@ -1,9 +1,12 @@
-package com.oreo.mcommonjobs.Activtity;
+package com.oreo.mcommonjobs.Activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +19,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.oreo.mcommonjobs.Controllers.JobProviderRatingController;
 import com.oreo.mcommonjobs.Models.JobProviderRating;
-import com.oreo.mcommonjobs.Models.ReviewableJobSeeker;
+import com.oreo.mcommonjobs.Models.JobSeekerRating;
 import com.oreo.mcommonjobs.Models.URLPath;
 import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.PersonSession;
@@ -33,56 +35,50 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * This is the class for the list of a provider's given ratings Activity.
- *
- * @author Armine-i
- * @author sammoosavi
- */
+public class SeekerRatingsListActivity extends AppCompatActivity {
 
-public class ProviderRatingsListActivity extends AppCompatActivity {
-    private List<JobProviderRating> jobProviderRatingsList = new ArrayList<>();
+    private List<JobSeekerRating> seekerRatingsList = new ArrayList<>();
     PersonSession personInstance = PersonSession.getInstance();
 
     /**
-     * onCreate method initialize the ProviderRatingsListActivity
+     * onCreate method initialize the SeekerRatingsListActivity
      *
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_provider_ratings_list);
+        setContentView(R.layout.activity_seeker_ratings_list);
 
-        jobProviderRatingsList = getJobProviderRatings(personInstance.getEmail(), this.getApplicationContext());
+        seekerRatingsList = getJobSeekerRatingsList(personInstance.getEmail(), this.getApplicationContext());
     }
 
     private AdapterView.OnItemClickListener onListClick = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> parent,
                                 View view, int position,
                                 long id) {
-            Intent i=new Intent(ProviderRatingsListActivity.this, ProviderViewRatingActivity.class);
-            i.putExtra("ID_EXTRA", jobProviderRatingsList.get(position).getRaterId());
-            i.putExtra("DISPNAME_EXTRA", String.valueOf(jobProviderRatingsList.get(position).getDisplayName()));
-            i.putExtra("LASTNAME_EXTRA", String.valueOf(jobProviderRatingsList.get(position).getLastName()));
-            i.putExtra("R1_EXTRA", jobProviderRatingsList.get(position).getRating1());
-            i.putExtra("R2_EXTRA", jobProviderRatingsList.get(position).getRating2());
-            i.putExtra("R3_EXTRA", jobProviderRatingsList.get(position).getRating3());
-            i.putExtra("AVG_EXTRA",jobProviderRatingsList.get(position).getAverageRating());
-            i.putExtra("COMMENT_EXTRA", String.valueOf(jobProviderRatingsList.get(position).getComment()));
+            Intent i=new Intent(SeekerRatingsListActivity.this, SeekerViewRatingActivity.class);
+            i.putExtra("ID_EXTRA", seekerRatingsList.get(position).getRaterId());
+            i.putExtra("DISPNAME_EXTRA", String.valueOf(seekerRatingsList.get(position).getDisplayName()));
+            i.putExtra("LASTNAME_EXTRA", String.valueOf(seekerRatingsList.get(position).getLastName()));
+            i.putExtra("R1_EXTRA", seekerRatingsList.get(position).getRating1());
+            i.putExtra("R2_EXTRA", seekerRatingsList.get(position).getRating2());
+            i.putExtra("R3_EXTRA", seekerRatingsList.get(position).getRating3());
+            i.putExtra("AVG_EXTRA",seekerRatingsList.get(position).getAverageRating());
+            i.putExtra("COMMENT_EXTRA", String.valueOf(seekerRatingsList.get(position).getComment()));
             startActivity(i);
         }
     };
 
 
-    class customAdapter extends ArrayAdapter<JobProviderRating> {
+    class customAdapter extends ArrayAdapter<JobSeekerRating> {
 
         /**
          * Constructor for customAdapter class
-         * Takes fragment layout, decorates it with values taken from an job provider's given rating and than returns the converted view
+         * Takes fragment layout, decorates it with values taken from an job seeker's given rating and than returns the converted view
          */
         public customAdapter() {
-            super(ProviderRatingsListActivity.this, R.layout.rating_content, jobProviderRatingsList);
+            super(SeekerRatingsListActivity.this, R.layout.rating_content, seekerRatingsList);
         }
 
         /**
@@ -99,7 +95,7 @@ public class ProviderRatingsListActivity extends AppCompatActivity {
                 convertView = getLayoutInflater().inflate(R.layout.rating_content, parent, false);
             }
 
-            final JobProviderRating currentRater = jobProviderRatingsList.get(position);
+            final JobSeekerRating currentRater = seekerRatingsList.get(position);
 
             TextView name = (TextView) convertView.findViewById(R.id.raterName);
             TextView avgRating = (TextView) convertView.findViewById(R.id.ratingAverage);
@@ -112,47 +108,47 @@ public class ProviderRatingsListActivity extends AppCompatActivity {
     }
 
     /**
-     * method that retrieves a list of the ratings given to a job provider from the database
-     * @param providerEmail
+     * method that retrieves a list of the ratings given to a job seeker from the database
+     * @param seekerEmail
      * @param context
-     * @return list og job provider ratings.
+     * @return list of job seeker ratings
      */
-    private List<JobProviderRating> getJobProviderRatings(final String providerEmail, Context context){
+    private List<JobSeekerRating> getJobSeekerRatingsList(final String seekerEmail, Context context){
 
-        final List<JobProviderRating> jobProviderRatingList = new ArrayList<JobProviderRating>();
+        final List<JobSeekerRating> jobSeekerRatingList = new ArrayList<JobSeekerRating>();
         Map<String, String> params = new HashMap<String, String>();
-        params.put("providerEmail", providerEmail);
+        params.put("seekerEmail", seekerEmail);
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getProviderRatings, new JSONObject(params), new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URLPath.getSeekerRatings, new JSONObject(params), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try{
-                    JSONArray jsonJobProviderRatingsArray = response.getJSONArray("providerRatings");
+                    JSONArray jsonJobSeekerRatingsArray = response.getJSONArray("seekerRatings");
 
-                    for(int i = 0; i < jsonJobProviderRatingsArray.length(); i++){
-                        JSONObject ratingCurrentPosition = jsonJobProviderRatingsArray.getJSONObject(i);
+                    for(int i = 0; i < jsonJobSeekerRatingsArray.length(); i++){
+                        JSONObject ratingCurrentPosition = jsonJobSeekerRatingsArray.getJSONObject(i);
 
                         String displayName = ratingCurrentPosition.getString("displayName");
                         String firstName = ratingCurrentPosition.getString("firstName");
                         String lastName = ratingCurrentPosition.getString("lastName");
                         String email = ratingCurrentPosition.getString("email");
                         int raterId = ratingCurrentPosition.getInt("raterid");
-                        int jobProviderId = ratingCurrentPosition.getInt("jobproviderid");
+                        int jobSeekerId = ratingCurrentPosition.getInt("jobseekerid");
                         int rating1 = ratingCurrentPosition.getInt("rating1");
                         int rating2 = ratingCurrentPosition.getInt("rating2");
                         int rating3 = ratingCurrentPosition.getInt("rating3");
                         double averageRating = ratingCurrentPosition.getDouble("averagerating");
                         String comment = ratingCurrentPosition.getString("comment");
 
-                        JobProviderRating jobProviderRating = new JobProviderRating(displayName, firstName, lastName, email, raterId, jobProviderId, rating1, rating2, rating3, averageRating, comment);
+                        JobSeekerRating jobSeekerRating = new JobSeekerRating(displayName, firstName, lastName, email, raterId, jobSeekerId, rating1, rating2, rating3, averageRating, comment);
 
-                        jobProviderRatingList.add(jobProviderRating);
+                        jobSeekerRatingList.add(jobSeekerRating);
                     }
 
-                    ArrayAdapter<JobProviderRating> adapter = new ProviderRatingsListActivity.customAdapter();
-                    ListView employeeList = (ListView) (findViewById(R.id.providerRatingslist));
-                    employeeList.setAdapter(adapter);
-                    employeeList.setOnItemClickListener(onListClick);
+                    ArrayAdapter<JobSeekerRating> adapter = new SeekerRatingsListActivity.customAdapter();
+                    ListView employersList = (ListView) (findViewById(R.id.seekerRatingslist));
+                    employersList.setAdapter(adapter);
+                    employersList.setOnItemClickListener(onListClick);
 
                 }catch(JSONException e){
                     e.printStackTrace();
@@ -167,7 +163,6 @@ public class ProviderRatingsListActivity extends AppCompatActivity {
 
         RequestSingleton.getInstance(context).addToRequestQueue(jsonRequest);
 
-        return jobProviderRatingList;
+        return jobSeekerRatingList;
     }
-
 }

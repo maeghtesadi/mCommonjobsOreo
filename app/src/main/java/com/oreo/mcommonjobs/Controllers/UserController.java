@@ -7,11 +7,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobProvider;
-import com.oreo.mcommonjobs.Activtity.SelectUserTypeActivity;
+import com.oreo.mcommonjobs.Activity.NavigationActivityForJobProvider;
+import com.oreo.mcommonjobs.Activity.SelectUserTypeActivity;
 
 import com.oreo.mcommonjobs.Models.URLPath;
-import com.oreo.mcommonjobs.Activtity.ViewProfilesActivity;
+import com.oreo.mcommonjobs.Activity.ViewProfilesActivity;
 
 import com.oreo.mcommonjobs.Session.PersonSession;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
@@ -59,6 +59,7 @@ public class UserController {
                         if (personSession.getTypeOfUser().equals("jobprovider")) {
                             Intent i = new Intent(context, NavigationActivityForJobProvider.class);
                             context.startActivity(i);
+
 
                         }
 
@@ -124,4 +125,10 @@ public class UserController {
         RequestSingleton.getInstance(context).addToRequestQueue(request);
 
     }
+
+
+
+
+
+
 }

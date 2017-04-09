@@ -1,4 +1,4 @@
-package com.oreo.mcommonjobs.Activtity;
+package com.oreo.mcommonjobs.Activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,48 +8,46 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.oreo.mcommonjobs.Controllers.JobProviderController;
+import com.oreo.mcommonjobs.Controllers.JobProviderRatingController;
 import com.oreo.mcommonjobs.Controllers.JobSeekerRatingController;
-import com.oreo.mcommonjobs.Models.JobProviderRating;
-import com.oreo.mcommonjobs.Models.ReviewableJobSeeker;
 import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.PersonSession;
 
 /**
- * This is the class for the provider rating an employee Activity.
+ * This is the class for the seeker rating a provider Activity.
  *
  * @author Armine-i
  * @author sammoosavi
  */
 
-public class ProviderRateActivity extends AppCompatActivity {
+public class SeekerRateActivity extends AppCompatActivity {
+
     PersonSession personInstance = PersonSession.getInstance();
-    JobSeekerRatingController jobSeekerRatingController = new JobSeekerRatingController();
+    JobProviderRatingController jobProviderRatingController = new JobProviderRatingController();
     private RatingBar ratingBar1, ratingBar2, ratingBar3; //given abstract names for more flexibility in modifying the rating criteria
     EditText comment;
     private Button btnSubmit;
-    String seekerEmail;
+    String providerEmail;
     Context appContext;
 
     /**
-     * onCreate method initialize the ProviderRateActivity
+     * onCreate method initialize the SeekerRateActivity
      *
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_provider_rate);
+        setContentView(R.layout.activity_seeker_rate);
         appContext = this.getApplicationContext();
 
         addListenerOnButton();
     }
 
     /**
-     *  addListenerOnButton method retrieves ratings' data and adds them to seeker's database
+     *  addListenerOnButton method retrieves ratings' data and adds them to job provider's database
      */
     public void addListenerOnButton() {
 
@@ -62,19 +60,18 @@ public class ProviderRateActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String providerComment = comment.getText().toString();
-                final int providerRating1 = Math.round(ratingBar1.getRating());
-                final int providerRating2 = Math.round(ratingBar2.getRating());
-                final int providerRating3 = Math.round(ratingBar3.getRating());
-                seekerEmail = getIntent().getStringExtra("EMAIL_EXTRA");
+                final String seekerComment = comment.getText().toString();
+                final int seekerRating1 = Math.round(ratingBar1.getRating());
+                final int seekerRating2 = Math.round(ratingBar2.getRating());
+                final int seekerRating3 = Math.round(ratingBar3.getRating());
+                providerEmail = getIntent().getStringExtra("EMAIL_EXTRA");
 
-                jobSeekerRatingController.registerJobSeekerRating(personInstance.getEmail(), seekerEmail, providerRating1, providerRating2, providerRating3, providerComment, appContext);
-                Toast.makeText(ProviderRateActivity.this, "Rating Submitted", Toast.LENGTH_LONG).show();
-                Intent submitRatingIntent = new Intent(getApplicationContext(), ProviderRatingMenuActivity.class);
+                jobProviderRatingController.registerJobProviderRating(personInstance.getEmail(), providerEmail, seekerRating1, seekerRating2, seekerRating3, seekerComment, appContext);
+                Toast.makeText(SeekerRateActivity.this, "Rating Submitted", Toast.LENGTH_LONG).show();
+                Intent submitRatingIntent = new Intent(getApplicationContext(), SeekerRatingMenuActivity.class);
                 startActivity(submitRatingIntent);
                 finish();
             }
         });
     }
 }
-

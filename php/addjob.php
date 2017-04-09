@@ -13,13 +13,13 @@
 	$email = $input->email;
 	$typeofjob = $input->typeofjob;
 	$description = $input->description;
-  
-    $query = "INSERT INTO jobs (id, posterEmail, typeofjob, description, status, location, duration, conditions) VALUES (NULL,'$email','$typeofjob','$description', 'pending','N/A','N/A','N/A')"; 	
+  	$location = $input->location;
+	$duration = $input->duration;
+
+    $query = "INSERT INTO jobs (id, posterEmail, typeofjob, description, status, location, duration, conditions) VALUES (NULL,'$email','$typeofjob','$description', 'pending','$location','$duration','N/A')"; 	
     $result = $con->query($query);
    
-	$response['result'] = $result->fetch_assoc();
-    echo json_encode($response);
+
     $con->close();
  
-   mysqli_close($con);
 ?>

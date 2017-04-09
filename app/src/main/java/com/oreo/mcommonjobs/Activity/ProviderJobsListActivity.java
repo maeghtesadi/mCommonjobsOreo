@@ -1,4 +1,4 @@
-package com.oreo.mcommonjobs.Activtity;
+package com.oreo.mcommonjobs.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context="com.oreo.mcommonjobs.Activtity.SeekerRateActivity">
+    tools:context="com.oreo.mcommonjobs.Activity.SeekerRateActivity">
 
     <TextView
         android:id="@+id/lblRateMe"

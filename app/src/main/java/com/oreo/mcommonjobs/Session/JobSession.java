@@ -10,6 +10,8 @@ public class JobSession {
     private String typeOfJob;
     private String description;
     private String email_job_provider;
+    private String address;
+    private String duration;
 
     /**
      * Default constructor & exists only to defeat instantiation.
@@ -38,6 +40,39 @@ public class JobSession {
      */
     public String getTypeOfJob() {
         return typeOfJob;
+    }
+
+    /**
+     * Getter method for the address of a Job.
+     *
+     * @return - String, address of a job.
+     */
+    public String getAddress() {
+        return address;
+    }
+    /**
+     * Setter method for the address of a Job.
+     *
+     * @param address - String, address of a job.
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    /**
+     * Getter method for the duration of a Job.
+     *
+     * @return - String, duration of a job.
+     */
+    public String getDuration() {
+        return duration;
+    }
+    /**
+     * Setter method for the duration of a Job.
+     *
+     * @param duration - String, description of a job.
+     */
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 
     /**

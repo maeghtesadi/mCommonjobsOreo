@@ -9,7 +9,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.oreo.mcommonjobs.Activtity.NavigationActivityForJobSeeker;
+import com.oreo.mcommonjobs.Activity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.Models.Profile;
 import com.oreo.mcommonjobs.Models.URLPath;

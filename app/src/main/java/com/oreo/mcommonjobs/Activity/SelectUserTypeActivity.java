@@ -1,4 +1,4 @@
-package com.oreo.mcommonjobs.Activtity;
+package com.oreo.mcommonjobs.Activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -50,6 +50,7 @@ public class SelectUserTypeActivity extends AppCompatActivity {
                // Intent i = new Intent(getApplicationContext(), NavigationActivityForJobSeeker.class);
                Intent i = new Intent(getApplicationContext(), AddProfileActivity.class);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -60,6 +61,7 @@ public class SelectUserTypeActivity extends AppCompatActivity {
                 user.registerAccount(personInstance.getFirstName(), personInstance.getLastName(), personInstance.getEmail(), typeOfUser, selectUserTypeContext);
                 Intent i = new Intent(getApplicationContext(), NavigationActivityForJobProvider.class);
                 startActivity(i);
+                finish();
             }
         });
     }

@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal"
-    tools:context="com.oreo.mcommonjobs.Activtity.ProviderViewRatingActivity">
+    tools:context="com.oreo.mcommonjobs.Activity.ProviderViewRatingActivity">
 
     <TextView
         android:id="@+id/seekerName1"

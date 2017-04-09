@@ -1,4 +1,4 @@
-package com.oreo.mcommonjobs.Activtity;
+package com.oreo.mcommonjobs.Activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ public class CreateJobPostActivity extends AppCompatActivity {
     Spinner dropdown_menu_category;
     String jobSelected = "Painting";
     Button btn_submit;
-    EditText jobDescription;
+    EditText jobDescription, jobAddress, jobDuration;
     JobProviderController jobProviderController = new JobProviderController();
     Context appContext;
     PersonSession personInstance = PersonSession.getInstance();
@@ -82,13 +82,17 @@ public class CreateJobPostActivity extends AppCompatActivity {
 
         btn_submit = (Button) findViewById(R.id.btn_continue);
         jobDescription = (EditText) findViewById(R.id.editText);
-
+        jobAddress = (EditText) findViewById(R.id.job_address);
+        jobDuration = (EditText) findViewById(R.id.job_duration);
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 String des = jobDescription.getText().toString();
-                jobProviderController.createPosting(jobSelected, des, personInstance.getEmail() ,  appContext);
+                String address = jobAddress.getText().toString();
+                String duration = jobDuration.getText().toString();
+
+                jobProviderController.createPosting(jobSelected, des, address, duration, personInstance.getEmail() ,  appContext);
                 finish();
             }
         });

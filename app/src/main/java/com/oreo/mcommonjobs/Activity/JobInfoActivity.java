@@ -1,4 +1,4 @@
-package com.oreo.mcommonjobs.Activtity;
+package com.oreo.mcommonjobs.Activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -44,12 +44,16 @@ public class JobInfoActivity extends AppCompatActivity{
         setContentView(R.layout.activity_job_info);
         TextView jobTitle = (TextView) findViewById(R.id.jobtitle);
         TextView description = (TextView) findViewById(R.id.jobdescription);
+        TextView location = (TextView) findViewById(R.id.joblocation);
+        TextView duration = (TextView) findViewById(R.id.jobduration);
 
 
         Button apply = (Button) findViewById(R.id.btnApply);
         Button share = (Button) findViewById(R.id.btnShare);
         jobTitle.setText(jobSession.getTypeOfJob());
         description.setText(jobSession.getDescription());
+        location.setText(jobSession.getAddress());
+        duration.setText(jobSession.getDuration());
 
         share.setOnClickListener(new View.OnClickListener() {
             @Override

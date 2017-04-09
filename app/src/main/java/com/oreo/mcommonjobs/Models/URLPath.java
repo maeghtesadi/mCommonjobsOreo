@@ -31,8 +31,15 @@ public class URLPath {
     public static final String acceptApplicant = prefix + "/acceptapplicant.php";
     public static final String getApplications = prefix + "/getapplicationstatuses.php";
     public static final String checkIfAcceptedApplication = prefix + "/checkifacceptedapplication.php";
+
+    public static final String getDisplayName = prefix + "/getdisplayname.php";
+    public static final String updatePhoneNumber = prefix + "/updatephonenumber.php";
+    public static final String updateDisplayName = prefix + "/updatedisplayname.php";
+    public static final String uploadImage = prefix + "/updateinfo.php";
+
     public static final String shareJob = prefix + "/sharejob.php";
     public static final String getSharedJobs = prefix + "/getsharedjobs.php";
+
 
 }
 

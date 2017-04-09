@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/background1"
-    tools:context="com.oreo.mcommonjobs.Activtity.CreateJobPostActivity">
+    tools:context="com.oreo.mcommonjobs.Activity.CreateJobPostActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -119,16 +119,44 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="90">
+                        android:layout_weight="5.82">
 
                         <EditText
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="62dp"
                             android:inputType="textMultiLine"
                             android:id="@+id/editText"
                             android:hint="@string/job_desc_hint" />
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.82">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPostalAddress"
+                            android:ems="10"
+                            android:id="@+id/job_address"
+                            android:hint="Add Address/Location." />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.82">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text|date"
+                            android:ems="10"
+                            android:id="@+id/job_duration"
+                            android:hint="Add Start Date or Duration."/>
+
+                        </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
