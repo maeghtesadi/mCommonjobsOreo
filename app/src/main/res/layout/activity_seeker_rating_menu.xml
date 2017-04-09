@@ -23,24 +23,25 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.65"
-        android:orientation="vertical"
+        android:layout_height="210dp"
+        android:orientation="horizontal"
         android:padding="20dp"
-        android:weightSum="2">
+        android:weightSum="2"
+        android:layout_marginTop="35dp">
 
         <Button
             android:id="@+id/btn_rate_provider"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/raterName"
-            android:layout_weight="1"
-            android:textSize="30sp"
-            android:textAllCaps="false"
             android:layout_marginBottom="15dp"
-            android:textColor="#4c70a3"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:background="@drawable/roundedbtn2"
-            android:text="@string/rate_a_job_provider" />
+            android:text="@string/rate_a_job_provider"
+            android:textAllCaps="false"
+            android:textColor="#4c70a3"
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/btn_view_my_ratings_seeker"
@@ -48,12 +49,13 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/btn_rate_seeker"
             android:layout_marginBottom="15dp"
-            android:textAllCaps="false"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:textColor="#4c70a3"
-            android:textSize="30sp"
             android:background="@drawable/roundedbtn2"
-            android:text="@string/view_my_ratings_seeker" />
+            android:text="@string/view_my_ratings_seeker"
+            android:textAllCaps="false"
+            android:textColor="#4c70a3"
+            android:textSize="30sp" />
 
     </LinearLayout>
 

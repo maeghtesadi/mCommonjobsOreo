@@ -4,6 +4,20 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/titleAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:fontFamily="Asap-Regular"
+        android:layout_marginTop="43dp"
+        android:textColor="#06bebd"
+        android:textSize="44sp"
+        android:textAlignment="center"
+        android:text="Profile" />
+
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="match_parent"
