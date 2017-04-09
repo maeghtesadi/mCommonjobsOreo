@@ -13,6 +13,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/oreo/mcommonjobs/Activity/JobSeekerNavigationMenuTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/oreo/mcommonjobs/Activity/ProfileSelectionTest.java">
           <value>
             <set />
