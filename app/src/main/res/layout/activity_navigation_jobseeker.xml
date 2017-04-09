@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:fontFamily="Asap-Regular"
-                android:text="Menu"
+                android:text="@string/menu_seeker"
                 android:textAlignment="center"
                 android:textColor="#06bebd"
                 android:textSize="44sp" />
@@ -63,7 +63,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@drawable/btn_square_menu"
-                        android:text="ViewJobs profile jobs"
+                        android:text="@string/viewjobs_profile_jobs"
                         android:textColor="#06bebd" />
 
                     <Button
@@ -72,7 +72,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@drawable/btn_square_menu"
-                        android:text="Profile"
+                        android:text="@string/profile_seeker"
                         android:textColor="#06bebd" />
                 </LinearLayout>
 
@@ -97,7 +97,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="44"
                         android:background="@drawable/btn_square_menu"
-                        android:text="View All Jobs"
+                        android:text="@string/view_all_jobs"
                         android:textColor="#06bebd" />
 
                     <Button
@@ -106,7 +106,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@drawable/btn_square_menu"
-                        android:text="Ratings"
+                        android:text="@string/ratings_seeker"
                         android:textColor="#06bebd" />
                 </LinearLayout>
 
@@ -131,7 +131,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@drawable/btn_square_menu"
-                        android:text="View your pending applications"
+                        android:text="@string/view_your_pending_applications"
                         android:textColor="#06bebd" />
 
                     <Button
@@ -140,7 +140,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@drawable/btn_square_menu"
-                        android:text="View Shared Jobs"
+                        android:text="@string/view_shared_jobs"
                         android:textColor="#06bebd" />
                 </LinearLayout>
 

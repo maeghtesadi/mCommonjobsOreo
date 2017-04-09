@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please select a profile you wish to continue as "
+        android:text="@string/please_select_a_profile_you_wish_to_continue_as"
         />
 
 

@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="Average rating:"
+                android:text="@string/average_rating_seeker"
                 android:padding="10dp"
                 android:textSize="20sp"/>
 
@@ -64,7 +64,7 @@
                 android:id="@+id/desc2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Attitude:"
+                android:text="@string/attitude_seeker_rating"
                 android:textStyle="bold"
                 android:padding="10dp"
                 android:textSize="20sp"/>
@@ -92,7 +92,7 @@
                 android:id="@+id/desc3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Punctuality:"
+                android:text="@string/punctuality_seeker_rating"
                 android:textStyle="bold"
                 android:padding="10dp"
                 android:textSize="20sp"/>
@@ -120,7 +120,7 @@
                 android:id="@+id/desc4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cleanliness:"
+                android:text="@string/cleanliness_seeker_rating"
                 android:textStyle="bold"
                 android:padding="10dp"
                 android:textSize="20sp"/>
@@ -148,7 +148,7 @@
                 android:id="@+id/desc5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Comment:"
+                android:text="@string/comment_seeker_rating"
                 android:textStyle="bold"
                 android:padding="10dp"
                 android:textSize="20sp"/>

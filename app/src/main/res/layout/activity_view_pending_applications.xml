@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="60sp"
-        android:text="Your pending applications"
+        android:text="@string/your_pending_applications"
         android:gravity="center"/>
 
     <ListView

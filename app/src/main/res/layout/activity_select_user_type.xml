@@ -123,7 +123,7 @@
                         android:layout_gravity="right"
                         android:layout_marginRight="20dp"
                         android:background="@drawable/btn_rounded_default"
-                        android:text="Continue"
+                        android:text="@string/continue_account_setup"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
             </LinearLayout>

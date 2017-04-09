@@ -95,7 +95,7 @@
                         android:id="@+id/spinner"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="SELECT CATEGORY"/>
+                        android:text="@string/select_category_create_posting"/>
                 </LinearLayout>
 
                 <LinearLayout

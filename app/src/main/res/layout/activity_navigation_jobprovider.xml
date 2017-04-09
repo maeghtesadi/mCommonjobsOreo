@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:fontFamily="Asap-Regular"
-                android:text="Menu"
+                android:text="@string/menu_provider"
                 android:textAlignment="center"
                 android:textColor="#06bebd"
                 android:textSize="44sp" />

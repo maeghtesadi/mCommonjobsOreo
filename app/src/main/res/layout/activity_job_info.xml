@@ -69,7 +69,7 @@
             android:layout_margin="5dp"
             android:layout_weight="40"
             android:background="@drawable/btn_rounded_green_1"
-            android:text="Apply"
+            android:text="@string/apply_job"
             android:textColor="#FFFFFF" />
 
         <Button
@@ -79,7 +79,7 @@
             android:layout_margin="5dp"
             android:layout_weight="40"
             android:background="@drawable/btn_rounded_default"
-            android:text="Share"
+            android:text="@string/share_job"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 

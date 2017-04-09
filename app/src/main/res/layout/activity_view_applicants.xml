@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:fontFamily="Asap-Regular"
-        android:text="Applicants"
+        android:text="@string/applicants"
         android:textAlignment="center"
         android:textColor="#06bebd"
         android:textSize="44sp" />

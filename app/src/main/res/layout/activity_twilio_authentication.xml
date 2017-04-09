@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="20"
                 android:fontFamily="Asap-Regular"
-                android:text="Enter Code"
+                android:text="@string/enter_code"
                 android:textAlignment="center"
                 android:textColor="#06bebd"
                 android:textSize="44sp" />
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
                 android:fontFamily="Asap-Regular"
-                android:text="Please check your text \n messages, we sent you a code!"
+                android:text="@string/please_check_your_text_n_messages_we_sent_you_a_code"
                 android:textAlignment="center"
                 android:textColor="#bfbfbf"
                 android:textSize="20sp" />
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="20"
-                android:hint="phone number"
+                android:hint="@string/phone_number_hint"
                 android:inputType="phone"
                 android:maxHeight="10dp"
                 android:textAlignment="center"
@@ -78,7 +78,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/roundedbtn"
                 android:fontFamily="Asap-Regular"
-                android:text="Submit"
+                android:text="@string/submit_confirmation_code"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -126,7 +126,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/roundedbtn"
                 android:fontFamily="Asap-Regular"
-                android:text="Confirm"
+                android:text="@string/confirm_code"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
 

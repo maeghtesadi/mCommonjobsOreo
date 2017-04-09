@@ -11,12 +11,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Job:"
+        android:text="@string/job_fragment"
         android:layout_marginRight="20dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Job applied for"
+        android:text="@string/job_applied_for"
         android:layout_marginRight="20dp"
         android:id="@+id/textView_jobAppliedFor"
         />
@@ -24,13 +24,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Current Status:"
+            android:text="@string/current_status"
             android:layout_marginRight="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status"
+            android:text="@string/status"
             android:id="@+id/textView_currentStatusOfApplication"
             />
 

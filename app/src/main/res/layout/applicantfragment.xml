@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:text="Applicant"
+        android:text="@string/applicant_fragment"
         android:textColor="#06bebd"
         android:textStyle="bold"
         android:id="@+id/heading"
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp"
-        android:text="Job"
+        android:text="@string/job"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/heading"
         android:layout_toEndOf="@+id/heading" />
@@ -88,6 +88,6 @@
         android:layout_above="@+id/bottom_line"
         android:layout_alignLeft="@+id/textView"
         android:layout_alignStart="@+id/textView"
-        android:text="Job title" />
+        android:text="@string/job_title" />
 
 </RelativeLayout>

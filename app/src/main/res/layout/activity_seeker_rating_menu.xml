@@ -19,7 +19,7 @@
         android:textColor="#06bebd"
         android:textSize="44sp"
         android:textAlignment="center"
-        android:text="Rating Menu" />
+        android:text="@string/rating_menu_seeker" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -40,7 +40,7 @@
             android:layout_marginBottom="15dp"
             android:textColor="#4c70a3"
             android:background="@drawable/roundedbtn2"
-            android:text="Rate a job provider" />
+            android:text="@string/rate_a_job_provider" />
 
         <Button
             android:id="@+id/btn_view_my_ratings_seeker"
@@ -53,7 +53,7 @@
             android:textColor="#4c70a3"
             android:textSize="30sp"
             android:background="@drawable/roundedbtn2"
-            android:text="View My Ratings" />
+            android:text="@string/view_my_ratings_seeker" />
 
     </LinearLayout>
 
