@@ -51,25 +51,14 @@ public class JobSeekerNavigationMenuTest {
         linearLayout.perform(click());
 
         ViewInteraction button = onView(
-                allOf(withId(R.id.btn_account),
-                        childAtPosition(
-                                allOf(withId(R.id.activity_navigation_jobprovider),
-                                        childAtPosition(
-                                                withId(android.R.id.content),
-                                                0)),
-                                1),
-                        isDisplayed()));
-        button.check(matches(isDisplayed()));
-
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.page_title_profile_info), withText("Menu"),
+                allOf(withId(R.id.btn_view_jobs_for_your_profile),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
                                         0),
                                 0),
                         isDisplayed()));
-        textView.check(matches(withText("Menu")));
+        button.check(matches(isDisplayed()));
 
         ViewInteraction button2 = onView(
                 allOf(withId(R.id.btn_profile),
@@ -82,7 +71,7 @@ public class JobSeekerNavigationMenuTest {
         button2.check(matches(isDisplayed()));
 
         ViewInteraction button3 = onView(
-                allOf(withId(R.id.btn_view_jobs_for_your_profile),
+                allOf(withId(R.id.btn_addjob),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
@@ -92,16 +81,6 @@ public class JobSeekerNavigationMenuTest {
         button3.check(matches(isDisplayed()));
 
         ViewInteraction button4 = onView(
-                allOf(withId(R.id.btn_addjob),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        0),
-                                0),
-                        isDisplayed()));
-        button4.check(matches(isDisplayed()));
-
-        ViewInteraction button5 = onView(
                 allOf(withId(R.id.btn_ratings),
                         childAtPosition(
                                 childAtPosition(
@@ -109,9 +88,9 @@ public class JobSeekerNavigationMenuTest {
                                         0),
                                 1),
                         isDisplayed()));
-        button5.check(matches(isDisplayed()));
+        button4.check(matches(isDisplayed()));
 
-        ViewInteraction button6 = onView(
+        ViewInteraction button5 = onView(
                 allOf(withId(R.id.btn_pending_applications),
                         childAtPosition(
                                 childAtPosition(
@@ -119,9 +98,9 @@ public class JobSeekerNavigationMenuTest {
                                         0),
                                 0),
                         isDisplayed()));
-        button6.check(matches(isDisplayed()));
+        button5.check(matches(isDisplayed()));
 
-        ViewInteraction button7 = onView(
+        ViewInteraction button6 = onView(
                 allOf(withId(R.id.btn_shared_jobs),
                         childAtPosition(
                                 childAtPosition(
@@ -129,7 +108,7 @@ public class JobSeekerNavigationMenuTest {
                                         0),
                                 1),
                         isDisplayed()));
-        button7.check(matches(isDisplayed()));
+        button6.check(matches(isDisplayed()));
 
     }
 
