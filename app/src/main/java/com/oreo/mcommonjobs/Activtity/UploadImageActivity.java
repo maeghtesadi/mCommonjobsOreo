@@ -94,7 +94,7 @@ public class UploadImageActivity extends AppCompatActivity {
             Uri selectedImage = data.getData();
 
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+               this.bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
                 imageview.setImageBitmap(bitmap);
                 imageview.setVisibility(View.VISIBLE);
                 editTextnameofImage.setVisibility(View.VISIBLE);
