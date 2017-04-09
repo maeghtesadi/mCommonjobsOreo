@@ -73,6 +73,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/oreo/mcommonjobs/Activity/RateJobSeekerTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/oreo/mcommonjobs/Activity/RatingMenuTest.java">
           <value>
             <set />
