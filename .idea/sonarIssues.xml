@@ -3,22 +3,17 @@
   <component name="issues">
     <option name="index">
       <map>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Activity/ViewPendingApplicationsActivity.java">
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/oreo/mcommonjobs/Activity/AddNewProfileListTest.java">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Controllers/JobSeekerController.java">
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/oreo/mcommonjobs/Activity/GoogleSignInButtonTest.java">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Models/ApplicationStatus.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/com/oreo/mcommonjobs/Models/URLPath.java">
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/oreo/mcommonjobs/Activity/ProfileSelectionTest.java">
           <value>
             <set />
           </value>
