@@ -8,6 +8,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/oreo/mcommonjobs/Activity/AddProfileTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/oreo/mcommonjobs/Activity/ApplicationFormTest.java">
           <value>
             <set />
