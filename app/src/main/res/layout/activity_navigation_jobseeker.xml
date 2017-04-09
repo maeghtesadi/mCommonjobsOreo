@@ -9,9 +9,10 @@
 
 <Button
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="25dp"
     android:text="@string/view_account_details"
     android:id="@+id/btn_account"
+    android:background="@color/accountBackground"
     />
     <LinearLayout
         android:layout_width="match_parent"
