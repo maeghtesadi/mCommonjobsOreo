@@ -39,7 +39,7 @@ public class URLPath {
 
     public static final String shareJob = prefix + "/sharejob.php";
     public static final String getSharedJobs = prefix + "/getsharedjobs.php";
-
+    public static final String acceptJob = prefix + "/acceptjob.php";
 
 }
 

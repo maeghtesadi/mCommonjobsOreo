@@ -188,6 +188,50 @@ public class JobSeekerController {
 
 
 
+    /**
+     * This method allows a user of type Job Seeker to accept a job
+     *
+     * @param email - email of job seeker
+     * @param context
+     * @param typeOfJob
+     * @param description
+     */
+    public void acceptJob(final String email, final String typeOfJob, final String description, final Context context){
+
+        // Post params to be sent to the server
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("email", email);
+        params.put("typeofjob", typeOfJob);
+        params.put("description", description);
+
+
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.acceptJob, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error
+                    }
+                });
+        request.setShouldCache(false);
+        RequestSingleton.getInstance(context).addToRequestQueue(request);
+
+        CharSequence text = "Job Accepted!";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+
+    }
 
 
 
