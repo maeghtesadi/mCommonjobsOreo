@@ -18,7 +18,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/leftIco"
+        android:id="@+id/job_image"
         android:src="@mipmap/ic_launcher"
         android:maxHeight="70dp"
         android:maxWidth="70dp"
