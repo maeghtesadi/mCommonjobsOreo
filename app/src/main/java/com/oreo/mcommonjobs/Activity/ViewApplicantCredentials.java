@@ -1,10 +1,10 @@
 package com.oreo.mcommonjobs.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.oreo.mcommonjobs.Controllers.JobProviderController;
@@ -49,6 +49,9 @@ public class ViewApplicantCredentials extends AppCompatActivity {
                 String z = typeofjobTextView.getText().toString();
 
                 jobProviderController.acceptApplicant(personSession.getEmail(),usernameTextView.getText().toString(),typeofjobTextView.getText().toString(), getApplicationContext());
+                Intent i = new Intent(getApplicationContext(), ViewAcceptedApplicantProfileActivity.class);
+                i.putExtra("username", getIntent().getStringExtra("username"));
+                startActivity(i);
                 finish();
             }
         });
