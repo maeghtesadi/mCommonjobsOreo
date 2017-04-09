@@ -20,7 +20,7 @@
     <string name="email">Email</string>
     <string name="select_user">"Account Setup"</string>
     <string name="rating">Rating</string>
-    <string name="title_activity_seeker_ratings_list">SeekerRatingsListActivity</string>
+    <string name="title_activity_seeker_ratings_list" translatable="false">SeekerRatingsListActivity</string>
     <string name="addprofile">addProfile</string>
     <string name="select_years_of_experience">Select years of experience</string>
     <string name="_1_3_years">1-3 years</string>
@@ -99,4 +99,23 @@
     <string name="job_applied_for">Job applied for</string>
     <string name="current_status">Current Status:</string>
     <string name="status">Status</string>
+    <string name="job_posting_created">Job Posting Created!</string>
+    <string name="job_posting_error">Job Post Invalid: enter a description please!</string>
+    <string name="applicant_accepted">Applicant accepted and notified!</string>
+    <string name="share_this_job_to_a_user">Share this job to a user (enter email):</string>
+    <string name="share">SHARE</string>
+    <string name="cancel">CANCEL</string>
+    <string name="rating_submitted">Rating Submitted</string>
+    <string name="rating_submitted_seeker">Rating Submitted</string>
+    <string name="please_enter_your_phone_number">Please enter your phone number.</string>
+    <string name="please_enter_your_confirmation_code">Please enter your confirmation code.</string>
+    <string name="confirmation_codes_matched">Confirmation codes matched!</string>
+    <string name="confirmation_codes_not_matched">Confirmation codes didn\'t match!</string>
+    <string name="image_uploaded_successfully">Image uploaded successfully</string>
+    <string name="rating_registered_provider">Rating registered.</string>
+    <string name="application_sent">Application Sent!</string>
+    <string name="job_seeker_rating_registered">Job seeker rating registered.</string>
+    <string name="click_here_to_add_a_new_profile">click here to add a new profile</string>
+    <string name="view_account_details">View account details</string>
+    <string name="you_have_applications_that_have_been_accepted">You have Applications that have been accepted, check View Pending Applications</string>
 </resources>

@@ -215,7 +215,7 @@ public class NavigationActivityForJobSeeker extends AppCompatActivity {
                                 btnApplications = (Button) findViewById(R.id.btn_pending_applications);
                                 btnApplications.setBackgroundColor(Color.GREEN);
 
-                                CharSequence text = "You have Applications that have been accepted, check View Pending Applications";
+                                CharSequence text = getString(R.string.you_have_applications_that_have_been_accepted);
                                 int duration = Toast.LENGTH_LONG;
 
                                 Toast toast = Toast.makeText(getApplicationContext(), text, duration);

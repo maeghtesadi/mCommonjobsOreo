@@ -12,6 +12,7 @@ import com.oreo.mcommonjobs.Models.JobSeekerRating;
 import com.oreo.mcommonjobs.Models.ReviewableJobProvider;
 import com.oreo.mcommonjobs.Models.ReviewableJobSeeker;
 import com.oreo.mcommonjobs.Models.URLPath;
+import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
 import org.json.JSONArray;
@@ -54,7 +55,7 @@ public class JobSeekerRatingController {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.addSeekerRating, new JSONObject(params), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Toast.makeText(context, "Job seeker rating registered.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.job_seeker_rating_registered, Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override

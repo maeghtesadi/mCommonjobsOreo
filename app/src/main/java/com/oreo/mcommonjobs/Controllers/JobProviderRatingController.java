@@ -11,6 +11,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.oreo.mcommonjobs.Models.ReviewableJobSeeker;
 import com.oreo.mcommonjobs.Models.JobProviderRating;
 import com.oreo.mcommonjobs.Models.URLPath;
+import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
 import org.json.JSONArray;
@@ -53,7 +54,7 @@ public class JobProviderRatingController {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URLPath.addProviderRating, new JSONObject(params), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Toast.makeText(context, "Rating registered.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.rating_registered_provider, Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override

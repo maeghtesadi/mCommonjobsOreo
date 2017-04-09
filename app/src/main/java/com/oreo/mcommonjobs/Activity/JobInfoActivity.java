@@ -59,7 +59,7 @@ public class JobInfoActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(JobInfoActivity.this);
-                builder.setTitle("Share this job to a user (enter email):");
+                builder.setTitle(R.string.share_this_job_to_a_user);
 
 
                 final EditText input = new EditText(JobInfoActivity.this);
@@ -67,14 +67,14 @@ public class JobInfoActivity extends AppCompatActivity{
                 builder.setView(input);
 
 
-                builder.setPositiveButton("SHARE", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.share, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         shareEmail = input.getText().toString();
                         jobSeekerController.shareJob(personSession.getEmail(),shareEmail,jobSession.getDescription(),jobSession.getTypeOfJob(),context);
                     }
                 });
-                builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();

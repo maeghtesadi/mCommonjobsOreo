@@ -13,6 +13,7 @@ import com.oreo.mcommonjobs.Activity.NavigationActivityForJobSeeker;
 import com.oreo.mcommonjobs.Models.Job;
 import com.oreo.mcommonjobs.Models.Profile;
 import com.oreo.mcommonjobs.Models.URLPath;
+import com.oreo.mcommonjobs.R;
 import com.oreo.mcommonjobs.Session.RequestSingleton;
 
 import org.json.JSONArray;
@@ -77,7 +78,7 @@ public class JobSeekerController {
         request.setShouldCache(false);
         RequestSingleton.getInstance(context).addToRequestQueue(request);
 
-        CharSequence text = "Application Sent!";
+        CharSequence text = context.getString(R.string.application_sent);
         int duration = Toast.LENGTH_LONG;
 
         Toast toast = Toast.makeText(context, text, duration);
