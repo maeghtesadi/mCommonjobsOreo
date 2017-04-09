@@ -7,10 +7,13 @@
     <View
         android:id="@+id/top_line"
         android:layout_width="fill_parent"
-        android:layout_alignTop="@+id/heading"
         android:layout_marginBottom="54dp"
         android:layout_height="2dp"
-        android:background="#c0c0c0" />
+        android:paddingBottom="10dp"
+
+        android:layout_alignParentTop="true"
+        android:background="@color/commonJobsLightBlue"
+        />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -22,7 +25,8 @@
         android:adjustViewBounds="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:paddingTop="10dp"/>
 
 
     <TextView
@@ -31,7 +35,8 @@
         android:text="@string/description"
         android:lineSpacingExtra="-3dp"
         android:id="@+id/desc"
-        android:layout_alignBottom="@+id/imageView"
+        android:paddingTop="10dp"
+        android:layout_alignBottom="@+id/leftIco"
         android:layout_alignLeft="@+id/heading"
         android:layout_alignStart="@+id/heading" />
 
@@ -51,7 +56,8 @@
         android:layout_toRightOf="@+id/leftIco"
         android:layout_toEndOf="@+id/leftIco"
         android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp" />
+        android:layout_marginStart="24dp"
+        android:paddingTop="5dp"/>
 
     <ImageView
         android:layout_width="40dp"
@@ -60,14 +66,17 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/imageView" />
+        android:id="@+id/imageView"
+        android:paddingTop="20dp"/>
 
 
     <View
         android:id="@+id/bottom_line"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_below="@+id/desc"
+        android:layout_marginTop="10dp"
         android:layout_height="2dp"
-        android:background="#c0c0c0" />
+        android:background="@color/commonJobsLightBlue"
+        android:paddingBottom="15dp"/>
 
 </RelativeLayout>
