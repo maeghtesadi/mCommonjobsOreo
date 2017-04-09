@@ -62,6 +62,10 @@ public class ViewAcceptedApplicantProfileActivity extends AppCompatActivity {
 
 
 
+    /**
+     * This method connects to server and queries db for applicants info and fills out the textviews on our layout
+     * @param username - username of applicant
+     */
 public void populateLayout(final String username){
 
     Map<String, String> params = new HashMap<String, String>();
