@@ -8,103 +8,164 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="15"
-        android:orientation="horizontal"></LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="10"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/jobtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
             android:fontFamily="Asap-Regular"
-            android:textAlignment="center"
-            android:textColor="@color/commonJobsLightBlue"
-            android:textSize="34sp" />
+            android:layout_marginTop="43dp"
+            android:textColor="#06bebd"
+            android:textSize="44sp"
+            android:textAlignment="center"/>
 
     </LinearLayout>
 
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="25"
-        android:orientation="horizontal"></LinearLayout>
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@android:color/darker_gray"/>
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_height="wrap_content"
+        android:textColor="#445677"
+        android:text="Job description: "/>
+
+    <TextView
+        android:textSize="20sp"
+        android:textColor="#445677"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:id="@+id/jobdescription"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="5"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"/>
 
-        <TextView
-            android:id="@+id/jobdescription"
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@android:color/darker_gray"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_height="wrap_content"
+        android:textColor="#445677"
+        android:text="Job location: "/>
+
+    <TextView
+        android:id="@+id/joblocation"
+        android:textSize="20sp"
+        android:textColor="#445677"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@android:color/darker_gray"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_height="wrap_content"
+        android:textColor="#445677"
+        android:text="Job start date:"/>
+
+    <TextView
+        android:id="@+id/jobduration"
+        android:textSize="20sp"
+        android:textColor="#445677"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="5"
-        android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="bottom">
 
-        <TextView
-            android:id="@+id/joblocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="5"
-        android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnApply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_rounded_green_1"
+                android:text="@string/apply_job"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
 
-        <TextView
-            android:id="@+id/jobduration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnShare"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_rounded_default"
+                android:text="@string/share_job"
+                android:textColor="#FFFFFF" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="25"
-        android:orientation="horizontal"></LinearLayout>
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="10"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:weightSum="100">
-
-        <Button
-            android:id="@+id/btnApply"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="40"
-            android:background="@drawable/btn_rounded_green_1"
-            android:text="@string/apply_job"
-            android:textColor="#FFFFFF" />
-
-        <Button
-            android:id="@+id/btnShare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="40"
-            android:background="@drawable/btn_rounded_default"
-            android:text="@string/share_job"
-            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 </LinearLayout>

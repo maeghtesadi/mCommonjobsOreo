@@ -5,12 +5,21 @@
     android:id="@+id/activity_create_job_post_acitvity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/background1"
     tools:context="com.oreo.mcommonjobs.Activity.CreateJobPostActivity">
+
+    <TextView
+        android:id="@+id/titleCreatePosting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:fontFamily="Asap-Regular"
+        android:layout_marginTop="43dp"
+        android:textColor="#06bebd"
+        android:textSize="44sp"
+        android:textAlignment="center"
+        android:text="Create Posting"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -25,32 +34,14 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="20">
+            android:layout_weight="20"
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="50"></LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="50"
-                android:weightSum="100">
-
-                <TextView
-                    android:text="@string/create_posting"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/page_title_profile_info"
-                    android:textColor="@android:color/white"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:fontFamily="Montserrat-Regular"
-                    android:textSize="32sp" />
-            </LinearLayout>
 
         </LinearLayout>
 
@@ -162,19 +153,29 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="10">
-                    <Button
-                        android:text="@string/continue_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:id="@+id/btn_continue"
-                        android:background="@drawable/btn02"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="false"
-                        android:layout_alignParentLeft="false"
-                        android:layout_alignParentEnd="true" />
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="75dp">
+
+                        <Button
+                            android:text="Continue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/btn_continue"
+                            android:textSize="20sp"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:textColor="#ffffff"
+                            android:textAllCaps="false"
+                            android:background="@drawable/roundedbtn"
+                            android:padding="7dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
             </LinearLayout>
