@@ -3,86 +3,211 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/select_years_of_experience"
-    />
-    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/titleAccount"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/yearsEXP">
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:fontFamily="Asap-Regular"
+        android:layout_marginTop="43dp"
+        android:textColor="#06bebd"
+        android:textSize="44sp"
+        android:textAlignment="center"
+        android:text="Questionnaire" />
 
-        <RadioButton android:id="@+id/yearsOption1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/_1_3_years"
-            />
-        <RadioButton android:id="@+id/yearsOption2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/_4_6_years"
-        />
-        <RadioButton android:id="@+id/yearsOption3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/_6_years"
-            />
-    </RadioGroup>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@android:color/darker_gray"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/select_avaliblity"
+        android:text="Select years of experience: "
+        android:textColor="#445677"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         />
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/yearsEXP">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:padding="5dp">
+
+                <RadioButton
+                    android:id="@+id/yearsOption1"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_1_3_years" />
+
+                <RadioButton
+                    android:id="@+id/yearsOption2"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_4_6_years" />
+
+                <RadioButton
+                    android:id="@+id/yearsOption3"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_6_years" />
+            </TableRow>
+
+        </TableLayout>
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@android:color/darker_gray"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select availability: "
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:textColor="#445677"
+        />
+
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/availability">
 
-        <RadioButton android:id="@+id/avalibityOption1"
-            android:layout_width="wrap_content"
+        <TableLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/only_day"
-            />
-        <RadioButton android:id="@+id/avalibityOption2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/only_night"
-            />
-        <RadioButton android:id="@+id/avalibityOption3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/day_or_night"
-        />
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            >
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:padding="5dp">
+
+                <RadioButton android:id="@+id/avalibityOption1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Only day"
+                    android:padding="5dp"
+                    />
+
+                <RadioButton android:id="@+id/avalibityOption2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Only night"
+                    android:padding="5dp"
+                    />
+
+                <RadioButton android:id="@+id/avalibityOption3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Day or night"
+                    android:padding="5dp"
+                    />
+
+            </TableRow>
+
+        </TableLayout>
 
     </RadioGroup>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@android:color/darker_gray"/>
 
     <TextView
         android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_height="wrap_content"
-        android:text="@string/enter_expected_wage"/>
-<EditText
-    android:layout_width="80sp"
-    android:layout_height="30sp"
-    android:id="@+id/expectedwage"/>
+        android:textColor="#445677"
+        android:text="Enter expected wage: "/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/apply"
-        android:id="@+id/apply"
-        />
+    <EditText
+        android:layout_width="80sp"
+        android:layout_height="30sp"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:id="@+id/expectedwage"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@android:color/darker_gray"/>
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:text="Apply"
+            android:id="@+id/apply"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#ffffff"
+            android:textAllCaps="false"
+            android:background="@drawable/roundedbtn"
+            />
 
-
-
+    </RelativeLayout>
 
 </LinearLayout>

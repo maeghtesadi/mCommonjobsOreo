@@ -16,7 +16,7 @@
         android:textColor="#06bebd"
         android:textSize="44sp"
         android:textAlignment="center"
-        android:text="Profile" />
+        android:text="My Profile" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -28,38 +28,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:textAlignment="center"
+        android:padding="5dp"
         >
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="First name"
-           android:paddingRight="50dp"
-           />
+
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/textView_firstname"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="First Name goes here"
-            android:id="@+id/textView_firstname"
-
-            />
+            android:gravity="center_horizontal"
+            android:textSize="25sp"
+            android:textColor="#445677"/>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Last Name:"
-            android:paddingRight="50dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="lastname goes here"
             android:id="@+id/textView_lastname"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="#445677"
             />
 
     </LinearLayout>
@@ -68,81 +65,105 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:padding="5dp"
         >
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email:"
-            android:paddingRight="50dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="email goes here"
             android:id="@+id/textView_email"
-
+            android:textAlignment="center"
+            android:textSize="22sp"
+            android:textColor="#445677"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="15dp"
             />
-
 
     </LinearLayout>
 
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Username:"
-            android:paddingRight="50dp"
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Username"
-            android:id="@+id/textView_username"
-            android:inputType="none"
-            />
+        android:padding="20dp">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit"
-            android:id="@+id/btn_edit_username"
-            />
+        <TableRow
+            android:layout_marginBottom="5dp">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Username:"
+                android:textColor="#445677"
+                android:textSize="20sp" />
 
+            <EditText
+                android:id="@+id/textView_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:inputType="none"
+                android:text="Username"
+                android:textColor="#445677"
+                android:textSize="17sp" />
 
+            <Button
+                android:id="@+id/btn_edit_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:textSize="25sp"
+                android:textColor="#ffffff"
+                android:textAllCaps="false"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/roundedbtn"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone Number:"
-            android:paddingRight="50dp"
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="###"
-            android:id="@+id/textView_phonenumber"
-            android:inputType="none"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit"
-            android:id="@+id/btn_edit_phonenumber"
-            />
+        </TableRow>
 
-    </LinearLayout>
+        <TableRow
+            android:layout_marginTop="5dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number:"
+                android:textSize="20sp"
+                android:textColor="#445677"
+                />
 
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="###"
+                android:id="@+id/textView_phonenumber"
+                android:inputType="none"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textSize="17sp"
+                android:textColor="#445677"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:id="@+id/btn_edit_phonenumber"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="#ffffff"
+                android:textAllCaps="false"
+                android:background="@drawable/roundedbtn"
+                />
+
+        </TableRow>
+
+    </TableLayout>
 
 </LinearLayout>
